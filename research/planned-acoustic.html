@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Do earbuds, smart speakers and video calls leak what you type? · Gorkem Kar</title>
+<meta name="description" content="We showed in 2015 that one phone can tell which keys you press from their sound. Microphones are now in earbuds, speakers and every video call. This project measures how much they leak, and what stops it.">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="../index.html">Gorkem Kar</a>
+    <nav aria-label="Sections">
+      <ul>
+        <li><a href="../index.html#about">About</a></li>
+        <li><a href="../index.html#research">Research</a></li>
+        <li><a href="../index.html#publications">Publications</a></li>
+        <li><a href="../index.html#teaching">Teaching</a></li>
+        <li><a href="../index.html#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+<p class="crumbs"><a href="../index.html#open-projects">Open projects</a> / Do earbuds, smart speakers and video calls leak what you type?</p>
+<section class="phead">
+  <h1>Do earbuds, smart speakers and video calls leak what you type?</h1>
+  <p class="lead">We showed in 2015 that one phone can tell which keys you press from their sound. Microphones are now in earbuds, speakers and every video call. This project measures how much they leak, and what stops it.</p>
+</section>
+<p><span class="badge">Planned project · core area · open to new graduate students</span></p>
+<section>
+<h2>Why this matters</h2>
+<p>Our MobiCom 2015 attack placed each keystroke by the tiny difference in when its sound reached a phone's two microphones, with no training data. Since then, deep learning has made keystroke recognition from recorded audio much easier, and the microphones around a keyboard have multiplied: wireless earbuds, smart speakers, laptops on video calls. Each of these processes sound differently, and some of that processing may blur or preserve the clues an attacker needs. Knowing which settings leak, and which simple defenses work, matters for anyone typing a password on a call.</p>
+<figure class="fig reveal"><svg viewBox="0 0 640 240" role="img" aria-label="Fingers press keys on a keyboard; sound waves spread from the pressed key to nearby devices: earbuds, a smart speaker and a laptop on a video call; each device picks up the sound">
+  <rect x="40" y="130" width="300" height="80" rx="10" class="svg-box"/>
+  <rect x="58" y="146" width="34" height="22" rx="4" class="svg-box"/><rect x="100" y="146" width="34" height="22" rx="4" class="svg-box"/><rect x="142" y="146" width="34" height="22" rx="4" class="svg-acc blink"/><rect x="184" y="146" width="34" height="22" rx="4" class="svg-box"/><rect x="226" y="146" width="34" height="22" rx="4" class="svg-box"/><rect x="268" y="146" width="34" height="22" rx="4" class="svg-box"/>
+  <rect x="58" y="176" width="244" height="22" rx="4" class="svg-box"/>
+  <circle cx="159" cy="150" r="70" class="wave"/><circle cx="159" cy="150" r="70" class="wave d2"/><circle cx="159" cy="150" r="70" class="wave d3"/>
+  <rect x="400" y="30" width="80" height="50" rx="25" class="svg-box"/><text x="410" y="100" class="svg-s">earbuds</text>
+  <rect x="520" y="26" width="64" height="80" rx="14" class="svg-box"/><circle cx="552" cy="66" r="14" class="svg-acc"/><text x="500" y="126" class="svg-s">smart speaker</text>
+  <rect x="420" y="150" width="150" height="70" rx="6" class="svg-box"/><circle cx="495" cy="185" r="12" class="svg-acc2"/><text x="440" y="236" class="svg-s">video call</text>
+  <path d="M220 110 L400 60" class="svg-line dash"/><path d="M230 120 L520 70" class="svg-line dash"/><path d="M240 160 L420 180" class="svg-line dash"/>
+</svg><figcaption>Every key press makes a sound that reaches the microphones around it. Illustration.</figcaption></figure>
+</section>
+<section>
+<h2>Research questions</h2>
+<ol class="rq"><li>How accurately can keystrokes be recovered from audio captured by earbuds, smart speakers and common video-call apps, compared with a phone next to the keyboard?</li><li>Which parts of each pipeline (compression, noise suppression, echo cancellation, stereo or mono) remove the clues that ranging and learning attacks need?</li><li>Which cheap defenses, such as masking sounds or app settings, cut leakage without hurting the call?</li></ol>
+</section>
+<section>
+<h2>Approach</h2>
+<ol class="flow" aria-label="Project steps"><li><b>Record</b><span>Collect typing sounds on several keyboards with consenting volunteers and an IRB-approved protocol.</span></li><li><b>Pipelines</b><span>Capture the same typing through earbuds, a smart speaker and video-call software.</span></li><li><b>Attacks</b><span>Run a ranging attack like ours and a deep learning attack from the reading list.</span></li><li><b>Defenses</b><span>Test masking noise and app settings.</span></li><li><b>Report</b><span>Recovery rates per device and setting, with clear advice for users.</span></li></ol>
+</section>
+<section>
+<h2>Skills you will use and learn</h2>
+<ul class="chips" aria-label="Skills"><li>Python, NumPy, librosa</li><li>Signal processing basics</li><li>Deep learning for audio</li><li>Human-subjects research (IRB)</li><li>Responsible disclosure</li></ul>
+</section>
+<section>
+<h2>Papers to read first</h2>
+<ol class="pubs reading"><li><div class="pt">Keyboard acoustic emanations</div><div class="pa">D. Asonov, R. Agrawal</div><div class="pv">IEEE S&amp;P, 2004</div><div class="why">The first paper to show keys can be told apart by sound.</div><div class="pl"><a href="https://doi.org/10.1109/SECPRI.2004.1301311">Read</a></div></li><li><div class="pt">Keyboard acoustic emanations revisited</div><div class="pa">L. Zhuang, F. Zhou, J. D. Tygar</div><div class="pv">ACM CCS, 2005</div><div class="why">Recovers typed text without labeled training data, using language patterns.</div><div class="pl"><a href="https://doi.org/10.1145/1102120.1102169">Read</a></div></li><li><div class="pt">Context-free attacks using keyboard acoustic emanations</div><div class="pa">T. Zhu, Q. Ma, S. Zhang, Y. Liu</div><div class="pv">ACM CCS, 2014</div><div class="why">Uses several phones and timing differences, a close cousin of our work.</div><div class="pl"><a href="https://doi.org/10.1145/2660267.2660296">Read</a></div></li><li><div class="pt">Snooping keystrokes with mm-level audio ranging on a single phone</div><div class="pa">J. Liu, Y. Wang, <b>G. Kar</b>, Y. Chen, J. Yang, M. Gruteser</div><div class="pv">ACM MobiCom, 2015</div><div class="why">Our single-phone ranging attack, the starting point.</div><div class="pl"><a href="https://doi.org/10.1145/2789168.2790122">Read</a></div></li><li><div class="pt">A practical deep learning-based acoustic side channel attack on keyboards</div><div class="pa">J. Harrison, E. Toreini, M. Mehrnezhad</div><div class="pv">IEEE EuroS&amp;P Workshops, 2023</div><div class="why">A recent attack that includes audio recorded over a video call.</div><div class="pl"><a href="https://doi.org/10.1109/EuroSPW59978.2023.00034">Read</a></div></li></ol></section><section class="join">
+<h2>Interested?</h2>
+<p>This project is planned and not yet staffed. If you are a UCM graduate student, or joining UCM soon, and it fits your interests, email me at <a href="mailto:kar@ucmo.edu">kar@ucmo.edu</a> with your CV, the project's name and a few lines on which research question you would start with. Reading two of the papers below first will make that conversation much better.</p>
+</section>
+<section><nav class="pnav" aria-label="More projects"><a href="planned-can.html">← Spotting intruders on the car's internal network</a><a href="planned-rag.html">Attacking and defending a campus chatbot →</a></nav></section>
+</main>
+<footer><div class="wrap">© 2026 Gorkem Kar · <a href="../index.html">Home</a></div></footer>
+<script src="../site.js"></script>
+</body>
+</html>

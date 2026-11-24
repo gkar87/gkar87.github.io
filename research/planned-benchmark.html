@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Leak-free benchmarks for IoT traffic classifiers · Gorkem Kar</title>
+<meta name="description" content="Many intrusion-detection and device-fingerprinting papers report near-perfect accuracy. This project measures how much of it survives once shortcuts in the data are removed.">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="../index.html">Gorkem Kar</a>
+    <nav aria-label="Sections">
+      <ul>
+        <li><a href="../index.html#about">About</a></li>
+        <li><a href="../index.html#research">Research</a></li>
+        <li><a href="../index.html#publications">Publications</a></li>
+        <li><a href="../index.html#teaching">Teaching</a></li>
+        <li><a href="../index.html#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+<p class="crumbs"><a href="../index.html#open-projects">Open projects</a> / Leak-free benchmarks for IoT traffic classifiers</p>
+<section class="phead">
+  <h1>Leak-free benchmarks for IoT traffic classifiers</h1>
+  <p class="lead">Many intrusion-detection and device-fingerprinting papers report near-perfect accuracy. This project measures how much of it survives once shortcuts in the data are removed.</p>
+</section>
+<p><span class="badge">Planned project · core area · open to new graduate students</span></p>
+<section>
+<h2>Why this matters</h2>
+<p>Machine learning on network traffic often learns the wrong thing. A model can score 99% because a field such as an IP address or a timestamp tells it which capture a packet came from, not because it understands the device or the attack. Security researchers have documented such pitfalls across top venues, and the widely used CICIDS2017 dataset turned out to contain labeling and feature-extraction errors.</p>
+<p>My group has published device fingerprinting from packet headers (ICISSP 2024) and genetic-algorithm feature selection for incident detection (Electronics 2024). This project turns the same critical eye on that kind of work, our own included, and produces a benchmark that other groups can trust.</p>
+<figure class="fig reveal"><svg viewBox="0 0 640 250" role="img" aria-label="Packet header fields; fields that identify the capture session rather than the device, such as IP address, port and timestamp, are struck out; data is split by time so the test set comes from later traffic">
+  <text x="20" y="28" class="svg-t">One packet's fields</text>
+  <rect x="20" y="42" width="110" height="40" rx="6" class="svg-box"/><text x="38" y="68" class="svg-s">source IP</text>
+  <rect x="136" y="42" width="90" height="40" rx="6" class="svg-box"/><text x="160" y="68" class="svg-s">port</text>
+  <rect x="232" y="42" width="110" height="40" rx="6" class="svg-box"/><text x="248" y="68" class="svg-s">timestamp</text>
+  <rect x="348" y="42" width="80" height="40" rx="6" class="svg-acc" opacity=".85"/><text x="366" y="68" class="svg-s" style="fill:#fff">TTL</text>
+  <rect x="434" y="42" width="90" height="40" rx="6" class="svg-acc" opacity=".85"/><text x="447" y="68" class="svg-s" style="fill:#fff">window</text>
+  <rect x="530" y="42" width="90" height="40" rx="6" class="svg-acc" opacity=".85"/><text x="543" y="68" class="svg-s" style="fill:#fff">options</text>
+  <g class="pop"><line x1="20" y1="62" x2="342" y2="62" stroke="var(--accent-2)" stroke-width="4"/>
+     <text x="40" y="106" class="svg-s" fill="var(--accent-2)">shortcuts: identify the capture, not the device</text></g>
+  <text x="20" y="150" class="svg-t">Split by time, not at random</text>
+  <rect x="20" y="166" width="420" height="34" rx="6" fill="var(--accent)" opacity=".18" stroke="var(--accent)"/>
+  <text x="34" y="189" class="svg-s">train: weeks 1 to 3</text>
+  <rect x="446" y="166" width="174" height="34" rx="6" fill="var(--accent-2)" opacity=".18" stroke="var(--accent-2)"/>
+  <text x="460" y="189" class="svg-s">test: week 4</text>
+  <line x1="20" y1="222" x2="620" y2="222" class="svg-line"/><circle cx="20" cy="222" r="6" class="svg-acc drive s2"/>
+  <text x="20" y="246" class="svg-s">Illustration: which fields count as shortcuts is part of the research.</text>
+</svg><figcaption>Two ideas behind a leak-free benchmark: drop fields that identify the capture rather than the behavior, and test on traffic recorded after the training traffic.</figcaption></figure>
+</section>
+<section>
+<h2>Research questions</h2>
+<ol class="rq"><li>Which packet and flow features act as shortcuts in popular IoT and intrusion datasets, and how can they be found automatically?</li><li>How much accuracy do published-style pipelines keep under time-based splits, unseen networks and unseen devices?</li><li>Which features stay useful after the audit, and can a model built on them run on a home or campus gateway?</li></ol>
+</section>
+<section>
+<h2>Approach</h2>
+<ol class="flow" aria-label="Project steps"><li><b>Reproduce</b><span>Re-run our fingerprinting and feature-selection pipelines on public datasets.</span></li><li><b>Audit</b><span>Search for shortcut features with ablation and simple one-feature models.</span></li><li><b>Re-split</b><span>Evaluate with time-based, network-based and device-based splits.</span></li><li><b>Rebuild</b><span>Select features again under the strict protocol and size a gateway model.</span></li><li><b>Release</b><span>Publish the protocol, code and cleaned splits for others to use.</span></li></ol>
+</section>
+<section>
+<h2>Skills you will use and learn</h2>
+<ul class="chips" aria-label="Skills"><li>Python, pandas, scikit-learn</li><li>Wireshark and Scapy</li><li>Experiment design</li><li>Feature selection</li><li>Reproducible research</li></ul>
+</section>
+<section>
+<h2>Papers to read first</h2>
+<ol class="pubs reading"><li><div class="pt">Outside the closed world: On using machine learning for network intrusion detection</div><div class="pa">R. Sommer, V. Paxson</div><div class="pv">IEEE Symposium on Security and Privacy, 2010</div><div class="why">The classic argument for why intrusion detection is harder for ML than it looks.</div><div class="pl"><a href="https://doi.org/10.1109/SP.2010.25">Read</a></div></li><li><div class="pt">Dos and don'ts of machine learning in computer security</div><div class="pa">D. Arp, E. Quiring, F. Pendlebury, A. Warnecke, F. Pierazzi, C. Wressnegger, L. Cavallaro, K. Rieck</div><div class="pv">USENIX Security Symposium, 2022</div><div class="why">A checklist of pitfalls, with evidence that they are common.</div><div class="pl"><a href="https://www.usenix.org/conference/usenixsecurity22/presentation/arp">Read</a></div></li><li><div class="pt">Troubleshooting an intrusion detection dataset: the CICIDS2017 case study</div><div class="pa">G. Engelen, V. Rimmer, W. Joosen</div><div class="pv">IEEE Security and Privacy Workshops, 2021</div><div class="why">What went wrong inside a dataset everyone uses.</div><div class="pl"><a href="https://doi.org/10.1109/SPW53761.2021.00009">Read</a></div></li><li><div class="pt">Toward generating a new intrusion detection dataset and intrusion traffic characterization</div><div class="pa">I. Sharafaldin, A. Habibi Lashkari, A. A. Ghorbani</div><div class="pv">ICISSP, 2018</div><div class="why">The CICIDS2017 paper itself, to read alongside the critique.</div><div class="pl"><a href="https://doi.org/10.5220/0006639801080116">Read</a></div></li><li><div class="pt">N-BaIoT: Network-based detection of IoT botnet attacks using deep autoencoders</div><div class="pa">Y. Meidan, M. Bohadana, Y. Mathov, Y. Mirsky, A. Shabtai, D. Breitenbacher, Y. Elovici</div><div class="pv">IEEE Pervasive Computing, 2018</div><div class="why">A widely used IoT botnet dataset that the benchmark will cover.</div><div class="pl"><a href="https://doi.org/10.1109/MPRV.2018.03367731">Read</a></div></li><li><div class="pt">Comparative analysis of feature selection algorithms for automated IoT device fingerprinting</div><div class="pa">A. Aksoy, S. Varma, G. Moorthy, E. Pan, <b>G. Kar</b></div><div class="pv">ICISSP, 2024</div><div class="why">Our own fingerprinting pipeline, the first one to audit.</div><div class="pl"><a href="https://doi.org/10.5220/0012379100003648">Read</a></div></li></ol></section><section class="join">
+<h2>Interested?</h2>
+<p>This project is planned and not yet staffed. If you are a UCM graduate student, or joining UCM soon, and it fits your interests, email me at <a href="mailto:kar@ucmo.edu">kar@ucmo.edu</a> with your CV, the project's name and a few lines on which research question you would start with. Reading two of the papers below first will make that conversation much better.</p>
+</section>
+<section><nav class="pnav" aria-label="More projects"><a href="planned-gnss.html">← Catching GNSS spoofing with the car's own sensors</a><a href="planned-quantum.html">Does a quantum layer really help? Honest benchmarks for quantum intrusion detection →</a></nav></section>
+</main>
+<footer><div class="wrap">© 2026 Gorkem Kar · <a href="../index.html">Home</a></div></footer>
+<script src="../site.js"></script>
+</body>
+</html>

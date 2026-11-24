@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hybrid quantum-classical intrusion detection · Gorkem Kar</title>
+<meta name="description" content="Can a small quantum circuit, paired with classical deep learning, help catch network attacks and mobile malware? We built one framework that does both.">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="../index.html">Gorkem Kar</a>
+    <nav aria-label="Sections">
+      <ul>
+        <li><a href="../index.html#about">About</a></li>
+        <li><a href="../index.html#research">Research</a></li>
+        <li><a href="../index.html#publications">Publications</a></li>
+        <li><a href="../index.html#teaching">Teaching</a></li>
+        <li><a href="../index.html#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+<p class="crumbs"><a href="../index.html#research">Research</a> / Hybrid quantum-classical intrusion detection</p>
+<section class="phead">
+  <h1>Hybrid quantum-classical intrusion detection</h1>
+  <p class="lead">Can a small quantum circuit, paired with classical deep learning, help catch network attacks and mobile malware? We built one framework that does both.</p>
+</section>
+
+<section>
+<h2>One framework for DDoS and Android malware</h2>
+<p>Intrusion detectors for software-defined networks and malware classifiers for phones are usually separate systems. We designed a single hybrid quantum-classical neural network (HQCNN) that handles both: binary detection of DDoS traffic, and multiclass classification of Android malware families. Signals are turned into images with wavelets, a convolutional network extracts features, and a compact quantum layer makes the final decision.</p>
+<ol class="flow" aria-label="HQCNN pipeline"><li><b>Normalize</b><span>min–max scaling</span></li><li><b>Wavelet transform</b><span>discrete wavelet denoising</span></li><li><b>Scaleogram</b><span>continuous wavelet → image</span></li><li><b>2D CNN</b><span>feature extraction</span></li><li><b>LDA</b><span>reduce to n−1 features</span></li><li><b>Quantum layer</b><span>2-qubit variational circuit</span></li><li><b>Decision</b><span>classical output layer</span></li></ol><figure class="fig reveal"><svg viewBox="0 0 640 200" role="img" aria-label="Two-qubit variational circuit: encoding rotations, entangling CNOT, trainable rotations, measurement; a pulse travels along the wires">
+  <text x="10" y="70" class="svg-t">q0</text><text x="10" y="150" class="svg-t">q1</text>
+  <line x1="50" y1="64" x2="610" y2="64" class="svg-line"/><line x1="50" y1="144" x2="610" y2="144" class="svg-line"/>
+  <line x1="50" y1="64" x2="610" y2="64" stroke="var(--accent)" stroke-width="3" class="dash"/>
+  <line x1="50" y1="144" x2="610" y2="144" stroke="var(--accent)" stroke-width="3" class="dash"/>
+  <g><rect x="90" y="44" width="70" height="40" rx="6" class="svg-box"/><text x="103" y="70" class="svg-s">H·RY(x)</text>
+     <rect x="90" y="124" width="70" height="40" rx="6" class="svg-box"/><text x="103" y="150" class="svg-s">H·RY(x)</text></g>
+  <g><circle cx="250" cy="64" r="7" fill="var(--fg)"/><line x1="250" y1="64" x2="250" y2="144" stroke="var(--fg)" stroke-width="2"/>
+     <circle cx="250" cy="144" r="14" fill="none" stroke="var(--fg)" stroke-width="2"/><line x1="236" y1="144" x2="264" y2="144" stroke="var(--fg)" stroke-width="2"/></g>
+  <g><rect x="320" y="44" width="70" height="40" rx="6" class="svg-acc" opacity=".85"/><text x="337" y="70" class="svg-s" style="fill:#fff">RY(θ)</text>
+     <rect x="320" y="124" width="70" height="40" rx="6" class="svg-acc" opacity=".85"/><text x="337" y="150" class="svg-s" style="fill:#fff">RY(θ)</text></g>
+  <g><rect x="470" y="44" width="60" height="40" rx="6" class="svg-box"/><path d="M480 76 Q500 52 520 76" class="svg-line"/>
+     <rect x="470" y="124" width="60" height="40" rx="6" class="svg-box"/><path d="M480 156 Q500 132 520 156" class="svg-line"/></g>
+  <text x="95" y="195" class="svg-s">encode features</text><text x="215" y="195" class="svg-s">entangle</text>
+  <text x="310" y="195" class="svg-s">trainable layer</text><text x="465" y="195" class="svg-s">measure</text>
+</svg><figcaption>The quantum layer: features are encoded as rotations, entangled, passed through a trainable layer and measured. One layer and 500 shots worked best.</figcaption></figure><figure class="chart reveal" aria-label="DDoS detection, SDN DDoS dataset (104,345 records)"><h4>DDoS detection, SDN DDoS dataset (104,345 records)</h4><div class="bar hi"><span class="bl">Hybrid quantum-classical</span><span class="bt"><span class="bf" style="--v:99.86"></span></span><span class="bv">99.86%</span></div><div class="bar"><span class="bl">Classical 2D CNN</span><span class="bt"><span class="bf" style="--v:86.8"></span></span><span class="bv">86.80%</span></div><figcaption class="src">Data: EPJ Quantum Technology 12, 77 (2025): HQCNN average accuracy (abstract) and 2D CNN 10-fold mean (Table 8 discussion). Simulated with PennyLane Lightning.</figcaption></figure><figure class="chart reveal" aria-label="Android malware, 12 classes, 10-fold mean accuracy"><h4>Android malware, 12 classes, 10-fold mean accuracy</h4><div class="bar hi"><span class="bl">Hybrid quantum-classical</span><span class="bt"><span class="bf" style="--v:95.33"></span></span><span class="bv">95.33%</span></div><div class="bar"><span class="bl">Classical CNN</span><span class="bt"><span class="bf" style="--v:78.94"></span></span><span class="bv">78.94%</span></div><figcaption class="src">Data: EPJ Quantum Technology 12, 77 (2025), Fig. 13 discussion. CCCS-CIC-AndMal2020 static features, balanced to 800 samples per class.</figcaption></figure><figure class="chart reveal" aria-label="Android malware accuracy as classes are added"><h4>Android malware accuracy as classes are added</h4><div class="bar"><span class="bl">12 classes</span><span class="bt"><span class="bf" style="--v:95.13"></span></span><span class="bv">95.13%</span></div><div class="bar"><span class="bl">14 classes</span><span class="bt"><span class="bf" style="--v:94.38"></span></span><span class="bv">94.38%</span></div><div class="bar"><span class="bl">15 classes</span><span class="bt"><span class="bf" style="--v:93.56"></span></span><span class="bv">93.56%</span></div><figcaption class="src">Data: EPJ Quantum Technology 12, 77 (2025), abstract and Table 11.</figcaption></figure>
+<p class="note">These results come from quantum simulators. The appeal for security is size: the quantum layer has very few parameters, which matters for detectors that must run on IoT gateways and phones.</p>
+</section>
+
+<section>
+<h2>The same idea in spectroscopy</h2>
+<p>The wavelet-to-quantum pipeline also works on light. In <em>IEEE Access</em> (2025) we turned Raman spectra of human serum into wavelet scaleograms and classified COVID-19 with a quanvolutional neural network, comparing it with classical CNNs. In <em>AVS Quantum Science</em> (2026), a classical-quantum network with dual-channel feature extraction ran on an IonQ quantum processor to classify weathered microplastics from their Raman spectra.</p>
+<h3>Where this is going</h3>
+<p>Moving hybrid and compact deep models from offline benchmarks to deployable detectors for IoT gateways and mobile devices, with explanations a network operator can act on.</p>
+</section>
+
+<section>
+<h2>Papers</h2>
+<ol class="pubs"><li><div class="pt">Unified hybrid quantum classical neural network framework for detecting distributed denial of service and Android mobile malware attacks</div><div class="pa">S. Sridevi, B. Indira, S. Geetha, S. Balachandran, <b>G. Kar</b>, S. Kharbanda</div><div class="pv">EPJ Quantum Technology, 2025 (open access)</div><div class="pl"><a href="https://doi.org/10.1140/epjqt/s40507-025-00380-z">Paper</a></div></li><li><div class="pt">Novel quanvolutional neural network-based COVID-19 diagnosis from Raman spectroscopic signals of human serum</div><div class="pa">S. S. Dutta, S. Sandeep, S. Sridevi, R. Mistry, J. Ortega, <b>G. Kar</b></div><div class="pv">IEEE Access, 2025 (open access)</div><div class="pl"><a href="https://doi.org/10.1109/ACCESS.2025.3580316">Paper</a></div></li><li><div class="pt">A classical quantum neural network with dual-channel feature extraction on IonQ QPU for classifying weathered microplastics from Raman spectra</div><div class="pa">H. G. Kulkarni, A. R. Banerjee, T. Mandloi, S. Sridevi, S. Geetha, <b>G. Kar</b></div><div class="pv">AVS Quantum Science, 2026</div><div class="pl"><a href="https://scholar.google.com/citations?view_op=view_citation&amp;hl=en&amp;user=dz-6amUAAAAJ&amp;citation_for_view=dz-6amUAAAAJ:5nxA0vEk-isC">Paper</a></div></li></ol></section>
+<section><nav class="pnav" aria-label="More projects"><a href="vehicles.html">← Connected vehicles: sensing, identity and trust</a><a href="iot-identity.html">IoT device identity and network incidents →</a></nav></section>
+</main>
+<footer><div class="wrap">© 2026 Gorkem Kar · <a href="../index.html">Home</a></div></footer>
+<script src="../site.js"></script>
+</body>
+</html>

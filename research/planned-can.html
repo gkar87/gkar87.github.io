@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Spotting intruders on the car's internal network · Gorkem Kar</title>
+<meta name="description" content="Inside every car, dozens of computers talk over one shared bus with no sender authentication. This project builds detectors that notice when a message on that bus does not belong there.">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="../index.html">Gorkem Kar</a>
+    <nav aria-label="Sections">
+      <ul>
+        <li><a href="../index.html#about">About</a></li>
+        <li><a href="../index.html#research">Research</a></li>
+        <li><a href="../index.html#publications">Publications</a></li>
+        <li><a href="../index.html#teaching">Teaching</a></li>
+        <li><a href="../index.html#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+<p class="crumbs"><a href="../index.html#open-projects">Open projects</a> / Spotting intruders on the car's internal network</p>
+<section class="phead">
+  <h1>Spotting intruders on the car's internal network</h1>
+  <p class="lead">Inside every car, dozens of computers talk over one shared bus with no sender authentication. This project builds detectors that notice when a message on that bus does not belong there.</p>
+</section>
+<p><span class="badge">Planned project · core area · open to new graduate students</span></p>
+<section>
+<h2>Why this matters</h2>
+<p>Researchers have shown that an attacker who reaches a car's internal network can control brakes, engine and locks. Messages on that network carry no proof of who sent them, so detection has to come from patterns: when messages arrive, what they contain and which control unit produced them. My PredriveID work with General Motors Research read exactly this kind of bus data to tell drivers apart, using low-cost hardware. This project turns the same skills toward catching intrusions.</p>
+<figure class="fig reveal"><svg viewBox="0 0 640 240" role="img" aria-label="Electronic control units for the engine, brakes and steering share one in-vehicle bus; their messages travel along it on a steady rhythm; a rogue device plugged into the diagnostic port injects extra messages, which break the rhythm and trigger an alert">
+  <line x1="20" y1="120" x2="620" y2="120" stroke="var(--fg)" stroke-width="4"/>
+  <line x1="20" y1="132" x2="620" y2="132" stroke="var(--fg)" stroke-width="4" opacity=".5"/>
+  <text x="20" y="160" class="svg-s">in-vehicle bus (CAN)</text>
+  <rect x="60" y="40" width="100" height="44" rx="8" class="svg-box"/><text x="82" y="68" class="svg-s">engine</text><line x1="110" y1="84" x2="110" y2="120" class="svg-line"/>
+  <rect x="200" y="40" width="100" height="44" rx="8" class="svg-box"/><text x="226" y="68" class="svg-s">brakes</text><line x1="250" y1="84" x2="250" y2="120" class="svg-line"/>
+  <rect x="340" y="40" width="100" height="44" rx="8" class="svg-box"/><text x="356" y="68" class="svg-s">steering</text><line x1="390" y1="84" x2="390" y2="120" class="svg-line"/>
+  <g class="drive"><circle cx="0" cy="126" r="6" class="svg-acc"/></g>
+  <g class="drive s3"><circle cx="0" cy="126" r="6" class="svg-acc"/></g>
+  <g class="blink"><rect x="490" y="176" width="110" height="44" rx="8" class="svg-acc2"/><text x="506" y="203" class="svg-s" style="fill:#fff">OBD dongle</text><line x1="545" y1="176" x2="545" y2="132" stroke="var(--accent-2)" stroke-width="3"/></g>
+  <g class="pop"><rect x="470" y="40" width="150" height="44" rx="8" fill="none" stroke="var(--accent-2)" stroke-width="3"/><text x="484" y="68" class="svg-s" fill="var(--accent-2)">rhythm broken!</text></g>
+  <text x="20" y="226" class="svg-s">Illustration: which timing and content features work best is part of the research.</text>
+</svg><figcaption>Normal messages repeat on a steady rhythm; injected ones break it. Illustration, not results.</figcaption></figure>
+</section>
+<section>
+<h2>Research questions</h2>
+<ol class="rq"><li>How well do timing-based, content-based and learning-based detectors catch injection, flooding and impersonation attacks on public in-vehicle datasets?</li><li>Do detectors trained on one car still work on another model, or after a software update changes the message rhythm?</li><li>Can a detector small enough for an in-vehicle gateway also say which control unit sent the bad message?</li></ol>
+</section>
+<section>
+<h2>Approach</h2>
+<ol class="flow" aria-label="Project steps"><li><b>Datasets</b><span>Start from public in-vehicle attack datasets, then log our own drives with an OBD-II interface.</span></li><li><b>Baselines</b><span>Reimplement entropy, clock-skew and neural detectors from the reading list.</span></li><li><b>Cross-car tests</b><span>Train on one vehicle or time period, test on another.</span></li><li><b>Lightweight model</b><span>Shrink the best detector for a low-cost embedded board.</span></li><li><b>Report</b><span>Detection rate, false alarms per hour of driving and attribution accuracy.</span></li></ol>
+</section>
+<section>
+<h2>Skills you will use and learn</h2>
+<ul class="chips" aria-label="Skills"><li>Python, pandas, PyTorch</li><li>CAN bus and OBD-II basics</li><li>Time-series anomaly detection</li><li>Embedded boards (Raspberry Pi or similar)</li><li>Careful experiment design</li></ul>
+</section>
+<section>
+<h2>Papers to read first</h2>
+<ol class="pubs reading"><li><div class="pt">Experimental security analysis of a modern automobile</div><div class="pa">K. Koscher, A. Czeskis, F. Roesner, S. Patel, T. Kohno, S. Checkoway, D. McCoy, B. Kantor, D. Anderson, H. Shacham, S. Savage</div><div class="pv">IEEE S&amp;P, 2010</div><div class="why">The paper that showed what an attacker on the car's network can do.</div><div class="pl"><a href="https://doi.org/10.1109/SP.2010.34">Read</a></div></li><li><div class="pt">Entropy-based anomaly detection for in-vehicle networks</div><div class="pa">M. Müter, N. Asaj</div><div class="pv">IEEE Intelligent Vehicles Symposium, 2011</div><div class="why">An early, simple detector that is still a useful baseline.</div><div class="pl"><a href="https://doi.org/10.1109/IVS.2011.5940552">Read</a></div></li><li><div class="pt">Fingerprinting electronic control units for vehicle intrusion detection</div><div class="pa">K.-T. Cho, K. G. Shin</div><div class="pv">USENIX Security, 2016</div><div class="why">Uses the timing of periodic messages to fingerprint the sender.</div><div class="pl"><a href="https://www.usenix.org/conference/usenixsecurity16/technical-sessions/presentation/cho">Read</a></div></li><li><div class="pt">GIDS: GAN based intrusion detection system for in-vehicle network</div><div class="pa">E. Seo, H. M. Song, H. K. Kim</div><div class="pv">PST, 2018</div><div class="why">A learning-based detector that can flag attacks it never saw.</div><div class="pl"><a href="https://doi.org/10.1109/PST.2018.8514157">Read</a></div></li><li><div class="pt">In-vehicle network intrusion detection using deep convolutional neural network</div><div class="pa">H. M. Song, J. Woo, H. K. Kim</div><div class="pv">Vehicular Communications, 2020</div><div class="why">A deep detector evaluated on a widely used public dataset.</div><div class="pl"><a href="https://doi.org/10.1016/j.vehcom.2019.100198">Read</a></div></li><li><div class="pt">PredriveID: Pre-trip driver identification from in-vehicle data</div><div class="pa"><b>G. Kar</b>, S. Jain, M. Gruteser, J. Chen, F. Bai, R. Govindan</div><div class="pv">ACM/IEEE SEC, 2017</div><div class="why">How we collected and used in-vehicle bus data.</div><div class="pl"><a href="https://doi.org/10.1145/3132211.3134462">Read</a></div></li></ol></section><section class="join">
+<h2>Interested?</h2>
+<p>This project is planned and not yet staffed. If you are a UCM graduate student, or joining UCM soon, and it fits your interests, email me at <a href="mailto:kar@ucmo.edu">kar@ucmo.edu</a> with your CV, the project's name and a few lines on which research question you would start with. Reading two of the papers below first will make that conversation much better.</p>
+</section>
+<section><nav class="pnav" aria-label="More projects"><a href="planned-xai.html">← Explanations you can check: explainable intrusion and malware detection</a><a href="planned-acoustic.html">Do earbuds, smart speakers and video calls leak what you type? →</a></nav></section>
+</main>
+<footer><div class="wrap">© 2026 Gorkem Kar · <a href="../index.html">Home</a></div></footer>
+<script src="../site.js"></script>
+</body>
+</html>

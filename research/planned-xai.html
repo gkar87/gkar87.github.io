@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Explanations you can check: explainable intrusion and malware detection · Gorkem Kar</title>
+<meta name="description" content="Security analysts are asked to act on alerts from models they cannot see inside. This project tests whether today&#x27;s explanation methods tell them the truth about why a detector fired, and builds explanations an analyst can check.">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="../index.html">Gorkem Kar</a>
+    <nav aria-label="Sections">
+      <ul>
+        <li><a href="../index.html#about">About</a></li>
+        <li><a href="../index.html#research">Research</a></li>
+        <li><a href="../index.html#publications">Publications</a></li>
+        <li><a href="../index.html#teaching">Teaching</a></li>
+        <li><a href="../index.html#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+<p class="crumbs"><a href="../index.html#open-projects">Open projects</a> / Explanations you can check: explainable intrusion and malware detection</p>
+<section class="phead">
+  <h1>Explanations you can check: explainable intrusion and malware detection</h1>
+  <p class="lead">Security analysts are asked to act on alerts from models they cannot see inside. This project tests whether today's explanation methods tell them the truth about why a detector fired, and builds explanations an analyst can check.</p>
+</section>
+<p><span class="badge">Planned project · core area · open to new graduate students</span></p>
+<section>
+<h2>Why this matters</h2>
+<p>Explainability already runs through my applied AI work: our food fraud study (Expert Systems, 2025) compared LIME, SHAP and Google's What-If Tool on one model and showed what each can and cannot tell a food-safety analyst, and our employee attrition paper (LA-CCI, 2025) used explanations to find the factors behind people leaving. Security raises the stakes. An intrusion or malware alert has to be acted on quickly, different explanation methods can disagree about the same alert, and an explanation that looks convincing can still be wrong about what the model actually used. An honest explanation can also expose a detector that learned a shortcut, which links this project to the leak-free benchmark project.</p>
+<figure class="fig reveal"><svg viewBox="0 0 640 260" role="img" aria-label="A network flow enters a detector, which raises an alert; an explanation then shows how much each feature pushed the decision as growing bars; the top bar is a capture timestamp, flagged as a possible shortcut rather than real attack behavior">
+  <rect x="20" y="96" width="110" height="60" rx="8" class="svg-box"/><text x="40" y="122" class="svg-t">flow</text><text x="40" y="142" class="svg-s">features</text>
+  <path d="M130 126 L190 126" class="svg-line dash"/>
+  <rect x="190" y="86" width="120" height="80" rx="10" fill="var(--fg)" opacity=".85"/>
+  <text x="212" y="122" class="svg-t" style="fill:var(--bg)">detector</text><text x="240" y="148" class="svg-t" style="fill:var(--bg)">?</text>
+  <path d="M310 126 L350 126" class="svg-line dash"/>
+  <g class="blink"><rect x="196" y="186" width="108" height="34" rx="8" class="svg-acc2"/><text x="216" y="209" class="svg-s" style="fill:#fff">ALERT</text></g>
+  <text x="360" y="30" class="svg-t">Why this alert?</text>
+  <text x="360" y="64" class="svg-s">capture time</text><rect x="470" y="50" width="150" height="20" rx="4" class="svg-acc2 grow"/>
+  <text x="360" y="102" class="svg-s">SYN rate</text><rect x="470" y="88" width="118" height="20" rx="4" class="svg-acc grow g2"/>
+  <text x="360" y="140" class="svg-s">dest. port</text><rect x="470" y="126" width="74" height="20" rx="4" class="svg-acc grow g3"/>
+  <text x="360" y="178" class="svg-s">packet size</text><rect x="470" y="164" width="40" height="20" rx="4" class="svg-acc grow g4"/>
+  <g class="pop"><text x="360" y="222" class="svg-s" fill="var(--accent-2)">top reason is a shortcut, not attack behavior</text></g>
+</svg><figcaption>The idea: for each alert, show how much each input pushed the decision, then check whether the top reasons are real attack behavior or artifacts of how the data was collected. Illustration, not results.</figcaption></figure>
+</section>
+<section>
+<h2>Research questions</h2>
+<ol class="rq"><li>For the same intrusion or malware detector, how often do LIME, SHAP and gradient-based explanations agree on the top reasons for an alert, and which of them are faithful to what the model really uses?</li><li>Can explanations reliably expose shortcuts, such as a detector keying on capture artifacts instead of attack behavior?</li><li>Where does a small interpretable model (rules or a shallow tree) match a black-box detector closely enough to replace it?</li><li>Do explanations help analysts triage alerts faster and more accurately, or only make them more confident?</li></ol>
+</section>
+<section>
+<h2>Approach</h2>
+<ol class="flow" aria-label="Project steps"><li><b>Detectors</b><span>Train intrusion and Android malware detectors on public datasets from our earlier work.</span></li><li><b>Explain</b><span>Generate LIME, SHAP and gradient-based explanations for the same alerts.</span></li><li><b>Measure</b><span>Score faithfulness by removing top features, plus stability and sparsity.</span></li><li><b>Shortcut hunt</b><span>Plant known artifacts in the data and see which methods find them.</span></li><li><b>Analyst study</b><span>A small, IRB-approved study with student analysts triaging alerts.</span></li></ol>
+</section>
+<section>
+<h2>Skills you will use and learn</h2>
+<ul class="chips" aria-label="Skills"><li>Python, scikit-learn, PyTorch</li><li>SHAP and LIME libraries</li><li>Network and malware datasets</li><li>Experiment design and statistics</li><li>Basic user-study methods</li></ul>
+</section>
+<section>
+<h2>Papers to read first</h2>
+<ol class="pubs reading"><li><div class="pt">"Why should I trust you?" Explaining the predictions of any classifier</div><div class="pa">M. T. Ribeiro, S. Singh, C. Guestrin</div><div class="pv">ACM SIGKDD (KDD), 2016</div><div class="why">LIME: explain one prediction by fitting a simple model around it.</div><div class="pl"><a href="https://doi.org/10.1145/2939672.2939778">Read</a></div></li><li><div class="pt">A unified approach to interpreting model predictions</div><div class="pa">S. M. Lundberg, S.-I. Lee</div><div class="pv">NeurIPS (NIPS), 2017</div><div class="why">SHAP: feature contributions grounded in Shapley values.</div><div class="pl"><a href="https://arxiv.org/abs/1705.07874">Read</a></div></li><li><div class="pt">Peeking inside the black-box: a survey on explainable artificial intelligence (XAI)</div><div class="pa">A. Adadi, M. Berrada</div><div class="pv">IEEE Access, 2018</div><div class="why">A broad map of the field and its vocabulary.</div><div class="pl"><a href="https://doi.org/10.1109/ACCESS.2018.2870052">Read</a></div></li><li><div class="pt">LEMNA: explaining deep learning based security applications</div><div class="pa">W. Guo, D. Mu, J. Xu, P. Su, G. Wang, X. Xing</div><div class="pv">ACM CCS, 2018</div><div class="why">An explanation method designed for security models such as binary analysis.</div><div class="pl"><a href="https://doi.org/10.1145/3243734.3243792">Read</a></div></li><li><div class="pt">Evaluating explanation methods for deep learning in security</div><div class="pa">A. Warnecke, D. Arp, C. Wressnegger, K. Rieck</div><div class="pv">IEEE EuroS&amp;P, 2020</div><div class="why">How to judge whether an explanation is any good for security; the yardstick this project starts from.</div><div class="pl"><a href="https://doi.org/10.1109/EuroSP48549.2020.00018">Read</a></div></li><li><div class="pt">Stop explaining black box machine learning models for high stakes decisions and use interpretable models instead</div><div class="pa">C. Rudin</div><div class="pv">Nature Machine Intelligence, 2019</div><div class="why">The case for interpretable models, behind research question 3.</div><div class="pl"><a href="https://doi.org/10.1038/s42256-019-0048-x">Read</a></div></li><li><div class="pt">Food fraud detection using explainable artificial intelligence</div><div class="pa">O. Buyuktepe, C. Catal, <b>G. Kar</b>, Y. Bouzembrak, H. Marvin, A. Gavai</div><div class="pv">Expert Systems, 2025</div><div class="why">Our comparison of LIME, SHAP and the What-If Tool on one model.</div><div class="pl"><a href="https://doi.org/10.1111/exsy.13387">Read</a></div></li></ol></section><section class="join">
+<h2>Interested?</h2>
+<p>This project is planned and not yet staffed. If you are a UCM graduate student, or joining UCM soon, and it fits your interests, email me at <a href="mailto:kar@ucmo.edu">kar@ucmo.edu</a> with your CV, the project's name and a few lines on which research question you would start with. Reading two of the papers below first will make that conversation much better.</p>
+</section>
+<section><nav class="pnav" aria-label="More projects"><a href="planned-quantum.html">← Does a quantum layer really help? Honest benchmarks for quantum intrusion detection</a><a href="planned-can.html">Spotting intruders on the car's internal network →</a></nav></section>
+</main>
+<footer><div class="wrap">© 2026 Gorkem Kar · <a href="../index.html">Home</a></div></footer>
+<script src="../site.js"></script>
+</body>
+</html>

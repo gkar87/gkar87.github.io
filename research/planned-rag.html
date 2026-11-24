@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Attacking and defending a campus chatbot · Gorkem Kar</title>
+<meta name="description" content="Chatbots that answer from a university&#x27;s own pages are spreading fast. This project red-teams one: can a planted page or a crafted question make it give wrong or harmful answers, and which defenses hold up?">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="../index.html">Gorkem Kar</a>
+    <nav aria-label="Sections">
+      <ul>
+        <li><a href="../index.html#about">About</a></li>
+        <li><a href="../index.html#research">Research</a></li>
+        <li><a href="../index.html#publications">Publications</a></li>
+        <li><a href="../index.html#teaching">Teaching</a></li>
+        <li><a href="../index.html#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+<p class="crumbs"><a href="../index.html#open-projects">Open projects</a> / Attacking and defending a campus chatbot</p>
+<section class="phead">
+  <h1>Attacking and defending a campus chatbot</h1>
+  <p class="lead">Chatbots that answer from a university's own pages are spreading fast. This project red-teams one: can a planted page or a crafted question make it give wrong or harmful answers, and which defenses hold up?</p>
+</section>
+<p><span class="badge">Planned project · new direction · open to new graduate students</span></p>
+<section>
+<h2>Why this matters</h2>
+<p>My students and I recently built a retrieval-augmented chatbot for UCM from the university's own web pages (manuscript submitted). Systems like it read whatever their retriever finds, which opens two doors for an attacker: instructions hidden in a page the bot retrieves (indirect prompt injection), and pages written to be retrieved for a target question so the bot repeats a false answer (knowledge poisoning). Universities are deploying these chatbots for admissions, financial aid and IT help, so getting the security right early matters.</p>
+<figure class="fig reveal"><svg viewBox="0 0 640 240" role="img" aria-label="A student's question goes to a retriever, which pulls passages from the university's pages; one passage has been planted by an attacker and carries a hidden instruction; the language model reads the passages and answers; a guard step checks passages and the answer">
+  <rect x="20" y="96" width="110" height="52" rx="8" class="svg-box"/><text x="36" y="128" class="svg-s">question</text>
+  <path d="M130 122 L170 122" class="svg-line dash"/>
+  <rect x="170" y="96" width="110" height="52" rx="8" class="svg-box"/><text x="186" y="128" class="svg-s">retriever</text>
+  <rect x="190" y="20" width="60" height="40" rx="4" class="svg-box"/><rect x="256" y="20" width="60" height="40" rx="4" class="svg-box"/>
+  <g class="blink"><rect x="322" y="20" width="60" height="40" rx="4" class="svg-acc2"/><text x="338" y="46" class="svg-s" style="fill:#fff">!</text></g>
+  <text x="190" y="80" class="svg-s">campus pages (one planted)</text>
+  <path d="M280 122 L330 122" class="svg-line dash"/>
+  <rect x="330" y="90" width="120" height="64" rx="10" fill="var(--fg)" opacity=".85"/><text x="360" y="128" class="svg-t" style="fill:var(--bg)">LLM</text>
+  <path d="M450 122 L500 122" class="svg-line dash"/>
+  <rect x="500" y="96" width="120" height="52" rx="8" class="svg-box"/><text x="520" y="128" class="svg-s">answer</text>
+  <g class="pop"><rect x="300" y="176" width="200" height="40" rx="8" fill="none" stroke="var(--accent)" stroke-width="3"/><text x="318" y="202" class="svg-s" fill="var(--accent)">guard: check and cite</text></g>
+</svg><figcaption>Where attacks enter a retrieval-augmented chatbot, and where a guard can check. Illustration.</figcaption></figure>
+</section>
+<section>
+<h2>Research questions</h2>
+<ol class="rq"><li>How easily can a planted page, or a crafted question, make a campus chatbot give a wrong answer, leak its instructions or follow hidden commands?</li><li>Does hybrid retrieval (keyword plus vector search, with query rewriting) make poisoning easier or harder than vector search alone?</li><li>Which defenses (filtering retrieved text, requiring citations, a second model as a checker) reduce attacks without making answers worse?</li></ol>
+</section>
+<section>
+<h2>Approach</h2>
+<ol class="flow" aria-label="Project steps"><li><b>Sandbox</b><span>Rebuild our chatbot on a private copy of public pages; nothing touches live systems.</span></li><li><b>Attack suite</b><span>Prompt injection and poisoning attacks from the reading list, adapted to campus questions.</span></li><li><b>Measure</b><span>Attack success, answer quality and cost for each retrieval setting.</span></li><li><b>Defend</b><span>Add and compare guards.</span></li><li><b>Share</b><span>Publish the benchmark questions and a deployment checklist for universities.</span></li></ol>
+</section>
+<section>
+<h2>Skills you will use and learn</h2>
+<ul class="chips" aria-label="Skills"><li>Python, LangChain or LlamaIndex</li><li>Vector databases and BM25</li><li>LLM APIs and open models</li><li>Security evaluation and red-teaming ethics</li><li>Writing clear guidance for practitioners</li></ul>
+</section>
+<section>
+<h2>Papers to read first</h2>
+<ol class="pubs reading"><li><div class="pt">Retrieval-augmented generation for knowledge-intensive NLP tasks</div><div class="pa">P. Lewis, E. Perez, A. Piktus, F. Petroni, V. Karpukhin, N. Goyal, H. Küttler, M. Lewis, W. Yih, T. Rocktäschel, S. Riedel, D. Kiela</div><div class="pv">NeurIPS, 2020</div><div class="why">Where retrieval-augmented generation comes from.</div><div class="pl"><a href="https://arxiv.org/abs/2005.11401">Read</a></div></li><li><div class="pt">Ignore previous prompt: attack techniques for language models</div><div class="pa">F. Perez, I. Ribeiro</div><div class="pv">NeurIPS ML Safety Workshop, 2022</div><div class="why">Goal hijacking and prompt leaking, the simplest attacks to start with.</div><div class="pl"><a href="https://arxiv.org/abs/2211.09527">Read</a></div></li><li><div class="pt">Not what you've signed up for: compromising real-world LLM-integrated applications with indirect prompt injection</div><div class="pa">K. Greshake, S. Abdelnabi, S. Mishra, C. Endres, T. Holz, M. Fritz</div><div class="pv">ACM AISec, 2023</div><div class="why">How instructions hidden in retrieved content take over an app.</div><div class="pl"><a href="https://doi.org/10.1145/3605764.3623985">Read</a></div></li><li><div class="pt">Formalizing and benchmarking prompt injection attacks and defenses</div><div class="pa">Y. Liu, Y. Jia, R. Geng, J. Jia, N. Z. Gong</div><div class="pv">USENIX Security, 2024</div><div class="why">A common benchmark of attacks and defenses we can build on.</div><div class="pl"><a href="https://arxiv.org/abs/2310.12815">Read</a></div></li><li><div class="pt">PoisonedRAG: knowledge corruption attacks to retrieval-augmented generation of large language models</div><div class="pa">W. Zou, R. Geng, B. Wang, J. Jia</div><div class="pv">USENIX Security, 2025</div><div class="why">Shows a handful of planted texts can steer a RAG system's answers.</div><div class="pl"><a href="https://arxiv.org/abs/2402.07867">Read</a></div></li></ol></section><section class="join">
+<h2>Interested?</h2>
+<p>This project is planned and not yet staffed. If you are a UCM graduate student, or joining UCM soon, and it fits your interests, email me at <a href="mailto:kar@ucmo.edu">kar@ucmo.edu</a> with your CV, the project's name and a few lines on which research question you would start with. Reading two of the papers below first will make that conversation much better.</p>
+</section>
+<section><nav class="pnav" aria-label="More projects"><a href="planned-acoustic.html">← Do earbuds, smart speakers and video calls leak what you type?</a><a href="planned-tinyml.html">Intrusion detection that fits on the device →</a></nav></section>
+</main>
+<footer><div class="wrap">© 2026 Gorkem Kar · <a href="../index.html">Home</a></div></footer>
+<script src="../site.js"></script>
+</body>
+</html>

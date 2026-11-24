@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Acoustic side channels on phones · Gorkem Kar</title>
+<meta name="description" content="A phone lying behind your keyboard can hear which keys you press. We showed how, with no training data and no language model, which means it works on random passwords too.">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="../index.html">Gorkem Kar</a>
+    <nav aria-label="Sections">
+      <ul>
+        <li><a href="../index.html#about">About</a></li>
+        <li><a href="../index.html#research">Research</a></li>
+        <li><a href="../index.html#publications">Publications</a></li>
+        <li><a href="../index.html#teaching">Teaching</a></li>
+        <li><a href="../index.html#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+<p class="crumbs"><a href="../index.html#research">Research</a> / Acoustic side channels on phones</p>
+<section class="phead">
+  <h1>Acoustic side channels on phones</h1>
+  <p class="lead">A phone lying behind your keyboard can hear which keys you press. We showed how, with no training data and no language model, which means it works on random passwords too.</p>
+</section>
+
+<section>
+<h2>Snooping keystrokes with millimeter-level audio ranging</h2>
+<p>Every key sits at a slightly different distance from a phone's two microphones, so its sound reaches them a fraction of a millisecond apart. Measuring that time difference of arrival places the keystroke on the keyboard. Sound features then separate keys that sit at similar distances.</p>
+<figure class="fig reveal"><svg viewBox="0 0 640 280" role="img" aria-label="A phone behind a keyboard; a key press sends sound to the phone's two microphones, which arrive at slightly different times">
+  <rect x="170" y="10" width="300" height="46" rx="12" class="svg-box"/>
+  <circle cx="188" cy="33" r="7" class="svg-acc"/><circle cx="452" cy="33" r="7" class="svg-acc"/>
+  <text x="270" y="39" class="svg-s">phone</text>
+  <text x="140" y="80" class="svg-s">mic 1</text><text x="455" y="80" class="svg-s">mic 2</text>
+  <g><rect x="60" y="110" width="44" height="38" rx="5" class="svg-box"/><rect x="112" y="110" width="44" height="38" rx="5" class="svg-box"/><rect x="164" y="110" width="44" height="38" rx="5" class="svg-box"/><rect x="216" y="110" width="44" height="38" rx="5" class="svg-box"/><rect x="268" y="110" width="44" height="38" rx="5" class="svg-box"/><rect x="320" y="110" width="44" height="38" rx="5" class="svg-box"/><rect x="372" y="110" width="44" height="38" rx="5" class="svg-box"/><rect x="424" y="110" width="44" height="38" rx="5" class="svg-box"/><rect x="476" y="110" width="44" height="38" rx="5" class="svg-box"/><rect x="528" y="110" width="44" height="38" rx="5" class="svg-box"/><rect x="60" y="156" width="44" height="38" rx="5" class="svg-box"/><rect x="112" y="156" width="44" height="38" rx="5" class="svg-box"/><rect x="164" y="156" width="44" height="38" rx="5" class="svg-box"/><rect x="216" y="156" width="44" height="38" rx="5" class="svg-box"/><rect x="268" y="156" width="44" height="38" rx="5" class="svg-box"/><rect x="320" y="156" width="44" height="38" rx="5" class="svg-box"/><rect x="372" y="156" width="44" height="38" rx="5" class="svg-box"/><rect x="424" y="156" width="44" height="38" rx="5" class="svg-box"/><rect x="476" y="156" width="44" height="38" rx="5" class="svg-box"/><rect x="528" y="156" width="44" height="38" rx="5" class="svg-box"/><rect x="60" y="202" width="44" height="38" rx="5" class="svg-box"/><rect x="112" y="202" width="44" height="38" rx="5" class="svg-box"/><rect x="164" y="202" width="44" height="38" rx="5" class="svg-box"/><rect x="216" y="202" width="44" height="38" rx="5" class="svg-box"/><rect x="268" y="202" width="44" height="38" rx="5" class="svg-box"/><rect x="320" y="202" width="44" height="38" rx="5" class="svg-box"/><rect x="372" y="202" width="44" height="38" rx="5" class="svg-box"/><rect x="424" y="202" width="44" height="38" rx="5" class="svg-box"/><rect x="476" y="202" width="44" height="38" rx="5" class="svg-box"/><rect x="528" y="202" width="44" height="38" rx="5" class="svg-box"/></g>
+  <rect x="216" y="156" width="44" height="38" rx="5" class="svg-acc2 blink"/>
+  <circle cx="238" cy="175" r="200" class="wave"/><circle cx="238" cy="175" r="200" class="wave d2"/>
+  <path d="M238 175 L188 40" stroke="var(--accent-2)" stroke-width="2" class="dash"/>
+  <path d="M238 175 L452 40" stroke="var(--accent-2)" stroke-width="2" class="dash"/>
+  <text x="300" y="275" class="svg-s">different path lengths → time difference of arrival</text>
+</svg><figcaption>A key press reaches the two microphones over different path lengths.</figcaption></figure><ol class="flow" aria-label="Keystroke recovery steps"><li><b>Detect</b><span>find each keystroke by its sound energy</span></li><li><b>Time difference</b><span>cross-correlate the two microphones</span></li><li><b>Group</b><span>keys with similar time differences</span></li><li><b>Cluster</b><span>by sound features within each group</span></li><li><b>Label</b><span>match clusters to key positions</span></li></ol><div class="stats reveal"><div class="stat-t"><b>7.15 mm</b><span>distance resolution at 48 kHz sampling</span></div><div class="stat-t"><b>1.8 mm</b><span>at 192 kHz</span></div><div class="stat-t"><b>3,640</b><span>keystrokes on three keyboards</span></div></div><p class="src">Data: Liu, Wang, Kar et al., ACM MobiCom 2015, Sec. 2.3 and 6.1.</p><figure class="chart reveal" aria-label="Share of keystrokes recovered, phone behind the keyboard"><h4>Share of keystrokes recovered, phone behind the keyboard</h4><div class="bar"><span class="bl">Top-1 guess, 48 kHz</span><span class="bt"><span class="bf" style="--v:85.5"></span></span><span class="bv">85.5%</span></div><div class="bar"><span class="bl">Top-2 guesses, 48 kHz</span><span class="bt"><span class="bf" style="--v:94.9"></span></span><span class="bv">94.9%</span></div><div class="bar"><span class="bl">Top-3 guesses, 48 kHz</span><span class="bt"><span class="bf" style="--v:97.6"></span></span><span class="bv">97.6%</span></div><div class="bar hi"><span class="bl">Top-1 guess, 192 kHz</span><span class="bt"><span class="bf" style="--v:94.2"></span></span><span class="bv">94.2%</span></div><figcaption class="src">Data: MobiCom 2015, Figs. 10a and 12a (192 kHz on the Microsoft keyboard).</figcaption></figure>
+<p>The lesson for defenders: sensors a system does not treat as security-relevant can leak secrets. The same thinking now drives my work on vehicle and network signals.</p>
+</section>
+
+<section>
+<h2>Paper</h2>
+<ol class="pubs"><li><div class="pt">Snooping keystrokes with mm-level audio ranging on a single phone</div><div class="pa">J. Liu, Y. Wang, <b>G. Kar</b>, Y. Chen, J. Yang, M. Gruteser</div><div class="pv">ACM MobiCom, 2015</div><div class="pl"><a href="https://doi.org/10.1145/2789168.2790122">Paper</a></div></li></ol></section>
+<section><nav class="pnav" aria-label="More projects"><a href="iot-identity.html">← IoT device identity and network incidents</a><a href="applied-ai.html">Explainable and applied AI →</a></nav></section>
+</main>
+<footer><div class="wrap">© 2026 Gorkem Kar · <a href="../index.html">Home</a></div></footer>
+<script src="../site.js"></script>
+</body>
+</html>

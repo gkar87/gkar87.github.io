@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Explainable and applied AI · Gorkem Kar</title>
+<meta name="description" content="The methods behind my security work also answer questions in food safety, public safety, language and the workplace, with an emphasis on explaining why a model decides what it does.">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="../index.html">Gorkem Kar</a>
+    <nav aria-label="Sections">
+      <ul>
+        <li><a href="../index.html#about">About</a></li>
+        <li><a href="../index.html#research">Research</a></li>
+        <li><a href="../index.html#publications">Publications</a></li>
+        <li><a href="../index.html#teaching">Teaching</a></li>
+        <li><a href="../index.html#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+<p class="crumbs"><a href="../index.html#research">Research</a> / Explainable and applied AI</p>
+<section class="phead">
+  <h1>Explainable and applied AI</h1>
+  <p class="lead">The methods behind my security work also answer questions in food safety, public safety, language and the workplace, with an emphasis on explaining why a model decides what it does.</p>
+</section>
+
+<section>
+<h2>Explaining the model, not just scoring it</h2>
+<figure class="fig reveal"><svg viewBox="0 0 640 220" role="img" aria-label="Illustration: data goes into a deep learning model; explanation tools show which inputs drove each prediction">
+  <rect x="10" y="80" width="120" height="60" rx="8" class="svg-box"/><text x="30" y="115" class="svg-s">records</text>
+  <line x1="130" y1="110" x2="220" y2="110" stroke="var(--accent)" stroke-width="3" class="dash"/>
+  <rect x="220" y="60" width="160" height="100" rx="10" class="svg-acc" opacity=".85"/><text x="245" y="105" class="svg-t" style="fill:#fff">deep model</text><text x="245" y="130" class="svg-s" style="fill:#fff">prediction</text>
+  <line x1="380" y1="110" x2="440" y2="110" stroke="var(--accent)" stroke-width="3" class="dash"/>
+  <text x="450" y="40" class="svg-s">why? (SHAP, LIME, WIT)</text>
+  <rect x="450" y="60" width="150" height="18" rx="4" class="svg-acc2 pop" style="animation-delay:0s"/>
+  <rect x="450" y="90" width="105" height="18" rx="4" class="svg-acc2 pop" style="animation-delay:.6s"/>
+  <rect x="450" y="120" width="70" height="18" rx="4" class="svg-acc2 pop" style="animation-delay:1.2s"/>
+  <rect x="450" y="150" width="40" height="18" rx="4" class="svg-acc2 pop" style="animation-delay:1.8s"/>
+  <text x="450" y="200" class="svg-s">Illustration, not results</text>
+</svg><figcaption>Explainable AI tools show which inputs pushed a model toward its prediction.</figcaption></figure>
+<div class="grid2">
+  <div class="card"><h3>Food fraud detection</h3><p>A deep learning model predicts food fraud risk from European rapid-alert notifications and an adulteration database, and three explanation tools (LIME, SHAP and Google's What-If Tool) are compared on it, showing what each can and cannot tell a food-safety analyst. Led by my M.Sc. student Okan Buyuktepe.</p><p class="pl"><a href="https://doi.org/10.1111/exsy.13387">Expert Systems, 2025</a></p></div>
+  <div class="card"><h3>Employee attrition</h3><p>Explainable AI used to uncover which factors drive employees to leave, so HR decisions rest on reasons rather than a black-box score.</p><p class="pl"><a href="https://scholar.google.com/citations?view_op=view_citation&amp;hl=en&amp;user=dz-6amUAAAAJ&amp;citation_for_view=dz-6amUAAAAJ:0EnyYjriUFMC">IEEE LA-CCI, 2025</a></p></div>
+  <div class="card"><h3>Crime prediction</h3><p>A systematic review of 68 studies (2010 to 2022) that use machine learning to predict crime. Most rely on supervised learning, which needs labeled data that real deployments often lack.</p><p class="pl"><a href="https://doi.org/10.1007/s12652-023-04530-y">J. Ambient Intelligence and Humanized Computing, 2023</a></p></div>
+  <div class="card"><h3>Turkish scientific texts</h3><p>A fine-tuned Turkish BERT model (BERTurk) sorts Turkish scientific articles into five fields, from AI to signal processing, with 96% accuracy. Led by my M.Sc. student Mustafa Özkan.</p><p class="pl"><a href="https://doi.org/10.21923/jesd.973181">J. Engineering Sciences and Design, 2022</a></p></div>
+  <div class="card"><h3>Technology investment and resilience</h3><p>How strategic investment in technological innovation helps organizations stay resilient through digital transformation.</p><p class="pl"><a href="https://scholar.google.com/citations?view_op=view_citation&amp;hl=en&amp;user=dz-6amUAAAAJ&amp;citation_for_view=dz-6amUAAAAJ:LkGwnXOMwfcC">J. Innovative Digital Transformation, 2025</a></p></div>
+</div>
+</section>
+
+<section><nav class="pnav" aria-label="More projects"><a href="side-channels.html">← Acoustic side channels on phones</a><a href="../index.html#research">All research →</a></nav></section>
+</main>
+<footer><div class="wrap">© 2026 Gorkem Kar · <a href="../index.html">Home</a></div></footer>
+<script src="../site.js"></script>
+</body>
+</html>

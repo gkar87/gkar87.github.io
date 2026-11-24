@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Does a quantum layer really help? Honest benchmarks for quantum intrusion detection · Gorkem Kar</title>
+<meta name="description" content="Hybrid quantum-classical models have reported strong intrusion-detection results in simulation. This project asks which part of that comes from the quantum layer, and what survives on real quantum hardware.">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="../index.html">Gorkem Kar</a>
+    <nav aria-label="Sections">
+      <ul>
+        <li><a href="../index.html#about">About</a></li>
+        <li><a href="../index.html#research">Research</a></li>
+        <li><a href="../index.html#publications">Publications</a></li>
+        <li><a href="../index.html#teaching">Teaching</a></li>
+        <li><a href="../index.html#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+<p class="crumbs"><a href="../index.html#open-projects">Open projects</a> / Does a quantum layer really help? Honest benchmarks for quantum intrusion detection</p>
+<section class="phead">
+  <h1>Does a quantum layer really help? Honest benchmarks for quantum intrusion detection</h1>
+  <p class="lead">Hybrid quantum-classical models have reported strong intrusion-detection results in simulation. This project asks which part of that comes from the quantum layer, and what survives on real quantum hardware.</p>
+</section>
+<p><span class="badge">Planned project · core area · open to new graduate students</span></p>
+<section>
+<h2>Why this matters</h2>
+<p>Our hybrid quantum-classical framework (EPJ Quantum Technology, 2025) detected DDoS traffic and classified Android malware with high accuracy in simulation, and a 2026 paper I co-authored ran a hybrid model on an IonQ quantum processor. A large 2024 benchmark study found that, on the small tasks it tested, out-of-the-box classical models outperformed the quantum classifiers overall, and that removing entanglement often did not hurt. Those findings set a high bar, and meeting it honestly is what makes a quantum security result credible.</p>
+<figure class="fig reveal"><svg viewBox="0 0 640 250" role="img" aria-label="The same traffic features go into two models: one with a small quantum circuit layer and one with a classical layer of the same size; the two are compared on simulator and on real quantum hardware">
+  <rect x="20" y="95" width="110" height="56" rx="8" class="svg-box"/><text x="38" y="120" class="svg-t">traffic</text><text x="38" y="140" class="svg-s">features</text>
+  <path d="M130 112 L230 62" class="svg-line dash"/><path d="M130 134 L230 184" class="svg-line dash"/>
+  <rect x="230" y="30" width="190" height="66" rx="8" class="svg-box"/>
+  <line x1="250" y1="52" x2="400" y2="52" class="svg-line"/><line x1="250" y1="76" x2="400" y2="76" class="svg-line"/>
+  <rect x="272" y="44" width="18" height="16" class="svg-acc"/><rect x="272" y="68" width="18" height="16" class="svg-acc"/>
+  <line x1="320" y1="52" x2="320" y2="76" stroke="var(--accent)" stroke-width="3"/><circle cx="320" cy="76" r="7" fill="none" stroke="var(--accent)" stroke-width="3"/>
+  <rect x="350" y="44" width="18" height="16" class="svg-acc2"/><rect x="350" y="68" width="18" height="16" class="svg-acc2"/>
+  <circle cx="250" cy="52" r="5" class="svg-acc2 drive s3"/>
+  <text x="240" y="116" class="svg-s">quantum circuit layer</text>
+  <rect x="230" y="152" width="190" height="66" rx="8" class="svg-box"/>
+  <circle cx="270" cy="185" r="9" class="svg-acc"/><circle cx="310" cy="172" r="9" class="svg-acc"/><circle cx="310" cy="198" r="9" class="svg-acc"/><circle cx="350" cy="185" r="9" class="svg-acc"/><circle cx="390" cy="185" r="9" class="svg-acc2"/>
+  <text x="236" y="240" class="svg-s">classical twin, same parameter count</text>
+  <path d="M420 62 L510 112" class="svg-line dash"/><path d="M420 184 L510 134" class="svg-line dash"/>
+  <g class="blink"><rect x="510" y="96" width="112" height="56" rx="8" class="svg-acc2"/><text x="528" y="122" class="svg-t" style="fill:#fff">compare</text><text x="524" y="142" class="svg-s" style="fill:#fff">sim vs QPU</text></g>
+</svg><figcaption>The core experiment: give a quantum circuit layer and a classical layer with the same number of trainable parameters the same features, then compare them in simulation and on a real quantum processor.</figcaption></figure>
+</section>
+<section>
+<h2>Research questions</h2>
+<ol class="rq"><li>Against classical twins with matched parameter counts and the same tuning budget, where does the quantum layer change detection accuracy, if anywhere?</li><li>How do the data encoding, the circuit depth and the number of qubits affect what the model can learn and whether it still trains?</li><li>How much of the simulator result survives real hardware noise, and what does a run cost in time and money?</li></ol>
+</section>
+<section>
+<h2>Approach</h2>
+<ol class="flow" aria-label="Project steps"><li><b>Reproduce</b><span>Rebuild our EPJ QT pipeline and its datasets in PennyLane or Qiskit.</span></li><li><b>Twin models</b><span>Swap the quantum layer for classical layers of equal size; remove entanglement.</span></li><li><b>Sweep</b><span>Vary encodings, depth and qubit count; watch for vanishing gradients.</span></li><li><b>Add noise</b><span>Use hardware noise models, then run the best settings on a cloud QPU.</span></li><li><b>Report</b><span>Accuracy, variance across seeds, wall-clock time and cost.</span></li></ol>
+</section>
+<section>
+<h2>Skills you will use and learn</h2>
+<ul class="chips" aria-label="Skills"><li>Python, PyTorch</li><li>PennyLane or Qiskit</li><li>Linear algebra</li><li>Experiment design and statistics</li><li>Network security datasets</li></ul>
+</section>
+<section>
+<h2>Papers to read first</h2>
+<ol class="pubs reading"><li><div class="pt">Supervised learning with quantum-enhanced feature spaces</div><div class="pa">V. Havlíček, A. D. Córcoles, K. Temme, A. W. Harrow, A. Kandala, J. M. Chow, J. M. Gambetta</div><div class="pv">Nature, 2019</div><div class="why">The paper that started quantum kernel and feature-map classifiers on real hardware.</div><div class="pl"><a href="https://doi.org/10.1038/s41586-019-0980-2">Read</a></div></li><li><div class="pt">Quanvolutional neural networks: powering image recognition with quantum circuits</div><div class="pa">M. Henderson, S. Shakya, S. Pradhan, T. Cook</div><div class="pv">Quantum Machine Intelligence, 2020</div><div class="why">The quanvolutional layer, a building block of hybrid models like ours.</div><div class="pl"><a href="https://doi.org/10.1007/s42484-020-00012-y">Read</a></div></li><li><div class="pt">Effect of data encoding on the expressive power of variational quantum machine-learning models</div><div class="pa">M. Schuld, R. Sweke, J. J. Meyer</div><div class="pv">Physical Review A, 2021</div><div class="why">Why the way you load data into qubits limits what the model can learn.</div><div class="pl"><a href="https://doi.org/10.1103/PhysRevA.103.032430">Read</a></div></li><li><div class="pt">Barren plateaus in quantum neural network training landscapes</div><div class="pa">J. R. McClean, S. Boixo, V. N. Smelyanskiy, R. Babbush, H. Neven</div><div class="pv">Nature Communications, 2018</div><div class="why">Why gradients vanish as circuits grow, and what that means for scaling.</div><div class="pl"><a href="https://doi.org/10.1038/s41467-018-07090-4">Read</a></div></li><li><div class="pt">Variational quantum algorithms</div><div class="pa">M. Cerezo, A. Arrasmith, R. Babbush, S. C. Benjamin, S. Endo, K. Fujii, J. R. McClean, K. Mitarai, X. Yuan, L. Cincio, P. J. Coles</div><div class="pv">Nature Reviews Physics, 2021</div><div class="why">A readable overview of the model family this project uses.</div><div class="pl"><a href="https://doi.org/10.1038/s42254-021-00348-9">Read</a></div></li><li><div class="pt">Better than classical? The subtle art of benchmarking quantum machine learning models</div><div class="pa">J. Bowles, S. Ahmed, M. Schuld</div><div class="pv">arXiv preprint, 2024</div><div class="why">The benchmark study whose standard this project adopts.</div><div class="pl"><a href="https://arxiv.org/abs/2403.07059">Read</a></div></li><li><div class="pt">Unified hybrid quantum classical neural network framework for detecting distributed denial of service and Android mobile malware attacks</div><div class="pa"><b>G. Kar</b>, S. Kharbanda</div><div class="pv">EPJ Quantum Technology, 2025</div><div class="why">Our framework, the starting point of the project.</div><div class="pl"><a href="https://doi.org/10.1140/epjqt/s40507-025-00380-z">Read</a></div></li></ol></section><section class="join">
+<h2>Interested?</h2>
+<p>This project is planned and not yet staffed. If you are a UCM graduate student, or joining UCM soon, and it fits your interests, email me at <a href="mailto:kar@ucmo.edu">kar@ucmo.edu</a> with your CV, the project's name and a few lines on which research question you would start with. Reading two of the papers below first will make that conversation much better.</p>
+</section>
+<section><nav class="pnav" aria-label="More projects"><a href="planned-benchmark.html">← Leak-free benchmarks for IoT traffic classifiers</a><a href="planned-xai.html">Explanations you can check: explainable intrusion and malware detection →</a></nav></section>
+</main>
+<footer><div class="wrap">© 2026 Gorkem Kar · <a href="../index.html">Home</a></div></footer>
+<script src="../site.js"></script>
+</body>
+</html>

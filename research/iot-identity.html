@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IoT device identity and network incidents · Gorkem Kar</title>
+<meta name="description" content="A network that cannot tell which device sent a packet, or whether that device was tampered with, cannot defend itself. We identify devices and attacks from packet headers alone.">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="../index.html">Gorkem Kar</a>
+    <nav aria-label="Sections">
+      <ul>
+        <li><a href="../index.html#about">About</a></li>
+        <li><a href="../index.html#research">Research</a></li>
+        <li><a href="../index.html#publications">Publications</a></li>
+        <li><a href="../index.html#teaching">Teaching</a></li>
+        <li><a href="../index.html#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+<p class="crumbs"><a href="../index.html#research">Research</a> / IoT device identity and network incidents</p>
+<section class="phead">
+  <h1>IoT device identity and network incidents</h1>
+  <p class="lead">A network that cannot tell which device sent a packet, or whether that device was tampered with, cannot defend itself. We identify devices and attacks from packet headers alone.</p>
+</section>
+
+<section>
+<h2>Fingerprinting IoT devices from a single packet</h2>
+<p>With Dr. Ahmet Aksoy and UCM students, we identify an IoT device's vendor and type from the header fields of just one TCP/IP packet, so vulnerable devices can be found and isolated quickly. We compared feature selection methods from four families (filter, wrapper, embedded and search optimization) to learn which header fields carry the fingerprint.</p>
+<figure class="fig reveal"><svg viewBox="0 0 640 170" role="img" aria-label="Illustration: header fields of one TCP/IP packet, with a few highlighted as the selected fingerprint features">
+  <g class="svg-s">
+  <rect x="10" y="20" width="110" height="44" rx="6" class="svg-box"/><text x="22" y="47">version</text>
+  <rect x="130" y="20" width="110" height="44" rx="6" class="svg-acc2 blink"/><text x="148" y="47" style="fill:#fff">TTL</text>
+  <rect x="250" y="20" width="130" height="44" rx="6" class="svg-box"/><text x="262" y="47">total length</text>
+  <rect x="390" y="20" width="110" height="44" rx="6" class="svg-acc2 blink" style="animation-delay:.6s"/><text x="402" y="47" style="fill:#fff">protocol</text>
+  <rect x="510" y="20" width="120" height="44" rx="6" class="svg-box"/><text x="522" y="47">checksum</text>
+  <rect x="10" y="76" width="150" height="44" rx="6" class="svg-box"/><text x="22" y="103">source port</text>
+  <rect x="170" y="76" width="150" height="44" rx="6" class="svg-acc2 blink" style="animation-delay:1.2s"/><text x="182" y="103" style="fill:#fff">window size</text>
+  <rect x="330" y="76" width="120" height="44" rx="6" class="svg-box"/><text x="342" y="103">seq number</text>
+  <rect x="460" y="76" width="170" height="44" rx="6" class="svg-acc2 blink" style="animation-delay:1.8s"/><text x="472" y="103" style="fill:#fff">TCP flags/options</text>
+  </g>
+  <text x="10" y="155" class="svg-s">Illustration only: which fields matter is what feature selection decides.</text>
+</svg><figcaption>A single packet header is the fingerprint; feature selection picks the fields that matter.</figcaption></figure><figure class="chart reveal" aria-label="Device identification with decision trees, IoT Sentinel dataset (126,209 packets)"><h4>Device identification with decision trees, IoT Sentinel dataset (126,209 packets)</h4><div class="bar hi"><span class="bl">Weighted accuracy</span><span class="bt"><span class="bf" style="--v:95.3"></span></span><span class="bv">95.3%</span></div><div class="bar"><span class="bl">Macro F1 across vendors</span><span class="bt"><span class="bf" style="--v:88.7"></span></span><span class="bv">88.7%</span></div><figcaption class="src">Data: Aksoy et al., ICISSP 2024, abstract.</figcaption></figure>
+</section>
+
+<section>
+<h2>Identifying network attacks with a genetic algorithm</h2>
+<p>Instead of experts hand-picking traffic features, a genetic algorithm evolves the feature subset: each candidate is scored on how accurately a classifier separates attack from normal traffic and on how few features it needs. The result detects DNS botnets, two kinds of denial-of-service floods and NMAP OS scanning. The code and data are public.</p>
+<figure class="fig reveal"><svg viewBox="0 0 600 300" role="img" aria-label="Genetic algorithm loop: population of feature subsets, fitness, selection, crossover and mutation, repeated">
+  <circle cx="300" cy="150" r="105" fill="none" stroke="var(--line)" stroke-width="10"/>
+  <g class="spin"><circle cx="300" cy="45" r="9" class="svg-acc2"/></g>
+  <g><rect x="225" y="14" width="150" height="40" rx="8" class="svg-box"/><text x="243" y="40" class="svg-s">population: 50</text></g>
+  <g><rect x="410" y="128" width="170" height="44" rx="8" class="svg-box"/><text x="420" y="148" class="svg-s">fitness = 0.7·accuracy</text><text x="420" y="166" class="svg-s">+ 0.3·fewer features</text></g>
+  <g><rect x="215" y="246" width="170" height="40" rx="8" class="svg-box"/><text x="230" y="272" class="svg-s">roulette + elitism</text></g>
+  <g><rect x="15" y="128" width="175" height="44" rx="8" class="svg-box"/><text x="25" y="148" class="svg-s">uniform crossover 0.5</text><text x="25" y="166" class="svg-s">mutation 0.015</text></g>
+  <text x="250" y="145" class="svg-t">up to 100</text><text x="245" y="168" class="svg-t">generations</text>
+</svg><figcaption>The genetic algorithm loop, with the settings used in the paper.</figcaption></figure><figure class="chart reveal" aria-label="Detection accuracy by attack type"><h4>Detection accuracy by attack type</h4><div class="bar hi"><span class="bl">DoS HULK</span><span class="bt"><span class="bf" style="--v:100"></span></span><span class="bv">100%</span></div><div class="bar hi"><span class="bl">DoS GoldenEye</span><span class="bt"><span class="bf" style="--v:100"></span></span><span class="bv">100%</span></div><div class="bar"><span class="bl">DNS botnet</span><span class="bt"><span class="bf" style="--v:95"></span></span><span class="bv">≈95%</span></div><div class="bar"><span class="bl">NMAP OS scanning</span><span class="bt"><span class="bf" style="--v:95"></span></span><span class="bv">≈95%</span></div><figcaption class="src">Data: Aksoy, Valle and Kar, Electronics 13(2), 293 (2024), abstract ("mid 95%" for DNS botnet and OS scanning).</figcaption></figure><figure class="chart reveal" aria-label="Malicious packets in each dataset"><h4>Malicious packets in each dataset</h4><div class="bar"><span class="bl">DoS HULK</span><span class="bt"><span class="bf" style="--v:100"></span></span><span class="bv">241,991</span></div><div class="bar"><span class="bl">DNS botnet (9 botnets)</span><span class="bt"><span class="bf" style="--v:75.5"></span></span><span class="bv">182,720</span></div><div class="bar"><span class="bl">DoS GoldenEye</span><span class="bt"><span class="bf" style="--v:74.3"></span></span><span class="bv">179,906</span></div><div class="bar"><span class="bl">NMAP OS scanning</span><span class="bt"><span class="bf" style="--v:27.1"></span></span><span class="bv">65,700</span></div><figcaption class="src">Data: Electronics 13(2), 293 (2024), dataset description. Bars scaled to the largest set.</figcaption></figure>
+</section>
+
+<section>
+<h2>Hybrid blockchains for IoT</h2>
+<p>With my M.Sc. student Ahmed Alkhateeb, we systematically reviewed how hybrid blockchain platforms secure IoT data. Ethereum dominates, and most systems pair the ledger with cloud or fog computing.</p>
+<figure class="chart reveal" aria-label="Screening the literature"><h4>Screening the literature</h4><div class="bar"><span class="bl">Search results</span><span class="bt"><span class="bf" style="--v:100"></span></span><span class="bv">985</span></div><div class="bar"><span class="bl">After filtering</span><span class="bt"><span class="bf" style="--v:29.9"></span></span><span class="bv">295</span></div><div class="bar hi"><span class="bl">Primary studies</span><span class="bt"><span class="bf" style="--v:3.9"></span></span><span class="bv">38</span></div><figcaption class="src">Data: Alkhateeb et al., Sensors 22(4), 1304 (2022).</figcaption></figure><figure class="chart reveal" aria-label="Computing paradigm used with the blockchain"><h4>Computing paradigm used with the blockchain</h4><div class="bar hi"><span class="bl">Cloud</span><span class="bt"><span class="bf" style="--v:44.4"></span></span><span class="bv">44.4%</span></div><div class="bar"><span class="bl">Fog</span><span class="bt"><span class="bf" style="--v:22.2"></span></span><span class="bv">22.2%</span></div><div class="bar"><span class="bl">Telecom</span><span class="bt"><span class="bf" style="--v:16.7"></span></span><span class="bv">16.7%</span></div><div class="bar"><span class="bl">Edge</span><span class="bt"><span class="bf" style="--v:11.1"></span></span><span class="bv">11.1%</span></div><figcaption class="src">Data: Sensors 22(4), 1304 (2022). Ethereum was used in 77.8% of the studies.</figcaption></figure>
+<h3>Where this is going</h3>
+<p>Combining traffic fingerprints with ledger-based attestation, so a network knows which devices are present and whether any has been tampered with, cheaply enough for resource-constrained IoT deployments.</p>
+</section>
+
+<section>
+<h2>Papers</h2>
+<ol class="pubs"><li><div class="pt">Comparative analysis of feature selection algorithms for automated IoT device fingerprinting</div><div class="pa">A. Aksoy, S. Varma, G. Moorthy, E. Pan, <b>G. Kar</b></div><div class="pv">ICISSP, 2024</div><div class="pl"><a href="https://doi.org/10.5220/0012379100003648">Paper</a></div></li><li><div class="pt">Automated network incident identification through genetic algorithm-driven feature selection</div><div class="pa">A. Aksoy, L. Valle, <b>G. Kar</b></div><div class="pv">Electronics, 2024 (open access)</div><div class="pl"><a href="https://doi.org/10.3390/electronics13020293">Paper</a></div></li><li><div class="pt">Hybrid blockchain platforms for the Internet of Things (IoT): A systematic literature review</div><div class="pa">A. Alkhateeb, C. Catal, <b>G. Kar</b>, A. Mishra</div><div class="pv">Sensors, 2022 (open access)</div><div class="pl"><a href="https://doi.org/10.3390/s22041304">Paper</a></div></li></ol></section>
+<section><nav class="pnav" aria-label="More projects"><a href="quantum-ids.html">← Hybrid quantum-classical intrusion detection</a><a href="side-channels.html">Acoustic side channels on phones →</a></nav></section>
+</main>
+<footer><div class="wrap">© 2026 Gorkem Kar · <a href="../index.html">Home</a></div></footer>
+<script src="../site.js"></script>
+</body>
+</html>
