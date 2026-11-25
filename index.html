@@ -6,7 +6,7 @@
 <title>Gorkem Kar, Ph.D. · Computer Science and Cybersecurity</title>
 <meta name="description" content="Gorkem Kar, Ph.D., Assistant Professor of Computer Science and Cybersecurity at the University of Central Missouri. Research in connected-vehicle security, mobile and IoT security, and machine learning for network defense.">
 <meta property="og:title" content="Gorkem Kar, Ph.D.">
-<meta property="og:description" content="Assistant Professor of Computer Science and Cybersecurity, University of Central Missouri.">
+<meta property="og:description" content="Assistant Professor of Computer Science and Cybersecurity, University of Central Missouri. Security for vehicles, phones, IoT devices and networks, with machine learning small enough for the edge.">
 <meta property="og:type" content="profile">
 <meta property="og:image" content="https://gkar87.github.io/images/headshot.jpg">
 <meta property="og:url" content="https://gkar87.github.io/">
@@ -20,34 +20,50 @@
  "url":"https://gkar87.github.io/","image":"https://gkar87.github.io/images/headshot.jpg",
  "sameAs":["https://scholar.google.com/citations?user=dz-6amUAAAAJ","https://www.linkedin.com/in/gorkem-kar/","https://orcid.org/0000-0003-0367-4409","https://github.com/gkar87","https://www.researchgate.net/profile/Gorkem-Kar-2"]}
 </script>
+<meta name="theme-color" content="#1d4f91">
+<script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="home">
 <a class="skip" href="#main">Skip to content</a>
 
 <header class="site">
   <div class="wrap">
-    <a class="brand" href="#top">Gorkem Kar</a>
-    <nav aria-label="Sections">
-      <ul>
-        <li><a href="#about">About</a></li>
-        <li><a href="#research">Research</a></li>
-        <li><a href="#publications">Publications</a></li>
-        <li><a href="#teaching">Teaching</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
+    <a class="brand" href="#top">Gorkem Kar<span class="muted">, Ph.D.</span></a>
+    <div class="navbar">
+      <nav aria-label="Sections">
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#research">Research</a></li>
+          <li><a href="#publications">Publications</a></li>
+          <li><a href="#teaching">Teaching</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <button class="theme" type="button" aria-label="Switch theme"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" fill="currentColor"/></svg></button>
+    </div>
   </div>
+  <div class="progress" aria-hidden="true"></div>
 </header>
 
-<main id="main" class="wrap">
+<main id="main">
 
 <!-- ============ HOME / ABOUT ============ -->
+<div class="hero-band">
+<canvas id="hero-net" aria-hidden="true"></canvas>
+<div class="wrap">
 <section id="top" class="hero" aria-label="Introduction">
-  <img class="photo" src="images/headshot.jpg" width="150" height="150" alt="Portrait of Gorkem Kar">
+  <img class="photo" src="images/headshot.jpg" width="200" height="200" alt="Portrait of Gorkem Kar">
   <div>
+    <span class="kicker">Computer Science and Cybersecurity · University of Central Missouri</span>
     <h1>Gorkem Kar, Ph.D.</h1>
-    <p class="title">Assistant Professor of Computer Science and Cybersecurity<br>University of Central Missouri</p>
+    <p class="title">Assistant Professor of Computer Science and Cybersecurity</p>
+    <p class="thesis">Can the signals a system ignores, read by models small enough for the edge, tell us which devices, drivers and networks to trust?</p>
+    <div class="cta">
+      <a class="btn primary" href="#research">Explore the research</a>
+      <a class="btn" href="#publications">Publications</a>
+      <a class="btn" href="#open-projects">Projects for new students</a>
+    </div>
     <ul class="links">
       <li><a href="mailto:kar@ucmo.edu">Email</a></li>
       <li><a href="https://scholar.google.com/citations?user=dz-6amUAAAAJ&amp;hl=en">Google Scholar</a></li>
@@ -58,6 +74,10 @@
     </ul>
   </div>
 </section>
+</div>
+</div>
+
+<div class="wrap">
 
 <div class="stats highlights" aria-label="At a glance">
   <div class="stat-t"><b>20</b><span>journal and conference papers, including MobiCom and CCS</span></div>
@@ -67,11 +87,16 @@
 </div>
 
 <section id="about">
+  <span class="kicker">Who I am</span>
   <h2>About</h2>
+  <div class="split">
+  <div class="prose">
   <p>I am an Assistant Professor in the Department of Computer Science and Cybersecurity at the University of Central Missouri. My research asks how networked, mobile, and cyber-physical systems can sense, decide, and defend themselves using machine learning that is fast enough for the edge and robust enough to trust. I come to security and applied AI from an electrical and computer engineering foundation in wireless and vehicular networks.</p>
   <p>I trained in electrical engineering at Bilkent University and earned my Ph.D. at Rutgers University, where my dissertation treated the connected car as a networked sensor platform. Driver-identification research with General Motors led to U.S. Patent No. 10,332,020. Before joining UCM in 2023, I was an Assistant Professor at Bahçeşehir University and Yeditepe University in Istanbul.</p>
-
-  <h3>Appointments</h3>
+  <p>Across these roles the work has kept one habit: take a signal that a system treats as noise, ask what it gives away, and build a model that can use it on modest hardware. That habit carried from the dissertation's GPS-interference work, through acoustic side channels on phones, to the intrusion-detection and IoT-identity work my group does now.</p>
+  </div>
+  <div>
+  <h3 style="margin-top:0">Appointments</h3>
   <dl class="timeline">
     <dt>2023 – present</dt><dd>Assistant Professor, Computer Science and Cybersecurity, University of Central Missouri</dd>
     <dt>2019 – 2023</dt><dd>Assistant Professor, Bahçeşehir University, Istanbul</dd>
@@ -84,24 +109,36 @@
     <dt>2011</dt><dd>M.S., Electrical and Electronics Engineering, Bilkent University. Thesis: <a href="https://hdl.handle.net/11693/15261"><em>Performance of static and adaptive subchannel allocation schemes for fractional frequency reuse in WiMAX networks</em></a></dd>
     <dt>2009</dt><dd>B.S., Electrical and Electronics Engineering, Bilkent University</dd>
   </dl>
+  </div>
+  </div>
 
-  <h3>Honors</h3>
+  <div class="grid2" style="margin-top:1.4rem">
+  <div class="card">
+
+  <h3 style="margin-top:0">Honors</h3>
   <ul class="plain">
     <li>MLK Week “From Dream to Reality: Building the Beloved Community” Faculty Award, University of Central Missouri, 2026</li>
     <li>Teaching Assistant of the Year Award, Rutgers University, 2015</li>
   </ul>
-
-  <h3>Service</h3>
+  </div>
+  <div class="card">
+  <h3 style="margin-top:0">Service</h3>
   <ul class="plain">
     <li>Department Assessment Coordinator for ABET accreditation, Computer Science and Cybersecurity, UCM</li>
     <li>Member of IEEE and ACM</li>
   </ul>
+  </div>
+  </div>
 </section>
 
 <!-- ============ RESEARCH ============ -->
 <section id="research">
+  <span class="kicker">What my group works on</span>
   <h2>Research</h2>
-  <p>My work brings learning methods to the security of vehicles, phones, IoT devices and networks. Early work showed that physical signals a system ignores can leak a great deal: a phone's own microphones can infer typing, and roadside sensing can locate vehicles that emit GPS interference. Current work builds detectors that are small and trustworthy enough to run at the edge.</p>
+  <p class="lede">One question runs through my work: can behavioral signatures in raw sensor streams, paired with learned models, serve as trust anchors for safety-critical networked systems?</p>
+  <div class="prose">
+  <p>A car's start-up routine can identify its driver. A phone's two microphones can hear which key was pressed. A single packet header can say which device sent it. Each of these results treats a signal the system ignores as evidence, then asks whether a model small and fast enough for a vehicle, a phone or a gateway can act on it. That is the thread from my doctoral work on connected cars at Rutgers to the security and applied-AI work my group does at UCM.</p>
+  </div>
   <ul class="chips" aria-label="Research interests">
     <li>Connected and autonomous vehicles</li>
     <li>Mobile and IoT security</li>
@@ -112,10 +149,50 @@
     <li>Edge computing</li>
   </ul>
 
-  <h3>Projects</h3>
-  <p class="muted">Open a project for the details, figures and results.</p>
+  <h3>Three directions</h3>
+  <div class="grid3">
+    <article class="dir d1 reveal">
+      <span class="num">01</span>
+      <h3>Trustworthy edge AI for connected vehicles</h3>
+      <p>Cars take in data from roadside units, other vehicles and the cloud, and each channel can be spoofed. Building on the GPS-interference detection from my dissertation and the in-vehicle signal analysis behind the GM patent, this direction catches spoofed, jammed or manipulated sensor and V2X data on hardware where latency and memory are tight.</p>
+      <ul>
+        <li><a href="research/vehicles.html">Sensing, identity and trust</a></li>
+        <li><a href="research/planned-gnss.html">GNSS spoofing</a> · <a href="research/planned-can.html">in-vehicle network</a></li>
+      </ul>
+    </article>
+    <article class="dir d2 reveal">
+      <span class="num">02</span>
+      <h3>Lightweight and quantum-enhanced intrusion detection</h3>
+      <p>Our hybrid quantum-classical network detects DDoS traffic and classifies Android malware in one framework. The question that matters is not whether a quantum circuit beats a classical one today, but whether hybrid and compressed models stay accurate inside the budget of an IoT gateway, and whether we can explain what they learned.</p>
+      <ul>
+        <li><a href="research/quantum-ids.html">Hybrid quantum-classical detection</a></li>
+        <li><a href="research/planned-quantum.html">Honest quantum benchmarks</a> · <a href="research/planned-tinyml.html">TinyML</a></li>
+      </ul>
+    </article>
+    <article class="dir d3 reveal">
+      <span class="num">03</span>
+      <h3>Device identity and integrity in IoT</h3>
+      <p>A network that cannot say which physical device sent a packet, or whether that device was tampered with, cannot defend itself. We identify devices from single packet headers and name network incidents with genetic-algorithm feature selection. Next is pairing traffic fingerprints with ledger-based attestation, cheaply enough for constrained devices.</p>
+      <ul>
+        <li><a href="research/iot-identity.html">Device identity and incidents</a></li>
+        <li><a href="research/planned-blockchain.html">Ledger identity</a> · <a href="research/planned-benchmark.html">leak-free benchmarks</a></li>
+      </ul>
+    </article>
+  </div>
+
+  <h3>Selected papers</h3>
+  <div class="feat">
+    <a href="https://doi.org/10.1145/2660267.2660336"><span class="venue">ACM CCS 2014</span><span class="t">Detection of on-road vehicles emanating GPS interference</span><span class="w">Roadside monitoring points single out the car carrying a GPS jammer from ordinary traffic.</span></a>
+    <a href="https://doi.org/10.1145/2789168.2790122"><span class="venue">ACM MobiCom 2015</span><span class="t">Snooping keystrokes with mm-level audio ranging on a single phone</span><span class="w">A phone's two microphones range each keystroke closely enough to recover what was typed.</span></a>
+    <a href="https://doi.org/10.1145/3132211.3134462"><span class="venue">ACM/IEEE SEC 2017</span><span class="t">PredriveID: pre-trip driver identification from in-vehicle data</span><span class="w">Recognizes the driver from how the car is started, before the trip begins; related to our U.S. patent with GM.</span></a>
+    <a href="https://doi.org/10.1140/epjqt/s40507-025-00380-z"><span class="venue">EPJ Quantum Technology 2025</span><span class="t">Unified hybrid quantum-classical neural network for DDoS and Android malware</span><span class="w">One wavelet, CNN and quantum-circuit framework for two security tasks.</span></a>
+  </div>
+
+  <h3>Projects in depth</h3>
+  <p class="muted">Each project page explains the problem, the method and the results, with figures and a live, interactive illustration you can play with.</p>
   <div class="projects">
     <a class="pcard" href="research/vehicles.html">
+      <span class="live-tag">Interactive</span>
       <svg class="ico" viewBox="0 0 48 48" aria-hidden="true"><path d="M8 30l4-11c1-3 3-4 6-4h12c3 0 5 1 6 4l4 11v8h-5v-4H13v4H8z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/><circle cx="15" cy="30" r="2.5" fill="currentColor"/><circle cx="33" cy="30" r="2.5" fill="currentColor"/></svg>
       <h3>Connected vehicles: sensing, identity and trust</h3>
       <p>Catching cars that jam GPS, identifying the driver from how they start the car, and estimating traffic from dash cams.</p>
@@ -123,6 +200,7 @@
       <span class="more">Read more →</span>
     </a>
     <a class="pcard" href="research/quantum-ids.html">
+      <span class="live-tag">Interactive</span>
       <svg class="ico" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="4" fill="currentColor"/><ellipse cx="24" cy="24" rx="19" ry="8" fill="none" stroke="currentColor" stroke-width="2.5"/><ellipse cx="24" cy="24" rx="19" ry="8" transform="rotate(60 24 24)" fill="none" stroke="currentColor" stroke-width="2.5"/><ellipse cx="24" cy="24" rx="19" ry="8" transform="rotate(-60 24 24)" fill="none" stroke="currentColor" stroke-width="2.5"/></svg>
       <h3>Hybrid quantum-classical intrusion detection</h3>
       <p>One wavelet, CNN and quantum-circuit framework that detects DDoS traffic and classifies Android malware.</p>
@@ -130,6 +208,7 @@
       <span class="more">Read more →</span>
     </a>
     <a class="pcard" href="research/iot-identity.html">
+      <span class="live-tag">Interactive</span>
       <svg class="ico" viewBox="0 0 48 48" aria-hidden="true"><rect x="17" y="17" width="14" height="14" rx="3" fill="none" stroke="currentColor" stroke-width="3"/><path d="M24 4v9M24 35v9M4 24h9M35 24h9M10 10l6 6M32 32l6 6M38 10l-6 6M16 32l-6 6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
       <h3>IoT device identity and network incidents</h3>
       <p>Telling which device sent a packet, and which attack is under way, from packet headers alone.</p>
@@ -137,6 +216,7 @@
       <span class="more">Read more →</span>
     </a>
     <a class="pcard" href="research/side-channels.html">
+      <span class="live-tag">Interactive</span>
       <svg class="ico" viewBox="0 0 48 48" aria-hidden="true"><rect x="4" y="26" width="40" height="16" rx="3" fill="none" stroke="currentColor" stroke-width="3"/><path d="M10 32h4M18 32h4M26 32h4M34 32h4M14 37h20" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><path d="M16 18a11 11 0 0 1 16 0M20 13a6 6 0 0 1 8 0" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
       <h3>Acoustic side channels on phones</h3>
       <p>A phone behind your keyboard can hear which keys you press, with no training data.</p>
@@ -144,6 +224,7 @@
       <span class="more">Read more →</span>
     </a>
     <a class="pcard" href="research/applied-ai.html">
+      <span class="live-tag">Interactive</span>
       <svg class="ico" viewBox="0 0 48 48" aria-hidden="true"><path d="M8 40V28M18 40V18M28 40V24M38 40V10" stroke="currentColor" stroke-width="5" stroke-linecap="round"/></svg>
       <h3>Explainable and applied AI</h3>
       <p>Explainable models for food fraud and employee attrition, crime prediction, and Turkish text classification.</p>
@@ -209,6 +290,7 @@
   <h4 class="pgroup">Core areas: building on my published work</h4>
   <div class="projects">
     <a class="pcard planned" href="research/planned-gnss.html">
+      <span class="live-tag">Interactive</span>
       <svg class="ico" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="20" r="7" fill="none" stroke="currentColor" stroke-width="3"/><path d="M24 44S10 30 10 20a14 14 0 0 1 28 0c0 10-14 24-14 24z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/></svg>
       <h3>Catching GNSS spoofing with the car's own sensors</h3>
       <p>Check every GPS fix against wheel-speed and steering data to catch spoofing on cheap in-vehicle hardware.</p>
@@ -237,6 +319,7 @@
       <span class="more">See the plan →</span>
     </a>
     <a class="pcard planned" href="research/planned-can.html">
+      <span class="live-tag">Interactive</span>
       <svg class="ico" viewBox="0 0 48 48" aria-hidden="true"><path d="M4 30h40" stroke="currentColor" stroke-width="3"/><rect x="8" y="10" width="10" height="10" fill="none" stroke="currentColor" stroke-width="3"/><rect x="30" y="10" width="10" height="10" fill="none" stroke="currentColor" stroke-width="3"/><path d="M13 20v10M35 20v10" stroke="currentColor" stroke-width="3"/><circle cx="24" cy="38" r="4" fill="currentColor"/></svg>
       <h3>Spotting intruders on the car's internal network</h3>
       <p>Catch messages that do not belong on the bus that links a car's brakes, engine and steering.</p>
@@ -283,15 +366,35 @@
     </a>
   </div>
 
-  <h3>Students</h3>
-  <p>I have supervised six completed M.Sc. theses; four became journal articles with the student as lead author. I welcome UCM graduate students interested in security, networked systems, and applied machine learning.</p>
+  <h3>Students and mentoring</h3>
+  <div class="grid2">
+    <div class="card">
+      <p>I have supervised six completed M.Sc. theses; four became journal articles with the student as lead author, in <em>Applied Soft Computing</em>, <em>Sensors</em>, <em>Journal of Engineering Sciences and Design</em> and <em>Expert Systems</em>.</p>
+      <p>Each thesis starts as a small production pipeline: a publishable research question, a dataset, a reproducible experiment and a target venue, agreed at the proposal stage.</p>
+    </div>
+    <div class="card">
+      <p><strong>Joining the group.</strong> I welcome UCM graduate students interested in security, networked systems and applied machine learning. Pick one of the <a href="#open-projects">open projects</a>, read two papers from its list, and email me with your CV and the research question you would start with.</p>
+      <div class="actions"><a class="pill" href="mailto:kar@ucmo.edu">Email me</a></div>
+    </div>
+  </div>
 </section>
 
 <!-- ============ PUBLICATIONS ============ -->
 <section id="publications">
+  <span class="kicker">Papers, theses and patent</span>
   <h2>Publications</h2>
   <p class="muted">Most recent first. Links go to the publisher's page (DOI) where one exists; <span class="tag">Open access</span> papers can be read free.</p>
+  <div class="pubtools" role="group" aria-label="Filter publications">
+    <button type="button" data-kind="all" aria-pressed="true">All</button>
+    <button type="button" data-kind="journal" aria-pressed="false">Journals</button>
+    <button type="button" data-kind="conference" aria-pressed="false">Conferences</button>
+    <button type="button" data-kind="submitted" aria-pressed="false">Submitted</button>
+    <button type="button" data-kind="other" aria-pressed="false">Theses and patent</button>
+    <input type="search" placeholder="Search titles, authors, venues" aria-label="Search publications">
+  </div>
+  <p class="pubcount" aria-live="polite"></p>
 
+  <div class="pubgroup" data-kind="submitted">
   <h3>Submitted</h3>
   <ol class="pubs">
     <li>
@@ -313,7 +416,9 @@
       <div class="pl"><a href="#submitted">Summary</a></div>
     </li>
   </ol>
+  </div>
 
+  <div class="pubgroup" data-kind="journal">
   <h3>Journal articles</h3>
   <ol class="pubs">
     <li>
@@ -383,7 +488,9 @@
       <div class="pl"><a href="https://doi.org/10.1109/TVT.2017.2771623">Paper</a></div>
     </li>
   </ol>
+  </div>
 
+  <div class="pubgroup" data-kind="conference">
   <h3>Conference papers</h3>
   <ol class="pubs">
     <li>
@@ -441,7 +548,9 @@
       <div class="pl"><a href="https://doi.org/10.1145/2660267.2660336">Paper</a></div>
     </li>
   </ol>
+  </div>
 
+  <div class="pubgroup" data-kind="other">
   <h3>Theses</h3>
   <ol class="pubs">
     <li>
@@ -457,7 +566,9 @@
       <div class="pl"><a href="https://hdl.handle.net/11693/15261">Thesis</a></div>
     </li>
   </ol>
+  </div>
 
+  <div class="pubgroup" data-kind="other">
   <h3>Patent</h3>
   <ol class="pubs">
     <li>
@@ -467,29 +578,34 @@
       <div class="pl"><a href="https://patents.google.com/patent/US10332020B2/en">Patent</a></div>
     </li>
   </ol>
+  </div>
   <p class="muted">The full, up-to-date list with citation counts is on <a href="https://scholar.google.com/citations?user=dz-6amUAAAAJ&amp;hl=en">Google Scholar</a>.</p>
 </section>
 
 <!-- ============ TEACHING ============ -->
 <section id="teaching">
+  <span class="kicker">Courses and course sites</span>
   <h2>Teaching</h2>
-  <p>Students learn computing by building with real data. Every graduate course I teach comes with interactive, browser-based notes, so students can run SQL, Python, and algorithms live as they read, with nothing to install.</p>
+  <p class="lede">Students learn computing by building it on real problems.</p>
+  <p class="prose">Students learn computing by building with real data. Every graduate course I teach comes with interactive, browser-based notes, so students can run SQL, Python, and algorithms live as they read, with nothing to install. In machine learning that means training and debugging on a messy, real dataset; in algorithms, proving a time bound and then watching it in running code; in databases, designing a schema that survives real queries. My research comes into the classroom too: intrusion detection, IoT fingerprinting and connected vehicles are case studies, and Advanced Algorithms opens by turning GPS navigation into a graph and rerunning Dijkstra's algorithm as traffic changes.</p>
 
   <h3>Spring 2027</h3>
   <div class="grid2">
-    <div class="card">
-      <h3>CS 4600/5200 Database Theory and Applications</h3>
+    <div class="card course reveal">
+      <span class="code">CS 4600/5200 · Spring 2027</span>
+      <h3>Database Theory and Applications</h3>
       <p>E-R modeling, relational design, normalization, SQL, query optimization and concurrency, with a live SQL playground every week and a semester-long application project.</p>
       <div class="actions">
-        <a href="https://gkar87.github.io/Spring2027_Database/">Course site</a>
+        <a class="pill" href="https://gkar87.github.io/Spring2027_Database/">Course site</a>
         <a href="https://github.com/gkar87/Spring2027_Database">Materials on GitHub</a>
       </div>
     </div>
-    <div class="card">
-      <h3>CS 5700 Artificial Intelligence</h3>
+    <div class="card course reveal">
+      <span class="code">CS 5700 · Spring 2027</span>
+      <h3>Artificial Intelligence</h3>
       <p>Search, constraint satisfaction, games and decision processes, then reinforcement learning, probabilistic inference, deep learning and transformers, with weekly labs.</p>
       <div class="actions">
-        <a href="https://gkar87.github.io/Spring2027_AI/">Course site</a>
+        <a class="pill" href="https://gkar87.github.io/Spring2027_AI/">Course site</a>
         <a href="https://github.com/gkar87/Spring2027_AI">Materials on GitHub</a>
       </div>
     </div>
@@ -511,7 +627,9 @@
 
 <!-- ============ CONTACT ============ -->
 <section id="contact">
+  <span class="kicker">Get in touch</span>
   <h2>Contact</h2>
+  <p class="prose">Prospective students, collaborators and anyone working on vehicle, IoT or network security are welcome to write. Email is the fastest way to reach me.</p>
   <div class="grid2">
     <div>
       <p><strong>Email:</strong> <a href="mailto:kar@ucmo.edu">kar@ucmo.edu</a></p>
@@ -529,11 +647,12 @@
     </div>
   </div>
 </section>
+</div>
 
 </main>
 
 <footer>
-  <div class="wrap">© 2026 Gorkem Kar · Last updated November 2026 · <a href="#top">Back to top</a></div>
+  <div class="wrap">© 2026 Gorkem Kar · University of Central Missouri · Last updated November 2026 · <a href="#top">Back to top</a></div>
 </footer>
 <script src="site.js"></script>
 </body>

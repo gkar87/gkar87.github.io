@@ -4,7 +4,8 @@ Plain HTML, CSS and a little JavaScript, with no build step. GitHub Pages serves
 
 - `index.html`: About, Research, Recently submitted, Publications, Open projects, Teaching, Contact
 - `research/*.html`: detailed pages for current research areas and open student projects
-- `style.css`, `site.js`: layout, light and dark mode, animations
+- `style.css`, `site.js`: layout, light and dark mode, theme toggle, publication filters, animations
+- `live.js`: live, interactive illustrations on the research pages (simplified models, not paper data)
 - `images/headshot.jpg`: portrait
 
 To update: edit the files, commit and push.

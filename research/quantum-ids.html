@@ -6,23 +6,29 @@
 <title>Hybrid quantum-classical intrusion detection · Gorkem Kar</title>
 <meta name="description" content="Can a small quantum circuit, paired with classical deep learning, help catch network attacks and mobile malware? We built one framework that does both.">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#1d4f91">
+<script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <link rel="stylesheet" href="../style.css">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 <header class="site">
   <div class="wrap">
-    <a class="brand" href="../index.html">Gorkem Kar</a>
-    <nav aria-label="Sections">
-      <ul>
-        <li><a href="../index.html#about">About</a></li>
-        <li><a href="../index.html#research">Research</a></li>
-        <li><a href="../index.html#publications">Publications</a></li>
-        <li><a href="../index.html#teaching">Teaching</a></li>
-        <li><a href="../index.html#contact">Contact</a></li>
-      </ul>
-    </nav>
+    <a class="brand" href="../index.html">Gorkem Kar<span class="muted">, Ph.D.</span></a>
+    <div class="navbar">
+      <nav aria-label="Sections">
+        <ul>
+          <li><a href="../index.html#about">About</a></li>
+          <li><a href="../index.html#research">Research</a></li>
+          <li><a href="../index.html#publications">Publications</a></li>
+          <li><a href="../index.html#teaching">Teaching</a></li>
+          <li><a href="../index.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <button class="theme" type="button" aria-label="Switch theme"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" fill="currentColor"/></svg></button>
+    </div>
   </div>
+  <div class="progress" aria-hidden="true"></div>
 </header>
 <main id="main" class="wrap">
 <p class="crumbs"><a href="../index.html#research">Research</a> / Hybrid quantum-classical intrusion detection</p>
@@ -30,6 +36,13 @@
   <h1>Hybrid quantum-classical intrusion detection</h1>
   <p class="lead">Can a small quantum circuit, paired with classical deep learning, help catch network attacks and mobile malware? We built one framework that does both.</p>
 </section>
+<figure class="live" data-demo="qubit" aria-labelledby="live-qubit">
+  <div class="lhead"><h2 id="live-qubit">Try it: Turn a feature into a qubit rotation</h2><span class="kicker">Live illustration</span></div>
+  <p class="how">Hybrid quantum models often encode a scaled input as a rotation of a qubit. Move the feature and the trainable rotation; measuring the qubit gives each outcome with the probability shown, and a run of shots samples it.</p>
+  <canvas width="720" height="300" role="img" aria-label="A circle slice of the Bloch sphere with the qubit state vector, bars for the probabilities of measuring 0 and 1, and a bar for sampled shots"></canvas>
+  <div class="ctrl"></div>
+  <p class="disc">A simplified model of the idea, for illustration. It does not reproduce the paper&#x27;s data or results.</p>
+</figure>
 
 <section>
 <h2>One framework for DDoS and Android malware</h2>
@@ -67,5 +80,6 @@
 </main>
 <footer><div class="wrap">© 2026 Gorkem Kar · <a href="../index.html">Home</a></div></footer>
 <script src="../site.js"></script>
+<script src="../live.js"></script>
 </body>
 </html>

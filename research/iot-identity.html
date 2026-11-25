@@ -6,23 +6,29 @@
 <title>IoT device identity and network incidents · Gorkem Kar</title>
 <meta name="description" content="A network that cannot tell which device sent a packet, or whether that device was tampered with, cannot defend itself. We identify devices and attacks from packet headers alone.">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#1d4f91">
+<script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <link rel="stylesheet" href="../style.css">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 <header class="site">
   <div class="wrap">
-    <a class="brand" href="../index.html">Gorkem Kar</a>
-    <nav aria-label="Sections">
-      <ul>
-        <li><a href="../index.html#about">About</a></li>
-        <li><a href="../index.html#research">Research</a></li>
-        <li><a href="../index.html#publications">Publications</a></li>
-        <li><a href="../index.html#teaching">Teaching</a></li>
-        <li><a href="../index.html#contact">Contact</a></li>
-      </ul>
-    </nav>
+    <a class="brand" href="../index.html">Gorkem Kar<span class="muted">, Ph.D.</span></a>
+    <div class="navbar">
+      <nav aria-label="Sections">
+        <ul>
+          <li><a href="../index.html#about">About</a></li>
+          <li><a href="../index.html#research">Research</a></li>
+          <li><a href="../index.html#publications">Publications</a></li>
+          <li><a href="../index.html#teaching">Teaching</a></li>
+          <li><a href="../index.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <button class="theme" type="button" aria-label="Switch theme"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" fill="currentColor"/></svg></button>
+    </div>
   </div>
+  <div class="progress" aria-hidden="true"></div>
 </header>
 <main id="main" class="wrap">
 <p class="crumbs"><a href="../index.html#research">Research</a> / IoT device identity and network incidents</p>
@@ -30,6 +36,13 @@
   <h1>IoT device identity and network incidents</h1>
   <p class="lead">A network that cannot tell which device sent a packet, or whether that device was tampered with, cannot defend itself. We identify devices and attacks from packet headers alone.</p>
 </section>
+<figure class="live" data-demo="packet" aria-labelledby="live-packet">
+  <div class="lhead"><h2 id="live-packet">Try it: Which device sent this packet?</h2><span class="kicker">Live illustration</span></div>
+  <p class="how">Send one packet from a device. A simple nearest-profile classifier reads four header fields and names the device. Turn up the network noise and watch it start to confuse devices.</p>
+  <canvas width="720" height="300" role="img" aria-label="Header fields of one packet and a bar for each device showing how close the packet is to that device profile"></canvas>
+  <div class="ctrl"></div>
+  <p class="disc">A simplified model of the idea, for illustration. It does not reproduce the paper&#x27;s data or results. The header profiles are invented.</p>
+</figure>
 
 <section>
 <h2>Fingerprinting IoT devices from a single packet</h2>
@@ -79,5 +92,6 @@
 </main>
 <footer><div class="wrap">© 2026 Gorkem Kar · <a href="../index.html">Home</a></div></footer>
 <script src="../site.js"></script>
+<script src="../live.js"></script>
 </body>
 </html>

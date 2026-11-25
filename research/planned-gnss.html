@@ -6,23 +6,29 @@
 <title>Catching GNSS spoofing with the car's own sensors · Gorkem Kar</title>
 <meta name="description" content="Can a car notice that its GPS is lying, using only the data it already has? This project builds a lightweight spoofing detector from the vehicle&#x27;s own motion data.">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#1d4f91">
+<script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <link rel="stylesheet" href="../style.css">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 <header class="site">
   <div class="wrap">
-    <a class="brand" href="../index.html">Gorkem Kar</a>
-    <nav aria-label="Sections">
-      <ul>
-        <li><a href="../index.html#about">About</a></li>
-        <li><a href="../index.html#research">Research</a></li>
-        <li><a href="../index.html#publications">Publications</a></li>
-        <li><a href="../index.html#teaching">Teaching</a></li>
-        <li><a href="../index.html#contact">Contact</a></li>
-      </ul>
-    </nav>
+    <a class="brand" href="../index.html">Gorkem Kar<span class="muted">, Ph.D.</span></a>
+    <div class="navbar">
+      <nav aria-label="Sections">
+        <ul>
+          <li><a href="../index.html#about">About</a></li>
+          <li><a href="../index.html#research">Research</a></li>
+          <li><a href="../index.html#publications">Publications</a></li>
+          <li><a href="../index.html#teaching">Teaching</a></li>
+          <li><a href="../index.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <button class="theme" type="button" aria-label="Switch theme"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" fill="currentColor"/></svg></button>
+    </div>
   </div>
+  <div class="progress" aria-hidden="true"></div>
 </header>
 <main id="main" class="wrap">
 <p class="crumbs"><a href="../index.html#open-projects">Open projects</a> / Catching GNSS spoofing with the car's own sensors</p>
@@ -30,6 +36,13 @@
   <h1>Catching GNSS spoofing with the car's own sensors</h1>
   <p class="lead">Can a car notice that its GPS is lying, using only the data it already has? This project builds a lightweight spoofing detector from the vehicle's own motion data.</p>
 </section>
+<figure class="live" data-demo="gnss" aria-labelledby="live-gnss">
+  <div class="lhead"><h2 id="live-gnss">Try it: Catch a spoofed GPS fix</h2><span class="kicker">Live illustration</span></div>
+  <p class="how">The blue line is where wheel speed and steering say the car is; the dashed red line is the GPS fix. Start the spoofer and the two drift apart. Set the alarm threshold too low and normal noise raises false alarms; too high and the spoofer gets further before it is caught.</p>
+  <canvas width="720" height="300" role="img" aria-label="A car path from wheel and steering data and a GPS path that drifts away when spoofing starts, with a plot of the gap between them against an alarm threshold"></canvas>
+  <div class="ctrl"></div>
+  <p class="disc">A simplified model of the idea, for illustration. This project has not started; there are no results yet.</p>
+</figure>
 <p><span class="badge">Planned project · core area · open to new graduate students</span></p>
 <section>
 <h2>Why this matters</h2>
@@ -74,5 +87,6 @@
 </main>
 <footer><div class="wrap">© 2026 Gorkem Kar · <a href="../index.html">Home</a></div></footer>
 <script src="../site.js"></script>
+<script src="../live.js"></script>
 </body>
 </html>

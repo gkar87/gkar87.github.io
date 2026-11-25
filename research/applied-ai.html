@@ -6,23 +6,29 @@
 <title>Explainable and applied AI · Gorkem Kar</title>
 <meta name="description" content="The methods behind my security work also answer questions in food safety, public safety, language and the workplace, with an emphasis on explaining why a model decides what it does.">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#1d4f91">
+<script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <link rel="stylesheet" href="../style.css">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 <header class="site">
   <div class="wrap">
-    <a class="brand" href="../index.html">Gorkem Kar</a>
-    <nav aria-label="Sections">
-      <ul>
-        <li><a href="../index.html#about">About</a></li>
-        <li><a href="../index.html#research">Research</a></li>
-        <li><a href="../index.html#publications">Publications</a></li>
-        <li><a href="../index.html#teaching">Teaching</a></li>
-        <li><a href="../index.html#contact">Contact</a></li>
-      </ul>
-    </nav>
+    <a class="brand" href="../index.html">Gorkem Kar<span class="muted">, Ph.D.</span></a>
+    <div class="navbar">
+      <nav aria-label="Sections">
+        <ul>
+          <li><a href="../index.html#about">About</a></li>
+          <li><a href="../index.html#research">Research</a></li>
+          <li><a href="../index.html#publications">Publications</a></li>
+          <li><a href="../index.html#teaching">Teaching</a></li>
+          <li><a href="../index.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <button class="theme" type="button" aria-label="Switch theme"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" fill="currentColor"/></svg></button>
+    </div>
   </div>
+  <div class="progress" aria-hidden="true"></div>
 </header>
 <main id="main" class="wrap">
 <p class="crumbs"><a href="../index.html#research">Research</a> / Explainable and applied AI</p>
@@ -30,6 +36,13 @@
   <h1>Explainable and applied AI</h1>
   <p class="lead">The methods behind my security work also answer questions in food safety, public safety, language and the workplace, with an emphasis on explaining why a model decides what it does.</p>
 </section>
+<figure class="live" data-demo="shap" aria-labelledby="live-shap">
+  <div class="lhead"><h2 id="live-shap">Try it: Explain one prediction</h2><span class="kicker">Live illustration</span></div>
+  <p class="how">A toy attrition model with invented weights. Move the inputs and see how much each one pushes this employee&#x27;s predicted risk up (red) or down (blue). For a linear model like this one, these bars are exactly the SHAP values.</p>
+  <canvas width="720" height="260" role="img" aria-label="Horizontal bars showing how much each input raises or lowers one prediction, sorted by size, with the predicted risk below"></canvas>
+  <div class="ctrl"></div>
+  <p class="disc">A simplified model of the idea, for illustration. It does not reproduce the paper&#x27;s data or results. The model and its weights are invented.</p>
+</figure>
 
 <section>
 <h2>Explaining the model, not just scoring it</h2>
@@ -58,5 +71,6 @@
 </main>
 <footer><div class="wrap">© 2026 Gorkem Kar · <a href="../index.html">Home</a></div></footer>
 <script src="../site.js"></script>
+<script src="../live.js"></script>
 </body>
 </html>
