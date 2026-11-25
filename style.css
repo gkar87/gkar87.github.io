@@ -44,11 +44,11 @@ header.site .wrap{display:flex;align-items:center;justify-content:space-between;
 .navbar{display:flex;align-items:center;gap:.6rem;min-width:0;flex:0 1 auto}
 .navbar nav{min-width:0;flex:0 1 auto}
 .brand{flex:none}
-nav ul{list-style:none;display:flex;gap:.15rem;margin:0;padding:0;font-size:.93rem;overflow-x:auto;scrollbar-width:none}
-nav ul::-webkit-scrollbar{display:none}
-nav a{display:block;color:var(--muted);padding:.32rem .7rem;border-radius:999px;white-space:nowrap}
-nav a:hover{color:var(--fg);background:var(--soft);text-decoration:none}
-nav a.active{color:var(--accent);background:var(--chip)}
+.navbar nav ul{list-style:none;display:flex;gap:.15rem;margin:0;padding:0;font-size:.93rem;overflow-x:auto;scrollbar-width:none}
+.navbar nav ul::-webkit-scrollbar{display:none}
+.navbar nav a{display:block;color:var(--muted);padding:.32rem .7rem;border-radius:999px;white-space:nowrap}
+.navbar nav a:hover{color:var(--fg);background:var(--soft);text-decoration:none}
+.navbar nav a.active{color:var(--accent);background:var(--chip)}
 .theme{flex:none;width:2.1rem;height:2.1rem;border-radius:50%;border:1px solid var(--line);background:var(--surface);color:var(--muted);
   display:grid;place-items:center;cursor:pointer;padding:0}
 .theme:hover{color:var(--accent);border-color:var(--accent)}
@@ -164,8 +164,8 @@ footer{padding:2.4rem 0 3rem;color:var(--muted);font-size:.88rem;text-align:cent
   header.site .wrap{padding:.5rem .9rem;gap:.5rem}
   .brand{font-size:1rem}
   .brand span{display:none}
-  nav ul{font-size:.88rem;-webkit-mask-image:linear-gradient(90deg,#000 85%,transparent);mask-image:linear-gradient(90deg,#000 85%,transparent)}
-  nav a{padding:.32rem .5rem}
+  .navbar nav ul{font-size:.88rem;-webkit-mask-image:linear-gradient(90deg,#000 85%,transparent);mask-image:linear-gradient(90deg,#000 85%,transparent)}
+  .navbar nav a{padding:.32rem .5rem}
   .hero{grid-template-columns:1fr;gap:1.2rem;padding:2.4rem 0 2.2rem}
   .photo{width:120px;height:120px;border-radius:18px}
   h1{font-size:1.95rem} h2{font-size:1.5rem}
