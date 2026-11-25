@@ -1217,10 +1217,12 @@
         for (let i = 0; i < 6; i++) {
           const isBad = i === 5 && bad, p = P(isBad ? A : (i === 5 ? [T[0] + spread * dirs[5][0], T[1] + spread * dirs[5][1]] : opt(i)));
           ctx.fillStyle = isBad ? C.b : C.a; ctx.beginPath(); ctx.arc(p[0], p[1], 7, 0, 7); ctx.fill();
-          txt(ctx, isBad ? 'malicious site' : 'site ' + (i + 1), p[0] + 10, p[1] + 4, { size: 11, color: isBad ? C.b : C.mu });
+          if (isBad) txt(ctx, 'malicious site', p[0] - 11, p[1] + 4, { size: 11, color: C.b, align: 'right' });
+          else txt(ctx, 'site ' + (i + 1), p[0] + 10, p[1] + 4, { size: 11, color: C.mu });
         }
         ctx.strokeStyle = C.c; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(r[0] - 8, r[1]); ctx.lineTo(r[0] + 8, r[1]); ctx.moveTo(r[0], r[1] - 8); ctx.lineTo(r[0], r[1] + 8); ctx.stroke();
-        txt(ctx, 'clean result', r[0] + 10, r[1] - 8, { size: 11, w: 700, color: C.c });
+        rr(ctx, r[0] + 7, r[1] - 26, 78, 16, 4); ctx.fillStyle = C.soft; ctx.globalAlpha = .92; ctx.fill(); ctx.globalAlpha = 1;
+        txt(ctx, 'clean result', r[0] + 11, r[1] - 14, { size: 11, w: 700, color: C.c });
         ctx.strokeStyle = C.fg; ctx.lineWidth = 1.5; ctx.beginPath();
         hist.forEach((h, i) => { const p = P(h); i ? ctx.lineTo(p[0], p[1]) : ctx.moveTo(p[0], p[1]); }); ctx.stroke();
         const gp = P(g); ctx.fillStyle = C.fg; ctx.beginPath(); ctx.arc(gp[0], gp[1], 6, 0, 7); ctx.fill();
@@ -1311,7 +1313,7 @@
         const bx = 420; let y = 40;
         txt(ctx, det().name[0].toUpperCase() + det().name.slice(1), bx, y, { w: 700 }); y += 22;
         txt(ctx, `Normal flows flagged: ${fa} of ${benign.length}`, bx, y, { size: 12, color: fa > 2 ? C.b : C.mu }); y += 20;
-        txt(ctx, real ? 'Attacker may only pad packets and must keep the rate high.' : 'Attacker may change any feature.', bx, y, { size: 12, color: C.mu }); y += 34;
+        y = para(ctx, real ? 'Attacker may only pad packets and must keep the rate high.' : 'Attacker may change any feature.', bx, y, W - bx - 16, 17, { size: 12, color: C.mu }) + 32;
         let msg;
         if (state === 'idle') msg = 'Press "Attacker tries to evade" to move the red flow toward the normal side.';
         else if (state === 'running') msg = 'Searching for a way across…';
