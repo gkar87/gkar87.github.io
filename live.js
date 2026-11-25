@@ -624,7 +624,7 @@
     let s = .5, edge = .5, users = [];
     const drop = () => {
       users = Array.from({ length: NU }, (_, i) => {
-        const out = i < Math.round(NU * edge), d = out ? rnd(RIN, .95) : Math.sqrt(Math.random()) * RIN, a = rnd(0, 2 * Math.PI);
+        const out = i < Math.round(NU * edge), d = out ? rnd(RIN + .02, .84) : Math.sqrt(Math.random()) * RIN, a = rnd(0, 2 * Math.PI);
         return { d, a };
       });
     };
@@ -648,10 +648,9 @@
           ctx.beginPath(); ctx.arc(x, y, R * RIN, 0, 7); ctx.fillStyle = C.soft; ctx.fill(); ctx.fillStyle = C.fg; ctx.globalAlpha = .07; ctx.fill(); ctx.globalAlpha = 1;
         }
         for (const u of users) { ctx.fillStyle = u.d < RIN ? C.fg : C.b; ctx.beginPath(); ctx.arc(cx0 + u.d * R * Math.cos(u.a), cy0 + u.d * R * Math.sin(u.a), 3, 0, 7); ctx.fill(); }
-        txt(ctx, 'inner circles share one band in every cell;', 20, H - 34, { size: 12, color: C.mu });
-        txt(ctx, 'cell edges split the rest three ways (colors)', 20, H - 16, { size: 12, color: C.mu });
+
         // curves
-        const px = 370, pw = 320, py = 40, ph = 200, pts = [];
+        const px = 370, pw = 320, py = 70, ph = 180, pts = [];
         for (let i = 0; i <= 60; i++) { const sh = .05 + .9 * i / 60; pts.push({ sh, ...evalS(sh) }); }
         const Tm = Math.max(...pts.map(p => p.T)), Pm = Math.max(...pts.map(p => p.T / Tm * p.J));
         const best = pts.reduce((b, p) => p.T / Tm * p.J > b.T / Tm * b.J ? p : b);
@@ -661,9 +660,11 @@
           ctx.strokeStyle = col; ctx.lineWidth = key === 'P' ? 3 : 2; ctx.beginPath();
           pts.forEach((p, i) => { const v = key === 'T' ? p.T / Tm : key === 'J' ? p.J : p.T / Tm * p.J / Pm; i ? ctx.lineTo(X(p.sh), Y(v)) : ctx.moveTo(X(p.sh), Y(v)); }); ctx.stroke();
         }
-        txt(ctx, 'throughput', px + pw - 4, py + 14, { align: 'right', size: 12, color: C.a, w: 600 });
-        txt(ctx, 'fairness (Jain)', px + pw - 4, py + 30, { align: 'right', size: 12, color: C.c, w: 600 });
-        txt(ctx, 'throughput × fairness', px + pw - 4, py + 46, { align: 'right', size: 12, color: C.b, w: 600 });
+        txt(ctx, 'throughput', px, py - 14, { size: 12, color: C.a, w: 600 });
+        txt(ctx, 'fairness (Jain)', px + 90, py - 14, { size: 12, color: C.c, w: 600 });
+        txt(ctx, 'product', px + 200, py - 14, { size: 12, color: C.b, w: 600 });
+        txt(ctx, 'plain dots: inner users · red dots: edge users', px, H - 26, { size: 12, color: C.mu });
+        txt(ctx, 'gray: band all inner regions share · colors: edge bands', px, H - 8, { size: 12, color: C.mu });
         ctx.strokeStyle = C.fg; ctx.setLineDash([4, 4]); ctx.beginPath(); ctx.moveTo(X(s), py); ctx.lineTo(X(s), py + ph); ctx.stroke(); ctx.setLineDash([]);
         ctx.fillStyle = C.b; ctx.beginPath(); ctx.arc(X(best.sh), Y(best.T / Tm * best.J / Pm), 5, 0, 7); ctx.fill();
         txt(ctx, 'share of subcarriers given to inner regions →', px + pw, py + ph + 18, { align: 'right', size: 12, color: C.mu });
