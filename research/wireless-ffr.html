@@ -13,7 +13,7 @@
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 <meta name="theme-color" content="#1d4f91">
 <script>document.documentElement.classList.add('js');try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
-<link rel="stylesheet" href="../style.css?v=20261125h">
+<link rel="stylesheet" href="../style.css?v=20261125i">
 </head>
 <body class="proj" id="top">
 <a class="skip" href="#main">Skip to content</a>
@@ -47,10 +47,11 @@
 <div class="pgrid">
 <nav class="toc" aria-label="On this page"><span>On this page</span><ul><li><a href="#live-ffr">Try it</a></li><li><a href="#the-trade-off">The trade-off</a></li><li><a href="#start-here">Start here</a></li><li><a href="#thesis">Thesis</a></li></ul></nav>
 <div class="pcontent">
+<section class="brief" aria-label="In short"><div><h2>The question</h2><p>How should a cell split its spectrum between users near the tower and users at the edge?</p></div><div><h2>Why it matters</h2><p>Giving more to the center raises total speed but starves the edge; a network has to be both fast and fair.</p></div><div><h2>What we found</h2><p>Adapting the split to where users actually are gave about 5% higher throughput × fairness than the best fixed split.</p></div></section>
 <figure class="live" data-demo="ffr" aria-labelledby="live-ffr">
   <div class="lhead"><h2 id="live-ffr">Try it: Split the band between center and edge</h2><span class="kicker">Live illustration</span></div>
-  <p class="how">Seven cells: inner circles reuse one shared band, and the cell edges split the rest three ways. Move the inner share and watch throughput rise while fairness falls; the product of the two peaks at a split that depends on where users are.</p>
-  <canvas width="720" height="330" role="img" aria-label="Hexagonal cells with users, and curves of throughput, Jain fairness and their product against the inner-region share"></canvas>
+  <p class="how">The bar under the cells shows how the band is cut: one part every cell center reuses, and the rest split three ways so neighboring cell edges never share a slice. Move the inner share: total throughput rises, but edge users get less, so fairness falls. The best balance depends on how many users sit near the edge.</p>
+  <canvas width="720" height="370" role="img" aria-label="Seven hexagonal cells with users in the middle cell, a bar showing how the band is split between the shared center part and three edge parts, and curves of throughput, Jain fairness and their product against the inner share"></canvas>
   <div class="ctrl"></div>
   <p class="disc">A simplified model of the idea, for illustration. It does not reproduce the paper&#x27;s data or results. The link efficiencies are invented.</p>
 </figure>
@@ -74,7 +75,7 @@
 <section>
 <h2 id="thesis">Thesis</h2>
 <ol class="pubs"><li><div class="pt">Performance of static and adaptive subchannel allocation schemes for fractional frequency reuse in WiMAX networks</div><div class="pa"><b>G. Kar</b> (advisor: E. Karaşan)</div><div class="pv">M.S. thesis, Bilkent University, 2011</div><div class="pl"><a href="https://hdl.handle.net/11693/15261">Paper</a></div></li></ol></section>
-<section class="related" aria-labelledby="related-h"><h2 id="related-h">More in side channels, applied AI and wireless</h2><div class="rgrid"><a class="rcard planned" href="planned-acoustic.html"><span class="kicker">Open project</span><span class="rt">Do earbuds, smart speakers and video calls leak what you type?</span><span class="ra" aria-hidden="true">→</span></a><a class="rcard planned" href="planned-rag.html"><span class="kicker">Open project</span><span class="rt">Attacking and defending a campus chatbot</span><span class="ra" aria-hidden="true">→</span></a><a class="rcard planned" href="planned-llmsoc.html"><span class="kicker">Open project</span><span class="rt">Can a language model help triage security alerts?</span><span class="ra" aria-hidden="true">→</span></a><a class="rcard" href="side-channels.html"><span class="kicker">Published work</span><span class="rt">Acoustic side channels on phones</span><span class="ra" aria-hidden="true">→</span></a></div></section>
+<section class="related" aria-labelledby="related-h"><h2 id="related-h">More in side channels and applied AI</h2><div class="rgrid"><a class="rcard planned" href="planned-acoustic.html"><span class="kicker">Open project</span><span class="rt">Do earbuds, smart speakers and video calls leak what you type?</span><span class="ra" aria-hidden="true">→</span></a><a class="rcard planned" href="planned-rag.html"><span class="kicker">Open project</span><span class="rt">Attacking and defending a campus chatbot</span><span class="ra" aria-hidden="true">→</span></a><a class="rcard planned" href="planned-llmsoc.html"><span class="kicker">Open project</span><span class="rt">Can a language model help triage security alerts?</span><span class="ra" aria-hidden="true">→</span></a><a class="rcard" href="side-channels.html"><span class="kicker">Published work</span><span class="rt">Acoustic side channels on phones</span><span class="ra" aria-hidden="true">→</span></a></div></section>
 <section><nav class="pnav" aria-label="More projects"><a href="applied-ai.html">← Explainable and applied AI</a><a href="../index.html#research">All research →</a></nav></section>
 </div>
 </div>
@@ -96,7 +97,7 @@
   <div class="wrap fbase"><span>© 2026 Gorkem Kar · Last updated November 2026</span><a href="#top">Back to top ↑</a></div>
 </footer>
 <a class="totop" href="#top" aria-label="Back to top"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-<script src="../site.js?v=20261125h"></script>
-<script src="../live.js?v=20261125h"></script>
+<script src="../site.js?v=20261125i"></script>
+<script src="../live.js?v=20261125i"></script>
 </body>
 </html>

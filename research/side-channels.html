@@ -13,7 +13,7 @@
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 <meta name="theme-color" content="#1d4f91">
 <script>document.documentElement.classList.add('js');try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
-<link rel="stylesheet" href="../style.css?v=20261125h">
+<link rel="stylesheet" href="../style.css?v=20261125i">
 </head>
 <body class="proj" id="top">
 <a class="skip" href="#main">Skip to content</a>
@@ -47,10 +47,11 @@
 <div class="pgrid">
 <nav class="toc" aria-label="On this page"><span>On this page</span><ul><li><a href="#live-tdoa">Try it</a></li><li><a href="#snooping-keystrokes-with-millimeter-level-audio-">Snooping keystrokes with millimeter-level audio ranging</a></li><li><a href="#open-research-questions">Open research questions</a></li><li><a href="#start-here">Start here</a></li><li><a href="#paper">Paper</a></li></ul></nav>
 <div class="pcontent">
+<section class="brief" aria-label="In short"><div><h2>The question</h2><p>Can one phone lying near a keyboard tell which keys you press, from sound alone?</p></div><div><h2>Why it matters</h2><p>Microphones are everywhere, and nobody thinks of them as a way to steal a password.</p></div><div><h2>What we found</h2><p>Yes. Timing each keystroke at the phone&#x27;s two microphones placed it to within millimeters; the first guess was right for 85.5% of keystrokes at 48 kHz and 94.2% at 192 kHz on one keyboard, with no training data.</p></div></section>
 <figure class="live" data-demo="tdoa" aria-labelledby="live-tdoa">
   <div class="lhead"><h2 id="live-tdoa">Try it: Hear which key was pressed</h2><span class="kicker">Live illustration</span></div>
-  <p class="how">Click a key, or click the figure and type. Sound reaches the phone&#x27;s two microphones at slightly different times; keys that give nearly the same difference light up, because one time difference narrows a key down to a curve, not a point.</p>
-  <canvas width="720" height="330" role="img" aria-label="A keyboard above a phone with two microphones; pressing a key shows its time difference of arrival and highlights other keys with nearly the same difference"></canvas>
+  <p class="how">Click a key, or click the figure and type. The sound reaches the phone&#x27;s two microphones a few microseconds apart. That one time difference places the key on a curve, not a point, so every key on the shaded band sounds the same to the timing step; the paper then tells those keys apart by their sound.</p>
+  <canvas width="720" height="340" role="img" aria-label="A keyboard above a phone with two microphones; the pressed key sends sound to both microphones, a shaded band marks every point with the same time difference, and a small timeline shows the two arrivals"></canvas>
   <div class="ctrl"></div>
   <p class="disc">A simplified model of the idea, for illustration. It does not reproduce the paper&#x27;s data or results.</p>
 </figure>
@@ -89,7 +90,7 @@
 <section>
 <h2 id="paper">Paper</h2>
 <ol class="pubs"><li><div class="pt">Snooping keystrokes with mm-level audio ranging on a single phone</div><div class="pa">J. Liu, Y. Wang, <b>G. Kar</b>, Y. Chen, J. Yang, M. Gruteser</div><div class="pv">ACM MobiCom, 2015</div><div class="pl"><a href="https://doi.org/10.1145/2789168.2790122">Paper</a></div></li></ol></section>
-<section class="related" aria-labelledby="related-h"><h2 id="related-h">More in side channels, applied AI and wireless</h2><div class="rgrid"><a class="rcard planned" href="planned-acoustic.html"><span class="kicker">Open project</span><span class="rt">Do earbuds, smart speakers and video calls leak what you type?</span><span class="ra" aria-hidden="true">→</span></a><a class="rcard planned" href="planned-rag.html"><span class="kicker">Open project</span><span class="rt">Attacking and defending a campus chatbot</span><span class="ra" aria-hidden="true">→</span></a><a class="rcard planned" href="planned-llmsoc.html"><span class="kicker">Open project</span><span class="rt">Can a language model help triage security alerts?</span><span class="ra" aria-hidden="true">→</span></a><a class="rcard" href="applied-ai.html"><span class="kicker">Published work</span><span class="rt">Explainable and applied AI</span><span class="ra" aria-hidden="true">→</span></a></div></section>
+<section class="related" aria-labelledby="related-h"><h2 id="related-h">More in side channels and applied AI</h2><div class="rgrid"><a class="rcard planned" href="planned-acoustic.html"><span class="kicker">Open project</span><span class="rt">Do earbuds, smart speakers and video calls leak what you type?</span><span class="ra" aria-hidden="true">→</span></a><a class="rcard planned" href="planned-rag.html"><span class="kicker">Open project</span><span class="rt">Attacking and defending a campus chatbot</span><span class="ra" aria-hidden="true">→</span></a><a class="rcard planned" href="planned-llmsoc.html"><span class="kicker">Open project</span><span class="rt">Can a language model help triage security alerts?</span><span class="ra" aria-hidden="true">→</span></a><a class="rcard" href="applied-ai.html"><span class="kicker">Published work</span><span class="rt">Explainable and applied AI</span><span class="ra" aria-hidden="true">→</span></a></div></section>
 <section><nav class="pnav" aria-label="More projects"><a href="iot-identity.html">← IoT device identity and network incidents</a><a href="applied-ai.html">Explainable and applied AI →</a></nav></section>
 </div>
 </div>
@@ -111,7 +112,7 @@
   <div class="wrap fbase"><span>© 2026 Gorkem Kar · Last updated November 2026</span><a href="#top">Back to top ↑</a></div>
 </footer>
 <a class="totop" href="#top" aria-label="Back to top"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-<script src="../site.js?v=20261125h"></script>
-<script src="../live.js?v=20261125h"></script>
+<script src="../site.js?v=20261125i"></script>
+<script src="../live.js?v=20261125i"></script>
 </body>
 </html>

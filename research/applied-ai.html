@@ -13,7 +13,7 @@
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 <meta name="theme-color" content="#1d4f91">
 <script>document.documentElement.classList.add('js');try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
-<link rel="stylesheet" href="../style.css?v=20261125h">
+<link rel="stylesheet" href="../style.css?v=20261125i">
 </head>
 <body class="proj" id="top">
 <a class="skip" href="#main">Skip to content</a>
@@ -47,10 +47,11 @@
 <div class="pgrid">
 <nav class="toc" aria-label="On this page"><span>On this page</span><ul><li><a href="#live-shap">Try it</a></li><li><a href="#explaining-the-model-not-just-scoring-it">Explaining the model, not just scoring it</a></li><li><a href="#open-research-questions">Open research questions</a></li><li><a href="#start-here">Start here</a></li></ul></nav>
 <div class="pcontent">
+<section class="brief" aria-label="In short"><div><h2>The question</h2><p>When a model makes a high-stakes call, such as flagging food fraud or predicting who will quit, can it show which inputs drove it?</p></div><div><h2>Why it matters</h2><p>Analysts and managers need reasons they can check, not a black-box score.</p></div><div><h2>What we found</h2><p>We compared LIME, SHAP and the What-If Tool on a food-fraud model, explained employee attrition, reviewed 68 crime-prediction studies and sorted Turkish scientific texts with 96% accuracy.</p></div></section>
 <figure class="live" data-demo="shap" aria-labelledby="live-shap">
   <div class="lhead"><h2 id="live-shap">Try it: Explain one prediction</h2><span class="kicker">Live illustration</span></div>
-  <p class="how">A toy attrition model with invented weights. Move the inputs and see how much each one pushes this employee&#x27;s predicted risk up (red) or down (blue). For a linear model like this one, these bars are exactly the SHAP values.</p>
-  <canvas width="720" height="260" role="img" aria-label="Horizontal bars showing how much each input raises or lowers one prediction, sorted by size, with the predicted risk below"></canvas>
+  <p class="how">A toy model of whether an employee will leave, with invented weights. Start from the average employee at the top; each input then moves the risk up (red) or down (blue) until you reach this employee at the bottom. Move the sliders and watch the steps change. For a simple model like this, the steps are exactly the SHAP values.</p>
+  <canvas width="720" height="320" role="img" aria-label="A waterfall chart: starting from the average risk, one step per input moves the predicted risk up or down, ending at this employee&#x27;s risk on a percentage axis"></canvas>
   <div class="ctrl"></div>
   <p class="disc">A simplified model of the idea, for illustration. It does not reproduce the paper&#x27;s data or results. The model and its weights are invented.</p>
 </figure>
@@ -91,7 +92,7 @@
 <p class="note">Writing it up? Follow the <a href="latex-overleaf.html">LaTeX and Overleaf guide</a> for templates, citations, figures and the checks to run before you submit.</p>
 </section>
 
-<section class="related" aria-labelledby="related-h"><h2 id="related-h">More in side channels, applied AI and wireless</h2><div class="rgrid"><a class="rcard planned" href="planned-acoustic.html"><span class="kicker">Open project</span><span class="rt">Do earbuds, smart speakers and video calls leak what you type?</span><span class="ra" aria-hidden="true">→</span></a><a class="rcard planned" href="planned-rag.html"><span class="kicker">Open project</span><span class="rt">Attacking and defending a campus chatbot</span><span class="ra" aria-hidden="true">→</span></a><a class="rcard planned" href="planned-llmsoc.html"><span class="kicker">Open project</span><span class="rt">Can a language model help triage security alerts?</span><span class="ra" aria-hidden="true">→</span></a><a class="rcard" href="side-channels.html"><span class="kicker">Published work</span><span class="rt">Acoustic side channels on phones</span><span class="ra" aria-hidden="true">→</span></a></div></section>
+<section class="related" aria-labelledby="related-h"><h2 id="related-h">More in side channels and applied AI</h2><div class="rgrid"><a class="rcard planned" href="planned-acoustic.html"><span class="kicker">Open project</span><span class="rt">Do earbuds, smart speakers and video calls leak what you type?</span><span class="ra" aria-hidden="true">→</span></a><a class="rcard planned" href="planned-rag.html"><span class="kicker">Open project</span><span class="rt">Attacking and defending a campus chatbot</span><span class="ra" aria-hidden="true">→</span></a><a class="rcard planned" href="planned-llmsoc.html"><span class="kicker">Open project</span><span class="rt">Can a language model help triage security alerts?</span><span class="ra" aria-hidden="true">→</span></a><a class="rcard" href="side-channels.html"><span class="kicker">Published work</span><span class="rt">Acoustic side channels on phones</span><span class="ra" aria-hidden="true">→</span></a></div></section>
 <section><nav class="pnav" aria-label="More projects"><a href="side-channels.html">← Acoustic side channels on phones</a><a href="wireless-ffr.html">Sharing spectrum fairly: fractional frequency reuse →</a></nav></section>
 </div>
 </div>
@@ -113,7 +114,7 @@
   <div class="wrap fbase"><span>© 2026 Gorkem Kar · Last updated November 2026</span><a href="#top">Back to top ↑</a></div>
 </footer>
 <a class="totop" href="#top" aria-label="Back to top"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-<script src="../site.js?v=20261125h"></script>
-<script src="../live.js?v=20261125h"></script>
+<script src="../site.js?v=20261125i"></script>
+<script src="../live.js?v=20261125i"></script>
 </body>
 </html>

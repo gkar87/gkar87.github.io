@@ -22,7 +22,7 @@
 </script>
 <meta name="theme-color" content="#1d4f91">
 <script>document.documentElement.classList.add('js');try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
-<link rel="stylesheet" href="style.css?v=20261125h">
+<link rel="stylesheet" href="style.css?v=20261125i">
 </head>
 <body class="home">
 <a class="skip" href="#main">Skip to content</a>
@@ -150,9 +150,9 @@
     <li>Edge computing</li>
   </ul>
 
-  <h3>Three directions</h3>
-  <div class="grid3">
-    <article class="dir d1 reveal">
+  <h3>Four directions</h3>
+  <div class="dirs">
+    <article class="dir d1 reveal" id="dir-1">
       <span class="num">01</span>
       <h3>Trustworthy edge AI for connected vehicles</h3>
       <p>Cars take in data from roadside units, other vehicles and the cloud, and each channel can be spoofed. Building on the GPS-interference detection from my dissertation and the in-vehicle signal analysis behind the GM patent, this direction catches spoofed, jammed or manipulated sensor and V2X data on hardware where latency and memory are tight.</p>
@@ -161,7 +161,7 @@
         <li><a href="research/planned-gnss.html">GNSS spoofing</a> · <a href="research/planned-can.html">in-vehicle network</a> · <a href="research/planned-v2x.html">V2X ghosts</a> · <a href="research/planned-vprivacy.html">location privacy</a> · <a href="research/planned-ev.html">EV charging</a></li>
       </ul>
     </article>
-    <article class="dir d2 reveal">
+    <article class="dir d2 reveal" id="dir-2">
       <span class="num">02</span>
       <h3>Lightweight and quantum-enhanced intrusion detection</h3>
       <p>Our hybrid quantum-classical network detects DDoS traffic and classifies Android malware in one framework. The question that matters is not whether a quantum circuit beats a classical one today, but whether hybrid and compressed models stay accurate inside the budget of an IoT gateway, and whether we can explain what they learned.</p>
@@ -170,7 +170,7 @@
         <li><a href="research/planned-quantum.html">Honest quantum benchmarks</a> · <a href="research/planned-tinyml.html">TinyML</a> · <a href="research/planned-xai.html">checkable explanations</a> · <a href="research/planned-federated.html">federated detection</a> · <a href="research/planned-adversarial.html">realistic evasion</a></li>
       </ul>
     </article>
-    <article class="dir d3 reveal">
+    <article class="dir d3 reveal" id="dir-3">
       <span class="num">03</span>
       <h3>Device identity and integrity in IoT</h3>
       <p>A network that cannot say which physical device sent a packet, or whether that device was tampered with, cannot defend itself. We identify devices from single packet headers and name network incidents with genetic-algorithm feature selection. Next is pairing traffic fingerprints with ledger-based attestation, cheaply enough for constrained devices.</p>
@@ -179,49 +179,43 @@
         <li><a href="research/planned-blockchain.html">Ledger identity</a> · <a href="research/planned-benchmark.html">leak-free benchmarks</a> · <a href="research/planned-encrypted.html">encrypted traffic</a> · <a href="research/planned-rf.html">radio fingerprints</a></li>
       </ul>
     </article>
+    <article class="dir d4 reveal" id="dir-4">
+      <span class="num">04</span>
+      <h3>Side channels and applied AI</h3>
+      <p>The same habit, reading a signal the system ignores, reaches past the three core lines. A phone's two microphones can tell which key was pressed. Explainable models show an analyst why a food-fraud or attrition prediction was made. My M.S. work on sharing spectrum between the center and the edge of a cell is the wireless foundation under all of it.</p>
+      <ul>
+        <li><a href="research/side-channels.html">Keystrokes by sound</a> · <a href="research/applied-ai.html">explainable applied AI</a> · <a href="research/wireless-ffr.html">fair spectrum sharing</a></li>
+        <li><a href="research/planned-acoustic.html">Keystrokes over calls</a> · <a href="research/planned-rag.html">chatbot security</a> · <a href="research/planned-llmsoc.html">alert triage with language models</a></li>
+      </ul>
+    </article>
   </div>
 
   <h3 id="map">Research map</h3>
-  <p class="muted">One thesis, four lines of work. Solid tiles are published work; dashed tiles are open projects for new students. Every tile opens a page with a live illustration.</p>
+  <p class="muted">One thesis, four lines of work. Each tile opens a page with a plain summary and a live illustration.</p>
   <div class="rmap reveal" data-f="all">
     <p class="rm-root">Behavioral signals in raw sensor and network data, read by models small enough to deploy, as trust anchors for safety-critical systems</p>
-    <div class="rm-filter" role="group" aria-label="Show tiles"><button type="button" class="on" aria-pressed="true" data-f="all">All</button><button type="button" aria-pressed="false" data-f="pub">Published</button><button type="button" aria-pressed="false" data-f="plan">Planned</button></div>
+    <div class="rm-bar">
+      <div class="rm-filter" role="group" aria-label="Show tiles"><button type="button" class="on" aria-pressed="true" data-f="all">All</button><button type="button" aria-pressed="false" data-f="pub">Published</button><button type="button" aria-pressed="false" data-f="plan">Planned</button></div>
+      <p class="rm-key"><span><i class="p"></i>Published work</span><span><i class="o"></i>Open project for students</span></p>
+    </div>
     <div class="rm-cols">
-      <div class="rm-col d1"><h4><span>01</span> Connected vehicles</h4><ul>
-        <li><a class="pub" href="research/vehicles.html">GPS jammers, driver ID, edge traffic</a></li>
-        <li><a class="pub" href="research/perception.html">Seeing past line of sight</a></li>
-        <li><a class="pub" href="research/driver-behavior.html">Scoring and coaching drivers</a></li>
-        <li><a class="plan" href="research/planned-gnss.html">GNSS spoofing</a></li>
-        <li><a class="plan" href="research/planned-can.html">In-vehicle intrusions</a></li>
-        <li><a class="plan" href="research/planned-v2x.html">Ghost vehicles in V2X</a></li>
-        <li><a class="plan" href="research/planned-vprivacy.html">Location privacy</a></li>
-        <li><a class="plan" href="research/planned-ev.html">EV charging security</a></li>
-      </ul></div>
-      <div class="rm-col d2"><h4><span>02</span> Lightweight and quantum detection</h4><ul>
-        <li><a class="pub" href="research/quantum-ids.html">Hybrid quantum IDS</a></li>
-        <li><a class="pub" href="research/quantum-spectra.html">Quantum ML for spectra</a></li>
-        <li><a class="plan" href="research/planned-quantum.html">Honest quantum benchmarks</a></li>
-        <li><a class="plan" href="research/planned-tinyml.html">Detection on the device</a></li>
-        <li><a class="plan" href="research/planned-xai.html">Explanations you can check</a></li>
-        <li><a class="plan" href="research/planned-federated.html">Federated detection</a></li>
-        <li><a class="plan" href="research/planned-adversarial.html">Realistic evasion attacks</a></li>
-      </ul></div>
-      <div class="rm-col d3"><h4><span>03</span> Device identity and integrity</h4><ul>
-        <li><a class="pub" href="research/iot-identity.html">Device fingerprints, incidents</a></li>
-        <li><a class="plan" href="research/planned-benchmark.html">Leak-free benchmarks</a></li>
-        <li><a class="plan" href="research/planned-encrypted.html">Encrypted traffic</a></li>
-        <li><a class="plan" href="research/planned-blockchain.html">Ledger identity</a></li>
-        <li><a class="plan" href="research/planned-pqc.html">Post-quantum IoT</a></li>
-        <li><a class="plan" href="research/planned-rf.html">Radio fingerprints</a></li>
-      </ul></div>
-      <div class="rm-col d4"><h4><span>+</span> Side channels, applied AI, wireless</h4><ul>
-        <li><a class="pub" href="research/side-channels.html">Keystrokes by sound</a></li>
-        <li><a class="pub" href="research/applied-ai.html">Explainable applied AI</a></li>
-        <li><a class="pub" href="research/wireless-ffr.html">Fair spectrum sharing</a></li>
-        <li><a class="plan" href="research/planned-acoustic.html">Keystrokes over calls</a></li>
-        <li><a class="plan" href="research/planned-rag.html">Chatbot security</a></li>
-        <li><a class="plan" href="research/planned-llmsoc.html">Alert triage with LLMs</a></li>
-      </ul></div>
+      <div class="rm-col d1"><h4><span>01</span><a href="#dir-1">Connected vehicles</a></h4><p class="rm-n">3 published · 5 open</p>
+        <ul><li><a class="pub" href="research/vehicles.html">GPS jammers, driver ID, edge traffic</a></li><li><a class="pub" href="research/perception.html">Seeing past line of sight</a></li><li><a class="pub" href="research/driver-behavior.html">Scoring and coaching drivers</a></li><li><a class="plan" href="research/planned-gnss.html">GNSS spoofing</a></li><li><a class="plan" href="research/planned-can.html">In-vehicle intrusions</a></li><li><a class="plan" href="research/planned-v2x.html">Ghost vehicles in V2X</a></li><li><a class="plan" href="research/planned-vprivacy.html">Location privacy</a></li><li><a class="plan" href="research/planned-ev.html">EV charging security</a></li></ul>
+      </div>
+      <div class="rm-col d2"><h4><span>02</span><a href="#dir-2">Lightweight and quantum detection</a></h4><p class="rm-n">2 published · 5 open</p>
+        <ul><li><a class="pub" href="research/quantum-ids.html">Hybrid quantum IDS</a></li><li><a class="pub" href="research/quantum-spectra.html">Quantum ML for spectra</a></li><li><a class="plan" href="research/planned-quantum.html">Honest quantum benchmarks</a></li><li><a class="plan" href="research/planned-tinyml.html">Detection on the device</a></li><li><a class="plan" href="research/planned-xai.html">Explanations you can check</a></li><li><a class="plan" href="research/planned-federated.html">Federated detection</a></li><li><a class="plan" href="research/planned-adversarial.html">Realistic evasion attacks</a></li></ul>
+      </div>
+      <div class="rm-col d3"><h4><span>03</span><a href="#dir-3">Device identity and integrity</a></h4><p class="rm-n">1 published · 5 open</p>
+        <ul><li><a class="pub" href="research/iot-identity.html">Device fingerprints, incidents</a></li><li><a class="plan" href="research/planned-benchmark.html">Leak-free benchmarks</a></li><li><a class="plan" href="research/planned-encrypted.html">Encrypted traffic</a></li><li><a class="plan" href="research/planned-blockchain.html">Ledger identity</a></li><li><a class="plan" href="research/planned-pqc.html">Post-quantum IoT</a></li><li><a class="plan" href="research/planned-rf.html">Radio fingerprints</a></li></ul>
+      </div>
+      <div class="rm-col d4"><h4><span>04</span><a href="#dir-4">Side channels and applied AI</a></h4><p class="rm-n">3 published · 3 open</p>
+        <p class="rm-sub">Acoustic side channels</p>
+        <ul><li><a class="pub" href="research/side-channels.html">Keystrokes by sound</a></li><li><a class="plan" href="research/planned-acoustic.html">Keystrokes over calls</a></li></ul>
+        <p class="rm-sub">Applied AI and language models</p>
+        <ul><li><a class="pub" href="research/applied-ai.html">Explainable applied AI</a></li><li><a class="plan" href="research/planned-rag.html">Chatbot security</a></li><li><a class="plan" href="research/planned-llmsoc.html">Alert triage with LLMs</a></li></ul>
+        <p class="rm-sub">Wireless foundations</p>
+        <ul><li><a class="pub" href="research/wireless-ffr.html">Fair spectrum sharing</a></li></ul>
+      </div>
     </div>
   </div>
 
@@ -818,6 +812,6 @@
   <div class="wrap fbase"><span>© 2026 Gorkem Kar · Last updated November 2026</span><a href="#top">Back to top ↑</a></div>
 </footer>
 <a class="totop" href="#top" aria-label="Back to top"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-<script src="site.js?v=20261125h"></script>
+<script src="site.js?v=20261125i"></script>
 </body>
 </html>

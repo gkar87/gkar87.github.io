@@ -13,7 +13,7 @@
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 <meta name="theme-color" content="#1d4f91">
 <script>document.documentElement.classList.add('js');try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
-<link rel="stylesheet" href="../style.css?v=20261125h">
+<link rel="stylesheet" href="../style.css?v=20261125i">
 </head>
 <body class="proj" id="top">
 <a class="skip" href="#main">Skip to content</a>
@@ -47,12 +47,13 @@
 <div class="pgrid">
 <nav class="toc" aria-label="On this page"><span>On this page</span><ul><li><a href="#live-rate">Try it</a></li><li><a href="#why-this-matters">Why this matters</a></li><li><a href="#research-questions">Research questions</a></li><li><a href="#approach">Approach</a></li><li><a href="#start-here">Start here</a></li><li><a href="#skills-you-will-use-and-learn">Skills you will use and learn</a></li><li><a href="#papers-to-read-first">Papers to read first</a></li><li><a href="#interested">Interested?</a></li></ul></nav>
 <div class="pcontent">
+<section class="brief" aria-label="In short"><div><h2>The question</h2><p>Do earbuds, smart speakers and video calls leak what you type, the way a phone did in our 2015 attack?</p></div><div><h2>Why it matters</h2><p>People type passwords during calls every day, surrounded by more microphones than ever.</p></div><div><h2>How we will test it</h2><p>Record the same typing through each device and app, run a timing attack and a deep-learning attack, and switch each audio-processing stage on and off to see which one removes the leak.</p></div></section>
 <figure class="live" data-demo="rate" aria-labelledby="live-rate">
-  <div class="lhead"><h2 id="live-rate">Try it: How much detail does the audio keep?</h2><span class="kicker">Live illustration</span></div>
-  <p class="how">Each audio sample is a fixed slice of time, so it covers a fixed distance of sound travel. Pick a sample rate to see how many samples fit across one key, and how many distinct time differences two microphones can resolve.</p>
-  <canvas width="720" height="270" role="img" aria-label="A row of keys with tick marks for one audio sample of path difference, with samples per key and distinct time differences"></canvas>
+  <div class="lhead"><h2 id="live-rate">Try it: What survives the audio pipeline?</h2><span class="kicker">Live illustration</span></div>
+  <p class="how">A keystroke gives an attacker two clues: when its sound reaches each microphone (where the key is) and what it sounds like (which key it is). Pick how the audio is captured and see which clues are left. Fewer samples per second blur the timing, mono audio erases it, and noise suppression and a narrow band strip the sound.</p>
+  <canvas width="720" height="350" role="img" aria-label="Two microphone waveforms of one keystroke sampled at the chosen rate, a spectrum showing how much of the keystroke sound is kept, and a row of keys marking the timing resolution"></canvas>
   <div class="ctrl"></div>
-  <p class="disc">A simplified model of the idea, for illustration. This project has not started; there are no results yet. Real attacks refine timing below one sample.</p>
+  <p class="disc">A simplified model of the idea, for illustration. This project has not started; there are no results yet. The keystroke waveform and spectrum are invented; real attacks refine timing below one sample.</p>
 </figure>
 
 <section>
@@ -95,7 +96,7 @@
 <h2 id="interested">Interested?</h2>
 <p>This project is planned and not yet staffed. If you are a UCM graduate student, or joining UCM soon, and it fits your interests, email me at <a href="mailto:kar@ucmo.edu">kar@ucmo.edu</a> with your CV, the project's name and a few lines on which research question you would start with. Reading two of the papers on this page first will make that conversation much better.</p>
 </section>
-<section class="related" aria-labelledby="related-h"><h2 id="related-h">More in side channels, applied AI and wireless</h2><div class="rgrid"><a class="rcard" href="side-channels.html"><span class="kicker">Published work</span><span class="rt">Acoustic side channels on phones</span><span class="ra" aria-hidden="true">→</span></a><a class="rcard" href="applied-ai.html"><span class="kicker">Published work</span><span class="rt">Explainable and applied AI</span><span class="ra" aria-hidden="true">→</span></a><a class="rcard" href="wireless-ffr.html"><span class="kicker">Published work</span><span class="rt">Sharing spectrum fairly: fractional frequency reuse</span><span class="ra" aria-hidden="true">→</span></a><a class="rcard planned" href="planned-rag.html"><span class="kicker">Open project</span><span class="rt">Attacking and defending a campus chatbot</span><span class="ra" aria-hidden="true">→</span></a></div></section>
+<section class="related" aria-labelledby="related-h"><h2 id="related-h">More in side channels and applied AI</h2><div class="rgrid"><a class="rcard" href="side-channels.html"><span class="kicker">Published work</span><span class="rt">Acoustic side channels on phones</span><span class="ra" aria-hidden="true">→</span></a><a class="rcard" href="applied-ai.html"><span class="kicker">Published work</span><span class="rt">Explainable and applied AI</span><span class="ra" aria-hidden="true">→</span></a><a class="rcard" href="wireless-ffr.html"><span class="kicker">Published work</span><span class="rt">Sharing spectrum fairly: fractional frequency reuse</span><span class="ra" aria-hidden="true">→</span></a><a class="rcard planned" href="planned-rag.html"><span class="kicker">Open project</span><span class="rt">Attacking and defending a campus chatbot</span><span class="ra" aria-hidden="true">→</span></a></div></section>
 <section><nav class="pnav" aria-label="More projects"><a href="planned-can.html">← Spotting intruders on the car's internal network</a><a href="planned-encrypted.html">Naming the app without reading the traffic →</a></nav></section>
 </div>
 </div>
@@ -117,7 +118,7 @@
   <div class="wrap fbase"><span>© 2026 Gorkem Kar · Last updated November 2026</span><a href="#top">Back to top ↑</a></div>
 </footer>
 <a class="totop" href="#top" aria-label="Back to top"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-<script src="../site.js?v=20261125h"></script>
-<script src="../live.js?v=20261125h"></script>
+<script src="../site.js?v=20261125i"></script>
+<script src="../live.js?v=20261125i"></script>
 </body>
 </html>
