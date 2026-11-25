@@ -22,7 +22,7 @@
 </script>
 <meta name="theme-color" content="#1d4f91">
 <script>document.documentElement.classList.add('js');try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
-<link rel="stylesheet" href="style.css?v=20261125k">
+<link rel="stylesheet" href="style.css?v=20261125l">
 </head>
 <body class="home">
 <a class="skip" href="#main">Skip to content</a>
@@ -151,42 +151,67 @@
   </ul>
 
   <h3>Four directions</h3>
+  <p class="dirs-intro">Each direction below says what it studies, the questions it asks, why it matters, and how the published work leads into the open projects for new students.</p>
   <div class="dirs">
     <article class="dir d1 reveal" id="dir-1">
       <span class="num">01</span>
       <h3>Trustworthy edge AI for connected vehicles</h3>
-      <p>Cars take in data from roadside units, other vehicles and the cloud, and each channel can be spoofed. Building on the GPS-interference detection from my dissertation and the in-vehicle signal analysis behind the GM patent, this direction catches spoofed, jammed or manipulated sensor and V2X data on hardware where latency and memory are tight.</p>
-      <ul>
-        <li><a href="research/vehicles.html">Sensing, identity and trust</a> · <a href="research/perception.html">extended vision</a> · <a href="research/driver-behavior.html">driver scoring</a></li>
-        <li><a href="research/planned-gnss.html">GNSS spoofing</a> · <a href="research/planned-can.html">in-vehicle network</a> · <a href="research/planned-v2x.html">V2X ghosts</a> · <a href="research/planned-vprivacy.html">location privacy</a> · <a href="research/planned-ev.html">EV charging</a></li>
-      </ul>
+      <p class="what">Making the data a car acts on, from GPS, its own sensors, its internal network and messages from other vehicles, trustworthy enough to rely on, with models small enough to run in the car or at the roadside.</p>
+      <h4>Core questions</h4>
+      <ul class="qs"><li>Can a car tell that a GPS fix, a sensor reading or a message from another vehicle is false by checking it against its own motion?</li><li>What can in-vehicle data say about who is driving and how they drive?</li><li>Which of these checks are cheap and fast enough to run on vehicle or roadside hardware?</li></ul>
+      <h4>Why it matters</h4>
+      <p>Cars increasingly act on data they cannot verify. A spoofed position or a vehicle that is not there is a safety problem, not only a privacy one.</p>
+      <h4>How the projects connect</h4>
+      <p>The published work caught GPS jammers from roadside points, identified drivers from how they start the car (related to our U.S. patent with GM), and extended what a car can see. The open projects carry the same checks to spoofed satellite signals, the car's internal network, vehicle-to-vehicle messages, location privacy and EV charging.</p>
+      <div class="path">
+        <div class="row"><span class="lab">Published</span><a class="pub" href="research/vehicles.html">GPS jammers and driver ID</a><a class="pub" href="research/perception.html">Seeing past line of sight</a><a class="pub" href="research/driver-behavior.html">Driver scoring</a></div>
+        <div class="row"><span class="lab">Open</span><a class="plan" href="research/planned-gnss.html">GNSS spoofing</a><a class="plan" href="research/planned-can.html">In-vehicle intrusions</a><a class="plan" href="research/planned-v2x.html">Ghost vehicles</a><a class="plan" href="research/planned-vprivacy.html">Location privacy</a><a class="plan" href="research/planned-ev.html">EV charging</a></div>
+      </div>
     </article>
     <article class="dir d2 reveal" id="dir-2">
       <span class="num">02</span>
       <h3>Lightweight and quantum-enhanced intrusion detection</h3>
-      <p>Our hybrid quantum-classical network detects DDoS traffic and classifies Android malware in one framework. The question that matters is not whether a quantum circuit beats a classical one today, but whether hybrid and compressed models stay accurate inside the budget of an IoT gateway, and whether we can explain what they learned.</p>
-      <ul>
-        <li><a href="research/quantum-ids.html">Hybrid quantum-classical detection</a> · <a href="research/quantum-spectra.html">quantum spectroscopy</a></li>
-        <li><a href="research/planned-quantum.html">Honest quantum benchmarks</a> · <a href="research/planned-tinyml.html">TinyML</a> · <a href="research/planned-xai.html">checkable explanations</a> · <a href="research/planned-federated.html">federated detection</a> · <a href="research/planned-adversarial.html">realistic evasion</a></li>
-      </ul>
+      <p class="what">Detecting attacks and malware with models that fit the budget of a gateway or a small device, and testing honestly whether a quantum layer adds anything.</p>
+      <h4>Core questions</h4>
+      <ul class="qs"><li>Does a hybrid quantum-classical detector beat a fair classical model of the same size, in simulation and on real quantum hardware?</li><li>How small can a detector become, compressed or trained across many sites, before its accuracy falls?</li><li>Can an analyst check why a detector fired, and does it hold up against realistic evasion?</li></ul>
+      <h4>Why it matters</h4>
+      <p>Most IoT networks cannot send all their traffic to a large server, so detection has to run close to the devices. And a claim that quantum helps is only worth making against a fair baseline.</p>
+      <h4>How the projects connect</h4>
+      <p>Our hybrid network detects DDoS traffic and classifies Android malware in one framework, and the same quantum circuits classify Raman spectra. The open projects test those models fairly, shrink them for devices, spread training across sites, explain their decisions and attack them.</p>
+      <div class="path">
+        <div class="row"><span class="lab">Published</span><a class="pub" href="research/quantum-ids.html">Hybrid quantum IDS</a><a class="pub" href="research/quantum-spectra.html">Quantum ML for spectra</a></div>
+        <div class="row"><span class="lab">Open</span><a class="plan" href="research/planned-quantum.html">Fair quantum benchmarks</a><a class="plan" href="research/planned-tinyml.html">On-device detection</a><a class="plan" href="research/planned-federated.html">Federated detection</a><a class="plan" href="research/planned-xai.html">Checkable explanations</a><a class="plan" href="research/planned-adversarial.html">Realistic evasion</a></div>
+      </div>
     </article>
     <article class="dir d3 reveal" id="dir-3">
       <span class="num">03</span>
       <h3>Device identity and integrity in IoT</h3>
-      <p>A network that cannot say which physical device sent a packet, or whether that device was tampered with, cannot defend itself. We identify devices from single packet headers and name network incidents with genetic-algorithm feature selection. Next is pairing traffic fingerprints with ledger-based attestation, cheaply enough for constrained devices.</p>
-      <ul>
-        <li><a href="research/iot-identity.html">Device identity and incidents</a></li>
-        <li><a href="research/planned-blockchain.html">Ledger identity</a> · <a href="research/planned-benchmark.html">leak-free benchmarks</a> · <a href="research/planned-encrypted.html">encrypted traffic</a> · <a href="research/planned-rf.html">radio fingerprints</a></li>
-      </ul>
+      <p class="what">Knowing which physical device sent each packet, and whether that device is still the one it claims to be.</p>
+      <h4>Core questions</h4>
+      <ul class="qs"><li>How much of a device's identity sits in a single packet's headers, or in the sizes and timing of encrypted traffic?</li><li>Are the accuracies reported for traffic classifiers real, or inflated by shortcuts in the benchmark data?</li><li>Can a device's fingerprint be tied to a tamper-evident record cheaply enough for small devices, and stay secure against future quantum attacks?</li></ul>
+      <h4>Why it matters</h4>
+      <p>Access rules, patching and incident response all assume a network knows what is connected to it. Without that, every other defense is guessing.</p>
+      <h4>How the projects connect</h4>
+      <p>We identified 95.3% of devices from a single packet and named network incidents with genetic-algorithm feature selection. The open projects check those results on leak-free benchmarks, move to encrypted traffic and radio signals, and anchor identity in a ledger with post-quantum protection.</p>
+      <div class="path">
+        <div class="row"><span class="lab">Published</span><a class="pub" href="research/iot-identity.html">Device fingerprints and incidents</a></div>
+        <div class="row"><span class="lab">Open</span><a class="plan" href="research/planned-benchmark.html">Leak-free benchmarks</a><a class="plan" href="research/planned-encrypted.html">Encrypted traffic</a><a class="plan" href="research/planned-rf.html">Radio fingerprints</a><a class="plan" href="research/planned-blockchain.html">Ledger identity</a><a class="plan" href="research/planned-pqc.html">Post-quantum IoT</a></div>
+      </div>
     </article>
     <article class="dir d4 reveal" id="dir-4">
       <span class="num">04</span>
       <h3>Side channels and applied AI</h3>
-      <p>The same habit, reading a signal the system ignores, reaches past the three core lines. A phone's two microphones can tell which key was pressed. Explainable models show an analyst why a food-fraud or attrition prediction was made. My M.S. work on sharing spectrum between the center and the edge of a cell is the wireless foundation under all of it.</p>
-      <ul>
-        <li><a href="research/side-channels.html">Keystrokes by sound</a> · <a href="research/applied-ai.html">explainable applied AI</a> · <a href="research/wireless-ffr.html">fair spectrum sharing</a></li>
-        <li><a href="research/planned-acoustic.html">Keystrokes over calls</a> · <a href="research/planned-rag.html">chatbot security</a> · <a href="research/planned-llmsoc.html">alert triage with language models</a></li>
-      </ul>
+      <p class="what">The same habit, reading a signal a system ignores, applied beyond the three core lines: the sound of a keyboard, the reasons behind a model's prediction, and the radio spectrum a cell shares.</p>
+      <h4>Core questions</h4>
+      <ul class="qs"><li>What does everyday audio, from a phone, earbuds or a video call, reveal about what you type?</li><li>When a model makes a high-stakes call, can it show which inputs drove it, and can a chatbot or triage model be trusted with the text it retrieves?</li><li>How should a cell split its spectrum between users near the tower and users at the edge?</li></ul>
+      <h4>Why it matters</h4>
+      <p>Leaks often come from parts of a system nobody treats as security-relevant, and people act on model outputs they cannot inspect.</p>
+      <h4>How the projects connect</h4>
+      <p>A phone's two microphones recovered keystrokes in our MobiCom paper, explainable models showed why food-fraud and attrition predictions were made, and my M.S. thesis balanced speed and fairness in shared spectrum. The open projects test keystroke leaks over calls and the security of chatbots and language-model alert triage.</p>
+      <div class="path">
+        <div class="row"><span class="lab">Published</span><a class="pub" href="research/side-channels.html">Keystrokes by sound</a><a class="pub" href="research/applied-ai.html">Explainable applied AI</a><a class="pub" href="research/wireless-ffr.html">Fair spectrum sharing</a></div>
+        <div class="row"><span class="lab">Open</span><a class="plan" href="research/planned-acoustic.html">Keystrokes over calls</a><a class="plan" href="research/planned-rag.html">Chatbot security</a><a class="plan" href="research/planned-llmsoc.html">Alert triage with LLMs</a></div>
+      </div>
     </article>
   </div>
 
@@ -812,6 +837,6 @@
   <div class="wrap fbase"><span>© 2026 Gorkem Kar · Last updated November 2026</span><a href="#top">Back to top ↑</a></div>
 </footer>
 <a class="totop" href="#top" aria-label="Back to top"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-<script src="site.js?v=20261125k"></script>
+<script src="site.js?v=20261125l"></script>
 </body>
 </html>

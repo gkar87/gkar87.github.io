@@ -38,8 +38,18 @@
   function loop(demo, ctrl) {
     let on = !reduce, raf = 0, vis = true, inView = true;
     const b = button(ctrl, on ? 'Pause' : 'Play', () => { on = !on; b.textContent = on ? 'Pause' : 'Play'; kick(); });
-    const tick = () => { raf = 0; if (!on || !vis) return; demo.step(); demo.draw(); raf = requestAnimationFrame(tick); };
-    const kick = () => { if (!raf && on && vis) raf = requestAnimationFrame(tick); };
+    // steps run on a clock, not per screen frame, so a 120 Hz screen does not play twice as fast;
+    // demo.speed (default 1) sets steps per second as a share of 60
+    let last = 0, acc = 0;
+    const tick = ts => {
+      raf = 0; if (!on || !vis) { last = 0; return; }
+      const hz = 60 * (demo.speed || 1);
+      if (last) acc += Math.min(.1, (ts - last) / 1000); last = ts;
+      let n = 0; while (acc >= 1 / hz && n < 4) { demo.step(); acc -= 1 / hz; n++; }
+      if (n) demo.draw();
+      raf = requestAnimationFrame(tick);
+    };
+    const kick = () => { if (!raf && on && vis) { last = 0; raf = requestAnimationFrame(tick); } };
     const sync = () => { vis = inView && !document.hidden; kick(); };
     if ('IntersectionObserver' in window) new IntersectionObserver(es => { inView = es[0].isIntersecting; sync(); }).observe(demo.cv);
     document.addEventListener('visibilitychange', sync);
@@ -58,14 +68,14 @@
     const A = 200, B = 540, ZONE = 70, lanes = [110, 150, 190];
     let cars = [], jam = 0, seenA = null, seenB = null, n = 10, rings = 0;
     const reset = () => {
-      cars = Array.from({ length: n }, (_, i) => ({ id: i + 1, x: rnd(-200, W - 60), lane: i % 3, v: rnd(.7, 1.7) }));
+      cars = Array.from({ length: n }, (_, i) => ({ id: i + 1, x: rnd(-200, W - 60), lane: i % 3, v: rnd(.45, 1.05) }));
       jam = Math.floor(Math.random() * n); cars[jam].x = rnd(-120, 40); seenA = seenB = null;
     };
     const inView = cp => cars.filter(c => Math.abs(c.x - cp) < ZONE).map(c => c.id);
     const demo = {
       cv: D.cv,
       step() {
-        rings = (rings + 1) % 60;
+        rings = (rings + 1) % 100;
         for (const c of cars) { c.x += c.v; if (c.x > W + 40) { c.x = -60; if (c === cars[jam]) { seenA = seenB = null; } } }
         const j = cars[jam];
         if (!seenA && Math.abs(j.x - A) < 8) seenA = inView(A);
@@ -88,7 +98,7 @@
           const y = lanes[c.lane], isJ = c === cars[jam];
           if (isJ) {
             ctx.strokeStyle = C.b;
-            for (const k of [0, 20, 40]) { const r = ((rings + k) % 60) / 60; ctx.globalAlpha = 1 - r; ctx.beginPath(); ctx.arc(c.x, y, 10 + r * 60, 0, 7); ctx.stroke(); }
+            for (const k of [0, 33, 66]) { const r = ((rings + k) % 100) / 100; ctx.globalAlpha = 1 - r; ctx.beginPath(); ctx.arc(c.x, y, 10 + r * 60, 0, 7); ctx.stroke(); }
             ctx.globalAlpha = 1;
           }
           rr(ctx, c.x - 20, y - 11, 40, 22, 6); ctx.fillStyle = C.bg; ctx.fill(); ctx.strokeStyle = C.mu; ctx.lineWidth = 1.5; ctx.stroke();
@@ -196,9 +206,10 @@
         out.textContent = `Key ${sel.k}: ${d1f(sel).toFixed(0)} mm to mic 1 and ${d2f(sel).toFixed(0)} mm to mic 2, so the sound reaches mic ${usx < 0 ? 1 : 2} first by ${Math.abs(usx).toFixed(0)} µs. ` +
           (same.length ? `Keys with nearly the same difference: ${same.map(k => k.k).join(' ')}.` : 'No other key has nearly the same difference.');
       },
-      step() { t = Math.min(1, t + .025); }
+      step() { t = Math.min(1, (performance.now() - t0) / 1100); }
     };
-    const press = k => { sel = k; t = 0; animate(); };
+    let t0 = 0;
+    const press = k => { sel = k; t = 0; t0 = performance.now(); animate(); };
     let raf = 0;
     const animate = () => { if (reduce) { t = 1; demo.draw(); return; } cancelAnimationFrame(raf); const f = () => { demo.step(); demo.draw(); if (t < 1) raf = requestAnimationFrame(f); }; f(); };
     D.cv.tabIndex = 0;
@@ -306,7 +317,7 @@
     button(D.ctrl, 'Measure 200 shots', () => {
       const p1 = Math.sin((Math.PI * x + phi) / 2) ** 2; let k = 0; for (let i = 0; i < 200; i++) if (Math.random() < p1) k++;
       shots = { n: 200, k }; anim = reduce ? 1 : 0;
-      const f = () => { anim += .05; demo.draw(); if (anim < 1) requestAnimationFrame(f); }; f();
+      const a0 = performance.now(), f = () => { anim = reduce ? 1 : Math.min(1, (performance.now() - a0) / 900); demo.draw(); if (anim < 1) requestAnimationFrame(f); }; f();
     });
     const out = readout(D.ctrl);
     demo.draw();
@@ -412,6 +423,7 @@
           (alarm ? 'Alarm raised.' : 'No alarm.') + (falseAlarm ? ` False alarms so far: ${falseAlarm}.` : '');
       }
     };
+    demo.speed = 0.6;   // calm, readable pace
     loop(demo, D.ctrl);
     const sb = button(D.ctrl, 'Start spoofing', () => { spoof = !spoof; if (!spoof) drift = 0; sb.textContent = spoof ? 'Stop spoofing' : 'Start spoofing'; sb.classList.toggle('on', spoof); demo.draw(); });
     slider(D.ctrl, 'Spoofer pull', .05, .8, .05, rate, v => { rate = v; });
@@ -461,6 +473,7 @@
       last[id] = now; total++; if (bad) flagged++;
       frames.push({ id, t: now, bad, injected });
     }
+    demo.speed = 0.45;   // calm, readable pace
     loop(demo, D.ctrl);
     const ib = button(D.ctrl, 'Plug in an injector', () => { inject = !inject; ib.textContent = inject ? 'Unplug the injector' : 'Plug in an injector'; ib.classList.toggle('on', inject); });
     button(D.ctrl, 'Reset counts', () => { flagged = total = 0; demo.draw(); });
@@ -604,6 +617,7 @@
         out.textContent = `${cur >= N ? 'Trip over' : 'Driving'}: ${ev.length} harsh event${ev.length === 1 ? '' : 's'}, score ${score}`;
       }
     };
+    demo.speed = 0.5;   // calm, readable pace
     const L = loop(demo, D.ctrl);
     button(D.ctrl, 'New trip', () => { trip(); demo.draw(); L.kick(); });
     slider(D.ctrl, 'Driving style: calm to aggressive', 0, 1, .05, style, v => { style = v; trip(); demo.draw(); L.kick(); });
@@ -666,7 +680,7 @@
     const out = readout(D.ctrl);
     make(); demo.draw();
     // slow the sweep to a readable pace
-    const st = demo.step; let t = 0; demo.step = () => { if (++t % 8 === 0) st(); };
+    const st = demo.step; let t = 0; demo.step = () => { if (++t % 22 === 0) st(); };
     L.kick();
     return demo;
   };
@@ -799,8 +813,8 @@
     const lane = [120, 165, 210], CAM = [330, 520], RADAR = 170;
     let cars = [], ego, ghost, crude = true, chk = { phys: true, cam: true, radar: false }, t = 0, flags = new Set(), lastG = null;
     const reset = () => {
-      ego = { x: 60, l: 1, v: 1.6 };
-      cars = [{ x: 260, l: 0, v: 1.9 }, { x: 480, l: 2, v: 1.3 }, { x: 640, l: 0, v: 1.5 }];
+      ego = { x: 60, l: 1, v: 1 };
+      cars = [{ x: 260, l: 0, v: 1.15 }, { x: 480, l: 2, v: .8 }, { x: 640, l: 0, v: .95 }];
       ghost = { off: 230 }; flags = new Set(); lastG = null; t = 0;
     };
     const wrap = x => ((x % (W + 80)) + W + 80) % (W + 80) - 40;
@@ -808,7 +822,7 @@
       cv: D.cv,
       step() {
         t++; ego.x = wrap(ego.x + ego.v); for (const c of cars) c.x = wrap(c.x + c.v);
-        ghost.off = Math.max(60, 230 - (t % 400) * .45);                   // claims to brake hard in front of you
+        ghost.off = Math.max(60, 230 - (t % 560) * .32);                   // claims to brake hard in front of you
         if (crude && t % 50 === 0) ghost.jump = (Math.random() < .5 ? -1 : 1) * rnd(60, 110);
         if (!crude || t % 50 === 6) ghost.jump = 0;
         const rel = ghost.off + (ghost.jump || 0), gx = wrap(ego.x + rel);            // reported position, relative to you
@@ -816,7 +830,7 @@
         if (chk.cam && gx > CAM[0] && gx < CAM[1]) flags.add('roadside camera');
         if (chk.radar && rel < RADAR) flags.add('your radar');
         lastG = rel; ghost.x = gx;
-        if (t % 400 === 0) { flags = new Set(); lastG = null; }
+        if (t % 560 === 0) { flags = new Set(); lastG = null; }
       },
       draw() {
         ctx.clearRect(0, 0, W, H);
@@ -1325,7 +1339,7 @@
     let tick = 0;
     const demo = {
       cv: D.cv,
-      step() { if (++tick % 24 === 0) { if (rnd0 >= MAXR) reset(); else round(); } },
+      step() { if (++tick % 48 === 0) { if (rnd0 >= MAXR) reset(); else round(); } },
       draw() {
         ctx.clearRect(0, 0, W, H);
         rr(ctx, PX[0], PY[0], PX[1] - PX[0], PY[1] - PY[0], 8); ctx.fillStyle = C.soft; ctx.fill();
@@ -1402,7 +1416,7 @@
     const run = () => {
       p = X0P.slice(); path = [p.slice()]; state = 'running';
       if (reduce) { while (state === 'running') stepOnce(); demo.draw(); return; }
-      const t = () => { raf = 0; for (let k = 0; k < 2 && state === 'running'; k++) stepOnce(); demo.draw(); if (state === 'running') raf = requestAnimationFrame(t); };
+      let lt = 0; const t = ts => { raf = 0; if (ts - lt >= 40) { lt = ts; stepOnce(); demo.draw(); } if (state === 'running') raf = requestAnimationFrame(t); };
       if (!raf) raf = requestAnimationFrame(t);
     };
     const demo = {
