@@ -165,7 +165,7 @@
         const [sx, sy] = px(sel.x, sel.y);
         for (const [m, name] of [[m1, 'mic 1'], [m2, 'mic 2']]) {
           const [x, y] = px(m.x, m.y);
-          ctx.strokeStyle = C.b; ctx.setLineDash([4, 4]); ctx.lineWidth = 1.4; ctx.beginPath(); ctx.moveTo(sx, sy); ctx.lineTo(x, y); ctx.stroke(); ctx.setLineDash([]);
+          ctx.strokeStyle = C.b; ctx.setLineDash([4, 4]); ctx.lineWidth = 1.4; ctx.beginPath(); ctx.moveTo(sx, sy + (P / 2 - 1) * S); ctx.lineTo(x, y); ctx.stroke(); ctx.setLineDash([]);
           ctx.fillStyle = C.a; ctx.beginPath(); ctx.arc(x, y, 6, 0, 7); ctx.fill();
           txt(ctx, `${name}: ${(m === m1 ? d1f(sel) : d2f(sel)).toFixed(0)} mm away`, x, y + 30, { align: 'center', size: 12, color: C.mu });
         }
