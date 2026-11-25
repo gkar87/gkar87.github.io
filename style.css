@@ -110,11 +110,12 @@ p{margin:.65rem 0}
 .dir p{margin:.1rem 0;font-size:.92rem;color:var(--muted);line-height:1.55}
 .dir p.what{color:var(--fg);font-size:.98rem;line-height:1.55}
 .dir h4{margin:.75rem 0 .15rem;font:700 .7rem/1.2 var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--c,var(--accent))}
-.dir ul.qs{margin:.1rem 0 0;padding-left:1.1rem;font-size:.92rem;line-height:1.5}
-.dir ul.qs li{margin:.25rem 0}
+.dir ul.cq{margin:.1rem 0 0;padding-left:1.1rem;font-size:.92rem;line-height:1.5}
+.dir ul.cq li{margin:.25rem 0}
 .dir .path{display:grid;gap:.45rem;margin-top:.7rem;padding-top:.75rem;border-top:1px dashed var(--line)}
-.dir .path .row{display:flex;flex-wrap:wrap;gap:.35rem;align-items:center}
-.dir .path .lab{font-size:.72rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;width:4.6rem}
+.dir .path .row{display:grid;grid-template-columns:4.8rem 1fr;gap:.5rem;align-items:start}
+.dir .path .cr{display:flex;flex-wrap:wrap;gap:.35rem}
+.dir .path .lab{font-size:.7rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;padding-top:.35rem}
 .dir .path a{font-size:.8rem;line-height:1.2;padding:.28rem .6rem;border-radius:999px;border:1px solid var(--line);color:var(--fg);text-decoration:none;background:var(--soft)}
 .dir .path a.pub{border-color:var(--c,var(--accent));background:color-mix(in srgb,var(--c,var(--accent)) 10%,var(--surface))}
 .dir .path a.plan{border-style:dashed;background:transparent}
