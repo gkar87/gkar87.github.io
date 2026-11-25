@@ -71,6 +71,13 @@
     }
   }
 
+  // ---- research map filter
+  const rmap = document.querySelector('.rmap');
+  if (rmap) rmap.querySelectorAll('.rm-filter button').forEach(b => b.addEventListener('click', () => {
+    rmap.dataset.f = b.dataset.f;
+    rmap.querySelectorAll('.rm-filter button').forEach(x => { x.classList.toggle('on', x === b); x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+  }));
+
   // ---- publication filters and search
   const tools = document.querySelector('.pubtools');
   if (tools) {

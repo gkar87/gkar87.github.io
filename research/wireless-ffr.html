@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sharing spectrum fairly: fractional frequency reuse · Gorkem Kar</title>
+<meta name="description" content="Before security, I worked on how cellular networks share spectrum. My M.S. thesis at Bilkent asked how to split a cell&#x27;s subcarriers between users near the base station and users at the edge, so the network is both fast and fair.">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#1d4f91">
+<script>document.documentElement.classList.add('js');try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+<link rel="stylesheet" href="../style.css?v=20261125e">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="../index.html">Gorkem Kar<span class="muted">, Ph.D.</span></a>
+    <div class="navbar">
+      <nav aria-label="Sections">
+        <ul>
+          <li><a href="../index.html#about">About</a></li>
+          <li><a href="../index.html#research">Research</a></li>
+          <li><a href="../index.html#publications">Publications</a></li>
+          <li><a href="../index.html#teaching">Teaching</a></li>
+          <li><a href="../index.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <button class="theme" type="button" aria-label="Switch theme"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" fill="currentColor"/></svg></button>
+    </div>
+  </div>
+  <div class="progress" aria-hidden="true"></div>
+</header>
+<main id="main" class="wrap">
+<p class="crumbs"><a href="../index.html#research">Research</a> / Sharing spectrum fairly: fractional frequency reuse</p>
+<section class="phead">
+  <span class="kicker">Published work</span>
+  <h1>Sharing spectrum fairly: fractional frequency reuse</h1>
+  <p class="lead">Before security, I worked on how cellular networks share spectrum. My M.S. thesis at Bilkent asked how to split a cell's subcarriers between users near the base station and users at the edge, so the network is both fast and fair.</p>
+  <ul class="facts" aria-label="At a glance"><li>M.S. thesis, Bilkent University, 2011</li><li>Live demo</li></ul>
+</section>
+<nav class="toc" aria-label="On this page"><span>On this page</span><ul><li><a href="#live-ffr">Try it</a></li><li><a href="#the-trade-off">The trade-off</a></li><li><a href="#thesis">Thesis</a></li></ul></nav>
+<figure class="live" data-demo="ffr" aria-labelledby="live-ffr">
+  <div class="lhead"><h2 id="live-ffr">Try it: Split the band between center and edge</h2><span class="kicker">Live illustration</span></div>
+  <p class="how">Seven cells: inner circles reuse one shared band, and the cell edges split the rest three ways. Move the inner share and watch throughput rise while fairness falls; the product of the two peaks at a split that depends on where users are.</p>
+  <canvas width="720" height="330" role="img" aria-label="Hexagonal cells with users, and curves of throughput, Jain fairness and their product against the inner-region share"></canvas>
+  <div class="ctrl"></div>
+  <p class="disc">A simplified model of the idea, for illustration. It does not reproduce the paper&#x27;s data or results. The link efficiencies are invented.</p>
+</figure>
+
+<section>
+<h2 id="the-trade-off">The trade-off</h2>
+<p>Users near a base station have strong signals and can share the whole band with neighboring cells. Users at the cell edge hear the neighbors' interference too, so in fractional frequency reuse they are served on parts of the band that adjacent cells do not use at the same time. Every subcarrier given to the inner region raises total throughput but leaves less for edge users, so fairness falls.</p>
+<p>The thesis measured both sides, cell throughput and Jain's fairness index, and used their product as one score for the trade-off. It compared static splits with adaptive ones that follow where users actually are.</p>
+<ol class="flow" aria-label="Thesis method"><li><b>Place users</b><span>inner region or cell edge</span></li><li><b>Split subcarriers</b><span>inner share versus edge share</span></li><li><b>Schedule</b><span>serve each region on its part of the band</span></li><li><b>Measure</b><span>cell throughput and Jain's fairness</span></li><li><b>Adapt</b><span>move the split as users move</span></li></ol><div class="stats reveal"><div class="stat-t"><b>≈5%</b><span>higher throughput × fairness from adapting the split to the user distribution, over the best fixed split</span></div></div><p class="src">Data: Kar, M.S. thesis, Bilkent University, 2011, abstract.</p>
+<p>The same physical-layer facts, shared spectrum and interference, sit under my later security work on <a href="vehicles.html">GPS jamming</a> and <a href="planned-v2x.html">V2X messages</a>.</p>
+</section>
+
+<section>
+<h2 id="thesis">Thesis</h2>
+<ol class="pubs"><li><div class="pt">Performance of static and adaptive subchannel allocation schemes for fractional frequency reuse in WiMAX networks</div><div class="pa"><b>G. Kar</b> (advisor: E. Karaşan)</div><div class="pv">M.S. thesis, Bilkent University, 2011</div><div class="pl"><a href="https://hdl.handle.net/11693/15261">Paper</a></div></li></ol></section>
+<section><nav class="pnav" aria-label="More projects"><a href="applied-ai.html">← Explainable and applied AI</a><a href="../index.html#research">All research →</a></nav></section>
+</main>
+<footer><div class="wrap">© 2026 Gorkem Kar · <a href="../index.html">Home</a></div></footer>
+<script src="../site.js?v=20261125e"></script>
+<script src="../live.js?v=20261125e"></script>
+</body>
+</html>

@@ -8,7 +8,7 @@
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 <meta name="theme-color" content="#1d4f91">
 <script>document.documentElement.classList.add('js');try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
-<link rel="stylesheet" href="../style.css?v=20261125d">
+<link rel="stylesheet" href="../style.css?v=20261125e">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -33,9 +33,12 @@
 <main id="main" class="wrap">
 <p class="crumbs"><a href="../index.html#research">Research</a> / Acoustic side channels on phones</p>
 <section class="phead">
+  <span class="kicker">Published work</span>
   <h1>Acoustic side channels on phones</h1>
   <p class="lead">A phone lying behind your keyboard can hear which keys you press. We showed how, with no training data and no language model, which means it works on random passwords too.</p>
+  <ul class="facts" aria-label="At a glance"><li>ACM MobiCom, 2015</li><li>Live demo</li></ul>
 </section>
+<nav class="toc" aria-label="On this page"><span>On this page</span><ul><li><a href="#live-tdoa">Try it</a></li><li><a href="#snooping-keystrokes-with-millimeter-level-audio-">Snooping keystrokes with millimeter-level audio ranging</a></li><li><a href="#open-research-questions">Open research questions</a></li><li><a href="#paper">Paper</a></li></ul></nav>
 <figure class="live" data-demo="tdoa" aria-labelledby="live-tdoa">
   <div class="lhead"><h2 id="live-tdoa">Try it: Hear which key was pressed</h2><span class="kicker">Live illustration</span></div>
   <p class="how">Click a key, or click the figure and type. Sound reaches the phone&#x27;s two microphones at slightly different times; keys that give nearly the same difference light up, because one time difference narrows a key down to a curve, not a point.</p>
@@ -45,7 +48,7 @@
 </figure>
 
 <section>
-<h2>Snooping keystrokes with millimeter-level audio ranging</h2>
+<h2 id="snooping-keystrokes-with-millimeter-level-audio-">Snooping keystrokes with millimeter-level audio ranging</h2>
 <p>Every key sits at a slightly different distance from a phone's two microphones, so its sound reaches them a fraction of a millisecond apart. Measuring that time difference of arrival places the keystroke on the keyboard. Sound features then separate keys that sit at similar distances.</p>
 <figure class="fig reveal"><svg viewBox="0 0 640 280" role="img" aria-label="A phone behind a keyboard; a key press sends sound to the phone's two microphones, which arrive at slightly different times">
   <rect x="170" y="10" width="300" height="46" rx="12" class="svg-box"/>
@@ -63,12 +66,17 @@
 </section>
 
 <section>
-<h2>Paper</h2>
+<h2 id="open-research-questions">Open research questions</h2>
+<p class="muted">Questions this work leaves open. They are directions, not results; each links to the planned project that takes it up.</p>
+<ol class="rqx open"><li class="reveal"><p class="q">Do earbuds, smart speakers and video-call apps still leak keystrokes after compression and noise suppression?</p><dl><dt>Why it is open</dt><dd>The original attack used a phone recording at a high sample rate. Today's microphones sit in very different audio pipelines.</dd><dt>Taken up in</dt><dd><a href="planned-acoustic.html">keystrokes over calls</a></dd></dl></li></ol>
+</section>
+<section>
+<h2 id="paper">Paper</h2>
 <ol class="pubs"><li><div class="pt">Snooping keystrokes with mm-level audio ranging on a single phone</div><div class="pa">J. Liu, Y. Wang, <b>G. Kar</b>, Y. Chen, J. Yang, M. Gruteser</div><div class="pv">ACM MobiCom, 2015</div><div class="pl"><a href="https://doi.org/10.1145/2789168.2790122">Paper</a></div></li></ol></section>
 <section><nav class="pnav" aria-label="More projects"><a href="iot-identity.html">← IoT device identity and network incidents</a><a href="applied-ai.html">Explainable and applied AI →</a></nav></section>
 </main>
 <footer><div class="wrap">© 2026 Gorkem Kar · <a href="../index.html">Home</a></div></footer>
-<script src="../site.js?v=20261125d"></script>
-<script src="../live.js?v=20261125d"></script>
+<script src="../site.js?v=20261125e"></script>
+<script src="../live.js?v=20261125e"></script>
 </body>
 </html>

@@ -8,7 +8,7 @@
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 <meta name="theme-color" content="#1d4f91">
 <script>document.documentElement.classList.add('js');try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
-<link rel="stylesheet" href="../style.css?v=20261125d">
+<link rel="stylesheet" href="../style.css?v=20261125e">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -33,12 +33,22 @@
 <main id="main" class="wrap">
 <p class="crumbs"><a href="../index.html#open-projects">Open projects</a> / Is the Internet of Things ready for post-quantum cryptography?</p>
 <section class="phead">
+  <span class="kicker">Planned project · new direction</span>
   <h1>Is the Internet of Things ready for post-quantum cryptography?</h1>
   <p class="lead">NIST published its first post-quantum cryptography standards in 2024. This project measures what moving to them costs on small IoT devices, and whether it quietly breaks the security tools that watch their traffic.</p>
+  <ul class="facts" aria-label="At a glance"><li>New direction</li><li>3 research questions</li><li>Open to new graduate students</li><li>Live demo</li></ul>
 </section>
-<p><span class="badge">Planned project · new direction · open to new graduate students</span></p>
+<nav class="toc" aria-label="On this page"><span>On this page</span><ul><li><a href="#live-pqc">Try it</a></li><li><a href="#why-this-matters">Why this matters</a></li><li><a href="#research-questions">Research questions</a></li><li><a href="#approach">Approach</a></li><li><a href="#skills-you-will-use-and-learn">Skills you will use and learn</a></li><li><a href="#papers-and-standards-to-read-first">Papers and standards to read first</a></li><li><a href="#interested">Interested?</a></li></ul></nav>
+<figure class="live" data-demo="pqc" aria-labelledby="live-pqc">
+  <div class="lhead"><h2 id="live-pqc">Try it: Count the radio frames</h2><span class="kicker">Live illustration</span></div>
+  <p class="how">Real key, ciphertext and signature sizes for today&#x27;s and post-quantum algorithms. Small radios carry little per frame, so set the payload size and count the frames a handshake needs.</p>
+  <canvas width="720" height="310" role="img" aria-label="Bars of handshake bytes for X25519, ML-KEM, Ed25519 and ML-DSA with the number of frames needed at the chosen payload size"></canvas>
+  <div class="ctrl"></div>
+  <p class="disc">Sizes are from the algorithm standards (NIST FIPS 203 and 204, RFC 7748 and 8032). Frame counts ignore headers and retransmissions. This project has not started; there are no results yet.</p>
+</figure>
+
 <section>
-<h2>Why this matters</h2>
+<h2 id="why-this-matters">Why this matters</h2>
 <p>A large enough quantum computer running Shor's algorithm would break the RSA and elliptic-curve cryptography that protects almost all device traffic today. Because traffic can be recorded now and decrypted later, data with a long shelf life is already at risk. NIST's new standards, ML-KEM for key exchange (FIPS 203) and ML-DSA for signatures (FIPS 204), are built on lattices and use much larger keys and signatures. Servers and browsers can absorb that. Battery-powered sensors with a few hundred kilobytes of memory may not. My group works on both sides of this question: quantum machine learning for security, and identifying IoT devices and attacks from their packet headers, which change when handshakes grow.</p>
 <figure class="fig reveal"><svg viewBox="0 0 640 240" role="img" aria-label="An IoT sensor and a server perform a key exchange; today's small elliptic-curve key crosses quickly, while the post-quantum key is several times larger; an eavesdropper records the traffic to decrypt later with a future quantum computer">
   <rect x="20" y="70" width="110" height="70" rx="10" class="svg-box"/><text x="42" y="102" class="svg-t">sensor</text><text x="40" y="124" class="svg-s">few KB RAM</text>
@@ -54,27 +64,27 @@
 </svg><figcaption>Post-quantum keys are larger, and recorded traffic can be attacked later. Illustration, sizes not to scale.</figcaption></figure>
 </section>
 <section>
-<h2>Research questions</h2>
-<ol class="rq"><li>What do ML-KEM and ML-DSA cost on common IoT boards in a real protocol (TLS or MQTT over TLS): handshake time, memory, energy and bytes on the air, alone and in hybrid with today's algorithms?</li><li>Which devices and protocols cannot make the move without hardware changes, and what is the cheapest workable path for them?</li><li>Do larger post-quantum handshakes confuse traffic-based tools, such as device fingerprinting and intrusion detectors trained on today's traffic?</li></ol>
+<h2 id="research-questions">Research questions</h2>
+<ol class="rqx"><li class="reveal"><p class="q">What do ML-KEM and ML-DSA cost on common IoT boards in a real protocol (TLS or MQTT over TLS): handshake time, memory, energy and bytes on the air, alone and in hybrid with today's algorithms?</p><dl><dt>Hypothesis</dt><dd>Post-quantum key exchange is affordable on mid-range boards; signatures and certificate chains dominate the bytes on the air.</dd><dt>How we would test it</dt><dd>Measure TLS and MQTT-over-TLS handshakes on several boards with an energy meter, alone and in hybrid mode.</dd></dl></li><li class="reveal"><p class="q">Which devices and protocols cannot make the move without hardware changes, and what is the cheapest workable path for them?</p><dl><dt>Hypothesis</dt><dd>For the smallest radios, protocol changes such as cached or compressed certificates matter more than faster cryptography.</dd><dt>How we would test it</dt><dd>Map device classes against measured costs and test cheaper protocol options on the hardest cases.</dd></dl></li><li class="reveal"><p class="q">Do larger post-quantum handshakes confuse traffic-based tools, such as device fingerprinting and intrusion detectors trained on today's traffic?</p><dl><dt>Hypothesis</dt><dd>Fingerprinting and intrusion models trained on today's handshakes misread post-quantum ones until retrained.</dd><dt>How we would test it</dt><dd>Run trained models on traffic captured before and after the switch, and measure the drop and the retraining needed.</dd></dl></li></ol><h3>Expected contributions</h3><ul class="contrib"><li>Measured post-quantum handshake costs on common IoT boards.</li><li>A map of which devices can move now and which need protocol changes.</li><li>A test of how traffic-based security tools cope with post-quantum traffic.</li></ul>
 </section>
 <section>
-<h2>Approach</h2>
+<h2 id="approach">Approach</h2>
 <ol class="flow" aria-label="Project steps"><li><b>Testbed</b><span>Set up ESP32 and Arm Cortex-M boards and a Raspberry Pi gateway running MQTT over TLS.</span></li><li><b>Integrate</b><span>Add ML-KEM and ML-DSA with open libraries such as liboqs and pqm4, alone and in hybrid mode.</span></li><li><b>Measure</b><span>Handshake time, memory, energy and packet sizes per device.</span></li><li><b>Check the watchers</b><span>Rerun our fingerprinting and intrusion detectors on post-quantum traffic.</span></li><li><b>Report</b><span>A migration guide for IoT deployments, with open measurements.</span></li></ol>
 </section>
 <section>
-<h2>Skills you will use and learn</h2>
+<h2 id="skills-you-will-use-and-learn">Skills you will use and learn</h2>
 <ul class="chips" aria-label="Skills"><li>C on microcontrollers</li><li>Applied cryptography and TLS</li><li>Python for analysis</li><li>Energy and timing measurement</li><li>Network traffic analysis</li></ul>
 </section>
 <section>
-<h2>Papers and standards to read first</h2>
+<h2 id="papers-and-standards-to-read-first">Papers and standards to read first</h2>
 <ol class="pubs reading"><li><div class="pt">Polynomial-time algorithms for prime factorization and discrete logarithms on a quantum computer</div><div class="pa">P. W. Shor</div><div class="pv">SIAM Journal on Computing, 1997</div><div class="why">Why quantum computers threaten today's public-key cryptography.</div><div class="pl"><a href="https://doi.org/10.1137/S0097539795293172">Read</a></div></li><li><div class="pt">Post-quantum cryptography</div><div class="pa">D. J. Bernstein, T. Lange</div><div class="pv">Nature, 2017</div><div class="why">A short, readable overview of the replacement families.</div><div class="pl"><a href="https://doi.org/10.1038/nature23461">Read</a></div></li><li><div class="pt">CRYSTALS-Kyber: a CCA-secure module-lattice-based KEM</div><div class="pa">J. Bos, L. Ducas, E. Kiltz, T. Lepoint, V. Lyubashevsky, J. M. Schanck, P. Schwabe, G. Seiler, D. Stehlé</div><div class="pv">IEEE EuroS&amp;P, 2018</div><div class="why">The scheme that became ML-KEM.</div><div class="pl"><a href="https://doi.org/10.1109/EuroSP.2018.00032">Read</a></div></li><li><div class="pt">Module-lattice-based key-encapsulation mechanism standard (FIPS 203)</div><div class="pa">National Institute of Standards and Technology</div><div class="pv">NIST, 2024</div><div class="why">The key-exchange standard this project deploys.</div><div class="pl"><a href="https://doi.org/10.6028/NIST.FIPS.203">Read</a></div></li><li><div class="pt">Module-lattice-based digital signature standard (FIPS 204)</div><div class="pa">National Institute of Standards and Technology</div><div class="pv">NIST, 2024</div><div class="why">The signature standard, which matters for firmware updates.</div><div class="pl"><a href="https://doi.org/10.6028/NIST.FIPS.204">Read</a></div></li><li><div class="pt">pqm4: testing and benchmarking NIST PQC on ARM Cortex-M4</div><div class="pa">M. J. Kannwischer, J. Rijneveld, P. Schwabe, K. Stoffelen</div><div class="pv">IACR Cryptology ePrint Archive, 2019</div><div class="why">How to benchmark post-quantum schemes on a microcontroller.</div><div class="pl"><a href="https://eprint.iacr.org/2019/844">Read</a></div></li><li><div class="pt">Benchmarking post-quantum cryptography in TLS</div><div class="pa">C. Paquin, D. Stebila, G. Tamvada</div><div class="pv">PQCrypto, 2020</div><div class="why">How network conditions change the cost of post-quantum TLS.</div><div class="pl"><a href="https://doi.org/10.1007/978-3-030-44223-1_5">Read</a></div></li></ol></section><section class="join">
-<h2>Interested?</h2>
+<h2 id="interested">Interested?</h2>
 <p>This project is planned and not yet staffed. If you are a UCM graduate student, or joining UCM soon, and it fits your interests, email me at <a href="mailto:kar@ucmo.edu">kar@ucmo.edu</a> with your CV, the project's name and a few lines on which research question you would start with. Reading two of the papers below first will make that conversation much better.</p>
 </section>
 <section><nav class="pnav" aria-label="More projects"><a href="planned-tinyml.html">← Intrusion detection that fits on the device</a><a href="planned-blockchain.html">Tamper-evident identity for IoT devices on a blockchain →</a></nav></section>
 </main>
 <footer><div class="wrap">© 2026 Gorkem Kar · <a href="../index.html">Home</a></div></footer>
-<script src="../site.js?v=20261125d"></script>
-
+<script src="../site.js?v=20261125e"></script>
+<script src="../live.js?v=20261125e"></script>
 </body>
 </html>

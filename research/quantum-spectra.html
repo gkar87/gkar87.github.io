@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quantum machine learning for Raman spectroscopy · Gorkem Kar</title>
+<meta name="description" content="Hybrid quantum-classical models are not only for network traffic. Raman spectra, the light fingerprints of molecules, are a natural test bed: one-dimensional, noisy and costly to label.">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#1d4f91">
+<script>document.documentElement.classList.add('js');try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+<link rel="stylesheet" href="../style.css?v=20261125e">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="../index.html">Gorkem Kar<span class="muted">, Ph.D.</span></a>
+    <div class="navbar">
+      <nav aria-label="Sections">
+        <ul>
+          <li><a href="../index.html#about">About</a></li>
+          <li><a href="../index.html#research">Research</a></li>
+          <li><a href="../index.html#publications">Publications</a></li>
+          <li><a href="../index.html#teaching">Teaching</a></li>
+          <li><a href="../index.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <button class="theme" type="button" aria-label="Switch theme"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" fill="currentColor"/></svg></button>
+    </div>
+  </div>
+  <div class="progress" aria-hidden="true"></div>
+</header>
+<main id="main" class="wrap">
+<p class="crumbs"><a href="../index.html#research">Research</a> / Quantum machine learning for Raman spectroscopy</p>
+<section class="phead">
+  <span class="kicker">Published work</span>
+  <h1>Quantum machine learning for Raman spectroscopy</h1>
+  <p class="lead">Hybrid quantum-classical models are not only for network traffic. Raman spectra, the light fingerprints of molecules, are a natural test bed: one-dimensional, noisy and costly to label.</p>
+  <ul class="facts" aria-label="At a glance"><li>IEEE Access, 2025</li><li>AVS Quantum Science, 2026</li><li>Live demo</li></ul>
+</section>
+<nav class="toc" aria-label="On this page"><span>On this page</span><ul><li><a href="#live-quanv">Try it</a></li><li><a href="#what-a-quanvolution-layer-does">What a quanvolution layer does</a></li><li><a href="#covid-19-from-the-raman-spectra-of-serum">COVID-19 from the Raman spectra of serum</a></li><li><a href="#weathered-microplastics-on-a-real-quantum-proces">Weathered microplastics on a real quantum processor</a></li><li><a href="#open-research-questions">Open research questions</a></li><li><a href="#papers">Papers</a></li></ul></nav>
+<figure class="live" data-demo="quanv" aria-labelledby="live-quanv">
+  <div class="lhead"><h2 id="live-quanv">Try it: Slide a quantum filter over a spectrum</h2><span class="kicker">Live illustration</span></div>
+  <p class="how">A window slides along a made-up Raman spectrum. Each point in the window rotates one qubit; after a chain of entangling gates, measuring all qubits together gives the product of cos(π × value), one number per window. Those numbers form the feature map a classical network would read.</p>
+  <canvas width="720" height="300" role="img" aria-label="A spectrum with a sliding window, qubit dials showing each rotation, and a bar chart of the quantum feature map"></canvas>
+  <div class="ctrl"></div>
+  <p class="disc">A simplified model of the idea, for illustration. It does not reproduce the paper&#x27;s data or results. The spectra are invented.</p>
+</figure>
+
+<section>
+<h2 id="what-a-quanvolution-layer-does">What a quanvolution layer does</h2>
+<p>A classical convolution slides a small filter over its input. A quanvolution layer slides a small quantum circuit instead: each window of input values is encoded as rotations of a few qubits, the circuit entangles them, and the measured expectation values become a new feature map that a classical network then reads. The live figure above computes one such feature exactly for a toy circuit.</p>
+<ol class="flow" aria-label="Quanvolution steps"><li><b>Window</b><span>a few neighboring spectrum values</span></li><li><b>Encode</b><span>each value rotates one qubit</span></li><li><b>Entangle</b><span>a small fixed or trained circuit</span></li><li><b>Measure</b><span>expectation values become features</span></li><li><b>Classify</b><span>a classical network reads the feature map</span></li></ol>
+</section>
+
+<section>
+<h2 id="covid-19-from-the-raman-spectra-of-serum">COVID-19 from the Raman spectra of serum</h2>
+<p>In <em>IEEE Access</em> (2025), with S. S. Dutta, S. Sandeep, S. Sridevi, R. Mistry and J. Ortega, we turned Raman spectra of human serum into wavelet scaleograms and classified COVID-19 with a quanvolutional neural network, comparing it with classical CNNs. It is the same wavelet-to-quantum pipeline we use for <a href="quantum-ids.html">intrusion detection</a>, applied to light instead of traffic.</p>
+</section>
+
+<section>
+<h2 id="weathered-microplastics-on-a-real-quantum-proces">Weathered microplastics on a real quantum processor</h2>
+<p>In <em>AVS Quantum Science</em> (2026), with H. G. Kulkarni, A. R. Banerjee, T. Mandloi, S. Sridevi and S. Geetha, a classical-quantum neural network with dual-channel feature extraction ran on an IonQ quantum processor to classify weathered microplastics from their Raman spectra. Running on hardware, not only a simulator, is what makes the results a test of today's machines.</p>
+</section>
+
+<section>
+<h2 id="open-research-questions">Open research questions</h2>
+<p class="muted">Questions this work leaves open. They are directions, not results; each links to the planned project that takes it up.</p>
+<ol class="rqx open"><li class="reveal"><p class="q">How much of a hybrid model's accuracy on spectra survives real quantum hardware, and what does each run cost?</p><dl><dt>Why it is open</dt><dd>One of these studies already ran on an IonQ processor. Separating what the quantum part adds from what the classical pipeline does needs matched baselines.</dd><dt>Taken up in</dt><dd><a href="planned-quantum.html">honest quantum benchmarks</a></dd></dl></li></ol>
+</section>
+<section>
+<h2 id="papers">Papers</h2>
+<ol class="pubs"><li><div class="pt">Novel quanvolutional neural network-based COVID-19 diagnosis from Raman spectroscopic signals of human serum</div><div class="pa">S. S. Dutta, S. Sandeep, S. Sridevi, R. Mistry, J. Ortega, <b>G. Kar</b></div><div class="pv">IEEE Access, 2025 (open access)</div><div class="pl"><a href="https://doi.org/10.1109/ACCESS.2025.3580316">Paper</a></div></li><li><div class="pt">A classical quantum neural network with dual-channel feature extraction on IonQ QPU for classifying weathered microplastics from Raman spectra</div><div class="pa">H. G. Kulkarni, A. R. Banerjee, T. Mandloi, S. Sridevi, S. Geetha, <b>G. Kar</b></div><div class="pv">AVS Quantum Science, 2026</div><div class="pl"><a href="https://scholar.google.com/citations?view_op=view_citation&amp;hl=en&amp;user=dz-6amUAAAAJ&amp;citation_for_view=dz-6amUAAAAJ:5nxA0vEk-isC">Paper</a></div></li></ol></section>
+<section><nav class="pnav" aria-label="More projects"><a href="quantum-ids.html">← Hybrid quantum-classical intrusion detection</a><a href="iot-identity.html">IoT device identity and network incidents →</a></nav></section>
+</main>
+<footer><div class="wrap">© 2026 Gorkem Kar · <a href="../index.html">Home</a></div></footer>
+<script src="../site.js?v=20261125e"></script>
+<script src="../live.js?v=20261125e"></script>
+</body>
+</html>

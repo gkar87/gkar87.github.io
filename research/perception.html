@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Extending what a car can see and sense · Gorkem Kar</title>
+<meta name="description" content="A car&#x27;s own sensors stop at the truck in front of it, and the phone in the cabin knows more about the road than it seems. This work shares views between vehicles and turns phone and car sensors into a picture of the road.">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#1d4f91">
+<script>document.documentElement.classList.add('js');try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+<link rel="stylesheet" href="../style.css?v=20261125e">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="../index.html">Gorkem Kar<span class="muted">, Ph.D.</span></a>
+    <div class="navbar">
+      <nav aria-label="Sections">
+        <ul>
+          <li><a href="../index.html#about">About</a></li>
+          <li><a href="../index.html#research">Research</a></li>
+          <li><a href="../index.html#publications">Publications</a></li>
+          <li><a href="../index.html#teaching">Teaching</a></li>
+          <li><a href="../index.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <button class="theme" type="button" aria-label="Switch theme"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" fill="currentColor"/></svg></button>
+    </div>
+  </div>
+  <div class="progress" aria-hidden="true"></div>
+</header>
+<main id="main" class="wrap">
+<p class="crumbs"><a href="../index.html#research">Research</a> / Extending what a car can see and sense</p>
+<section class="phead">
+  <span class="kicker">Published work</span>
+  <h1>Extending what a car can see and sense</h1>
+  <p class="lead">A car's own sensors stop at the truck in front of it, and the phone in the cabin knows more about the road than it seems. This work shares views between vehicles and turns phone and car sensors into a picture of the road.</p>
+  <ul class="facts" aria-label="At a glance"><li>HotMobile, 2017</li><li>IEEE Transactions on Vehicular Technology, 2018</li><li>Live demo</li></ul>
+</section>
+<nav class="toc" aria-label="On this page"><span>On this page</span><ul><li><a href="#live-avr">Try it</a></li><li><a href="#seeing-past-line-of-sight-augmented-vehicular-re">Seeing past line of sight: augmented vehicular reality</a></li><li><a href="#sensing-the-road-from-phones-and-cars">Sensing the road from phones and cars</a></li><li><a href="#open-research-questions">Open research questions</a></li><li><a href="#papers">Papers</a></li></ul></nav>
+<figure class="live" data-demo="avr" aria-labelledby="live-avr">
+  <div class="lhead"><h2 id="live-avr">Try it: See past the truck</h2><span class="kicker">Live illustration</span></div>
+  <p class="how">A truck blocks your car&#x27;s view of a stopped car ahead. Move the gap, click the road to move the stopped car, and turn on sharing to add what the truck&#x27;s own sensors see.</p>
+  <canvas width="720" height="280" role="img" aria-label="Top view of a road: your car, a truck that casts a blind zone, a stopped car, and the truck&#x27;s shared sensor view"></canvas>
+  <div class="ctrl"></div>
+  <p class="disc">A simplified model of the idea, for illustration. It does not reproduce the paper&#x27;s data or results.</p>
+</figure>
+
+<section>
+<h2 id="seeing-past-line-of-sight-augmented-vehicular-re">Seeing past line of sight: augmented vehicular reality</h2>
+<p>A camera or lidar sees only what is in its line of sight, so a stopped car or a pedestrian hidden behind a truck stays invisible until it is too late. In <em>Augmented vehicular reality</em> (HotMobile 2017), with Hang Qiu, Fawad Ahmad, Ramesh Govindan, Marco Gruteser and Fan Bai, nearby vehicles share what their sensors see, so a car can effectively look through the vehicle in front of it.</p>
+<ol class="flow" aria-label="Extended vision steps"><li><b>Sense</b><span>each car builds a view of its surroundings</span></li><li><b>Share</b><span>nearby cars exchange views over a wireless link</span></li><li><b>Align</b><span>place the other car's view in your own frame</span></li><li><b>Extend</b><span>objects hidden from you appear in your view</span></li></ol>
+<p>Making this work means sending enough sensor data quickly over a wireless link and placing another car's view correctly in your own. The live figure above shows only the geometry: what is hidden behind the truck and what the truck's sensors can add.</p>
+</section>
+
+<section>
+<h2 id="sensing-the-road-from-phones-and-cars">Sensing the road from phones and cars</h2>
+<p>In <em>Towards robust vehicular context sensing</em> (IEEE Transactions on Vehicular Technology, 2018), we detected lane changes, potholes, road grade and stop signs from sensors that are already in the car and in the driver's phone, and compared what phone sensors and the car's own sensors can each deliver. Combining many drives over the same road (crowd-sensing) makes the hard cases more reliable.</p>
+<div class="stats reveal"><div class="stat-t"><b>&gt;90%</b><span>accuracy of lane-change determinations</span></div><div class="stat-t"><b>+35%</b><span>recall for lane changes on curves when many drives are combined</span></div></div><p class="src">Data: Qiu et al., IEEE TVT 2018, abstract.</p>
+</section>
+
+<section>
+<h2 id="open-research-questions">Open research questions</h2>
+<p class="muted">Questions this work leaves open. They are directions, not results; each links to the planned project that takes it up.</p>
+<ol class="rqx open"><li class="reveal"><p class="q">When cars share what their sensors see, how does the receiving car know the shared view is real?</p><dl><dt>Why it is open</dt><dd>Sharing views extends vision past the truck ahead, but every shared view is also a new channel an attacker can fake.</dd><dt>Taken up in</dt><dd><a href="planned-v2x.html">ghost vehicles in V2X</a></dd></dl></li></ol>
+</section>
+<section>
+<h2 id="papers">Papers</h2>
+<ol class="pubs"><li><div class="pt">Augmented vehicular reality: Enabling extended vision for future vehicles</div><div class="pa">H. Qiu, F. Ahmad, R. Govindan, M. Gruteser, F. Bai, <b>G. Kar</b></div><div class="pv">HotMobile, 2017</div><div class="pl"><a href="https://doi.org/10.1145/3032970.3032976">Paper</a></div></li><li><div class="pt">Towards robust vehicular context sensing</div><div class="pa">H. Qiu, J. Chen, S. Jain, Y. Jiang, M. McCartney, <b>G. Kar</b>, F. Bai, D. Grimm, M. Gruteser, R. Govindan</div><div class="pv">IEEE Transactions on Vehicular Technology, 2018</div><div class="pl"><a href="https://doi.org/10.1109/TVT.2017.2771623">Paper</a></div></li></ol></section>
+<section><nav class="pnav" aria-label="More projects"><a href="vehicles.html">← Connected vehicles: sensing, identity and trust</a><a href="driver-behavior.html">Scoring and coaching drivers from in-vehicle data →</a></nav></section>
+</main>
+<footer><div class="wrap">© 2026 Gorkem Kar · <a href="../index.html">Home</a></div></footer>
+<script src="../site.js?v=20261125e"></script>
+<script src="../live.js?v=20261125e"></script>
+</body>
+</html>

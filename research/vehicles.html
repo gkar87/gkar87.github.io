@@ -8,7 +8,7 @@
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 <meta name="theme-color" content="#1d4f91">
 <script>document.documentElement.classList.add('js');try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
-<link rel="stylesheet" href="../style.css?v=20261125d">
+<link rel="stylesheet" href="../style.css?v=20261125e">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -33,9 +33,12 @@
 <main id="main" class="wrap">
 <p class="crumbs"><a href="../index.html#research">Research</a> / Connected vehicles: sensing, identity and trust</p>
 <section class="phead">
+  <span class="kicker">Published work</span>
   <h1>Connected vehicles: sensing, identity and trust</h1>
   <p class="lead">Cars are rolling sensor platforms. This line of work asks what their data can reveal, who is driving, and how to catch the signals that put everyone on the road at risk.</p>
+  <ul class="facts" aria-label="At a glance"><li>ACM CCS, 2014</li><li>ACM/IEEE SEC, 2017</li><li>Applied Soft Computing, 2020</li><li>IEEE VTC2019-Spring, 2019</li><li>Live demo</li></ul>
 </section>
+<nav class="toc" aria-label="On this page"><span>On this page</span><ul><li><a href="#live-jam">Try it</a></li><li><a href="#finding-the-car-with-the-gps-jammer">Finding the car with the GPS jammer</a></li><li><a href="#who-is-driving-predriveid-and-a-gm-patent">Who is driving? PredriveID and a GM patent</a></li><li><a href="#traffic-from-dash-cams-at-the-vehicle-edge">Traffic from dash cams at the vehicle edge</a></li><li><a href="#distracted-driving-from-cameras-and-car-sensors">Distracted driving from cameras and car sensors</a></li><li><a href="#open-research-questions">Open research questions</a></li><li><a href="#papers">Papers</a></li></ul></nav>
 <figure class="live" data-demo="jam" aria-labelledby="live-jam">
   <div class="lhead"><h2 id="live-jam">Try it: Find the jammer</h2><span class="kicker">Live illustration</span></div>
   <p class="how">Cars drive past two roadside checkpoints. When a checkpoint senses GPS interference, it notes every car in view. The jammer is the car on both lists.</p>
@@ -45,7 +48,7 @@
 </figure>
 
 <section>
-<h2>Finding the car with the GPS jammer</h2>
+<h2 id="finding-the-car-with-the-gps-jammer">Finding the car with the GPS jammer</h2>
 <p>Cheap personal GPS jammers, plugged into a car's lighter socket, knock out GPS for everyone nearby, including aircraft and emergency systems. Locating the moving source is hard because the signal is strong only for a few seconds. We built a system that combines roadside monitoring points (a software-defined radio, a directional antenna and a camera) with ordinary smartphones, which already report GPS signal strength.</p>
 <figure class="fig reveal"><svg viewBox="0 0 640 250" role="img" aria-label="Animated highway with cars; one car emits GPS interference rings while two roadside monitoring points with cameras watch the road">
   <rect x="0" y="80" width="640" height="130" fill="var(--line)" opacity=".45"/>
@@ -74,7 +77,7 @@
 </section>
 
 <section>
-<h2>Who is driving? PredriveID and a GM patent</h2>
+<h2 id="who-is-driving-predriveid-and-a-gm-patent">Who is driving? PredriveID and a GM patent</h2>
 <p>Before a car even moves, each driver performs the same small ritual in their own rhythm: close the door, start the engine, shift out of park, buckle up, release the brake. Working with General Motors Research, we showed that the time gaps between these events, read from the car's own data bus, identify the driver within seconds, with no camera and nothing the driver has to carry.</p>
 <figure class="fig reveal"><svg viewBox="0 0 640 200" role="img" aria-label="Timeline of pre-trip events: door closes, ignition, shift out of park, seat belt, brake released; gaps between them form a driver fingerprint">
   <line x1="30" y1="100" x2="610" y2="100" class="svg-line"/>
@@ -91,25 +94,30 @@
 </section>
 
 <section>
-<h2>Traffic from dash cams at the vehicle edge</h2>
+<h2 id="traffic-from-dash-cams-at-the-vehicle-edge">Traffic from dash cams at the vehicle edge</h2>
 <p>Dash-cam video from ordinary cars can estimate traffic in real time: we detect and count the vehicles in view and estimate their speed and lane on the vehicle itself, so the estimate arrives while it is still useful.</p>
 <div class="stats reveal"><div class="stat-t"><b>&lt;10%</b><span>speed estimation error across roads and traffic conditions</span></div><div class="stat-t"><b>&gt;91%</b><span>lane estimation accuracy, left-most lane</span></div><div class="stat-t"><b>&gt;90%</b><span>vehicle counting accuracy even at peak hours, left-most lane</span></div></div><p class="src">Data: Kar et al., ACM/IEEE SEC 2017 (Real-time traffic estimation at vehicular edge nodes), abstract.</p>
 </section>
 
 <section>
-<h2>Distracted driving from cameras and car sensors</h2>
+<h2 id="distracted-driving-from-cameras-and-car-sensors">Distracted driving from cameras and car sensors</h2>
 <p>With my M.Sc. student Furkan Omerustaoglu, we detected nine distracted-driving behaviors with a two-stage model: convolutional networks read the driver-facing camera, and LSTM networks combine those image features with in-vehicle sensor data. Adding the sensor data significantly improved detection over images alone.</p>
 <h3>Where this is going</h3>
 <p>Connected vehicles now trust data from roadside units, other cars and the cloud, and all three can be spoofed. The next step is detecting spoofed, jammed or manipulated sensor and V2X data in real time on the vehicle and roadside hardware itself, where latency and memory are tight.</p>
 </section>
 
 <section>
-<h2>Papers</h2>
+<h2 id="open-research-questions">Open research questions</h2>
+<p class="muted">Questions this work leaves open. They are directions, not results; each links to the planned project that takes it up.</p>
+<ol class="rqx open"><li class="reveal"><p class="q">Can a vehicle catch spoofed, jammed or manipulated sensor and V2X data in real time, on hardware where latency and memory are tight?</p><dl><dt>Why it is open</dt><dd>Cars now trust data from roadside units, other vehicles and the cloud, and every one of those channels can be spoofed.</dd><dt>Taken up in</dt><dd><a href="planned-gnss.html">GNSS spoofing</a> · <a href="planned-v2x.html">ghost vehicles in V2X</a> · <a href="planned-can.html">in-vehicle network</a></dd></dl></li><li class="reveal"><p class="q">Can behavioral signatures in raw sensor streams, like the pre-trip rhythm that identifies a driver, serve as trust anchors for the data a car relies on?</p><dl><dt>Why it is open</dt><dd>PredriveID showed that bus signals carry a stable signature of who is driving. Whether the same kind of signature can vouch for the data itself is open.</dd><dt>Taken up in</dt><dd><a href="planned-gnss.html">GNSS spoofing</a> · <a href="planned-can.html">in-vehicle network</a></dd></dl></li></ol>
+</section>
+<section>
+<h2 id="papers">Papers</h2>
 <ol class="pubs"><li><div class="pt">Detection of on-road vehicles emanating GPS interference</div><div class="pa"><b>G. Kar</b>, H. Mustafa, Y. Wang, Y. Chen, W. Xu, M. Gruteser, T. Vu</div><div class="pv">ACM CCS, 2014</div><div class="pl"><a href="https://doi.org/10.1145/2660267.2660336">Paper</a></div></li><li><div class="pt">PredriveID: Pre-trip driver identification from in-vehicle data</div><div class="pa"><b>G. Kar</b>, S. Jain, M. Gruteser, J. Chen, F. Bai, R. Govindan</div><div class="pv">ACM/IEEE SEC, 2017</div><div class="pl"><a href="https://doi.org/10.1145/3132211.3134462">Paper</a></div></li><li><div class="pt">Real-time traffic estimation at vehicular edge nodes</div><div class="pa"><b>G. Kar</b>, S. Jain, M. Gruteser, F. Bai, R. Govindan</div><div class="pv">ACM/IEEE SEC, 2017</div><div class="pl"><a href="https://doi.org/10.1145/3132211.3134461">Paper</a></div></li><li><div class="pt">Distracted driver detection by combining in-vehicle and image data using deep learning</div><div class="pa">F. Omerustaoglu, C. O. Sakar, <b>G. Kar</b></div><div class="pv">Applied Soft Computing, 2020</div><div class="pl"><a href="https://doi.org/10.1016/j.asoc.2020.106657">Paper</a></div></li><li><div class="pt">Scotto: Real-time driver behavior scoring using in-vehicle data</div><div class="pa"><b>G. Kar</b>, B. Asiroglu, F. S. Bir</div><div class="pv">IEEE VTC2019-Spring, 2019</div><div class="pl"><a href="https://doi.org/10.1109/VTCSpring.2019.8746461">Paper</a></div></li><li><div class="pt">Augmented vehicular reality: Enabling extended vision for future vehicles</div><div class="pa">H. Qiu, F. Ahmad, R. Govindan, M. Gruteser, F. Bai, <b>G. Kar</b></div><div class="pv">HotMobile, 2017</div><div class="pl"><a href="https://doi.org/10.1145/3032970.3032976">Paper</a></div></li></ol></section>
-<section><nav class="pnav" aria-label="More projects"><span></span><a href="quantum-ids.html">Hybrid quantum-classical intrusion detection →</a></nav></section>
+<section><nav class="pnav" aria-label="More projects"><span></span><a href="perception.html">Extending what a car can see and sense →</a></nav></section>
 </main>
 <footer><div class="wrap">© 2026 Gorkem Kar · <a href="../index.html">Home</a></div></footer>
-<script src="../site.js?v=20261125d"></script>
-<script src="../live.js?v=20261125d"></script>
+<script src="../site.js?v=20261125e"></script>
+<script src="../live.js?v=20261125e"></script>
 </body>
 </html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Scoring and coaching drivers from in-vehicle data · Gorkem Kar</title>
+<meta name="description" content="The same in-vehicle data that identifies a driver can also score how they drive, as they drive, and turn that score into feedback people act on.">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#1d4f91">
+<script>document.documentElement.classList.add('js');try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+<link rel="stylesheet" href="../style.css?v=20261125e">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="../index.html">Gorkem Kar<span class="muted">, Ph.D.</span></a>
+    <div class="navbar">
+      <nav aria-label="Sections">
+        <ul>
+          <li><a href="../index.html#about">About</a></li>
+          <li><a href="../index.html#research">Research</a></li>
+          <li><a href="../index.html#publications">Publications</a></li>
+          <li><a href="../index.html#teaching">Teaching</a></li>
+          <li><a href="../index.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <button class="theme" type="button" aria-label="Switch theme"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" fill="currentColor"/></svg></button>
+    </div>
+  </div>
+  <div class="progress" aria-hidden="true"></div>
+</header>
+<main id="main" class="wrap">
+<p class="crumbs"><a href="../index.html#research">Research</a> / Scoring and coaching drivers from in-vehicle data</p>
+<section class="phead">
+  <span class="kicker">Published work</span>
+  <h1>Scoring and coaching drivers from in-vehicle data</h1>
+  <p class="lead">The same in-vehicle data that identifies a driver can also score how they drive, as they drive, and turn that score into feedback people act on.</p>
+  <ul class="facts" aria-label="At a glance"><li>IEEE VTC2019-Spring, 2019</li><li>MobiWIS, 2018</li><li>Applied Soft Computing, 2020</li><li>Live demo</li></ul>
+</section>
+<nav class="toc" aria-label="On this page"><span>On this page</span><ul><li><a href="#live-score">Try it</a></li><li><a href="#scotto-scoring-driving-in-real-time">Scotto: scoring driving in real time</a></li><li><a href="#gamification-making-the-score-matter">Gamification: making the score matter</a></li><li><a href="#open-research-questions">Open research questions</a></li><li><a href="#papers">Papers</a></li></ul></nav>
+<figure class="live" data-demo="score" aria-labelledby="live-score">
+  <div class="lhead"><h2 id="live-score">Try it: Score a trip</h2><span class="kicker">Live illustration</span></div>
+  <p class="how">A simulated drive: speed on top, acceleration below. Braking or speeding up past the dashed line counts as a harsh event and costs points. Make the driver calmer or more aggressive, or move the line.</p>
+  <canvas width="720" height="290" role="img" aria-label="Speed and acceleration traces of a simulated trip with harsh events marked, and a trip score ring"></canvas>
+  <div class="ctrl"></div>
+  <p class="disc">A simplified model of the idea, for illustration. It does not reproduce the paper&#x27;s data or results. The trip, thresholds and scoring rule are invented.</p>
+</figure>
+
+<section>
+<h2 id="scotto-scoring-driving-in-real-time">Scotto: scoring driving in real time</h2>
+<p>Insurers and fleet operators score drivers, but often from coarse data, after the trip. <em>Scotto</em> (IEEE VTC2019-Spring), with B. Asiroglu and F. S. Bir, scores driver behavior in real time from the car's own in-vehicle data, so feedback can arrive while it still matters. The live figure above shows the basic idea with made-up thresholds: flag harsh braking and harsh starts from acceleration, and turn them into a score.</p>
+</section>
+
+<section>
+<h2 id="gamification-making-the-score-matter">Gamification: making the score matter</h2>
+<p>A score alone rarely changes how someone drives. In <em>Improving driver behavior using gamification</em> (MobiWIS 2018), with S. Helvaci, A. Senova and S. Gören, we read in-vehicle data, scored driving errors on several criteria, and wrapped the score in achievements and leaderboards, with a feature that points out nearby places of interest. We tested it on two real-world trips and compared them with simulated ones.</p>
+<ol class="flow" aria-label="Gamified feedback loop"><li><b>Read</b><span>in-vehicle data during the trip</span></li><li><b>Score</b><span>driving errors on several criteria</span></li><li><b>Reward</b><span>achievements and leaderboards</span></li><li><b>Engage</b><span>nearby points of interest</span></li></ol><div class="stats reveal"><div class="stat-t"><b>2</b><span>real-world trips used to test the system</span></div><div class="stat-t"><b>&gt;95%</b><span>agreement between real-world and simulated results</span></div></div><p class="src">Data: Helvaci et al., MobiWIS 2018, abstract.</p>
+<p>Distracted-driving detection, which combines driver-facing cameras with in-vehicle sensor data, is on the <a href="vehicles.html">connected vehicles</a> page.</p>
+</section>
+
+<section>
+<h2 id="open-research-questions">Open research questions</h2>
+<p class="muted">Questions this work leaves open. They are directions, not results; each links to the planned project that takes it up.</p>
+<ol class="rqx open"><li class="reveal"><p class="q">Can driver scoring and identification run on the vehicle's own edge hardware, so raw driving data never has to leave the car?</p><dl><dt>Why it is open</dt><dd>My dissertation work asked how to make vehicle data available while keeping it private; on-vehicle scoring is one way to do both.</dd><dt>Taken up in</dt><dd><a href="planned-tinyml.html">on-device models</a></dd></dl></li></ol>
+</section>
+<section>
+<h2 id="papers">Papers</h2>
+<ol class="pubs"><li><div class="pt">Scotto: Real-time driver behavior scoring using in-vehicle data</div><div class="pa"><b>G. Kar</b>, B. Asiroglu, F. S. Bir</div><div class="pv">IEEE VTC2019-Spring, 2019</div><div class="pl"><a href="https://doi.org/10.1109/VTCSpring.2019.8746461">Paper</a></div></li><li><div class="pt">Improving driver behavior using gamification</div><div class="pa">S. Helvaci, A. Senova, <b>G. Kar</b>, S. Gören</div><div class="pv">MobiWIS, 2018</div><div class="pl"><a href="https://doi.org/10.1007/978-3-319-97163-6_16">Paper</a></div></li><li><div class="pt">Distracted driver detection by combining in-vehicle and image data using deep learning</div><div class="pa">F. Omerustaoglu, C. O. Sakar, <b>G. Kar</b></div><div class="pv">Applied Soft Computing, 2020</div><div class="pl"><a href="https://doi.org/10.1016/j.asoc.2020.106657">Paper</a></div></li></ol></section>
+<section><nav class="pnav" aria-label="More projects"><a href="perception.html">← Extending what a car can see and sense</a><a href="quantum-ids.html">Hybrid quantum-classical intrusion detection →</a></nav></section>
+</main>
+<footer><div class="wrap">© 2026 Gorkem Kar · <a href="../index.html">Home</a></div></footer>
+<script src="../site.js?v=20261125e"></script>
+<script src="../live.js?v=20261125e"></script>
+</body>
+</html>

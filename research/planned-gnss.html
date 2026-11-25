@@ -8,7 +8,7 @@
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 <meta name="theme-color" content="#1d4f91">
 <script>document.documentElement.classList.add('js');try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
-<link rel="stylesheet" href="../style.css?v=20261125d">
+<link rel="stylesheet" href="../style.css?v=20261125e">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -33,9 +33,12 @@
 <main id="main" class="wrap">
 <p class="crumbs"><a href="../index.html#open-projects">Open projects</a> / Catching GNSS spoofing with the car's own sensors</p>
 <section class="phead">
+  <span class="kicker">Planned project · core area</span>
   <h1>Catching GNSS spoofing with the car's own sensors</h1>
   <p class="lead">Can a car notice that its GPS is lying, using only the data it already has? This project builds a lightweight spoofing detector from the vehicle's own motion data.</p>
+  <ul class="facts" aria-label="At a glance"><li>Core area</li><li>3 research questions</li><li>Open to new graduate students</li><li>Live demo</li></ul>
 </section>
+<nav class="toc" aria-label="On this page"><span>On this page</span><ul><li><a href="#live-gnss">Try it</a></li><li><a href="#why-this-matters">Why this matters</a></li><li><a href="#research-questions">Research questions</a></li><li><a href="#approach">Approach</a></li><li><a href="#skills-you-will-use-and-learn">Skills you will use and learn</a></li><li><a href="#papers-to-read-first">Papers to read first</a></li><li><a href="#interested">Interested?</a></li></ul></nav>
 <figure class="live" data-demo="gnss" aria-labelledby="live-gnss">
   <div class="lhead"><h2 id="live-gnss">Try it: Catch a spoofed GPS fix</h2><span class="kicker">Live illustration</span></div>
   <p class="how">The blue line is where wheel speed and steering say the car is; the dashed red line is the GPS fix. Start the spoofer and the two drift apart. Set the alarm threshold too low and normal noise raises false alarms; too high and the spoofer gets further before it is caught.</p>
@@ -43,9 +46,9 @@
   <div class="ctrl"></div>
   <p class="disc">A simplified model of the idea, for illustration. This project has not started; there are no results yet.</p>
 </figure>
-<p><span class="badge">Planned project · core area · open to new graduate students</span></p>
+
 <section>
-<h2>Why this matters</h2>
+<h2 id="why-this-matters">Why this matters</h2>
 <p>A GPS jammer blocks satellite signals; a spoofer is worse, because it feeds the receiver fake signals and quietly moves the car to the wrong place. Researchers have shown that spoofed routes can fool location tracking on real roads and can take over the sensor-fusion localization used in autonomous driving. Meanwhile every modern car already measures how it actually moves: wheel speeds, steering angle and yaw rate travel on its internal data bus.</p>
 <p>My earlier work located cars that jam GPS from the roadside (ACM CCS 2014) and read in-vehicle data to identify drivers (ACM/IEEE SEC 2017). This project joins the two: check every GPS fix against the car's own motion, on hardware cheap enough to ship.</p>
 <figure class="fig reveal"><svg viewBox="0 0 640 260" role="img" aria-label="A car drives along a road; satellites send real signals while a spoofer sends fake ones; the GPS position (dashed) drifts away from where the wheel-speed and steering data say the car really is, and an alarm lights up">
@@ -65,28 +68,28 @@
 </svg><figcaption>The idea: the path computed from wheel speed and steering keeps going straight while the spoofed GPS position drifts away. When the gap grows faster than normal sensor error explains, raise an alarm.</figcaption></figure>
 </section>
 <section>
-<h2>Research questions</h2>
-<ol class="rq"><li>How quickly can wheel-speed, steering and yaw-rate data expose a GPS position that disagrees with how the car really moved, and at what false-alarm rate?</li><li>Can the detector run on a phone or an in-vehicle processor in real time, with a memory and power budget an automaker would accept?</li><li>How does a careful attacker who drifts the position slowly, or follows the real road network, evade it, and what does it take to catch them?</li></ol>
+<h2 id="research-questions">Research questions</h2>
+<ol class="rqx"><li class="reveal"><p class="q">How quickly can wheel-speed, steering and yaw-rate data expose a GPS position that disagrees with how the car really moved, and at what false-alarm rate?</p><dl><dt>Hypothesis</dt><dd>Crude position jumps show up within seconds; slow drift is caught only once it outgrows the dead-reckoning error, which itself grows with distance driven.</dd><dt>How we would test it</dt><dd>Replay recorded drives with injected attacks of graded speed, and plot detection delay against false alarms per hour for each attack type.</dd></dl></li><li class="reveal"><p class="q">Can the detector run on a phone or an in-vehicle processor in real time, with a memory and power budget an automaker would accept?</p><dl><dt>Hypothesis</dt><dd>A Kalman-filter residual test is cheap; any learned component is what has to be sized carefully.</dd><dt>How we would test it</dt><dd>Replay drives in real time on a phone and an embedded board, and profile latency, memory and energy per fix.</dd></dl></li><li class="reveal"><p class="q">How does a careful attacker who drifts the position slowly, or follows the real road network, evade it, and what does it take to catch them?</p><dl><dt>Hypothesis</dt><dd>To stay under the alarm, a road-following attacker has to mirror the car's real turns, which limits how far it can take the car.</dd><dt>How we would test it</dt><dd>Build an adaptive attacker that knows the detector, and measure how far off route it gets before the alarm.</dd></dl></li></ol><h3>Expected contributions</h3><ul class="contrib"><li>A spoofing detector that uses only data the car already has, with its code.</li><li>A set of recorded drives with simulated attacks, from crude jumps to road-following drift, for others to test against.</li><li>Measured detection delay, false alarms and phone run time for each attack type.</li></ul>
 </section>
 <section>
-<h2>Approach</h2>
+<h2 id="approach">Approach</h2>
 <ol class="flow" aria-label="Project steps"><li><b>Collect drives</b><span>Log GNSS fixes and bus data with an OBD-II dongle and a phone, as in PredriveID.</span></li><li><b>Simulate attacks</b><span>Replay recorded traces with injected spoofing paths, from crude jumps to slow, road-following drift.</span></li><li><b>Model motion</b><span>Dead reckoning and a Kalman filter turn bus data into an independent path.</span></li><li><b>Detect</b><span>Compare the two paths with a residual test and a small learned model.</span></li><li><b>Measure</b><span>Time to detect, false alarms per hour, and run time on a phone.</span></li></ol>
 <p class="note">All spoofing is simulated in recorded data or in a shielded lab. Transmitting on GPS frequencies on the road is illegal and is never part of this project.</p>
 </section>
 <section>
-<h2>Skills you will use and learn</h2>
+<h2 id="skills-you-will-use-and-learn">Skills you will use and learn</h2>
 <ul class="chips" aria-label="Skills"><li>Python</li><li>Signal processing</li><li>Kalman filtering</li><li>Machine learning</li><li>Vehicle data (CAN, OBD-II)</li><li>Android, optional</li></ul>
 </section>
 <section>
-<h2>Papers to read first</h2>
+<h2 id="papers-to-read-first">Papers to read first</h2>
 <ol class="pubs reading"><li><div class="pt">GNSS spoofing and detection</div><div class="pa">M. L. Psiaki, T. E. Humphreys</div><div class="pv">Proceedings of the IEEE, 2016</div><div class="why">The standard survey: how spoofing works and the families of defenses.</div><div class="pl"><a href="https://doi.org/10.1109/JPROC.2016.2526658">Read</a></div></li><li><div class="pt">On the requirements for successful GPS spoofing attacks</div><div class="pa">N. O. Tippenhauer, C. Pöpper, K. B. Rasmussen, S. Capkun</div><div class="pv">ACM CCS, 2011</div><div class="why">What an attacker must control to move a victim, and why that is hard.</div><div class="pl"><a href="https://doi.org/10.1145/2046707.2046719">Read</a></div></li><li><div class="pt">Security of GPS/INS based on-road location tracking systems</div><div class="pa">S. Narain, A. Ranganathan, G. Noubir</div><div class="pv">IEEE Symposium on Security and Privacy, 2019</div><div class="why">Spoofing that follows the road network, the attacker this project must beat.</div><div class="pl"><a href="https://doi.org/10.1109/SP.2019.00068">Read</a></div></li><li><div class="pt">Drift with Devil: Security of multi-sensor fusion based localization in high-level autonomous driving under GPS spoofing</div><div class="pa">J. Shen, J. Y. Won, Z. Chen, Q. A. Chen</div><div class="pv">USENIX Security Symposium, 2020</div><div class="why">Shows sensor fusion alone is not a defense, so detection has to be designed in.</div><div class="pl"><a href="https://www.usenix.org/conference/usenixsecurity20/presentation/shen">Read</a></div></li><li><div class="pt">Detection of on-road vehicles emanating GPS interference</div><div class="pa"><b>G. Kar</b>, H. Mustafa, Y. Wang, Y. Chen, W. Xu, M. Gruteser, T. Vu</div><div class="pv">ACM CCS, 2014</div><div class="why">Our earlier work on GPS interference from vehicles.</div><div class="pl"><a href="https://doi.org/10.1145/2660267.2660336">Read</a></div></li><li><div class="pt">PredriveID: Pre-trip driver identification from in-vehicle data</div><div class="pa"><b>G. Kar</b>, S. Jain, M. Gruteser, J. Chen, F. Bai, R. Govindan</div><div class="pv">ACM/IEEE SEC, 2017</div><div class="why">How we collected and used in-vehicle bus data with low-cost hardware.</div><div class="pl"><a href="https://doi.org/10.1145/3132211.3134462">Read</a></div></li></ol></section><section class="join">
-<h2>Interested?</h2>
+<h2 id="interested">Interested?</h2>
 <p>This project is planned and not yet staffed. If you are a UCM graduate student, or joining UCM soon, and it fits your interests, email me at <a href="mailto:kar@ucmo.edu">kar@ucmo.edu</a> with your CV, the project's name and a few lines on which research question you would start with. Reading two of the papers below first will make that conversation much better.</p>
 </section>
 <section><nav class="pnav" aria-label="More projects"><span></span><a href="planned-benchmark.html">Leak-free benchmarks for IoT traffic classifiers →</a></nav></section>
 </main>
 <footer><div class="wrap">© 2026 Gorkem Kar · <a href="../index.html">Home</a></div></footer>
-<script src="../site.js?v=20261125d"></script>
-<script src="../live.js?v=20261125d"></script>
+<script src="../site.js?v=20261125e"></script>
+<script src="../live.js?v=20261125e"></script>
 </body>
 </html>

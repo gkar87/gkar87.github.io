@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Catching ghost vehicles in V2X messages · Gorkem Kar</title>
+<meta name="description" content="Connected cars broadcast their position and speed many times a second, and other cars act on those messages. This project detects messages that describe cars that are not there.">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#1d4f91">
+<script>document.documentElement.classList.add('js');try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+<link rel="stylesheet" href="../style.css?v=20261125e">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="../index.html">Gorkem Kar<span class="muted">, Ph.D.</span></a>
+    <div class="navbar">
+      <nav aria-label="Sections">
+        <ul>
+          <li><a href="../index.html#about">About</a></li>
+          <li><a href="../index.html#research">Research</a></li>
+          <li><a href="../index.html#publications">Publications</a></li>
+          <li><a href="../index.html#teaching">Teaching</a></li>
+          <li><a href="../index.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <button class="theme" type="button" aria-label="Switch theme"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" fill="currentColor"/></svg></button>
+    </div>
+  </div>
+  <div class="progress" aria-hidden="true"></div>
+</header>
+<main id="main" class="wrap">
+<p class="crumbs"><a href="../index.html#open-projects">Open projects</a> / Catching ghost vehicles in V2X messages</p>
+<section class="phead">
+  <span class="kicker">Planned project · core area</span>
+  <h1>Catching ghost vehicles in V2X messages</h1>
+  <p class="lead">Connected cars broadcast their position and speed many times a second, and other cars act on those messages. This project detects messages that describe cars that are not there.</p>
+  <ul class="facts" aria-label="At a glance"><li>Core area</li><li>3 research questions</li><li>Open to new graduate students</li><li>Live demo</li></ul>
+</section>
+<nav class="toc" aria-label="On this page"><span>On this page</span><ul><li><a href="#live-v2x">Try it</a></li><li><a href="#why-this-matters">Why this matters</a></li><li><a href="#research-questions">Research questions</a></li><li><a href="#approach">Approach</a></li><li><a href="#skills-you-will-use-and-learn">Skills you will use and learn</a></li><li><a href="#papers-to-read-first">Papers to read first</a></li><li><a href="#interested">Interested?</a></li></ul></nav>
+<figure class="live" data-demo="v2x" aria-labelledby="live-v2x">
+  <div class="lhead"><h2 id="live-v2x">Try it: Catch a ghost car</h2><span class="kicker">Live illustration</span></div>
+  <p class="how">Someone broadcasts a car ahead of you that is not there, claiming hard braking. Switch on the checks: the motion check catches a crude ghost that jumps around; a careful ghost is caught only where a camera or your radar can look.</p>
+  <canvas width="720" height="290" role="img" aria-label="A road with your car, other cars, a ghost car drawn dashed, a roadside camera zone and radar cone, and which checks flagged the ghost"></canvas>
+  <div class="ctrl"></div>
+  <p class="disc">A simplified model of the idea, for illustration. This project has not started; there are no results yet.</p>
+</figure>
+
+<section>
+<h2 id="why-this-matters">Why this matters</h2>
+<p>Vehicle-to-everything (V2X) messages are signed, so a receiver can tell that a message came from a certified sender. A signature cannot tell whether the message is true. A compromised unit, or an insider with valid credentials, can report a ghost car braking hard ahead and trigger emergency braking behind it. Detecting that kind of misbehavior has to look at what the messages say and check it against physics and against independent sensors.</p>
+<p>My research statement's first direction is exactly this: detecting spoofed, jammed or manipulated sensor and V2X data on vehicle and roadside hardware. It builds on our roadside detection of GPS jammers (ACM CCS 2014) and on traffic estimation at vehicular edge nodes (ACM/IEEE SEC 2017).</p>
+</section>
+<section>
+<h2 id="research-questions">Research questions</h2>
+<ol class="rqx"><li class="reveal"><p class="q">Which plausibility checks on position, speed and heading catch fake vehicles in V2X messages, and how do they trade detection against false alarms?</p><dl><dt>Hypothesis</dt><dd>Simple physical checks catch crude ghosts; attackers who obey physics can only be caught with evidence from independent sensors.</dd><dt>How we would test it</dt><dd>Evaluate checks on public misbehavior datasets and on simulated attacks of rising sophistication.</dd></dl></li><li class="reveal"><p class="q">How much do roadside cameras, radar and other cars' reports add, and where are the coverage gaps an attacker can use?</p><dl><dt>Hypothesis</dt><dd>Fusing independent sensors closes most gaps, and the remaining risk sits where no independent sensor looks.</dd><dt>How we would test it</dt><dd>Simulate traffic with roadside and on-board sensor coverage, place attacks inside and outside it, and measure detection.</dd></dl></li><li class="reveal"><p class="q">Can misbehavior detection run within the latency and memory budget of roadside and on-board units?</p><dl><dt>Hypothesis</dt><dd>Single-message checks fit easily on board; fusing several sensors is the costly step and belongs on roadside edge computers.</dd><dt>How we would test it</dt><dd>Profile each detector on embedded boards at realistic message rates.</dd></dl></li></ol><h3>Expected contributions</h3><ul class="contrib"><li>A layered ghost-vehicle detector combining plausibility checks with roadside and on-board sensors.</li><li>A coverage analysis showing where attacks can still hide.</li><li>Run-time profiles on roadside and on-board hardware.</li></ul>
+</section>
+<section>
+<h2 id="approach">Approach</h2>
+<ol class="flow" aria-label="Project steps"><li><b>Start from data</b><span>Use public misbehavior datasets with labeled attacks.</span></li><li><b>Simulate</b><span>Add ghost vehicles of rising sophistication in a traffic and network simulator.</span></li><li><b>Check plausibility</b><span>Test each message against physics and the sender's own history.</span></li><li><b>Fuse sensors</b><span>Cross-check against simulated roadside cameras and on-board radar.</span></li><li><b>Deploy</b><span>Profile the detectors on embedded boards at realistic message rates.</span></li></ol>
+<p class="note">All attacks run in simulation or on recorded data. Nothing is broadcast on real V2X channels.</p>
+</section>
+<section>
+<h2 id="skills-you-will-use-and-learn">Skills you will use and learn</h2>
+<ul class="chips" aria-label="Skills"><li>Python</li><li>Traffic and network simulation</li><li>Sensor fusion</li><li>Machine learning</li><li>Embedded profiling</li><li>Vehicular networking</li></ul>
+</section>
+<section>
+<h2 id="papers-to-read-first">Papers to read first</h2>
+<ol class="pubs reading"><li><div class="pt">Survey on misbehavior detection in cooperative intelligent transportation systems</div><div class="pa">R. W. van der Heijden, S. Dietzel, T. Leinmüller, F. Kargl</div><div class="pv">IEEE Communications Surveys &amp; Tutorials, 2019</div><div class="why">The map of the field: why signatures are not enough and which checks exist.</div><div class="pl"><a href="https://doi.org/10.1109/COMST.2018.2873088">Read</a></div></li><li><div class="pt">VeReMi: A dataset for comparable evaluation of misbehavior detection in VANETs</div><div class="pa">R. W. van der Heijden, T. Lukaseder, F. Kargl</div><div class="pv">SecureComm, 2018</div><div class="why">The public dataset to start from.</div><div class="pl"><a href="https://doi.org/10.1007/978-3-030-01701-9_18">Read</a></div></li><li><div class="pt">Drift with Devil: Security of multi-sensor fusion based localization in high-level autonomous driving under GPS spoofing</div><div class="pa">J. Shen, J. Y. Won, Z. Chen, Q. A. Chen</div><div class="pv">USENIX Security Symposium, 2020</div><div class="why">Shows that fusing sensors does not defend by itself; detection has to be designed in.</div><div class="pl"><a href="https://www.usenix.org/conference/usenixsecurity20/presentation/shen">Read</a></div></li><li><div class="pt">Detection of on-road vehicles emanating GPS interference</div><div class="pa"><b>G. Kar</b>, H. Mustafa, Y. Wang, Y. Chen, W. Xu, M. Gruteser, T. Vu</div><div class="pv">ACM CCS, 2014</div><div class="why">Our roadside detection of a misbehaving vehicle.</div><div class="pl"><a href="https://doi.org/10.1145/2660267.2660336">Read</a></div></li><li><div class="pt">Real-time traffic estimation at vehicular edge nodes</div><div class="pa"><b>G. Kar</b>, S. Jain, M. Gruteser, F. Bai, R. Govindan</div><div class="pv">ACM/IEEE SEC, 2017</div><div class="why">Our edge processing of vehicle sensor data, the roadside half of this project.</div><div class="pl"><a href="https://doi.org/10.1145/3132211.3134461">Read</a></div></li></ol></section><section class="join">
+<h2 id="interested">Interested?</h2>
+<p>This project is planned and not yet staffed. If you are a UCM graduate student, or joining UCM soon, and it fits your interests, email me at <a href="mailto:kar@ucmo.edu">kar@ucmo.edu</a> with your CV, the project's name and a few lines on which research question you would start with. Reading two of the papers below first will make that conversation much better.</p>
+</section>
+<section><nav class="pnav" aria-label="More projects"><a href="planned-encrypted.html">← Naming the app without reading the traffic</a><a href="planned-rag.html">Attacking and defending a campus chatbot →</a></nav></section>
+</main>
+<footer><div class="wrap">© 2026 Gorkem Kar · <a href="../index.html">Home</a></div></footer>
+<script src="../site.js?v=20261125e"></script>
+<script src="../live.js?v=20261125e"></script>
+</body>
+</html>

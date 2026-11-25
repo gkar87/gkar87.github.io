@@ -8,7 +8,7 @@
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 <meta name="theme-color" content="#1d4f91">
 <script>document.documentElement.classList.add('js');try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
-<link rel="stylesheet" href="../style.css?v=20261125d">
+<link rel="stylesheet" href="../style.css?v=20261125e">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -33,9 +33,12 @@
 <main id="main" class="wrap">
 <p class="crumbs"><a href="../index.html#research">Research</a> / Explainable and applied AI</p>
 <section class="phead">
+  <span class="kicker">Published work</span>
   <h1>Explainable and applied AI</h1>
   <p class="lead">The methods behind my security work also answer questions in food safety, public safety, language and the workplace, with an emphasis on explaining why a model decides what it does.</p>
+  <ul class="facts" aria-label="At a glance"><li>Expert Systems, 2025</li><li>IEEE LA-CCI, 2025</li><li>J. Ambient Intelligence and Humanized Computing, 2023</li><li>J. Engineering Sciences and Design, 2022</li><li>Live demo</li></ul>
 </section>
+<nav class="toc" aria-label="On this page"><span>On this page</span><ul><li><a href="#live-shap">Try it</a></li><li><a href="#explaining-the-model-not-just-scoring-it">Explaining the model, not just scoring it</a></li><li><a href="#open-research-questions">Open research questions</a></li></ul></nav>
 <figure class="live" data-demo="shap" aria-labelledby="live-shap">
   <div class="lhead"><h2 id="live-shap">Try it: Explain one prediction</h2><span class="kicker">Live illustration</span></div>
   <p class="how">A toy attrition model with invented weights. Move the inputs and see how much each one pushes this employee&#x27;s predicted risk up (red) or down (blue). For a linear model like this one, these bars are exactly the SHAP values.</p>
@@ -45,7 +48,7 @@
 </figure>
 
 <section>
-<h2>Explaining the model, not just scoring it</h2>
+<h2 id="explaining-the-model-not-just-scoring-it">Explaining the model, not just scoring it</h2>
 <figure class="fig reveal"><svg viewBox="0 0 640 220" role="img" aria-label="Illustration: data goes into a deep learning model; explanation tools show which inputs drove each prediction">
   <rect x="10" y="80" width="120" height="60" rx="8" class="svg-box"/><text x="30" y="115" class="svg-s">records</text>
   <line x1="130" y1="110" x2="220" y2="110" stroke="var(--accent)" stroke-width="3" class="dash"/>
@@ -66,11 +69,16 @@
   <div class="card"><h3>Technology investment and resilience</h3><p>How strategic investment in technological innovation helps organizations stay resilient through digital transformation.</p><p class="pl"><a href="https://scholar.google.com/citations?view_op=view_citation&amp;hl=en&amp;user=dz-6amUAAAAJ&amp;citation_for_view=dz-6amUAAAAJ:LkGwnXOMwfcC">J. Innovative Digital Transformation, 2025</a></p></div>
 </div>
 </section>
+<section>
+<h2 id="open-research-questions">Open research questions</h2>
+<p class="muted">Questions this work leaves open. They are directions, not results; each links to the planned project that takes it up.</p>
+<ol class="rqx open"><li class="reveal"><p class="q">Are explanations faithful to what a model really uses, and do they help people decide better?</p><dl><dt>Why it is open</dt><dd>Our food-fraud work compared what LIME, SHAP and the What-If Tool can and cannot tell an analyst. Whether an explanation is faithful to the model is a separate test.</dd><dt>Taken up in</dt><dd><a href="planned-xai.html">checkable explanations</a></dd></dl></li><li class="reveal"><p class="q">Can a retrieval-augmented chatbot be made robust to poisoned or misleading sources?</p><dl><dt>Why it is open</dt><dd>Our UCM chatbot answers from university pages; anyone who can get a page retrieved can try to steer it.</dd><dt>Taken up in</dt><dd><a href="planned-rag.html">campus chatbot security</a></dd></dl></li></ol>
+</section>
 
-<section><nav class="pnav" aria-label="More projects"><a href="side-channels.html">← Acoustic side channels on phones</a><a href="../index.html#research">All research →</a></nav></section>
+<section><nav class="pnav" aria-label="More projects"><a href="side-channels.html">← Acoustic side channels on phones</a><a href="wireless-ffr.html">Sharing spectrum fairly: fractional frequency reuse →</a></nav></section>
 </main>
 <footer><div class="wrap">© 2026 Gorkem Kar · <a href="../index.html">Home</a></div></footer>
-<script src="../site.js?v=20261125d"></script>
-<script src="../live.js?v=20261125d"></script>
+<script src="../site.js?v=20261125e"></script>
+<script src="../live.js?v=20261125e"></script>
 </body>
 </html>

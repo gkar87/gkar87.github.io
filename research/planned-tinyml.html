@@ -8,7 +8,7 @@
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 <meta name="theme-color" content="#1d4f91">
 <script>document.documentElement.classList.add('js');try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
-<link rel="stylesheet" href="../style.css?v=20261125d">
+<link rel="stylesheet" href="../style.css?v=20261125e">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -33,12 +33,22 @@
 <main id="main" class="wrap">
 <p class="crumbs"><a href="../index.html#open-projects">Open projects</a> / Intrusion detection that fits on the device</p>
 <section class="phead">
+  <span class="kicker">Planned project · new direction</span>
   <h1>Intrusion detection that fits on the device</h1>
   <p class="lead">Most IoT devices cannot run a full intrusion detector. This project shrinks detectors until they run on a microcontroller, and measures what accuracy that costs.</p>
+  <ul class="facts" aria-label="At a glance"><li>New direction</li><li>3 research questions</li><li>Open to new graduate students</li><li>Live demo</li></ul>
 </section>
-<p><span class="badge">Planned project · new direction · open to new graduate students</span></p>
+<nav class="toc" aria-label="On this page"><span>On this page</span><ul><li><a href="#live-tiny">Try it</a></li><li><a href="#why-this-matters">Why this matters</a></li><li><a href="#research-questions">Research questions</a></li><li><a href="#approach">Approach</a></li><li><a href="#skills-you-will-use-and-learn">Skills you will use and learn</a></li><li><a href="#papers-to-read-first">Papers to read first</a></li><li><a href="#interested">Interested?</a></li></ul></nav>
+<figure class="live" data-demo="tiny" aria-labelledby="live-tiny">
+  <div class="lhead"><h2 id="live-tiny">Try it: Will the model fit?</h2><span class="kicker">Live illustration</span></div>
+  <p class="how">Memory for the weights is just weights × bits. Shrink the model or the bits until it fits under an example RAM budget, and watch the rounding error that fewer bits cause on a typical weight distribution.</p>
+  <canvas width="720" height="300" role="img" aria-label="A memory bar against a RAM line, and a weight histogram with the quantization grid"></canvas>
+  <div class="ctrl"></div>
+  <p class="disc">A simplified model of the idea, for illustration. This project has not started; there are no results yet. Weights only; activations and code need room too.</p>
+</figure>
+
 <section>
-<h2>Why this matters</h2>
+<h2 id="why-this-matters">Why this matters</h2>
 <p>My group identifies IoT devices and attacks from packet headers alone, which keeps the input small. Today such detectors run on a server or gateway. Running them on the device itself, or on a cheap board beside it, would catch attacks even when the gateway is bypassed and would keep traffic data local. TinyML techniques such as pruning and 8-bit quantization now fit useful models into a few hundred kilobytes, but security detectors have their own needs: few false alarms, and robustness to traffic the model has not seen.</p>
 <figure class="fig reveal"><svg viewBox="0 0 640 240" role="img" aria-label="A large intrusion-detection model is pruned and quantized into a small one that fits on a microcontroller inside an IoT camera; network packets stream into the device and are checked on the spot">
   <g class="pop"><rect x="20" y="40" width="170" height="130" rx="10" class="svg-box"/>
@@ -58,27 +68,27 @@
 </svg><figcaption>Shrink a detector until it fits on a microcontroller, then check packets on the spot. Illustration.</figcaption></figure>
 </section>
 <section>
-<h2>Research questions</h2>
-<ol class="rq"><li>How small can a packet-header detector get, through feature selection, pruning and quantization, before detection accuracy or false-alarm rate degrades?</li><li>Which model families (small trees, tiny neural networks, autoencoders) give the best accuracy per kilobyte and per millijoule?</li><li>Can an on-device detector keep learning normal traffic without being taught to accept an attack?</li></ol>
+<h2 id="research-questions">Research questions</h2>
+<ol class="rqx"><li class="reveal"><p class="q">How small can a packet-header detector get, through feature selection, pruning and quantization, before detection accuracy or false-alarm rate degrades?</p><dl><dt>Hypothesis</dt><dd>Header-level detectors keep their detection rate down to a few kilobytes, and quantization costs less than pruning.</dd><dt>How we would test it</dt><dd>Compress step by step and plot detection rate and false alarms against model size on fixed test sets.</dd></dl></li><li class="reveal"><p class="q">Which model families (small trees, tiny neural networks, autoencoders) give the best accuracy per kilobyte and per millijoule?</p><dl><dt>Hypothesis</dt><dd>Small trees give the best accuracy per kilobyte on header features; tiny networks win only when timing patterns matter.</dd><dt>How we would test it</dt><dd>Compare families at matched memory budgets on a microcontroller, measuring energy per inference.</dd></dl></li><li class="reveal"><p class="q">Can an on-device detector keep learning normal traffic without being taught to accept an attack?</p><dl><dt>Hypothesis</dt><dd>Unguarded online updates can be poisoned by a slow attack; gating updates on confidence prevents most of it.</dd><dt>How we would test it</dt><dd>Simulate slow poisoning during online learning and compare gated and ungated update rules.</dd></dl></li></ol><h3>Expected contributions</h3><ul class="contrib"><li>Detectors compressed to microcontroller size, with code.</li><li>Accuracy per kilobyte and per millijoule across model families.</li><li>An update rule that keeps learning without being poisoned.</li></ul>
 </section>
 <section>
-<h2>Approach</h2>
+<h2 id="approach">Approach</h2>
 <ol class="flow" aria-label="Project steps"><li><b>Baseline</b><span>Train detectors on public IoT attack datasets with our feature selection pipeline.</span></li><li><b>Compress</b><span>Prune, quantize to 8 bits and distill into small models.</span></li><li><b>Deploy</b><span>Run them on boards such as an ESP32 or an Arm Cortex-M with TensorFlow Lite Micro.</span></li><li><b>Measure</b><span>Accuracy, false alarms, memory, latency and energy on the board.</span></li><li><b>Report</b><span>An accuracy-per-kilobyte table that others can reproduce.</span></li></ol>
 </section>
 <section>
-<h2>Skills you will use and learn</h2>
+<h2 id="skills-you-will-use-and-learn">Skills you will use and learn</h2>
 <ul class="chips" aria-label="Skills"><li>Python, scikit-learn, TensorFlow</li><li>TensorFlow Lite Micro</li><li>C on microcontrollers</li><li>Network traffic features</li><li>Energy and latency measurement</li></ul>
 </section>
 <section>
-<h2>Papers to read first</h2>
+<h2 id="papers-to-read-first">Papers to read first</h2>
 <ol class="pubs reading"><li><div class="pt">Kitsune: an ensemble of autoencoders for online network intrusion detection</div><div class="pa">Y. Mirsky, T. Doitshman, Y. Elovici, A. Shabtai</div><div class="pv">NDSS, 2018</div><div class="why">A lightweight online detector designed to run near the network edge.</div><div class="pl"><a href="https://doi.org/10.14722/ndss.2018.23204">Read</a></div></li><li><div class="pt">N-BaIoT: Network-based detection of IoT botnet attacks using deep autoencoders</div><div class="pa">Y. Meidan, M. Bohadana, Y. Mathov, Y. Mirsky, A. Shabtai, D. Breitenbacher, Y. Elovici</div><div class="pv">IEEE Pervasive Computing, 2018</div><div class="why">A widely used IoT botnet dataset to start from.</div><div class="pl"><a href="https://doi.org/10.1109/MPRV.2018.03367731">Read</a></div></li><li><div class="pt">Deep compression: compressing deep neural networks with pruning, trained quantization and Huffman coding</div><div class="pa">S. Han, H. Mao, W. J. Dally</div><div class="pv">ICLR, 2016</div><div class="why">The classic recipe for making models small.</div><div class="pl"><a href="https://arxiv.org/abs/1510.00149">Read</a></div></li><li><div class="pt">Quantization and training of neural networks for efficient integer-arithmetic-only inference</div><div class="pa">B. Jacob, S. Kligys, B. Chen, M. Zhu, M. Tang, A. Howard, H. Adam, D. Kalenichenko</div><div class="pv">IEEE/CVF CVPR, 2018</div><div class="why">The 8-bit integer approach behind most microcontroller deployments.</div><div class="pl"><a href="https://doi.org/10.1109/CVPR.2018.00286">Read</a></div></li><li><div class="pt">MCUNet: tiny deep learning on IoT devices</div><div class="pa">J. Lin, W.-M. Chen, Y. Lin, J. Cohn, C. Gan, S. Han</div><div class="pv">NeurIPS, 2020</div><div class="why">Shows how far careful design can push models on microcontrollers.</div><div class="pl"><a href="https://arxiv.org/abs/2007.10319">Read</a></div></li><li><div class="pt">MLPerf Tiny benchmark</div><div class="pa">C. Banbury, V. J. Reddi, P. Torelli, et al.</div><div class="pv">arXiv preprint, 2021</div><div class="why">How to measure accuracy, latency and energy fairly on tiny devices.</div><div class="pl"><a href="https://arxiv.org/abs/2106.07597">Read</a></div></li><li><div class="pt">Comparative analysis of feature selection algorithms for automated IoT device fingerprinting</div><div class="pa">A. Aksoy, S. Varma, G. Moorthy, E. Pan, <b>G. Kar</b></div><div class="pv">ICISSP, 2024</div><div class="why">Our header-only features, a natural fit for tiny models.</div><div class="pl"><a href="https://doi.org/10.5220/0012379100003648">Read</a></div></li></ol></section><section class="join">
-<h2>Interested?</h2>
+<h2 id="interested">Interested?</h2>
 <p>This project is planned and not yet staffed. If you are a UCM graduate student, or joining UCM soon, and it fits your interests, email me at <a href="mailto:kar@ucmo.edu">kar@ucmo.edu</a> with your CV, the project's name and a few lines on which research question you would start with. Reading two of the papers below first will make that conversation much better.</p>
 </section>
 <section><nav class="pnav" aria-label="More projects"><a href="planned-rag.html">← Attacking and defending a campus chatbot</a><a href="planned-pqc.html">Is the Internet of Things ready for post-quantum cryptography? →</a></nav></section>
 </main>
 <footer><div class="wrap">© 2026 Gorkem Kar · <a href="../index.html">Home</a></div></footer>
-<script src="../site.js?v=20261125d"></script>
-
+<script src="../site.js?v=20261125e"></script>
+<script src="../live.js?v=20261125e"></script>
 </body>
 </html>

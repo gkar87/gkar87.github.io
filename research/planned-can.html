@@ -8,7 +8,7 @@
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 <meta name="theme-color" content="#1d4f91">
 <script>document.documentElement.classList.add('js');try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
-<link rel="stylesheet" href="../style.css?v=20261125d">
+<link rel="stylesheet" href="../style.css?v=20261125e">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -33,9 +33,12 @@
 <main id="main" class="wrap">
 <p class="crumbs"><a href="../index.html#open-projects">Open projects</a> / Spotting intruders on the car's internal network</p>
 <section class="phead">
+  <span class="kicker">Planned project · core area</span>
   <h1>Spotting intruders on the car's internal network</h1>
   <p class="lead">Inside every car, dozens of computers talk over one shared bus with no sender authentication. This project builds detectors that notice when a message on that bus does not belong there.</p>
+  <ul class="facts" aria-label="At a glance"><li>Core area</li><li>3 research questions</li><li>Open to new graduate students</li><li>Live demo</li></ul>
 </section>
+<nav class="toc" aria-label="On this page"><span>On this page</span><ul><li><a href="#live-can">Try it</a></li><li><a href="#why-this-matters">Why this matters</a></li><li><a href="#research-questions">Research questions</a></li><li><a href="#approach">Approach</a></li><li><a href="#skills-you-will-use-and-learn">Skills you will use and learn</a></li><li><a href="#papers-to-read-first">Papers to read first</a></li><li><a href="#interested">Interested?</a></li></ul></nav>
 <figure class="live" data-demo="can" aria-labelledby="live-can">
   <div class="lhead"><h2 id="live-can">Try it: Spot an intruder on the bus</h2><span class="kicker">Live illustration</span></div>
   <p class="how">Each identifier on a car&#x27;s internal bus repeats at a steady rhythm. Plug in an injector that floods one identifier and the timing detector flags frames that arrive much faster than usual.</p>
@@ -43,9 +46,9 @@
   <div class="ctrl"></div>
   <p class="disc">A simplified model of the idea, for illustration. This project has not started; there are no results yet. The identifiers and periods are invented.</p>
 </figure>
-<p><span class="badge">Planned project · core area · open to new graduate students</span></p>
+
 <section>
-<h2>Why this matters</h2>
+<h2 id="why-this-matters">Why this matters</h2>
 <p>Researchers have shown that an attacker who reaches a car's internal network can control brakes, engine and locks. Messages on that network carry no proof of who sent them, so detection has to come from patterns: when messages arrive, what they contain and which control unit produced them. My PredriveID work with General Motors Research read exactly this kind of bus data to tell drivers apart, using low-cost hardware. This project turns the same skills toward catching intrusions.</p>
 <figure class="fig reveal"><svg viewBox="0 0 640 240" role="img" aria-label="Electronic control units for the engine, brakes and steering share one in-vehicle bus; their messages travel along it on a steady rhythm; a rogue device plugged into the diagnostic port injects extra messages, which break the rhythm and trigger an alert">
   <line x1="20" y1="120" x2="620" y2="120" stroke="var(--fg)" stroke-width="4"/>
@@ -62,27 +65,27 @@
 </svg><figcaption>Normal messages repeat on a steady rhythm; injected ones break it. Illustration, not results.</figcaption></figure>
 </section>
 <section>
-<h2>Research questions</h2>
-<ol class="rq"><li>How well do timing-based, content-based and learning-based detectors catch injection, flooding and impersonation attacks on public in-vehicle datasets?</li><li>Do detectors trained on one car still work on another model, or after a software update changes the message rhythm?</li><li>Can a detector small enough for an in-vehicle gateway also say which control unit sent the bad message?</li></ol>
+<h2 id="research-questions">Research questions</h2>
+<ol class="rqx"><li class="reveal"><p class="q">How well do timing-based, content-based and learning-based detectors catch injection, flooding and impersonation attacks on public in-vehicle datasets?</p><dl><dt>Hypothesis</dt><dd>Timing detectors catch flooding and most injections cheaply; impersonation that keeps the rhythm needs content or sender features.</dd><dt>How we would test it</dt><dd>Benchmark the three families on public in-vehicle datasets with one common split and per-attack metrics.</dd></dl></li><li class="reveal"><p class="q">Do detectors trained on one car still work on another model, or after a software update changes the message rhythm?</p><dl><dt>Hypothesis</dt><dd>Learned detectors transfer poorly across vehicles; timing baselines recover after recalibrating on a short drive.</dd><dt>How we would test it</dt><dd>Train on one vehicle or software version, test on another, and measure how much clean driving each detector needs to recover.</dd></dl></li><li class="reveal"><p class="q">Can a detector small enough for an in-vehicle gateway also say which control unit sent the bad message?</p><dl><dt>Hypothesis</dt><dd>Timing and electrical traits together can point to the sending control unit for many attacks.</dd><dt>How we would test it</dt><dd>Add sender attribution and test it on data with known sources, then profile it on gateway-class hardware.</dd></dl></li></ol><h3>Expected contributions</h3><ul class="contrib"><li>A common benchmark of in-vehicle intrusion detectors across attack types.</li><li>Measurements of how detectors transfer across vehicles and software updates.</li><li>A gateway-sized detector that also points to the sending control unit.</li></ul>
 </section>
 <section>
-<h2>Approach</h2>
+<h2 id="approach">Approach</h2>
 <ol class="flow" aria-label="Project steps"><li><b>Datasets</b><span>Start from public in-vehicle attack datasets, then log our own drives with an OBD-II interface.</span></li><li><b>Baselines</b><span>Reimplement entropy, clock-skew and neural detectors from the reading list.</span></li><li><b>Cross-car tests</b><span>Train on one vehicle or time period, test on another.</span></li><li><b>Lightweight model</b><span>Shrink the best detector for a low-cost embedded board.</span></li><li><b>Report</b><span>Detection rate, false alarms per hour of driving and attribution accuracy.</span></li></ol>
 </section>
 <section>
-<h2>Skills you will use and learn</h2>
+<h2 id="skills-you-will-use-and-learn">Skills you will use and learn</h2>
 <ul class="chips" aria-label="Skills"><li>Python, pandas, PyTorch</li><li>CAN bus and OBD-II basics</li><li>Time-series anomaly detection</li><li>Embedded boards (Raspberry Pi or similar)</li><li>Careful experiment design</li></ul>
 </section>
 <section>
-<h2>Papers to read first</h2>
+<h2 id="papers-to-read-first">Papers to read first</h2>
 <ol class="pubs reading"><li><div class="pt">Experimental security analysis of a modern automobile</div><div class="pa">K. Koscher, A. Czeskis, F. Roesner, S. Patel, T. Kohno, S. Checkoway, D. McCoy, B. Kantor, D. Anderson, H. Shacham, S. Savage</div><div class="pv">IEEE S&amp;P, 2010</div><div class="why">The paper that showed what an attacker on the car's network can do.</div><div class="pl"><a href="https://doi.org/10.1109/SP.2010.34">Read</a></div></li><li><div class="pt">Entropy-based anomaly detection for in-vehicle networks</div><div class="pa">M. Müter, N. Asaj</div><div class="pv">IEEE Intelligent Vehicles Symposium, 2011</div><div class="why">An early, simple detector that is still a useful baseline.</div><div class="pl"><a href="https://doi.org/10.1109/IVS.2011.5940552">Read</a></div></li><li><div class="pt">Fingerprinting electronic control units for vehicle intrusion detection</div><div class="pa">K.-T. Cho, K. G. Shin</div><div class="pv">USENIX Security, 2016</div><div class="why">Uses the timing of periodic messages to fingerprint the sender.</div><div class="pl"><a href="https://www.usenix.org/conference/usenixsecurity16/technical-sessions/presentation/cho">Read</a></div></li><li><div class="pt">GIDS: GAN based intrusion detection system for in-vehicle network</div><div class="pa">E. Seo, H. M. Song, H. K. Kim</div><div class="pv">PST, 2018</div><div class="why">A learning-based detector that can flag attacks it never saw.</div><div class="pl"><a href="https://doi.org/10.1109/PST.2018.8514157">Read</a></div></li><li><div class="pt">In-vehicle network intrusion detection using deep convolutional neural network</div><div class="pa">H. M. Song, J. Woo, H. K. Kim</div><div class="pv">Vehicular Communications, 2020</div><div class="why">A deep detector evaluated on a widely used public dataset.</div><div class="pl"><a href="https://doi.org/10.1016/j.vehcom.2019.100198">Read</a></div></li><li><div class="pt">PredriveID: Pre-trip driver identification from in-vehicle data</div><div class="pa"><b>G. Kar</b>, S. Jain, M. Gruteser, J. Chen, F. Bai, R. Govindan</div><div class="pv">ACM/IEEE SEC, 2017</div><div class="why">How we collected and used in-vehicle bus data.</div><div class="pl"><a href="https://doi.org/10.1145/3132211.3134462">Read</a></div></li></ol></section><section class="join">
-<h2>Interested?</h2>
+<h2 id="interested">Interested?</h2>
 <p>This project is planned and not yet staffed. If you are a UCM graduate student, or joining UCM soon, and it fits your interests, email me at <a href="mailto:kar@ucmo.edu">kar@ucmo.edu</a> with your CV, the project's name and a few lines on which research question you would start with. Reading two of the papers below first will make that conversation much better.</p>
 </section>
 <section><nav class="pnav" aria-label="More projects"><a href="planned-xai.html">← Explanations you can check: explainable intrusion and malware detection</a><a href="planned-acoustic.html">Do earbuds, smart speakers and video calls leak what you type? →</a></nav></section>
 </main>
 <footer><div class="wrap">© 2026 Gorkem Kar · <a href="../index.html">Home</a></div></footer>
-<script src="../site.js?v=20261125d"></script>
-<script src="../live.js?v=20261125d"></script>
+<script src="../site.js?v=20261125e"></script>
+<script src="../live.js?v=20261125e"></script>
 </body>
 </html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Naming the app without reading the traffic · Gorkem Kar</title>
+<meta name="description" content="Encryption hides what is inside a packet, but not its size, its timing or its direction. This project asks how much that metadata reveals, how to use it to manage and secure networks without decrypting anything, and how to protect users from the same leak.">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#1d4f91">
+<script>document.documentElement.classList.add('js');try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+<link rel="stylesheet" href="../style.css?v=20261125e">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="../index.html">Gorkem Kar<span class="muted">, Ph.D.</span></a>
+    <div class="navbar">
+      <nav aria-label="Sections">
+        <ul>
+          <li><a href="../index.html#about">About</a></li>
+          <li><a href="../index.html#research">Research</a></li>
+          <li><a href="../index.html#publications">Publications</a></li>
+          <li><a href="../index.html#teaching">Teaching</a></li>
+          <li><a href="../index.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <button class="theme" type="button" aria-label="Switch theme"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" fill="currentColor"/></svg></button>
+    </div>
+  </div>
+  <div class="progress" aria-hidden="true"></div>
+</header>
+<main id="main" class="wrap">
+<p class="crumbs"><a href="../index.html#open-projects">Open projects</a> / Naming the app without reading the traffic</p>
+<section class="phead">
+  <span class="kicker">Planned project · core area</span>
+  <h1>Naming the app without reading the traffic</h1>
+  <p class="lead">Encryption hides what is inside a packet, but not its size, its timing or its direction. This project asks how much that metadata reveals, how to use it to manage and secure networks without decrypting anything, and how to protect users from the same leak.</p>
+  <ul class="facts" aria-label="At a glance"><li>Core area</li><li>3 research questions</li><li>Open to new graduate students</li><li>Live demo</li></ul>
+</section>
+<nav class="toc" aria-label="On this page"><span>On this page</span><ul><li><a href="#live-flows">Try it</a></li><li><a href="#why-this-matters">Why this matters</a></li><li><a href="#research-questions">Research questions</a></li><li><a href="#approach">Approach</a></li><li><a href="#skills-you-will-use-and-learn">Skills you will use and learn</a></li><li><a href="#papers-to-read-first">Papers to read first</a></li><li><a href="#interested">Interested?</a></li></ul></nav>
+<figure class="live" data-demo="flows" aria-labelledby="live-flows">
+  <div class="lhead"><h2 id="live-flows">Try it: Name the app without reading it</h2><span class="kicker">Live illustration</span></div>
+  <p class="how">Three apps and one unknown encrypted flow, drawn as packet sizes over time. A nearest-profile classifier guesses the app from sizes and timing alone. Turn on padding and timing changes and see what it costs to stop it.</p>
+  <canvas width="720" height="290" role="img" aria-label="Packet size and timing strips for three apps and an unknown flow, with the classifier guess"></canvas>
+  <div class="ctrl"></div>
+  <p class="disc">A simplified model of the idea, for illustration. This project has not started; there are no results yet. The app profiles are invented.</p>
+</figure>
+
+<section>
+<h2 id="why-this-matters">Why this matters</h2>
+<p>Almost all traffic is now encrypted. Network operators still need to know which applications and devices are on their network to manage and secure it, and they should not have to break encryption to find out. The same metadata that helps them is also a privacy risk: earlier work has shown that packet sizes and timing can identify apps and websites behind encryption.</p>
+<p>My group already identifies IoT devices from single packet headers (ICISSP 2024) and evolves compact feature sets with a genetic algorithm (Electronics 2024). This project extends that line to encrypted flows, adding explainable AI and language models fine-tuned on traffic, and it studies defenses as seriously as attacks.</p>
+</section>
+<section>
+<h2 id="research-questions">Research questions</h2>
+<ol class="rqx"><li class="reveal"><p class="q">Which flow metadata (packet sizes, timing, direction, handshake fields) identifies an app or service from encrypted traffic, and how few features are needed?</p><dl><dt>Hypothesis</dt><dd>A small, evolved subset of size and timing features identifies most apps, as feature selection did for device fingerprints.</dd><dt>How we would test it</dt><dd>Run evolutionary feature selection on labeled encrypted captures and compare accuracy and feature count with using every feature.</dd></dl></li><li class="reveal"><p class="q">Can explanations and language models fine-tuned on traffic make these classifiers more accurate on unseen apps, or easier to audit, and at what cost?</p><dl><dt>Hypothesis</dt><dd>Explanations show which flow traits drive each decision, and fine-tuned language models help most on apps not seen in training.</dd><dt>How we would test it</dt><dd>Compare classical, sequence and fine-tuned language models on the same splits, auditing each one's top features with explanations.</dd></dl></li><li class="reveal"><p class="q">Which defenses (padding, timing changes, traffic shaping) protect users against these classifiers, and what do they cost in bandwidth and delay?</p><dl><dt>Hypothesis</dt><dd>Padding alone leaves timing leaks; combined defenses cut accuracy sharply but cost bandwidth and delay.</dd><dt>How we would test it</dt><dd>Apply each defense to captured traffic, retrain the classifier on defended traffic, and report accuracy against overhead.</dd></dl></li></ol><h3>Expected contributions</h3><ul class="contrib"><li>A traffic classifier that never decrypts payloads, built on evolved features.</li><li>An explanation-based audit of what such classifiers rely on.</li><li>A measured privacy-versus-overhead trade-off for padding and shaping defenses.</li></ul>
+</section>
+<section>
+<h2 id="approach">Approach</h2>
+<ol class="flow" aria-label="Project steps"><li><b>Capture</b><span>Record labeled encrypted traffic from phones, laptops and IoT devices in a lab network we control.</span></li><li><b>Extract</b><span>Turn each flow into sizes, timing, direction and handshake fields; never read payloads.</span></li><li><b>Evolve</b><span>Select compact feature sets with a genetic algorithm, as in our incident-identification work.</span></li><li><b>Model and explain</b><span>Compare classical models, sequence models and fine-tuned language models, and audit each with explanations.</span></li><li><b>Defend</b><span>Apply padding and shaping, retrain the classifier, and measure accuracy against overhead.</span></li></ol>
+<p class="note">Only traffic from our own lab devices or from public datasets is used. The project never decrypts other people's traffic.</p>
+</section>
+<section>
+<h2 id="skills-you-will-use-and-learn">Skills you will use and learn</h2>
+<ul class="chips" aria-label="Skills"><li>Python</li><li>Network traffic analysis (Wireshark, flow tools)</li><li>Machine learning</li><li>Genetic algorithms</li><li>Explainable AI</li><li>Transformers, optional</li></ul>
+</section>
+<section>
+<h2 id="papers-to-read-first">Papers to read first</h2>
+<ol class="pubs reading"><li><div class="pt">AppScanner: Automatic fingerprinting of smartphone apps from encrypted network traffic</div><div class="pa">V. F. Taylor, R. Spolaor, M. Conti, I. Martinovic</div><div class="pv">IEEE EuroS&amp;P, 2016</div><div class="why">App identification from encrypted flows without payloads: the starting point.</div><div class="pl"><a href="https://doi.org/10.1109/EuroSP.2016.40">Read</a></div></li><li><div class="pt">Peek-a-Boo, I still see you: Why efficient traffic analysis countermeasures fail</div><div class="pa">K. P. Dyer, S. E. Coull, T. Ristenpart, T. Shrimpton</div><div class="pv">IEEE Symposium on Security and Privacy, 2012</div><div class="why">Why cheap padding defenses fail against coarse features.</div><div class="pl"><a href="https://doi.org/10.1109/SP.2012.28">Read</a></div></li><li><div class="pt">Deep fingerprinting: Undermining website fingerprinting defenses with deep learning</div><div class="pa">P. Sirinam, M. Imani, M. Juarez, M. Wright</div><div class="pv">ACM CCS, 2018</div><div class="why">Deep learning against defended traffic, the bar any defense must clear.</div><div class="pl"><a href="https://doi.org/10.1145/3243734.3243768">Read</a></div></li><li><div class="pt">ET-BERT: A contextualized datagram representation with pre-training transformers for encrypted traffic classification</div><div class="pa">X. Lin, G. Xiong, G. Gou, Z. Li, J. Shi, J. Yu</div><div class="pv">The Web Conference (WWW), 2022</div><div class="why">Pre-trained transformers for encrypted traffic, the language-model side of this project.</div><div class="pl"><a href="https://doi.org/10.1145/3485447.3512217">Read</a></div></li><li><div class="pt">Automated network incident identification through genetic algorithm-driven feature selection</div><div class="pa">A. Aksoy, L. Valle, <b>G. Kar</b></div><div class="pv">Electronics, 2024</div><div class="why">Our evolutionary feature selection, which this project reuses.</div><div class="pl"><a href="https://doi.org/10.3390/electronics13020293">Read</a></div></li><li><div class="pt">Comparative analysis of feature selection algorithms for automated IoT device fingerprinting</div><div class="pa">A. Aksoy, S. Varma, G. Moorthy, E. Pan, <b>G. Kar</b></div><div class="pv">ICISSP, 2024</div><div class="why">Our single-packet device fingerprints.</div><div class="pl"><a href="https://doi.org/10.5220/0012379100003648">Read</a></div></li></ol></section><section class="join">
+<h2 id="interested">Interested?</h2>
+<p>This project is planned and not yet staffed. If you are a UCM graduate student, or joining UCM soon, and it fits your interests, email me at <a href="mailto:kar@ucmo.edu">kar@ucmo.edu</a> with your CV, the project's name and a few lines on which research question you would start with. Reading two of the papers below first will make that conversation much better.</p>
+</section>
+<section><nav class="pnav" aria-label="More projects"><a href="planned-acoustic.html">← Do earbuds, smart speakers and video calls leak what you type?</a><a href="planned-v2x.html">Catching ghost vehicles in V2X messages →</a></nav></section>
+</main>
+<footer><div class="wrap">© 2026 Gorkem Kar · <a href="../index.html">Home</a></div></footer>
+<script src="../site.js?v=20261125e"></script>
+<script src="../live.js?v=20261125e"></script>
+</body>
+</html>
