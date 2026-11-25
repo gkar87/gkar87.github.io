@@ -142,11 +142,23 @@
           ctx.strokeStyle = on ? C.c : C.line; ctx.lineWidth = on ? 2.4 : 1.2; ctx.stroke();
           txt(ctx, k.k, x + (P - 2) * S / 2, y + (P - 2) * S / 2 + 5, { align: 'center', w: 600, color: k === sel ? C.bg : on ? C.c : C.fg });
         }
-        // every point on the keyboard with (nearly) the same time difference: a band along one hyperbola
-        ctx.fillStyle = C.c; ctx.globalAlpha = .2;
-        for (let y = -6; y <= 3 * P + 6; y += 1.5) for (let x = -10; x <= kbW + 10; x += 1.5)
-          if (Math.abs(dd({ x, y }) - target) <= tol) { const [a, b] = px(x, y); ctx.fillRect(a, b, 1.5 * S + .4, 1.5 * S + .4); }
-        ctx.globalAlpha = 1;
+        // every point on the keyboard with (nearly) the same time difference: a smooth band along one hyperbola
+        // d1 - d2 grows with x, so for each row of the keyboard find where it equals target - tol and target + tol
+        const xAt = (y, v) => { let lo = -40, hi = kbW + 40; for (let i = 0; i < 30; i++) { const m = (lo + hi) / 2; dd({ x: m, y }) < v ? lo = m : hi = m; } return (lo + hi) / 2; };
+        const ys = []; for (let y = -4; y <= 3 * P + 4; y += 2) ys.push(y);
+        const cl = x => Math.max(-4, Math.min(kbW + 14, x));
+        ctx.save(); ctx.beginPath();
+        ys.forEach((y, i) => { const [a, b] = px(cl(xAt(y, target - tol)), y); i ? ctx.lineTo(a, b) : ctx.moveTo(a, b); });
+        [...ys].reverse().forEach(y => { const [a, b] = px(cl(xAt(y, target + tol)), y); ctx.lineTo(a, b); });
+        ctx.closePath(); ctx.fillStyle = C.c; ctx.globalAlpha = .16; ctx.fill(); ctx.restore();
+        ctx.save(); ctx.strokeStyle = C.c; ctx.globalAlpha = .7; ctx.setLineDash([2, 4]); ctx.lineWidth = 1.2; ctx.beginPath();
+        ys.forEach((y, i) => { const [a, b] = px(cl(xAt(y, target)), y); i ? ctx.lineTo(a, b) : ctx.moveTo(a, b); });
+        ctx.stroke(); ctx.restore();
+        { // redraw the pressed key on top so its label stays clear
+          const [x, y] = px(sel.x - P / 2 + 1, sel.y - P / 2 + 1);
+          rr(ctx, x, y, (P - 2) * S, (P - 2) * S, 6); ctx.fillStyle = C.b; ctx.fill();
+          txt(ctx, sel.k, x + (P - 2) * S / 2, y + (P - 2) * S / 2 + 5, { align: 'center', w: 600, color: C.bg });
+        }
         const [p0x, py] = px(phone.x0 - 8, phone.y - 6), pw = (140 + 16) * S;
         rr(ctx, p0x, py, pw, 12 * S, 10); ctx.fillStyle = C.soft; ctx.fill(); ctx.strokeStyle = C.mu; ctx.lineWidth = 1; ctx.stroke();
         txt(ctx, 'phone', p0x + pw / 2, py + 6 * S + 5, { align: 'center', color: C.mu });
@@ -179,7 +191,7 @@
         txt(ctx, `time difference ${dt.toFixed(0)} µs`, XC, 188, { align: 'center', size: 13, w: 700, color: C.b });
         txt(ctx, `about ${(dt / 20.83).toFixed(1)} samples at 48 kHz`, XC, 206, { align: 'center', size: 12, color: C.mu });
         const yy = para(ctx, same.length ? `Same time difference: ${same.map(k => k.k).join(', ')}. Timing alone cannot tell ${same.length > 1 ? 'these keys' : 'this key'} from ${sel.k}; the sound of each key can.` : `No other key shares this time difference at the current tolerance.`, X0, 236, X1 - X0, 17, { size: 12, color: same.length ? C.c : C.fg, w: 600 });
-        txt(ctx, 'Shaded band: every spot with the same time difference.', X0, Math.max(yy + 26, 290), { size: 11, color: C.mu });
+        para(ctx, 'Shaded band: every spot on the keyboard with the same time difference.', X0, Math.max(yy + 22, 286), X1 - X0, 15, { size: 11, color: C.mu });
         const usx = (d1f(sel) - d2f(sel)) / .343;
         out.textContent = `Key ${sel.k}: ${d1f(sel).toFixed(0)} mm to mic 1 and ${d2f(sel).toFixed(0)} mm to mic 2, so the sound reaches mic ${usx < 0 ? 1 : 2} first by ${Math.abs(usx).toFixed(0)} µs. ` +
           (same.length ? `Keys with nearly the same difference: ${same.map(k => k.k).join(' ')}.` : 'No other key has nearly the same difference.');
@@ -725,8 +737,7 @@
         }
         const c = evalS(s);
         const msg = `Center share ${Math.round(s * 100)}%: throughput ${Math.round(c.T / Tm * 100)}% of its maximum, fairness ${c.J.toFixed(2)}. Best balance near ${Math.round(best.sh * 100)}%.`;
-        para(ctx, msg, px, py + ph + 80, pw, 17, { size: 12, w: 600 });
-        out.textContent = msg;
+                out.textContent = msg;
       }
     };
     slider(D.ctrl, 'Share of the band for cell centers', .05, .95, .01, s, v => { s = v; demo.draw(); });
@@ -1004,7 +1015,7 @@
     let fi = 3, stereo = true, ns = false;
     // an invented keystroke: a short ringing click, reaching mic 2 120 µs after mic 1
     const click = tt => tt < 0 ? 0 : Math.exp(-tt / 90) * Math.sin(2 * Math.PI * tt / 80);
-    const ARR = [60, 180], SPAN = 600;
+    const ARR = [50, 170], SPAN = 400, AMP = 30;
     // an invented keystroke spectrum, in kHz
     const spec = f => .9 * Math.exp(-(((f - 6) / 4.5) ** 2)) + .35 * Math.exp(-f / 9);
     const demo = {
@@ -1015,20 +1026,20 @@
         // 1. waveforms
         const X0 = 20, X1 = 340, Xt = tt => X0 + tt / SPAN * (X1 - X0);
         txt(ctx, 'The keystroke at each microphone', X0, 20, { size: 12, color: C.mu, w: 600 });
-        const lanes = stereo ? [[[ARR[0]], 'mic 1', 66], [[ARR[1]], 'mic 2', 128]] : [[ARR, 'mono mix of both', 96]];
+        const lanes = stereo ? [[[ARR[0]], 'mic 1', 62], [[ARR[1]], 'mic 2', 128]] : [[ARR, 'mono mix of both', 96]];
         for (const [arrs, name, yb] of lanes) {
           const v = tt => arrs.reduce((a, r) => a + click(tt - r), 0) / arrs.length * amp;
-          txt(ctx, name, X0, yb - 26, { size: 12, color: C.mu });
+          txt(ctx, name, X1, yb - 10, { align: 'right', size: 12, color: C.mu });
           ctx.strokeStyle = C.line; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(X0, yb); ctx.lineTo(X1, yb); ctx.stroke();
           ctx.strokeStyle = C.mu; ctx.globalAlpha = .45; ctx.beginPath();
-          for (let x = X0; x <= X1; x++) { const tt = (x - X0) / (X1 - X0) * SPAN, y = yb - arrs.reduce((a, r) => a + click(tt - r), 0) / arrs.length * 22; x === X0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y); }
+          for (let x = X0; x <= X1; x++) { const tt = (x - X0) / (X1 - X0) * SPAN, y = yb - arrs.reduce((a, r) => a + click(tt - r), 0) / arrs.length * AMP; x === X0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y); }
           ctx.stroke(); ctx.globalAlpha = 1;
           ctx.strokeStyle = C.a; ctx.fillStyle = C.a; ctx.lineWidth = 2; ctx.beginPath();
-          for (let tt = 0, i = 0; tt <= SPAN; tt += dtS, i++) { const x = Xt(tt), y = yb - v(tt) * 22; i ? ctx.lineTo(x, y) : ctx.moveTo(x, y); }
+          for (let tt = 0, i = 0; tt <= SPAN; tt += dtS, i++) { const x = Xt(tt), y = yb - v(tt) * AMP; i ? ctx.lineTo(x, y) : ctx.moveTo(x, y); }
           ctx.stroke(); ctx.lineWidth = 1;
-          if (dtS > 15) for (let tt = 0; tt <= SPAN; tt += dtS) { ctx.beginPath(); ctx.arc(Xt(tt), yb - v(tt) * 22, 2.4, 0, 7); ctx.fill(); }
+          if (dtS > 15) for (let tt = 0; tt <= SPAN; tt += dtS) { ctx.beginPath(); ctx.arc(Xt(tt), yb - v(tt) * AMP, 2.4, 0, 7); ctx.fill(); }
         }
-        txt(ctx, `gray: the sound · blue: what is recorded, ${Math.round(fs / 1000 * .6)} samples in 0.6 ms`, X0, 162, { size: 11, color: C.mu });
+        txt(ctx, `gray: the sound · blue: what is recorded, ${Math.round(fs / 1000 * .4)} samples in 0.4 ms`, X0, 162, { size: 11, color: C.mu });
         // 2. spectrum
         const S0 = 384, S1 = 700, SY = 34, SH = 110, FMAX = 24, Xf = f => S0 + f / FMAX * (S1 - S0);
         txt(ctx, 'The keystroke\'s sound, by pitch', S0, 20, { size: 12, color: C.mu, w: 600 });
@@ -1070,7 +1081,6 @@
           if (v > 0) { rr(ctx, mx, y + 8, Math.max(6, v * mw), 14, 7); ctx.fillStyle = cc; ctx.fill(); }
           txt(ctx, note, mx, y + 40, { size: 12, color: C.mu });
         }
-        txt(ctx, 'Speed of sound 343 m/s. Waveform and spectrum are invented.', W - 12, H - 8, { align: 'right', size: 11, color: C.mu });
         out.textContent = `${LAB[fi]}, ${stereo ? 'two microphones' : 'mono'}${ns ? ', noise suppression on' : ''}: ` +
           (stereo ? `one sample is ${res.toFixed(1)} mm of path difference, ${(PITCH / res).toFixed(1)} samples per key; ` : 'no timing clue; ') + `${Math.round(sound * 100)}% of the keystroke sound kept.`;
       }

@@ -362,10 +362,11 @@ a.pcard.planned{border-style:dashed}
 @media (max-width:520px){.rm-cols{grid-template-columns:1fr} .rmap{padding:1rem} .rm-col h4{min-height:0} .rm-bar{justify-content:center}}
 
 /* ---------- "in short" summary card on project pages ---------- */
-.brief{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;margin:0 0 1.6rem;border:1px solid var(--line);border-radius:var(--radius);background:var(--surface);box-shadow:var(--shadow);overflow:hidden}
+.brief{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;margin:0 0 1.6rem;padding:0;border:1px solid var(--line);border-radius:var(--radius);background:var(--surface);box-shadow:var(--shadow);overflow:hidden}
 .brief div{padding:1rem 1.1rem;border-left:1px solid var(--line)}
 .brief div:first-child{border-left:0}
-.brief h2{margin:0 0 .35rem;font:700 .72rem/1.2 var(--sans);letter-spacing:.07em;text-transform:uppercase;color:var(--accent)}
+.brief h2::after{display:none}
+.brief h2{margin:0 0 .4rem;font:700 .72rem/1.2 var(--sans);letter-spacing:.07em;text-transform:uppercase;color:var(--accent)}
 .brief div:nth-child(2) h2{color:var(--accent-3)} .brief div:nth-child(3) h2{color:var(--accent-2)}
 .brief p{margin:0;font-size:.95rem;line-height:1.5}
 @media (max-width:720px){.brief{grid-template-columns:1fr} .brief div{border-left:0;border-top:1px solid var(--line)} .brief div:first-child{border-top:0}}
