@@ -36,12 +36,13 @@
   function rr(ctx, x, y, w, h, r) { ctx.beginPath(); ctx.roundRect ? ctx.roundRect(x, y, w, h, r) : ctx.rect(x, y, w, h); }
   // a play/pause pair for demos that move on their own (moving content must be pausable)
   function loop(demo, ctrl) {
-    let on = !reduce, raf = 0, vis = true;
+    let on = !reduce, raf = 0, vis = true, inView = true;
     const b = button(ctrl, on ? 'Pause' : 'Play', () => { on = !on; b.textContent = on ? 'Pause' : 'Play'; kick(); });
     const tick = () => { raf = 0; if (!on || !vis) return; demo.step(); demo.draw(); raf = requestAnimationFrame(tick); };
     const kick = () => { if (!raf && on && vis) raf = requestAnimationFrame(tick); };
-    if ('IntersectionObserver' in window) new IntersectionObserver(es => { vis = es[0].isIntersecting; kick(); }).observe(demo.cv);
-    document.addEventListener('visibilitychange', () => { vis = !document.hidden; kick(); });
+    const sync = () => { vis = inView && !document.hidden; kick(); };
+    if ('IntersectionObserver' in window) new IntersectionObserver(es => { inView = es[0].isIntersecting; sync(); }).observe(demo.cv);
+    document.addEventListener('visibilitychange', sync);
     kick();
     return { kick, playing: () => on };
   }

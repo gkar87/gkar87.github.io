@@ -39,6 +39,21 @@
       entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
     }, { threshold: 0.12 });
     els.forEach(e => io.observe(e));
+    // fallback for browsers that skip observer callbacks: reveal anything scrolled into view
+    const check = () => {
+      let left = 0;
+      els.forEach(e => {
+        if (e.classList.contains('in')) return;
+        left++;
+        const r = e.getBoundingClientRect();
+        if (r.top < innerHeight && r.bottom > 0) e.classList.add('in');
+      });
+      if (!left) removeEventListener('scroll', onScroll);
+    };
+    let t = 0;
+    const onScroll = () => { if (!t) t = setTimeout(() => { t = 0; check(); }, 150); };
+    addEventListener('scroll', onScroll, { passive: true });
+    setTimeout(check, 600);
   }
 
   // ---- highlight the nav link of the section on screen (home page only)
