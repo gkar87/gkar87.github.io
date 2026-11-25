@@ -5,12 +5,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>IoT device identity and network incidents · Gorkem Kar</title>
 <meta name="description" content="A network that cannot tell which device sent a packet, or whether that device was tampered with, cannot defend itself. We identify devices and attacks from packet headers alone.">
+<meta property="og:title" content="IoT device identity and network incidents">
+<meta property="og:description" content="A network that cannot tell which device sent a packet, or whether that device was tampered with, cannot defend itself. We identify devices and attacks from packet headers alone.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://gkar87.github.io/research/iot-identity.html">
+<link rel="canonical" href="https://gkar87.github.io/research/iot-identity.html">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 <meta name="theme-color" content="#1d4f91">
 <script>document.documentElement.classList.add('js');try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
-<link rel="stylesheet" href="../style.css?v=20261125f">
+<link rel="stylesheet" href="../style.css?v=20261125g">
 </head>
-<body>
+<body class="proj" id="top">
 <a class="skip" href="#main">Skip to content</a>
 <header class="site">
   <div class="wrap">
@@ -25,6 +30,7 @@
           <li><a href="../index.html#contact">Contact</a></li>
         </ul>
       </nav>
+      <button class="find" type="button" aria-label="Search the site" aria-keyshortcuts="Control+K Meta+K /"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M20 20l-4.2-4.2" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg><kbd>Ctrl K</kbd></button>
       <button class="theme" type="button" aria-label="Switch theme"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" fill="currentColor"/></svg></button>
     </div>
   </div>
@@ -38,7 +44,9 @@
   <p class="lead">A network that cannot tell which device sent a packet, or whether that device was tampered with, cannot defend itself. We identify devices and attacks from packet headers alone.</p>
   <ul class="facts" aria-label="At a glance"><li>ICISSP, 2024</li><li>Electronics, 2024</li><li>Sensors, 2022</li><li>Live demo</li></ul>
 </section>
-<nav class="toc" aria-label="On this page"><span>On this page</span><ul><li><a href="#live-packet">Try it</a></li><li><a href="#fingerprinting-iot-devices-from-a-single-packet">Fingerprinting IoT devices from a single packet</a></li><li><a href="#identifying-network-attacks-with-a-genetic-algor">Identifying network attacks with a genetic algorithm</a></li><li><a href="#hybrid-blockchains-for-iot">Hybrid blockchains for IoT</a></li><li><a href="#open-research-questions">Open research questions</a></li><li><a href="#papers">Papers</a></li></ul></nav>
+<div class="pgrid">
+<nav class="toc" aria-label="On this page"><span>On this page</span><ul><li><a href="#live-packet">Try it</a></li><li><a href="#fingerprinting-iot-devices-from-a-single-packet">Fingerprinting IoT devices from a single packet</a></li><li><a href="#identifying-network-attacks-with-a-genetic-algor">Identifying network attacks with a genetic algorithm</a></li><li><a href="#hybrid-blockchains-for-iot">Hybrid blockchains for IoT</a></li><li><a href="#open-research-questions">Open research questions</a></li><li><a href="#start-here">Start here</a></li><li><a href="#papers">Papers</a></li></ul></nav>
+<div class="pcontent">
 <figure class="live" data-demo="packet" aria-labelledby="live-packet">
   <div class="lhead"><h2 id="live-packet">Try it: Which device sent this packet?</h2><span class="kicker">Live illustration</span></div>
   <p class="how">Send one packet from a device. A simple nearest-profile classifier reads four header fields and names the device. Turn up the network noise and watch it start to confuse devices.</p>
@@ -91,15 +99,42 @@
 <section>
 <h2 id="open-research-questions">Open research questions</h2>
 <p class="muted">Questions this work leaves open. They are directions, not results; each links to the planned project that takes it up.</p>
-<ol class="rqx open"><li class="reveal"><p class="q">How can traffic-fingerprint baselines be kept current cheaply enough for resource-constrained IoT deployments?</p><dl><dt>Why it is open</dt><dd>Device behavior drifts with firmware updates and usage, and constrained networks cannot afford constant retraining.</dd><dt>Taken up in</dt><dd><a href="planned-blockchain.html">ledger identity</a> · <a href="planned-benchmark.html">leak-free benchmarks</a></dd></dl></li><li class="reveal"><p class="q">Can devices and applications be identified from encrypted-flow metadata alone, without decrypting payloads?</p><dl><dt>Why it is open</dt><dd>Most traffic is now encrypted, so sizes, timing and handshakes are what a privacy-respecting network can still use.</dd><dt>Taken up in</dt><dd><a href="planned-encrypted.html">encrypted traffic</a></dd></dl></li></ol>
+<ol class="rqx open"><li class="reveal"><p class="q">How can traffic-fingerprint baselines be kept current cheaply enough for resource-constrained IoT deployments?</p><dl><dt>Why it is open</dt><dd>Device behavior drifts with firmware updates and usage, and constrained networks cannot afford constant retraining.</dd><dt>Taken up in</dt><dd><a href="planned-blockchain.html">ledger identity</a> · <a href="planned-benchmark.html">leak-free benchmarks</a></dd></dl></li><li class="reveal"><p class="q">Can devices and applications be identified from encrypted-flow metadata alone, without decrypting payloads?</p><dl><dt>Why it is open</dt><dd>Most traffic is now encrypted, so sizes, timing and handshakes are what a privacy-respecting network can still use.</dd><dt>Taken up in</dt><dd><a href="planned-encrypted.html">encrypted traffic</a></dd></dl></li><li class="reveal"><p class="q">Can a device's radio signature back up its traffic fingerprint, so that a clone has to fake both?</p><dl><dt>Why it is open</dt><dd>Header fingerprints identify a device's type from its packets. A cloned device can copy packets more easily than it can copy the flaws of another radio.</dd><dt>Taken up in</dt><dd><a href="planned-rf.html">RF fingerprinting</a></dd></dl></li></ol>
+</section>
+<section class="start">
+<h2 id="start-here">Start here</h2>
+<p class="muted">A concrete first month for a student joining this work. Each step builds on the one before.</p>
+<ol class="steps"><li><span class="sn">Step 1</span>Read our ICISSP and Electronics papers below.</li><li><span class="sn">Step 2</span>Capture traffic from two of your own devices with Wireshark and extract header fields with Scapy.</li><li><span class="sn">Step 3</span>Train a nearest-profile classifier on CICIoT2023 headers and check which fields it leans on.</li></ol>
+<h3>Tools and data</h3>
+<ul class="res"><li><a href="https://scapy.readthedocs.io/en/latest/">Scapy</a><span>Python library to read, build and send packets.</span></li><li><a href="https://www.wireshark.org/docs/">Wireshark documentation</a><span>The standard packet analyzer.</span></li><li><a href="https://www.unb.ca/cic/datasets/iotdataset-2023.html">CICIoT2023 dataset</a><span>IoT attack traffic from a 105-device testbed, 33 attacks.</span></li></ul>
+<p class="note">Writing it up? Follow the <a href="latex-overleaf.html">LaTeX and Overleaf guide</a> for templates, citations, figures and the checks to run before you submit.</p>
 </section>
 <section>
 <h2 id="papers">Papers</h2>
 <ol class="pubs"><li><div class="pt">Comparative analysis of feature selection algorithms for automated IoT device fingerprinting</div><div class="pa">A. Aksoy, S. Varma, G. Moorthy, E. Pan, <b>G. Kar</b></div><div class="pv">ICISSP, 2024</div><div class="pl"><a href="https://doi.org/10.5220/0012379100003648">Paper</a></div></li><li><div class="pt">Automated network incident identification through genetic algorithm-driven feature selection</div><div class="pa">A. Aksoy, L. Valle, <b>G. Kar</b></div><div class="pv">Electronics, 2024 (open access)</div><div class="pl"><a href="https://doi.org/10.3390/electronics13020293">Paper</a></div></li><li><div class="pt">Hybrid blockchain platforms for the Internet of Things (IoT): A systematic literature review</div><div class="pa">A. Alkhateeb, C. Catal, <b>G. Kar</b>, A. Mishra</div><div class="pv">Sensors, 2022 (open access)</div><div class="pl"><a href="https://doi.org/10.3390/s22041304">Paper</a></div></li></ol></section>
+<section class="related" aria-labelledby="related-h"><h2 id="related-h">More in device identity and integrity</h2><div class="rgrid"><a class="rcard planned" href="planned-benchmark.html"><span class="kicker">Open project</span><span class="rt">Leak-free benchmarks for IoT traffic classifiers</span><span class="ra" aria-hidden="true">→</span></a><a class="rcard planned" href="planned-encrypted.html"><span class="kicker">Open project</span><span class="rt">Naming the app without reading the traffic</span><span class="ra" aria-hidden="true">→</span></a><a class="rcard planned" href="planned-blockchain.html"><span class="kicker">Open project</span><span class="rt">Tamper-evident identity for IoT devices on a blockchain</span><span class="ra" aria-hidden="true">→</span></a><a class="rcard planned" href="planned-pqc.html"><span class="kicker">Open project</span><span class="rt">Is the Internet of Things ready for post-quantum cryptography?</span><span class="ra" aria-hidden="true">→</span></a></div></section>
 <section><nav class="pnav" aria-label="More projects"><a href="quantum-spectra.html">← Quantum machine learning for Raman spectroscopy</a><a href="side-channels.html">Acoustic side channels on phones →</a></nav></section>
+</div>
+</div>
 </main>
-<footer><div class="wrap">© 2026 Gorkem Kar · <a href="../index.html">Home</a></div></footer>
-<script src="../site.js?v=20261125f"></script>
-<script src="../live.js?v=20261125f"></script>
+<footer class="site-foot">
+  <div class="wrap fgrid">
+    <div class="fabout"><a class="brand" href="../index.html">Gorkem Kar<span class="muted">, Ph.D.</span></a>
+      <p>Assistant Professor of Computer Science and Cybersecurity, University of Central Missouri. Security for vehicles, phones, IoT devices and networks.</p></div>
+    <nav aria-label="Research"><h4>Research</h4><ul>
+      <li><a href="../index.html#map">Research map</a></li><li><a href="../index.html#projects-in-depth">Projects in depth</a></li>
+      <li><a href="../index.html#open-projects">Open projects</a></li><li><a href="../index.html#publications">Publications</a></li>
+      <li><a href="../research/latex-overleaf.html">LaTeX and Overleaf guide</a></li></ul></nav>
+    <nav aria-label="Profiles"><h4>Profiles</h4><ul>
+      <li><a href="https://scholar.google.com/citations?user=dz-6amUAAAAJ&amp;hl=en">Google Scholar</a></li><li><a href="https://github.com/gkar87">GitHub</a></li>
+      <li><a href="https://orcid.org/0000-0003-0367-4409">ORCID</a></li><li><a href="https://www.linkedin.com/in/gorkem-kar/">LinkedIn</a></li></ul></nav>
+    <nav aria-label="Contact"><h4>Contact</h4><ul>
+      <li><a href="mailto:kar@ucmo.edu">kar@ucmo.edu</a></li><li><a href="../index.html#teaching">Teaching</a></li><li><a href="../index.html#contact">Office and links</a></li></ul></nav>
+  </div>
+  <div class="wrap fbase"><span>© 2026 Gorkem Kar · Last updated November 2026</span><a href="#top">Back to top ↑</a></div>
+</footer>
+<a class="totop" href="#top" aria-label="Back to top"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+<script src="../site.js?v=20261125g"></script>
+<script src="../live.js?v=20261125g"></script>
 </body>
 </html>

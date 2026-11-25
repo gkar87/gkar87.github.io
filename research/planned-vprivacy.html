@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sharing car data without giving away where you have been · Gorkem Kar</title>
+<meta name="description" content="Connected cars share their position to make traffic maps and safety services work. A handful of those points can reveal where a driver lives and works. This project measures that risk and tests protections that keep the shared data useful.">
+<meta property="og:title" content="Sharing car data without giving away where you have been">
+<meta property="og:description" content="Connected cars share their position to make traffic maps and safety services work. A handful of those points can reveal where a driver lives and works. This project measures that risk and tests protections that keep the shared data useful.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://gkar87.github.io/research/planned-vprivacy.html">
+<link rel="canonical" href="https://gkar87.github.io/research/planned-vprivacy.html">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#1d4f91">
+<script>document.documentElement.classList.add('js');try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+<link rel="stylesheet" href="../style.css?v=20261125g">
+</head>
+<body class="proj" id="top">
+<a class="skip" href="#main">Skip to content</a>
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="../index.html">Gorkem Kar<span class="muted">, Ph.D.</span></a>
+    <div class="navbar">
+      <nav aria-label="Sections">
+        <ul>
+          <li><a href="../index.html#about">About</a></li>
+          <li><a href="../index.html#research">Research</a></li>
+          <li><a href="../index.html#publications">Publications</a></li>
+          <li><a href="../index.html#teaching">Teaching</a></li>
+          <li><a href="../index.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <button class="find" type="button" aria-label="Search the site" aria-keyshortcuts="Control+K Meta+K /"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M20 20l-4.2-4.2" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg><kbd>Ctrl K</kbd></button>
+      <button class="theme" type="button" aria-label="Switch theme"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" fill="currentColor"/></svg></button>
+    </div>
+  </div>
+  <div class="progress" aria-hidden="true"></div>
+</header>
+<main id="main" class="wrap">
+<p class="crumbs"><a href="../index.html#open-projects">Open projects</a> / Sharing car data without giving away where you have been</p>
+<section class="phead">
+  <span class="kicker">Planned project · core area</span>
+  <h1>Sharing car data without giving away where you have been</h1>
+  <p class="lead">Connected cars share their position to make traffic maps and safety services work. A handful of those points can reveal where a driver lives and works. This project measures that risk and tests protections that keep the shared data useful.</p>
+  <ul class="facts" aria-label="At a glance"><li>Core area</li><li>3 research questions</li><li>Open to new graduate students</li><li>Live demo</li></ul>
+</section>
+<div class="pgrid">
+<nav class="toc" aria-label="On this page"><span>On this page</span><ul><li><a href="#live-vpriv">Try it</a></li><li><a href="#why-this-matters">Why this matters</a></li><li><a href="#research-questions">Research questions</a></li><li><a href="#approach">Approach</a></li><li><a href="#start-here">Start here</a></li><li><a href="#skills-you-will-use-and-learn">Skills you will use and learn</a></li><li><a href="#papers-to-read-first">Papers to read first</a></li><li><a href="#interested">Interested?</a></li></ul></nav>
+<div class="pcontent">
+<figure class="live" data-demo="vpriv" aria-labelledby="live-vpriv">
+  <div class="lhead"><h2 id="live-vpriv">Try it: Hide the trip, keep the traffic map</h2><span class="kicker">Live illustration</span></div>
+  <p class="how">Twelve cars drive from home to work and report their positions. An attacker links each trace to the nearest home. Add noise or hide trip ends, and watch re-identification fall while the traffic counts get less accurate.</p>
+  <canvas width="720" height="300" role="img" aria-label="A street map with homes and noisy reported positions, and two curves of re-identification and traffic count error against the noise level"></canvas>
+  <div class="ctrl"></div>
+  <p class="disc">A simplified model of the idea, for illustration. This project has not started; there are no results yet. The city and trips are invented.</p>
+</figure>
+
+<section>
+<h2 id="why-this-matters">Why this matters</h2>
+<p>Location traces are among the most identifying data there is: a few points in space and time are enough to single out most people in a large mobility dataset. Connected cars report their position constantly, to traffic services, to automakers and to other cars. Removing names does not help much when every morning trace starts at the same house.</p>
+<p>My dissertation at Rutgers was about making vehicle data available while keeping it private, in the group where my advisor, Marco Gruteser, had earlier introduced spatial and temporal cloaking for location privacy. Real-time traffic estimation at vehicular edge nodes (ACM/IEEE SEC 2017) showed what useful services need from the data. This project asks how little they can get by with.</p>
+</section>
+<section>
+<h2 id="research-questions">Research questions</h2>
+<ol class="rqx"><li class="reveal"><p class="q">How identifying are the traces that connected cars share, and how many points does an attacker need to link one to a home or workplace?</p><dl><dt>Hypothesis</dt><dd>A few points near the start and end of a trip are enough to link most traces to a home or workplace, even when names are removed.</dd><dt>How we would test it</dt><dd>Re-identify pseudonymous traces in public mobility datasets with simple home-and-work linking attacks, and report how the success rate grows with the number of points.</dd></dl></li><li class="reveal"><p class="q">Which protections keep traffic estimates useful while blocking re-identification: noise, cloaking, hiding trip ends or changing pseudonyms?</p><dl><dt>Hypothesis</dt><dd>Hiding trip ends and adding calibrated noise lowers re-identification sharply while road-level traffic estimates degrade only slowly.</dd><dt>How we would test it</dt><dd>Apply noise, cloaking, trip-end suppression and pseudonym changes at several strengths, and plot re-identification against the error of the traffic estimates built from the same data.</dd></dl></li><li class="reveal"><p class="q">Can the protection run on the car or at the roadside edge, so no central collector ever holds raw traces?</p><dl><dt>Hypothesis</dt><dd>Privacy filtering at the vehicle or roadside unit costs little compute and removes the need to trust a central collector with raw traces.</dd><dt>How we would test it</dt><dd>Implement the filters on embedded boards and measure delay and memory at realistic message rates.</dd></dl></li></ol><h3>Expected contributions</h3><ul class="contrib"><li>A re-identification test for shared vehicle traces.</li><li>A privacy-versus-utility map for common protections on traffic estimation tasks.</li><li>Edge implementations of the protections with run-time profiles.</li></ul>
+</section>
+<section>
+<h2 id="approach">Approach</h2>
+<ol class="flow" aria-label="Project steps"><li><b>Data</b><span>Start from public vehicle and mobility trace datasets.</span></li><li><b>Attack</b><span>Link pseudonymous traces to homes and workplaces with simple, realistic attacks.</span></li><li><b>Protect</b><span>Apply each protection at several strengths.</span></li><li><b>Measure utility</b><span>Rebuild traffic estimates from the protected data and measure their error.</span></li><li><b>Edge</b><span>Run the best protections on embedded boards at realistic message rates.</span></li></ol>
+<p class="note">The project uses public datasets and simulated traces only, never data that could identify a real person.</p>
+</section>
+<section class="start">
+<h2 id="start-here">Start here</h2>
+<p class="muted">A concrete first month for a student joining this work. Each step builds on the one before.</p>
+<ol class="steps"><li><span class="sn">Step 1</span>Read the papers below, starting with my dissertation.</li><li><span class="sn">Step 2</span>Load GeoLife traces and guess each user's home from where their trips start and end.</li><li><span class="sn">Step 3</span>Add noise with OpenDP or hide trip ends, and measure re-identification and traffic-count error.</li></ol>
+<h3>Tools and data</h3>
+<ul class="res"><li><a href="https://www.microsoft.com/en-us/download/details.aspx?id=52367">GeoLife GPS trajectories</a><span>Public GPS traces from 182 users, Microsoft Research.</span></li><li><a href="https://opendp.org/">OpenDP</a><span>Open-source differential privacy library.</span></li><li><a href="https://eclipse.dev/sumo/">Eclipse SUMO</a><span>Open-source traffic simulator.</span></li></ul>
+<p class="note">Writing it up? Follow the <a href="latex-overleaf.html">LaTeX and Overleaf guide</a> for templates, citations, figures and the checks to run before you submit.</p>
+</section>
+<section>
+<h2 id="skills-you-will-use-and-learn">Skills you will use and learn</h2>
+<ul class="chips" aria-label="Skills"><li>Python</li><li>Geospatial data (pandas, GeoPandas)</li><li>Differential privacy</li><li>Traffic simulation</li><li>Embedded profiling</li></ul>
+</section>
+<section>
+<h2 id="papers-to-read-first">Papers to read first</h2>
+<ol class="pubs reading"><li><div class="pt">Unique in the crowd: The privacy bounds of human mobility</div><div class="pa">Y.-A. de Montjoye, C. A. Hidalgo, M. Verleysen, V. D. Blondel</div><div class="pv">Scientific Reports, 2013</div><div class="why">How few points it takes to single someone out.</div><div class="pl"><a href="https://doi.org/10.1038/srep01376">Read</a></div></li><li><div class="pt">Anonymous usage of location-based services through spatial and temporal cloaking</div><div class="pa">M. Gruteser, D. Grunwald</div><div class="pv">ACM MobiSys, 2003</div><div class="why">Cloaking, the classic protection.</div><div class="pl"><a href="https://usenix.org/legacy/events/mobisys03/tech/gruteser.html">Read</a></div></li><li><div class="pt">Geo-indistinguishability: Differential privacy for location-based systems</div><div class="pa">M. E. Andrés, N. E. Bordenabe, K. Chatzikokolakis, C. Palamidessi</div><div class="pv">ACM CCS, 2013</div><div class="why">Noise with a formal privacy guarantee.</div><div class="pl"><a href="https://arxiv.org/abs/1212.1984">Read</a></div></li><li><div class="pt">Pseudonym schemes in vehicular networks: A survey</div><div class="pa">J. Petit, F. Schaub, M. Feiri, F. Kargl</div><div class="pv">IEEE Communications Surveys &amp; Tutorials, 2015</div><div class="why">How cars change identities, and how attackers link them anyway.</div><div class="pl"><a href="https://doi.org/10.1109/COMST.2014.2345420">Read</a></div></li><li><div class="pt">Enhancing vehicle data availability and privacy for connected cars</div><div class="pa"><b>G. Kar</b></div><div class="pv">Ph.D. dissertation, Rutgers University, 2017</div><div class="why">My dissertation, the starting point.</div><div class="pl"><a href="https://doi.org/10.7282/T3SB48MK">Read</a></div></li><li><div class="pt">Real-time traffic estimation at vehicular edge nodes</div><div class="pa"><b>G. Kar</b>, S. Jain, M. Gruteser, F. Bai, R. Govindan</div><div class="pv">ACM/IEEE SEC, 2017</div><div class="why">What traffic estimation needs from vehicle data.</div><div class="pl"><a href="https://doi.org/10.1145/3132211.3134461">Read</a></div></li></ol></section><section class="join">
+<h2 id="interested">Interested?</h2>
+<p>This project is planned and not yet staffed. If you are a UCM graduate student, or joining UCM soon, and it fits your interests, email me at <a href="mailto:kar@ucmo.edu">kar@ucmo.edu</a> with your CV, the project's name and a few lines on which research question you would start with. Reading two of the papers below first will make that conversation much better.</p>
+</section>
+<section class="related" aria-labelledby="related-h"><h2 id="related-h">More in connected vehicles</h2><div class="rgrid"><a class="rcard" href="vehicles.html"><span class="kicker">Published work</span><span class="rt">Connected vehicles: sensing, identity and trust</span><span class="ra" aria-hidden="true">→</span></a><a class="rcard" href="perception.html"><span class="kicker">Published work</span><span class="rt">Extending what a car can see and sense</span><span class="ra" aria-hidden="true">→</span></a><a class="rcard" href="driver-behavior.html"><span class="kicker">Published work</span><span class="rt">Scoring and coaching drivers from in-vehicle data</span><span class="ra" aria-hidden="true">→</span></a><a class="rcard planned" href="planned-gnss.html"><span class="kicker">Open project</span><span class="rt">Catching GNSS spoofing with the car's own sensors</span><span class="ra" aria-hidden="true">→</span></a></div></section>
+<section><nav class="pnav" aria-label="More projects"><a href="planned-rf.html">← Telling radios apart by their imperfections</a><a href="planned-rag.html">Attacking and defending a campus chatbot →</a></nav></section>
+</div>
+</div>
+</main>
+<footer class="site-foot">
+  <div class="wrap fgrid">
+    <div class="fabout"><a class="brand" href="../index.html">Gorkem Kar<span class="muted">, Ph.D.</span></a>
+      <p>Assistant Professor of Computer Science and Cybersecurity, University of Central Missouri. Security for vehicles, phones, IoT devices and networks.</p></div>
+    <nav aria-label="Research"><h4>Research</h4><ul>
+      <li><a href="../index.html#map">Research map</a></li><li><a href="../index.html#projects-in-depth">Projects in depth</a></li>
+      <li><a href="../index.html#open-projects">Open projects</a></li><li><a href="../index.html#publications">Publications</a></li>
+      <li><a href="../research/latex-overleaf.html">LaTeX and Overleaf guide</a></li></ul></nav>
+    <nav aria-label="Profiles"><h4>Profiles</h4><ul>
+      <li><a href="https://scholar.google.com/citations?user=dz-6amUAAAAJ&amp;hl=en">Google Scholar</a></li><li><a href="https://github.com/gkar87">GitHub</a></li>
+      <li><a href="https://orcid.org/0000-0003-0367-4409">ORCID</a></li><li><a href="https://www.linkedin.com/in/gorkem-kar/">LinkedIn</a></li></ul></nav>
+    <nav aria-label="Contact"><h4>Contact</h4><ul>
+      <li><a href="mailto:kar@ucmo.edu">kar@ucmo.edu</a></li><li><a href="../index.html#teaching">Teaching</a></li><li><a href="../index.html#contact">Office and links</a></li></ul></nav>
+  </div>
+  <div class="wrap fbase"><span>© 2026 Gorkem Kar · Last updated November 2026</span><a href="#top">Back to top ↑</a></div>
+</footer>
+<a class="totop" href="#top" aria-label="Back to top"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+<script src="../site.js?v=20261125g"></script>
+<script src="../live.js?v=20261125g"></script>
+</body>
+</html>

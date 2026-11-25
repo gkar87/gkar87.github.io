@@ -5,12 +5,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Explainable and applied AI · Gorkem Kar</title>
 <meta name="description" content="The methods behind my security work also answer questions in food safety, public safety, language and the workplace, with an emphasis on explaining why a model decides what it does.">
+<meta property="og:title" content="Explainable and applied AI">
+<meta property="og:description" content="The methods behind my security work also answer questions in food safety, public safety, language and the workplace, with an emphasis on explaining why a model decides what it does.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://gkar87.github.io/research/applied-ai.html">
+<link rel="canonical" href="https://gkar87.github.io/research/applied-ai.html">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 <meta name="theme-color" content="#1d4f91">
 <script>document.documentElement.classList.add('js');try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
-<link rel="stylesheet" href="../style.css?v=20261125f">
+<link rel="stylesheet" href="../style.css?v=20261125g">
 </head>
-<body>
+<body class="proj" id="top">
 <a class="skip" href="#main">Skip to content</a>
 <header class="site">
   <div class="wrap">
@@ -25,6 +30,7 @@
           <li><a href="../index.html#contact">Contact</a></li>
         </ul>
       </nav>
+      <button class="find" type="button" aria-label="Search the site" aria-keyshortcuts="Control+K Meta+K /"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M20 20l-4.2-4.2" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg><kbd>Ctrl K</kbd></button>
       <button class="theme" type="button" aria-label="Switch theme"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" fill="currentColor"/></svg></button>
     </div>
   </div>
@@ -38,7 +44,9 @@
   <p class="lead">The methods behind my security work also answer questions in food safety, public safety, language and the workplace, with an emphasis on explaining why a model decides what it does.</p>
   <ul class="facts" aria-label="At a glance"><li>Expert Systems, 2025</li><li>IEEE LA-CCI, 2025</li><li>J. Ambient Intelligence and Humanized Computing, 2023</li><li>J. Engineering Sciences and Design, 2022</li><li>Live demo</li></ul>
 </section>
-<nav class="toc" aria-label="On this page"><span>On this page</span><ul><li><a href="#live-shap">Try it</a></li><li><a href="#explaining-the-model-not-just-scoring-it">Explaining the model, not just scoring it</a></li><li><a href="#open-research-questions">Open research questions</a></li></ul></nav>
+<div class="pgrid">
+<nav class="toc" aria-label="On this page"><span>On this page</span><ul><li><a href="#live-shap">Try it</a></li><li><a href="#explaining-the-model-not-just-scoring-it">Explaining the model, not just scoring it</a></li><li><a href="#open-research-questions">Open research questions</a></li><li><a href="#start-here">Start here</a></li></ul></nav>
+<div class="pcontent">
 <figure class="live" data-demo="shap" aria-labelledby="live-shap">
   <div class="lhead"><h2 id="live-shap">Try it: Explain one prediction</h2><span class="kicker">Live illustration</span></div>
   <p class="how">A toy attrition model with invented weights. Move the inputs and see how much each one pushes this employee&#x27;s predicted risk up (red) or down (blue). For a linear model like this one, these bars are exactly the SHAP values.</p>
@@ -72,13 +80,40 @@
 <section>
 <h2 id="open-research-questions">Open research questions</h2>
 <p class="muted">Questions this work leaves open. They are directions, not results; each links to the planned project that takes it up.</p>
-<ol class="rqx open"><li class="reveal"><p class="q">Are explanations faithful to what a model really uses, and do they help people decide better?</p><dl><dt>Why it is open</dt><dd>Our food-fraud work compared what LIME, SHAP and the What-If Tool can and cannot tell an analyst. Whether an explanation is faithful to the model is a separate test.</dd><dt>Taken up in</dt><dd><a href="planned-xai.html">checkable explanations</a></dd></dl></li><li class="reveal"><p class="q">Can a retrieval-augmented chatbot be made robust to poisoned or misleading sources?</p><dl><dt>Why it is open</dt><dd>Our UCM chatbot answers from university pages; anyone who can get a page retrieved can try to steer it.</dd><dt>Taken up in</dt><dd><a href="planned-rag.html">campus chatbot security</a></dd></dl></li></ol>
+<ol class="rqx open"><li class="reveal"><p class="q">Are explanations faithful to what a model really uses, and do they help people decide better?</p><dl><dt>Why it is open</dt><dd>Our food-fraud work compared what LIME, SHAP and the What-If Tool can and cannot tell an analyst. Whether an explanation is faithful to the model is a separate test.</dd><dt>Taken up in</dt><dd><a href="planned-xai.html">checkable explanations</a></dd></dl></li><li class="reveal"><p class="q">Can a retrieval-augmented chatbot be made robust to poisoned or misleading sources?</p><dl><dt>Why it is open</dt><dd>Our UCM chatbot answers from university pages; anyone who can get a page retrieved can try to steer it.</dd><dt>Taken up in</dt><dd><a href="planned-rag.html">campus chatbot security</a></dd></dl></li><li class="reveal"><p class="q">Can a language model help analysts triage security alerts without inventing facts?</p><dl><dt>Why it is open</dt><dd>Our chatbot work showed how a model grounded in retrieved pages answers questions. Security triage raises the cost of a confident wrong answer.</dd><dt>Taken up in</dt><dd><a href="planned-llmsoc.html">alert triage with language models</a></dd></dl></li></ol>
+</section>
+<section class="start">
+<h2 id="start-here">Start here</h2>
+<p class="muted">A concrete first month for a student joining this work. Each step builds on the one before.</p>
+<ol class="steps"><li><span class="sn">Step 1</span>Read the food-fraud and attrition papers linked on this page.</li><li><span class="sn">Step 2</span>Train a small model on a public tabular dataset and explain ten predictions with SHAP.</li><li><span class="sn">Step 3</span>Compare two explanation methods on the same predictions and note where they disagree.</li></ol>
+<h3>Tools and data</h3>
+<ul class="res"><li><a href="https://shap.readthedocs.io/en/latest/">SHAP</a><span>Explanations based on Shapley values.</span></li><li><a href="https://captum.ai/">Captum</a><span>Model interpretability for PyTorch.</span></li><li><a href="https://scikit-learn.org/stable/getting_started.html">scikit-learn</a><span>Classical machine learning, pipelines and cross-validation.</span></li></ul>
+<p class="note">Writing it up? Follow the <a href="latex-overleaf.html">LaTeX and Overleaf guide</a> for templates, citations, figures and the checks to run before you submit.</p>
 </section>
 
+<section class="related" aria-labelledby="related-h"><h2 id="related-h">More in side channels, applied ai and wireless</h2><div class="rgrid"><a class="rcard planned" href="planned-acoustic.html"><span class="kicker">Open project</span><span class="rt">Do earbuds, smart speakers and video calls leak what you type?</span><span class="ra" aria-hidden="true">→</span></a><a class="rcard planned" href="planned-rag.html"><span class="kicker">Open project</span><span class="rt">Attacking and defending a campus chatbot</span><span class="ra" aria-hidden="true">→</span></a><a class="rcard planned" href="planned-llmsoc.html"><span class="kicker">Open project</span><span class="rt">Can a language model help triage security alerts?</span><span class="ra" aria-hidden="true">→</span></a><a class="rcard" href="side-channels.html"><span class="kicker">Published work</span><span class="rt">Acoustic side channels on phones</span><span class="ra" aria-hidden="true">→</span></a></div></section>
 <section><nav class="pnav" aria-label="More projects"><a href="side-channels.html">← Acoustic side channels on phones</a><a href="wireless-ffr.html">Sharing spectrum fairly: fractional frequency reuse →</a></nav></section>
+</div>
+</div>
 </main>
-<footer><div class="wrap">© 2026 Gorkem Kar · <a href="../index.html">Home</a></div></footer>
-<script src="../site.js?v=20261125f"></script>
-<script src="../live.js?v=20261125f"></script>
+<footer class="site-foot">
+  <div class="wrap fgrid">
+    <div class="fabout"><a class="brand" href="../index.html">Gorkem Kar<span class="muted">, Ph.D.</span></a>
+      <p>Assistant Professor of Computer Science and Cybersecurity, University of Central Missouri. Security for vehicles, phones, IoT devices and networks.</p></div>
+    <nav aria-label="Research"><h4>Research</h4><ul>
+      <li><a href="../index.html#map">Research map</a></li><li><a href="../index.html#projects-in-depth">Projects in depth</a></li>
+      <li><a href="../index.html#open-projects">Open projects</a></li><li><a href="../index.html#publications">Publications</a></li>
+      <li><a href="../research/latex-overleaf.html">LaTeX and Overleaf guide</a></li></ul></nav>
+    <nav aria-label="Profiles"><h4>Profiles</h4><ul>
+      <li><a href="https://scholar.google.com/citations?user=dz-6amUAAAAJ&amp;hl=en">Google Scholar</a></li><li><a href="https://github.com/gkar87">GitHub</a></li>
+      <li><a href="https://orcid.org/0000-0003-0367-4409">ORCID</a></li><li><a href="https://www.linkedin.com/in/gorkem-kar/">LinkedIn</a></li></ul></nav>
+    <nav aria-label="Contact"><h4>Contact</h4><ul>
+      <li><a href="mailto:kar@ucmo.edu">kar@ucmo.edu</a></li><li><a href="../index.html#teaching">Teaching</a></li><li><a href="../index.html#contact">Office and links</a></li></ul></nav>
+  </div>
+  <div class="wrap fbase"><span>© 2026 Gorkem Kar · Last updated November 2026</span><a href="#top">Back to top ↑</a></div>
+</footer>
+<a class="totop" href="#top" aria-label="Back to top"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+<script src="../site.js?v=20261125g"></script>
+<script src="../live.js?v=20261125g"></script>
 </body>
 </html>

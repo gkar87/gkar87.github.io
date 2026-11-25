@@ -5,12 +5,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Catching GNSS spoofing with the car's own sensors · Gorkem Kar</title>
 <meta name="description" content="Can a car notice that its GPS is lying, using only the data it already has? This project builds a lightweight spoofing detector from the vehicle&#x27;s own motion data.">
+<meta property="og:title" content="Catching GNSS spoofing with the car&#x27;s own sensors">
+<meta property="og:description" content="Can a car notice that its GPS is lying, using only the data it already has? This project builds a lightweight spoofing detector from the vehicle&#x27;s own motion data.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://gkar87.github.io/research/planned-gnss.html">
+<link rel="canonical" href="https://gkar87.github.io/research/planned-gnss.html">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 <meta name="theme-color" content="#1d4f91">
 <script>document.documentElement.classList.add('js');try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
-<link rel="stylesheet" href="../style.css?v=20261125f">
+<link rel="stylesheet" href="../style.css?v=20261125g">
 </head>
-<body>
+<body class="proj" id="top">
 <a class="skip" href="#main">Skip to content</a>
 <header class="site">
   <div class="wrap">
@@ -25,6 +30,7 @@
           <li><a href="../index.html#contact">Contact</a></li>
         </ul>
       </nav>
+      <button class="find" type="button" aria-label="Search the site" aria-keyshortcuts="Control+K Meta+K /"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M20 20l-4.2-4.2" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg><kbd>Ctrl K</kbd></button>
       <button class="theme" type="button" aria-label="Switch theme"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" fill="currentColor"/></svg></button>
     </div>
   </div>
@@ -38,7 +44,9 @@
   <p class="lead">Can a car notice that its GPS is lying, using only the data it already has? This project builds a lightweight spoofing detector from the vehicle's own motion data.</p>
   <ul class="facts" aria-label="At a glance"><li>Core area</li><li>3 research questions</li><li>Open to new graduate students</li><li>Live demo</li></ul>
 </section>
-<nav class="toc" aria-label="On this page"><span>On this page</span><ul><li><a href="#live-gnss">Try it</a></li><li><a href="#why-this-matters">Why this matters</a></li><li><a href="#research-questions">Research questions</a></li><li><a href="#approach">Approach</a></li><li><a href="#skills-you-will-use-and-learn">Skills you will use and learn</a></li><li><a href="#papers-to-read-first">Papers to read first</a></li><li><a href="#interested">Interested?</a></li></ul></nav>
+<div class="pgrid">
+<nav class="toc" aria-label="On this page"><span>On this page</span><ul><li><a href="#live-gnss">Try it</a></li><li><a href="#why-this-matters">Why this matters</a></li><li><a href="#research-questions">Research questions</a></li><li><a href="#approach">Approach</a></li><li><a href="#start-here">Start here</a></li><li><a href="#skills-you-will-use-and-learn">Skills you will use and learn</a></li><li><a href="#papers-to-read-first">Papers to read first</a></li><li><a href="#interested">Interested?</a></li></ul></nav>
+<div class="pcontent">
 <figure class="live" data-demo="gnss" aria-labelledby="live-gnss">
   <div class="lhead"><h2 id="live-gnss">Try it: Catch a spoofed GPS fix</h2><span class="kicker">Live illustration</span></div>
   <p class="how">The blue line is where wheel speed and steering say the car is; the dashed red line is the GPS fix. Start the spoofer and the two drift apart. Set the alarm threshold too low and normal noise raises false alarms; too high and the spoofer gets further before it is caught.</p>
@@ -76,6 +84,14 @@
 <ol class="flow" aria-label="Project steps"><li><b>Collect drives</b><span>Log GNSS fixes and bus data with an OBD-II dongle and a phone, as in PredriveID.</span></li><li><b>Simulate attacks</b><span>Replay recorded traces with injected spoofing paths, from crude jumps to slow, road-following drift.</span></li><li><b>Model motion</b><span>Dead reckoning and a Kalman filter turn bus data into an independent path.</span></li><li><b>Detect</b><span>Compare the two paths with a residual test and a small learned model.</span></li><li><b>Measure</b><span>Time to detect, false alarms per hour, and run time on a phone.</span></li></ol>
 <p class="note">All spoofing is simulated in recorded data or in a shielded lab. Transmitting on GPS frequencies on the road is illegal and is never part of this project.</p>
 </section>
+<section class="start">
+<h2 id="start-here">Start here</h2>
+<p class="muted">A concrete first month for a student joining this work. Each step builds on the one before.</p>
+<ol class="steps"><li><span class="sn">Step 1</span>Read the five papers below, starting with ours.</li><li><span class="sn">Step 2</span>Download the comma2k19 sample and compute dead-reckoning position from wheel speed and steering.</li><li><span class="sn">Step 3</span>Add a synthetic drift to the GNSS track and plot the gap between the two paths over time.</li><li><span class="sn">Step 4</span>Set an alarm threshold from normal driving and report detection delay for your drift.</li></ol>
+<h3>Tools and data</h3>
+<ul class="res"><li><a href="https://github.com/commaai/comma2k19">comma2k19</a><span>Driving logs with raw GNSS and all CAN data, including wheel speeds and steering.</span></li><li><a href="https://gnss-sdr.org/">GNSS-SDR</a><span>Open-source software GNSS receiver.</span></li><li><a href="https://eclipse.dev/sumo/">Eclipse SUMO</a><span>Open-source traffic simulator.</span></li></ul>
+<p class="note">Writing it up? Follow the <a href="latex-overleaf.html">LaTeX and Overleaf guide</a> for templates, citations, figures and the checks to run before you submit.</p>
+</section>
 <section>
 <h2 id="skills-you-will-use-and-learn">Skills you will use and learn</h2>
 <ul class="chips" aria-label="Skills"><li>Python</li><li>Signal processing</li><li>Kalman filtering</li><li>Machine learning</li><li>Vehicle data (CAN, OBD-II)</li><li>Android, optional</li></ul>
@@ -86,10 +102,29 @@
 <h2 id="interested">Interested?</h2>
 <p>This project is planned and not yet staffed. If you are a UCM graduate student, or joining UCM soon, and it fits your interests, email me at <a href="mailto:kar@ucmo.edu">kar@ucmo.edu</a> with your CV, the project's name and a few lines on which research question you would start with. Reading two of the papers below first will make that conversation much better.</p>
 </section>
+<section class="related" aria-labelledby="related-h"><h2 id="related-h">More in connected vehicles</h2><div class="rgrid"><a class="rcard" href="vehicles.html"><span class="kicker">Published work</span><span class="rt">Connected vehicles: sensing, identity and trust</span><span class="ra" aria-hidden="true">→</span></a><a class="rcard" href="perception.html"><span class="kicker">Published work</span><span class="rt">Extending what a car can see and sense</span><span class="ra" aria-hidden="true">→</span></a><a class="rcard" href="driver-behavior.html"><span class="kicker">Published work</span><span class="rt">Scoring and coaching drivers from in-vehicle data</span><span class="ra" aria-hidden="true">→</span></a><a class="rcard planned" href="planned-can.html"><span class="kicker">Open project</span><span class="rt">Spotting intruders on the car's internal network</span><span class="ra" aria-hidden="true">→</span></a></div></section>
 <section><nav class="pnav" aria-label="More projects"><span></span><a href="planned-benchmark.html">Leak-free benchmarks for IoT traffic classifiers →</a></nav></section>
+</div>
+</div>
 </main>
-<footer><div class="wrap">© 2026 Gorkem Kar · <a href="../index.html">Home</a></div></footer>
-<script src="../site.js?v=20261125f"></script>
-<script src="../live.js?v=20261125f"></script>
+<footer class="site-foot">
+  <div class="wrap fgrid">
+    <div class="fabout"><a class="brand" href="../index.html">Gorkem Kar<span class="muted">, Ph.D.</span></a>
+      <p>Assistant Professor of Computer Science and Cybersecurity, University of Central Missouri. Security for vehicles, phones, IoT devices and networks.</p></div>
+    <nav aria-label="Research"><h4>Research</h4><ul>
+      <li><a href="../index.html#map">Research map</a></li><li><a href="../index.html#projects-in-depth">Projects in depth</a></li>
+      <li><a href="../index.html#open-projects">Open projects</a></li><li><a href="../index.html#publications">Publications</a></li>
+      <li><a href="../research/latex-overleaf.html">LaTeX and Overleaf guide</a></li></ul></nav>
+    <nav aria-label="Profiles"><h4>Profiles</h4><ul>
+      <li><a href="https://scholar.google.com/citations?user=dz-6amUAAAAJ&amp;hl=en">Google Scholar</a></li><li><a href="https://github.com/gkar87">GitHub</a></li>
+      <li><a href="https://orcid.org/0000-0003-0367-4409">ORCID</a></li><li><a href="https://www.linkedin.com/in/gorkem-kar/">LinkedIn</a></li></ul></nav>
+    <nav aria-label="Contact"><h4>Contact</h4><ul>
+      <li><a href="mailto:kar@ucmo.edu">kar@ucmo.edu</a></li><li><a href="../index.html#teaching">Teaching</a></li><li><a href="../index.html#contact">Office and links</a></li></ul></nav>
+  </div>
+  <div class="wrap fbase"><span>© 2026 Gorkem Kar · Last updated November 2026</span><a href="#top">Back to top ↑</a></div>
+</footer>
+<a class="totop" href="#top" aria-label="Back to top"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+<script src="../site.js?v=20261125g"></script>
+<script src="../live.js?v=20261125g"></script>
 </body>
 </html>

@@ -5,12 +5,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Catching ghost vehicles in V2X messages · Gorkem Kar</title>
 <meta name="description" content="Connected cars broadcast their position and speed many times a second, and other cars act on those messages. This project detects messages that describe cars that are not there.">
+<meta property="og:title" content="Catching ghost vehicles in V2X messages">
+<meta property="og:description" content="Connected cars broadcast their position and speed many times a second, and other cars act on those messages. This project detects messages that describe cars that are not there.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://gkar87.github.io/research/planned-v2x.html">
+<link rel="canonical" href="https://gkar87.github.io/research/planned-v2x.html">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 <meta name="theme-color" content="#1d4f91">
 <script>document.documentElement.classList.add('js');try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
-<link rel="stylesheet" href="../style.css?v=20261125f">
+<link rel="stylesheet" href="../style.css?v=20261125g">
 </head>
-<body>
+<body class="proj" id="top">
 <a class="skip" href="#main">Skip to content</a>
 <header class="site">
   <div class="wrap">
@@ -25,6 +30,7 @@
           <li><a href="../index.html#contact">Contact</a></li>
         </ul>
       </nav>
+      <button class="find" type="button" aria-label="Search the site" aria-keyshortcuts="Control+K Meta+K /"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M20 20l-4.2-4.2" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg><kbd>Ctrl K</kbd></button>
       <button class="theme" type="button" aria-label="Switch theme"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" fill="currentColor"/></svg></button>
     </div>
   </div>
@@ -38,7 +44,9 @@
   <p class="lead">Connected cars broadcast their position and speed many times a second, and other cars act on those messages. This project detects messages that describe cars that are not there.</p>
   <ul class="facts" aria-label="At a glance"><li>Core area</li><li>3 research questions</li><li>Open to new graduate students</li><li>Live demo</li></ul>
 </section>
-<nav class="toc" aria-label="On this page"><span>On this page</span><ul><li><a href="#live-v2x">Try it</a></li><li><a href="#why-this-matters">Why this matters</a></li><li><a href="#research-questions">Research questions</a></li><li><a href="#approach">Approach</a></li><li><a href="#skills-you-will-use-and-learn">Skills you will use and learn</a></li><li><a href="#papers-to-read-first">Papers to read first</a></li><li><a href="#interested">Interested?</a></li></ul></nav>
+<div class="pgrid">
+<nav class="toc" aria-label="On this page"><span>On this page</span><ul><li><a href="#live-v2x">Try it</a></li><li><a href="#why-this-matters">Why this matters</a></li><li><a href="#research-questions">Research questions</a></li><li><a href="#approach">Approach</a></li><li><a href="#start-here">Start here</a></li><li><a href="#skills-you-will-use-and-learn">Skills you will use and learn</a></li><li><a href="#papers-to-read-first">Papers to read first</a></li><li><a href="#interested">Interested?</a></li></ul></nav>
+<div class="pcontent">
 <figure class="live" data-demo="v2x" aria-labelledby="live-v2x">
   <div class="lhead"><h2 id="live-v2x">Try it: Catch a ghost car</h2><span class="kicker">Live illustration</span></div>
   <p class="how">Someone broadcasts a car ahead of you that is not there, claiming hard braking. Switch on the checks: the motion check catches a crude ghost that jumps around; a careful ghost is caught only where a camera or your radar can look.</p>
@@ -61,6 +69,14 @@
 <ol class="flow" aria-label="Project steps"><li><b>Start from data</b><span>Use public misbehavior datasets with labeled attacks.</span></li><li><b>Simulate</b><span>Add ghost vehicles of rising sophistication in a traffic and network simulator.</span></li><li><b>Check plausibility</b><span>Test each message against physics and the sender's own history.</span></li><li><b>Fuse sensors</b><span>Cross-check against simulated roadside cameras and on-board radar.</span></li><li><b>Deploy</b><span>Profile the detectors on embedded boards at realistic message rates.</span></li></ol>
 <p class="note">All attacks run in simulation or on recorded data. Nothing is broadcast on real V2X channels.</p>
 </section>
+<section class="start">
+<h2 id="start-here">Start here</h2>
+<p class="muted">A concrete first month for a student joining this work. Each step builds on the one before.</p>
+<ol class="steps"><li><span class="sn">Step 1</span>Read the misbehavior survey and the VeReMi paper below.</li><li><span class="sn">Step 2</span>Download a VeReMi dataset and write a plausibility check on position and speed.</li><li><span class="sn">Step 3</span>Report detection and false alarms per attack type, then try the same check in a Veins simulation.</li></ol>
+<h3>Tools and data</h3>
+<ul class="res"><li><a href="https://veremi-dataset.github.io/">VeReMi datasets</a><span>Simulated V2X message logs with labeled misbehavior.</span></li><li><a href="https://veins.car2x.org/">Veins</a><span>Vehicular network simulation framework built on SUMO and OMNeT++.</span></li><li><a href="https://eclipse.dev/sumo/">Eclipse SUMO</a><span>Open-source traffic simulator.</span></li></ul>
+<p class="note">Writing it up? Follow the <a href="latex-overleaf.html">LaTeX and Overleaf guide</a> for templates, citations, figures and the checks to run before you submit.</p>
+</section>
 <section>
 <h2 id="skills-you-will-use-and-learn">Skills you will use and learn</h2>
 <ul class="chips" aria-label="Skills"><li>Python</li><li>Traffic and network simulation</li><li>Sensor fusion</li><li>Machine learning</li><li>Embedded profiling</li><li>Vehicular networking</li></ul>
@@ -71,10 +87,29 @@
 <h2 id="interested">Interested?</h2>
 <p>This project is planned and not yet staffed. If you are a UCM graduate student, or joining UCM soon, and it fits your interests, email me at <a href="mailto:kar@ucmo.edu">kar@ucmo.edu</a> with your CV, the project's name and a few lines on which research question you would start with. Reading two of the papers below first will make that conversation much better.</p>
 </section>
-<section><nav class="pnav" aria-label="More projects"><a href="planned-encrypted.html">← Naming the app without reading the traffic</a><a href="planned-rag.html">Attacking and defending a campus chatbot →</a></nav></section>
+<section class="related" aria-labelledby="related-h"><h2 id="related-h">More in connected vehicles</h2><div class="rgrid"><a class="rcard" href="vehicles.html"><span class="kicker">Published work</span><span class="rt">Connected vehicles: sensing, identity and trust</span><span class="ra" aria-hidden="true">→</span></a><a class="rcard" href="perception.html"><span class="kicker">Published work</span><span class="rt">Extending what a car can see and sense</span><span class="ra" aria-hidden="true">→</span></a><a class="rcard" href="driver-behavior.html"><span class="kicker">Published work</span><span class="rt">Scoring and coaching drivers from in-vehicle data</span><span class="ra" aria-hidden="true">→</span></a><a class="rcard planned" href="planned-gnss.html"><span class="kicker">Open project</span><span class="rt">Catching GNSS spoofing with the car's own sensors</span><span class="ra" aria-hidden="true">→</span></a></div></section>
+<section><nav class="pnav" aria-label="More projects"><a href="planned-encrypted.html">← Naming the app without reading the traffic</a><a href="planned-federated.html">Training intrusion detectors without pooling the data →</a></nav></section>
+</div>
+</div>
 </main>
-<footer><div class="wrap">© 2026 Gorkem Kar · <a href="../index.html">Home</a></div></footer>
-<script src="../site.js?v=20261125f"></script>
-<script src="../live.js?v=20261125f"></script>
+<footer class="site-foot">
+  <div class="wrap fgrid">
+    <div class="fabout"><a class="brand" href="../index.html">Gorkem Kar<span class="muted">, Ph.D.</span></a>
+      <p>Assistant Professor of Computer Science and Cybersecurity, University of Central Missouri. Security for vehicles, phones, IoT devices and networks.</p></div>
+    <nav aria-label="Research"><h4>Research</h4><ul>
+      <li><a href="../index.html#map">Research map</a></li><li><a href="../index.html#projects-in-depth">Projects in depth</a></li>
+      <li><a href="../index.html#open-projects">Open projects</a></li><li><a href="../index.html#publications">Publications</a></li>
+      <li><a href="../research/latex-overleaf.html">LaTeX and Overleaf guide</a></li></ul></nav>
+    <nav aria-label="Profiles"><h4>Profiles</h4><ul>
+      <li><a href="https://scholar.google.com/citations?user=dz-6amUAAAAJ&amp;hl=en">Google Scholar</a></li><li><a href="https://github.com/gkar87">GitHub</a></li>
+      <li><a href="https://orcid.org/0000-0003-0367-4409">ORCID</a></li><li><a href="https://www.linkedin.com/in/gorkem-kar/">LinkedIn</a></li></ul></nav>
+    <nav aria-label="Contact"><h4>Contact</h4><ul>
+      <li><a href="mailto:kar@ucmo.edu">kar@ucmo.edu</a></li><li><a href="../index.html#teaching">Teaching</a></li><li><a href="../index.html#contact">Office and links</a></li></ul></nav>
+  </div>
+  <div class="wrap fbase"><span>© 2026 Gorkem Kar · Last updated November 2026</span><a href="#top">Back to top ↑</a></div>
+</footer>
+<a class="totop" href="#top" aria-label="Back to top"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+<script src="../site.js?v=20261125g"></script>
+<script src="../live.js?v=20261125g"></script>
 </body>
 </html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Securing the EV charging network · Gorkem Kar</title>
+<meta name="description" content="Electric-vehicle chargers are networked computers connected to the power grid. If an attacker controls many of them at once, switching them together could stress the local grid. This project studies those attacks and how to detect them early.">
+<meta property="og:title" content="Securing the EV charging network">
+<meta property="og:description" content="Electric-vehicle chargers are networked computers connected to the power grid. If an attacker controls many of them at once, switching them together could stress the local grid. This project studies those attacks and how to detect them early.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://gkar87.github.io/research/planned-ev.html">
+<link rel="canonical" href="https://gkar87.github.io/research/planned-ev.html">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#1d4f91">
+<script>document.documentElement.classList.add('js');try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+<link rel="stylesheet" href="../style.css?v=20261125g">
+</head>
+<body class="proj" id="top">
+<a class="skip" href="#main">Skip to content</a>
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="../index.html">Gorkem Kar<span class="muted">, Ph.D.</span></a>
+    <div class="navbar">
+      <nav aria-label="Sections">
+        <ul>
+          <li><a href="../index.html#about">About</a></li>
+          <li><a href="../index.html#research">Research</a></li>
+          <li><a href="../index.html#publications">Publications</a></li>
+          <li><a href="../index.html#teaching">Teaching</a></li>
+          <li><a href="../index.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <button class="find" type="button" aria-label="Search the site" aria-keyshortcuts="Control+K Meta+K /"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M20 20l-4.2-4.2" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg><kbd>Ctrl K</kbd></button>
+      <button class="theme" type="button" aria-label="Switch theme"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" fill="currentColor"/></svg></button>
+    </div>
+  </div>
+  <div class="progress" aria-hidden="true"></div>
+</header>
+<main id="main" class="wrap">
+<p class="crumbs"><a href="../index.html#open-projects">Open projects</a> / Securing the EV charging network</p>
+<section class="phead">
+  <span class="kicker">Planned project · new direction</span>
+  <h1>Securing the EV charging network</h1>
+  <p class="lead">Electric-vehicle chargers are networked computers connected to the power grid. If an attacker controls many of them at once, switching them together could stress the local grid. This project studies those attacks and how to detect them early.</p>
+  <ul class="facts" aria-label="At a glance"><li>New direction</li><li>3 research questions</li><li>Open to new graduate students</li><li>Live demo</li></ul>
+</section>
+<div class="pgrid">
+<nav class="toc" aria-label="On this page"><span>On this page</span><ul><li><a href="#live-evc">Try it</a></li><li><a href="#why-this-matters">Why this matters</a></li><li><a href="#research-questions">Research questions</a></li><li><a href="#approach">Approach</a></li><li><a href="#start-here">Start here</a></li><li><a href="#skills-you-will-use-and-learn">Skills you will use and learn</a></li><li><a href="#papers-to-read-first">Papers to read first</a></li><li><a href="#interested">Interested?</a></li></ul></nav>
+<div class="pcontent">
+<figure class="live" data-demo="evc" aria-labelledby="live-evc">
+  <div class="lhead"><h2 id="live-evc">Try it: Switch the chargers</h2><span class="kicker">Live illustration</span></div>
+  <p class="how">A day of charging load on a neighborhood feeder. An attacker who controls some chargers switches them on and off together in the evening peak. Raise the share they control, and set how big a jump the detector treats as suspicious.</p>
+  <canvas width="720" height="290" role="img" aria-label="Charging load over 24 hours against the feeder limit, with attack switching in the evening and flagged intervals marked"></canvas>
+  <div class="ctrl"></div>
+  <p class="disc">A simplified model of the idea, for illustration. This project has not started; there are no results yet. The load profile and limit are invented.</p>
+</figure>
+
+<section>
+<h2 id="why-this-matters">Why this matters</h2>
+<p>Public chargers talk to the car, to the operator's servers and to payment systems, and the operator can start and stop charging remotely. Security reviews of this ecosystem have found weaknesses at each of those links. The grid side is what makes it more than a data breach: one compromised management server can reach thousands of chargers, and switching them together changes the load on a neighborhood feeder in seconds.</p>
+<p>This is a new direction for my group that joins two existing lines: vehicles as networked systems (my dissertation and the GM driver-identification work) and machine-learning detection of anomalies in network and sensor data (Electronics 2024; EPJ Quantum Technology 2025).</p>
+</section>
+<section>
+<h2 id="research-questions">Research questions</h2>
+<ol class="rqx"><li class="reveal"><p class="q">How much can a coordinated attack on many chargers move the load on a local grid, and which attack patterns matter most?</p><dl><dt>Hypothesis</dt><dd>Switching a modest share of chargers at once produces load swings large enough to matter for a local feeder, and the timing of the switching matters more than its size.</dd><dt>How we would test it</dt><dd>Simulate charging stations on standard distribution test feeders with realistic charging sessions, and measure voltage and load violations as the share of compromised chargers grows.</dd></dl></li><li class="reveal"><p class="q">Can anomaly detection on charging sessions and load data catch such attacks early, with few false alarms?</p><dl><dt>Hypothesis</dt><dd>Coordinated switching leaves sharp, synchronized steps that normal charging does not; a detector on per-station session data catches them sooner than one on total load alone.</dd><dt>How we would test it</dt><dd>Train detectors on simulated normal days and test them on graded attacks, reporting detection delay and false alarms per day.</dd></dl></li><li class="reveal"><p class="q">Where are the weak points in the protocol stack between charger, operator and vehicle, and which hardening steps matter most?</p><dl><dt>Hypothesis</dt><dd>The management link between charger and operator is the easiest place to start a coordinated attack, because one compromised server reaches many chargers.</dd><dt>How we would test it</dt><dd>Model the charger management protocol in a lab test bed with open-source charger and server software, and run a structured threat analysis with attack trees.</dd></dl></li></ol><h3>Expected contributions</h3><ul class="contrib"><li>A simulation test bed that couples charging stations with a distribution feeder model.</li><li>Detectors for coordinated charging attacks, with detection delay and false alarms.</li><li>A threat analysis of the charger management link with concrete hardening steps.</li></ul>
+</section>
+<section>
+<h2 id="approach">Approach</h2>
+<ol class="flow" aria-label="Project steps"><li><b>Model the grid</b><span>Attach simulated charging stations to standard distribution test feeders.</span></li><li><b>Model charging</b><span>Generate realistic sessions from public charging datasets.</span></li><li><b>Attack</b><span>Simulate coordinated switching and data-manipulation attacks of growing scale.</span></li><li><b>Detect</b><span>Train detectors on station and feeder data and measure delay and false alarms.</span></li><li><b>Harden</b><span>Build a lab test bed with open-source charger and server software and analyze the management link.</span></li></ol>
+<p class="note">All attacks run in simulation or in an isolated lab test bed, never on real chargers or grids.</p>
+</section>
+<section class="start">
+<h2 id="start-here">Start here</h2>
+<p class="muted">A concrete first month for a student joining this work. Each step builds on the one before.</p>
+<ol class="steps"><li><span class="sn">Step 1</span>Read the papers below.</li><li><span class="sn">Step 2</span>Load ACN-Data sessions and build a day of charging load.</li><li><span class="sn">Step 3</span>Attach that load to a pandapower test feeder and add coordinated switching.</li><li><span class="sn">Step 4</span>Read the OCPP overview and list which messages could start or stop many sessions.</li></ol>
+<h3>Tools and data</h3>
+<ul class="res"><li><a href="https://ev.caltech.edu/dataset">ACN-Data</a><span>Public dataset of real EV charging sessions.</span></li><li><a href="https://www.pandapower.org/">pandapower</a><span>Open-source power system modeling in Python.</span></li><li><a href="https://openchargealliance.org/protocols/open-charge-point-protocol/">Open Charge Point Protocol (OCPP)</a><span>The protocol between chargers and their management systems.</span></li></ul>
+<p class="note">Writing it up? Follow the <a href="latex-overleaf.html">LaTeX and Overleaf guide</a> for templates, citations, figures and the checks to run before you submit.</p>
+</section>
+<section>
+<h2 id="skills-you-will-use-and-learn">Skills you will use and learn</h2>
+<ul class="chips" aria-label="Skills"><li>Python</li><li>Power distribution simulation</li><li>Time-series anomaly detection</li><li>Protocol analysis</li><li>Threat modeling</li></ul>
+</section>
+<section>
+<h2 id="papers-to-read-first">Papers to read first</h2>
+<ol class="pubs reading"><li><div class="pt">A detailed security assessment of the EV charging ecosystem</div><div class="pa">J. Antoun, M. E. Kabir, B. Moussa, R. Atallah, C. Assi</div><div class="pv">IEEE Network, 2020</div><div class="why">A map of the ecosystem and its weak links.</div><div class="pl"><a href="https://doi.org/10.1109/MNET.001.1900348">Read</a></div></li><li><div class="pt">Public plug-in electric vehicles + grid data: Is a new cyberattack vector viable?</div><div class="pa">S. Acharya, Y. Dvorkin, R. Karri</div><div class="pv">IEEE Transactions on Smart Grid</div><div class="why">How public charging data could be used to plan grid attacks.</div><div class="pl"><a href="https://arxiv.org/abs/1907.08283">Read</a></div></li><li><div class="pt">Review of electric vehicle charger cybersecurity vulnerabilities, potential impacts, and defenses</div><div class="pa">J. Johnson, T. Berg, B. Anderson, B. Wright</div><div class="pv">Energies, 2022</div><div class="why">A review of vulnerabilities, impacts and defenses.</div><div class="pl"><a href="https://doi.org/10.3390/en15113931">Read</a></div></li><li><div class="pt">Automated network incident identification through genetic algorithm-driven feature selection</div><div class="pa">A. Aksoy, L. Valle, <b>G. Kar</b></div><div class="pv">Electronics, 2024</div><div class="why">Our feature selection for incident detection, adaptable to charging data.</div><div class="pl"><a href="https://doi.org/10.3390/electronics13020293">Read</a></div></li></ol></section><section class="join">
+<h2 id="interested">Interested?</h2>
+<p>This project is planned and not yet staffed. If you are a UCM graduate student, or joining UCM soon, and it fits your interests, email me at <a href="mailto:kar@ucmo.edu">kar@ucmo.edu</a> with your CV, the project's name and a few lines on which research question you would start with. Reading two of the papers below first will make that conversation much better.</p>
+</section>
+<section class="related" aria-labelledby="related-h"><h2 id="related-h">More in connected vehicles</h2><div class="rgrid"><a class="rcard" href="vehicles.html"><span class="kicker">Published work</span><span class="rt">Connected vehicles: sensing, identity and trust</span><span class="ra" aria-hidden="true">→</span></a><a class="rcard" href="perception.html"><span class="kicker">Published work</span><span class="rt">Extending what a car can see and sense</span><span class="ra" aria-hidden="true">→</span></a><a class="rcard" href="driver-behavior.html"><span class="kicker">Published work</span><span class="rt">Scoring and coaching drivers from in-vehicle data</span><span class="ra" aria-hidden="true">→</span></a><a class="rcard planned" href="planned-gnss.html"><span class="kicker">Open project</span><span class="rt">Catching GNSS spoofing with the car's own sensors</span><span class="ra" aria-hidden="true">→</span></a></div></section>
+<section><nav class="pnav" aria-label="More projects"><a href="planned-blockchain.html">← Tamper-evident identity for IoT devices on a blockchain</a><a href="planned-llmsoc.html">Can a language model help triage security alerts? →</a></nav></section>
+</div>
+</div>
+</main>
+<footer class="site-foot">
+  <div class="wrap fgrid">
+    <div class="fabout"><a class="brand" href="../index.html">Gorkem Kar<span class="muted">, Ph.D.</span></a>
+      <p>Assistant Professor of Computer Science and Cybersecurity, University of Central Missouri. Security for vehicles, phones, IoT devices and networks.</p></div>
+    <nav aria-label="Research"><h4>Research</h4><ul>
+      <li><a href="../index.html#map">Research map</a></li><li><a href="../index.html#projects-in-depth">Projects in depth</a></li>
+      <li><a href="../index.html#open-projects">Open projects</a></li><li><a href="../index.html#publications">Publications</a></li>
+      <li><a href="../research/latex-overleaf.html">LaTeX and Overleaf guide</a></li></ul></nav>
+    <nav aria-label="Profiles"><h4>Profiles</h4><ul>
+      <li><a href="https://scholar.google.com/citations?user=dz-6amUAAAAJ&amp;hl=en">Google Scholar</a></li><li><a href="https://github.com/gkar87">GitHub</a></li>
+      <li><a href="https://orcid.org/0000-0003-0367-4409">ORCID</a></li><li><a href="https://www.linkedin.com/in/gorkem-kar/">LinkedIn</a></li></ul></nav>
+    <nav aria-label="Contact"><h4>Contact</h4><ul>
+      <li><a href="mailto:kar@ucmo.edu">kar@ucmo.edu</a></li><li><a href="../index.html#teaching">Teaching</a></li><li><a href="../index.html#contact">Office and links</a></li></ul></nav>
+  </div>
+  <div class="wrap fbase"><span>© 2026 Gorkem Kar · Last updated November 2026</span><a href="#top">Back to top ↑</a></div>
+</footer>
+<a class="totop" href="#top" aria-label="Back to top"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+<script src="../site.js?v=20261125g"></script>
+<script src="../live.js?v=20261125g"></script>
+</body>
+</html>

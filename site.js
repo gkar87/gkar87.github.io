@@ -58,7 +58,7 @@
 
   // ---- highlight the nav link of the section on screen (home page only)
   if ('IntersectionObserver' in window) {
-    const links = [...document.querySelectorAll('nav a[href^="#"]')];
+    const links = [...document.querySelectorAll('header nav a[href^="#"]')];
     const secs = links.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
     if (secs.length) {
       const so = new IntersectionObserver(entries => {
@@ -172,4 +172,94 @@
       if (!document.hidden) raf = requestAnimationFrame(frame);
     });
   }
+  // ---- table of contents on project pages: mark the section being read
+  const toc = [...document.querySelectorAll('.toc a[href^="#"]')];
+  if (toc.length) {
+    const heads = toc.map(a => document.getElementById(a.getAttribute('href').slice(1))).filter(Boolean);
+    let tt = 0;
+    const spy = () => {
+      tt = 0;
+      let cur = heads[0];
+      for (const h of heads) if (h.getBoundingClientRect().top < innerHeight * .3) cur = h;
+      if (innerHeight + scrollY >= document.documentElement.scrollHeight - 4) cur = heads[heads.length - 1];
+      toc.forEach(a => a.classList.toggle('active', cur && a.getAttribute('href') === '#' + cur.id));
+    };
+    addEventListener('scroll', () => { if (!tt) tt = requestAnimationFrame(spy); }, { passive: true }); spy();
+  }
+
+  // ---- floating back-to-top button
+  const top = document.querySelector('.totop');
+  if (top) {
+    const show = () => top.classList.toggle('show', scrollY > innerHeight * 1.2);
+    addEventListener('scroll', show, { passive: true }); show();
+  }
+
+  // ---- quick search over every page (Ctrl K, Cmd K or /)
+  const me = document.currentScript || document.querySelector('script[src*="site.js"]');
+  const base = me ? new URL('.', me.src) : new URL('./', location.href);
+  const findBtn = document.querySelector('.find');
+  let qs = null, data = null, sel = 0, items = [], lastFocus = null;
+  const norm = t => t.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
+  const esc = t => t.replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  const build = () => {
+    qs = document.createElement('div'); qs.className = 'qs';
+    qs.innerHTML = '<div class="box" role="dialog" aria-modal="true" aria-label="Search the site"><div class="in">' +
+      '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M20 20l-4.2-4.2" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>' +
+      '<input type="search" placeholder="Search projects, papers and sections" aria-label="Search" autocomplete="off" spellcheck="false" role="combobox" aria-expanded="true" aria-controls="qs-list">' +
+      '<button type="button" class="esc">Esc</button></div><ul id="qs-list" role="listbox"></ul>' +
+      '<div class="hint"><span><kbd>↑</kbd> <kbd>↓</kbd> to move</span><span><kbd>Enter</kbd> to open</span><span><kbd>Esc</kbd> to close</span></div></div>';
+    document.body.appendChild(qs);
+    const inp = qs.querySelector('input'), ul = qs.querySelector('ul');
+    const render = () => {
+      const q = norm(inp.value.trim()), words = q.split(/\s+/).filter(Boolean);
+      items = (data || []).map(e => {
+        const t = norm(e.t), d = norm(e.d + ' ' + e.k);
+        let sc = 0;
+        for (const w of words) { if (t.includes(w)) sc += t.startsWith(w) ? 4 : 3; else if (d.includes(w)) sc += 1; else return null; }
+        return { e, sc };
+      }).filter(Boolean).sort((a, b) => b.sc - a.sc).slice(0, 12).map(x => x.e);
+      sel = 0;
+      if (!data) { ul.innerHTML = '<li class="none">Loading…</li>'; return; }
+      if (!items.length) { ul.innerHTML = '<li class="none">Nothing matches. Try fewer words.</li>'; return; }
+      ul.innerHTML = items.map((e, i) => `<li role="option" id="qs-${i}"><a href="${new URL(e.u, base).href}"${i === 0 ? ' class="sel"' : ''}>` +
+        `<span class="k${e.k === 'Open project' ? ' plan' : e.k === 'Section' ? ' sec' : ''}">${esc(e.k)}</span><b>${esc(e.t)}</b><small>${esc(e.d)}</small></a></li>`).join('');
+      inp.setAttribute('aria-activedescendant', 'qs-0');
+    };
+    const move = d => {
+      const as = ul.querySelectorAll('a'); if (!as.length) return;
+      as[sel].classList.remove('sel'); sel = (sel + d + as.length) % as.length; as[sel].classList.add('sel');
+      as[sel].scrollIntoView({ block: 'nearest' }); inp.setAttribute('aria-activedescendant', 'qs-' + sel);
+    };
+    inp.addEventListener('input', render);
+    inp.addEventListener('keydown', e => {
+      if (e.key === 'ArrowDown') { e.preventDefault(); move(1); }
+      else if (e.key === 'ArrowUp') { e.preventDefault(); move(-1); }
+      else if (e.key === 'Enter') { const a = ul.querySelectorAll('a')[sel]; if (a) { e.preventDefault(); close(); location.href = a.href; } }
+    });
+    ul.addEventListener('click', e => { if (e.target.closest('a')) close(); });
+    qs.querySelector('.esc').addEventListener('click', close);
+    qs.addEventListener('mousedown', e => { if (e.target === qs) close(); });
+    qs.addEventListener('keydown', e => {
+      if (e.key === 'Escape') { e.preventDefault(); close(); }
+      if (e.key === 'Tab') { const f = [...qs.querySelectorAll('input,button,a')]; const i = f.indexOf(document.activeElement);
+        if (e.shiftKey && i <= 0) { e.preventDefault(); f[f.length - 1].focus(); } else if (!e.shiftKey && i === f.length - 1) { e.preventDefault(); f[0].focus(); } }
+    });
+    qs.render = render;
+  };
+  const open = () => {
+    if (!qs) build();
+    lastFocus = document.activeElement;
+    qs.classList.add('open'); document.documentElement.style.overflow = 'hidden';
+    const inp = qs.querySelector('input'); inp.value = ''; qs.render(); inp.focus();
+    if (!data) fetch(new URL('pages.json', base)).then(r => r.json()).then(j => { data = j; qs.render(); })
+      .catch(() => { qs.querySelector('ul').innerHTML = '<li class="none">Search could not load. Use the menu above.</li>'; });
+  };
+  function close() { if (!qs) return; qs.classList.remove('open'); document.documentElement.style.overflow = ''; if (lastFocus && lastFocus.focus) lastFocus.focus(); }
+  if (findBtn) findBtn.addEventListener('click', open);
+  if (findBtn && /Mac|iPhone|iPad/.test(navigator.platform || '')) { const k = findBtn.querySelector('kbd'); if (k) k.textContent = '⌘K'; }
+  addEventListener('keydown', e => {
+    const typing = /^(INPUT|TEXTAREA|SELECT)$/.test((e.target.tagName || '')) || e.target.isContentEditable;
+    if ((e.key === 'k' || e.key === 'K') && (e.metaKey || e.ctrlKey)) { e.preventDefault(); qs && qs.classList.contains('open') ? close() : open(); }
+    else if (e.key === '/' && !typing && !(qs && qs.classList.contains('open'))) { e.preventDefault(); open(); }
+  });
 })();

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LaTeX and Overleaf for your first paper · Gorkem Kar</title>
+<meta name="description" content="A practical guide for my students: start from the official IEEE or ACM template, organize the project, cite with BibTeX, make clean figures and tables, write together on Overleaf, and check everything before you submit.">
+<meta property="og:title" content="LaTeX and Overleaf for your first paper">
+<meta property="og:description" content="A practical guide for my students: start from the official IEEE or ACM template, organize the project, cite with BibTeX, make clean figures and tables, write together on Overleaf, and check everything before you submit.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://gkar87.github.io/research/latex-overleaf.html">
+<link rel="canonical" href="https://gkar87.github.io/research/latex-overleaf.html">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#1d4f91">
+<script>document.documentElement.classList.add('js');try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+<link rel="stylesheet" href="../style.css?v=20261125g">
+</head>
+<body class="proj" id="top">
+<a class="skip" href="#main">Skip to content</a>
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="../index.html">Gorkem Kar<span class="muted">, Ph.D.</span></a>
+    <div class="navbar">
+      <nav aria-label="Sections">
+        <ul>
+          <li><a href="../index.html#about">About</a></li>
+          <li><a href="../index.html#research">Research</a></li>
+          <li><a href="../index.html#publications">Publications</a></li>
+          <li><a href="../index.html#teaching">Teaching</a></li>
+          <li><a href="../index.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <button class="find" type="button" aria-label="Search the site" aria-keyshortcuts="Control+K Meta+K /"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M20 20l-4.2-4.2" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg><kbd>Ctrl K</kbd></button>
+      <button class="theme" type="button" aria-label="Switch theme"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" fill="currentColor"/></svg></button>
+    </div>
+  </div>
+  <div class="progress" aria-hidden="true"></div>
+</header>
+<main id="main" class="wrap">
+<p class="crumbs"><a href="../index.html#students">Students</a> / LaTeX and Overleaf for your first paper</p>
+<section class="phead">
+  <span class="kicker">Student guide · writing for publication</span>
+  <h1>LaTeX and Overleaf for your first paper</h1>
+  <p class="lead">A practical guide for my students: start from the official IEEE or ACM template, organize the project, cite with BibTeX, make clean figures and tables, write together on Overleaf, and check everything before you submit.</p>
+  <ul class="facts" aria-label="At a glance"><li>For my graduate students</li><li>IEEE and ACM templates</li><li>Checklist before you submit</li></ul>
+</section>
+<div class="pgrid">
+<nav class="toc" aria-label="On this page"><span>On this page</span><ul><li><a href="#why-latex-and-why-overleaf">Why LaTeX, and why Overleaf</a></li><li><a href="#your-first-afternoon">Your first afternoon</a></li><li><a href="#start-from-the-official-template">Start from the official template</a></li><li><a href="#organize-the-project">Organize the project</a></li><li><a href="#citations-with-bibtex">Citations with BibTeX</a></li><li><a href="#figures-and-tables">Figures and tables</a></li><li><a href="#writing-together">Writing together</a></li><li><a href="#before-you-submit">Before you submit</a></li><li><a href="#how-we-write-papers-in-my-group">How we write papers in my group</a></li></ul></nav>
+<div class="pcontent">
+
+<section>
+<h2 id="why-latex-and-why-overleaf">Why LaTeX, and why Overleaf</h2>
+<p>Almost every computer science and engineering venue we submit to, IEEE and ACM conferences and journals alike, provides an official LaTeX template, and reviewers expect papers to look like it. LaTeX keeps numbering of sections, figures, tables, equations and references automatic, so you can move things around without breaking anything. Overleaf runs LaTeX in the browser: nothing to install, one shared copy of the paper, comments and history built in. In my group every paper lives in one Overleaf project shared with me from day one.</p>
+<p class="note">You do not need to know LaTeX before you start. Plan one afternoon for the basics below; you will learn the rest while writing.</p>
+</section>
+<section>
+<h2 id="your-first-afternoon">Your first afternoon</h2>
+<ol class="steps">
+<li><span class="sn">Step 1</span>Create a free Overleaf account with your university email and read <a href="https://docs.overleaf.com/getting-started/your-first-project">Your first project</a>.</li>
+<li><span class="sn">Step 2</span>Work through <a href="https://www.overleaf.com/learn/latex/Learn_LaTeX_in_30_minutes">Learn LaTeX in 30 minutes</a>, typing the examples rather than copying them.</li>
+<li><span class="sn">Step 3</span>Keep <a href="https://ctan.org/pkg/lshort">The Not So Short Introduction to LaTeX</a> (on CTAN) open as a reference, and use Overleaf's <a href="https://docs.overleaf.com/getting-started/latex-tutorials">tutorial list</a> when you want more.</li>
+<li><span class="sn">Step 4</span>When something will not compile, read <a href="https://docs.overleaf.com/troubleshooting-and-support/fixing-latex-errors">Fixing LaTeX errors</a> and fix the first error in the log first; later errors are often caused by it.</li>
+</ol>
+</section>
+<section>
+<h2 id="start-from-the-official-template">Start from the official template</h2>
+<p>Never start a paper from a blank file or from someone else's paper. Start from the venue's official template, and check the call for papers for the exact version, page limit and whether the review is anonymous.</p>
+<div class="grid2">
+<div class="card"><h3>IEEE conferences</h3><p>IEEE's <a href="https://www.ieee.org/conferences/publishing/templates.html">manuscript templates page</a> links the LaTeX template and its instructions, and IEEE's own templates are in the <a href="https://www.overleaf.com/gallery/tagged/ieee-official">Overleaf IEEE gallery</a>. The class is <a href="https://ctan.org/pkg/ieeetran">IEEEtran</a>; use its <code>conference</code> option. IEEE warns that guidance text left over from the template can stop a paper from being published, so delete all of it.</p></div>
+<div class="card"><h3>ACM conferences and journals</h3><p>ACM's <a href="https://www.acm.org/publications/article-templates/proceedings-template.html">Primary Article Template page</a> describes the <a href="https://ctan.org/pkg/acmart">acmart</a> class; most proceedings use its <code>sigconf</code> format. The official versions are in the <a href="https://www.overleaf.com/gallery/tagged/acm-official">Overleaf ACM gallery</a>. For double-blind review, add the options the call for papers asks for, usually <code>review</code> and <code>anonymous</code>.</p></div>
+</div>
+<pre class="code"><code>% IEEE conference paper: the first lines of main.tex
+\documentclass[conference]{IEEEtran}
+\usepackage{graphicx}   % figures
+\usepackage{booktabs}   % clean tables
+\usepackage{amsmath}    % equations
+\usepackage{cite}       % sorted, compressed citations [1]-[4]
+
+% ACM instead:  \documentclass[sigconf,review,anonymous]{acmart}</code></pre>
+<p>Overleaf explains <a href="https://docs.overleaf.com/templates/creating-a-project-from-a-template">creating a project from a template</a>, and you can <a href="https://docs.overleaf.com/managing-projects-and-files/uploading-a-project">upload a project</a> as a zip when a venue provides its own files.</p>
+</section>
+<section>
+<h2 id="organize-the-project">Organize the project</h2>
+<p>One file per section keeps edits small and makes it easy for two people to work at once.</p>
+<pre class="code"><code>main.tex            % preamble, title, \input{...} for each section, bibliography
+sections/
+  introduction.tex
+  related.tex
+  method.tex
+  evaluation.tex
+  conclusion.tex
+figures/            % PDF figures exported from your plotting scripts
+refs.bib            % every reference, one BibTeX entry each</code></pre>
+<ul>
+<li>Pull each section in with <code>\input{sections/method}</code>.</li>
+<li>Keep the scripts that make figures and tables in your Git repository, not in Overleaf; Overleaf holds the paper.</li>
+<li>Write one sentence per line. Changes, comments and history become much easier to read.</li>
+<li>Label everything with a prefix, such as <code>fig:</code>, <code>tab:</code>, <code>sec:</code> and <code>eq:</code>, and refer to it with <code>\ref</code>, never by typing a number.</li>
+</ul>
+</section>
+<section>
+<h2 id="citations-with-bibtex">Citations with BibTeX</h2>
+<p>Overleaf's guide to <a href="https://docs.overleaf.com/citing-and-references/creating-a-bibliography">creating a bibliography</a> covers the three steps: a <code>.bib</code> file, a bibliography style, and <code>\cite</code> commands in the text. See also <a href="https://docs.overleaf.com/citing-and-references/working-with-.bib-files">working with .bib files</a> and the <a href="https://docs.overleaf.com/citing-and-references/available-bibtex-styles">available styles</a>. For IEEE papers use the IEEEtran style that comes with the template; acmart sets its own.</p>
+<pre class="code"><code>@inproceedings{kar2014jammer,
+  author    = {Kar, Gorkem and Mustafa, Hossen and Wang, Yan and Chen, Yingying
+               and Xu, Wenyuan and Gruteser, Marco and Vu, Tam},
+  title     = {Detection of On-Road Vehicles Emanating {GPS} Interference},
+  booktitle = {Proceedings of the ACM Conference on Computer and Communications Security (CCS)},
+  year      = {2014},
+  doi       = {10.1145/2660267.2660336}
+}
+
+As shown in prior work~\cite{kar2014jammer}, ...
+\bibliographystyle{IEEEtran}
+\bibliography{refs}</code></pre>
+<ul>
+<li>Copy BibTeX from the publisher's page (IEEE Xplore, the ACM Digital Library) or from the DOI, then check every field. Search engines often get authors, venues and capitalization wrong.</li>
+<li>Protect capitals that must stay capitals with braces, as in <code>{GPS}</code> and <code>{IoT}</code>.</li>
+<li>Cite only what you have read, and cite the published version rather than a preprint when one exists.</li>
+<li>If you keep references in Zotero, Overleaf can <a href="https://docs.overleaf.com/integrations-and-add-ons/reference-manager-integrations/zotero">link to it</a> on premium plans; otherwise export a <code>.bib</code> file and upload it.</li>
+</ul>
+</section>
+<section>
+<h2 id="figures-and-tables">Figures and tables</h2>
+<p>Start with Overleaf's pages on <a href="https://docs.overleaf.com/writing-and-editing/inserting-images">inserting images</a> and <a href="https://docs.overleaf.com/writing-and-editing/generating-and-inserting-tables">tables</a>, then use <a href="https://ctan.org/pkg/booktabs">booktabs</a> for tables that look professional.</p>
+<pre class="code"><code>\begin{figure}[t]
+  \centering
+  \includegraphics[width=\columnwidth]{figures/detection-delay.pdf}
+  \caption{Detection delay against false alarms per hour for three attack speeds.}
+  \label{fig:delay}
+\end{figure}
+
+\begin{table}[t]
+  \centering
+  \caption{Accuracy under random and time-based splits.}
+  \label{tab:splits}
+  \begin{tabular}{lrr}
+    \toprule
+    Model &amp; Random split &amp; Time split \\
+    \midrule
+    k-NN  &amp; --   &amp; --   \\
+    \bottomrule
+  \end{tabular}
+\end{table}</code></pre>
+<ul>
+<li>Export plots as PDF so they stay sharp at any zoom, and set font sizes in the plotting script so the text in a figure matches the paper.</li>
+<li>Make figures readable in grayscale and for color-blind readers: vary line style and marker as well as color.</li>
+<li>Put <code>\label</code> after <code>\caption</code>, or the reference will point to the wrong number.</li>
+<li>A caption should say what the reader should notice, not only what is plotted.</li>
+<li>Table captions go above the table and figure captions below, as the IEEE and ACM templates do.</li>
+</ul>
+</section>
+<section>
+<h2 id="writing-together">Writing together</h2>
+<ul>
+<li><b>Sharing:</b> <a href="https://docs.overleaf.com/collaborating/sharing-a-project">share the project</a> with me by email invitation, not with a public link. Projects are private by default; keep them that way until the paper is out.</li>
+<li><b>Comments:</b> use <a href="https://docs.overleaf.com/collaborating/commenting">comments</a> for questions and resolve them when they are settled.</li>
+<li><b>Track changes:</b> <a href="https://docs.overleaf.com/collaborating/track-changes">track changes</a> shows every edit for review; it needs a premium plan on the project owner's account, so check what your university provides.</li>
+<li><b>History:</b> <a href="https://docs.overleaf.com/writing-and-editing/history-and-versioning">history and versioning</a> lets you label the version you submitted and go back to it.</li>
+<li><b>Git:</b> Overleaf can <a href="https://docs.overleaf.com/integrations-and-add-ons/git-integration-and-github-synchronization">sync with Git and GitHub</a> on premium plans, which keeps the paper next to its code.</li>
+</ul>
+</section>
+<section>
+<h2 id="before-you-submit">Before you submit</h2>
+<ol class="check">
+<li>Page limit met, counting exactly what the call for papers counts (references often do not count; appendices often do).</li>
+<li>For double-blind review: no author names, no acknowledgments, no links to your own repositories, and your own earlier work cited in the third person.</li>
+<li>All template guidance text removed.</li>
+<li>No warnings about undefined references or citations, and no <code>??</code> anywhere in the PDF.</li>
+<li>Every figure and table referenced in the text, in order, and readable when printed.</li>
+<li>Every number in the text matches the tables, and every table matches the scripts that produced it.</li>
+<li>References complete: authors, title, venue, year, pages or DOI, with capitalization protected.</li>
+<li>Spell check run, and the abstract read aloud once.</li>
+<li>If the venue asks you to check the PDF with a publisher tool, do it before the deadline day.</li>
+<li>For a preprint, work through Overleaf's <a href="https://docs.overleaf.com/troubleshooting-and-support/checklist-for-arxiv-submissions">arXiv checklist</a>, and read Overleaf's notes on <a href="https://docs.overleaf.com/templates/submitting-to-publishers">submitting to publishers</a>.</li>
+<li>Send me the PDF at least one week before the deadline. Nothing is submitted without every author's approval.</li>
+</ol>
+</section>
+<section>
+<h2 id="how-we-write-papers-in-my-group">How we write papers in my group</h2>
+<ol class="steps">
+<li><span class="sn">Week 1</span>Write the title, a five-sentence abstract and the list of figures before any prose. If the figures do not tell the story, the text will not either.</li>
+<li><span class="sn">Week 2</span>Fill in method and evaluation, the sections you know best. Introduction and related work come last.</li>
+<li><span class="sn">Weekly</span>Each Friday, leave a short comment at the top of main.tex saying what changed and what you are stuck on.</li>
+<li><span class="sn">Before review</span>Label the version in Overleaf history, export the PDF and send it for internal review.</li>
+</ol>
+</section>
+
+<section><nav class="pnav" aria-label="More projects"><span></span><a href="../index.html#students">Back to students and mentoring →</a></nav></section>
+</div>
+</div>
+</main>
+<footer class="site-foot">
+  <div class="wrap fgrid">
+    <div class="fabout"><a class="brand" href="../index.html">Gorkem Kar<span class="muted">, Ph.D.</span></a>
+      <p>Assistant Professor of Computer Science and Cybersecurity, University of Central Missouri. Security for vehicles, phones, IoT devices and networks.</p></div>
+    <nav aria-label="Research"><h4>Research</h4><ul>
+      <li><a href="../index.html#map">Research map</a></li><li><a href="../index.html#projects-in-depth">Projects in depth</a></li>
+      <li><a href="../index.html#open-projects">Open projects</a></li><li><a href="../index.html#publications">Publications</a></li>
+      <li><a href="../research/latex-overleaf.html">LaTeX and Overleaf guide</a></li></ul></nav>
+    <nav aria-label="Profiles"><h4>Profiles</h4><ul>
+      <li><a href="https://scholar.google.com/citations?user=dz-6amUAAAAJ&amp;hl=en">Google Scholar</a></li><li><a href="https://github.com/gkar87">GitHub</a></li>
+      <li><a href="https://orcid.org/0000-0003-0367-4409">ORCID</a></li><li><a href="https://www.linkedin.com/in/gorkem-kar/">LinkedIn</a></li></ul></nav>
+    <nav aria-label="Contact"><h4>Contact</h4><ul>
+      <li><a href="mailto:kar@ucmo.edu">kar@ucmo.edu</a></li><li><a href="../index.html#teaching">Teaching</a></li><li><a href="../index.html#contact">Office and links</a></li></ul></nav>
+  </div>
+  <div class="wrap fbase"><span>© 2026 Gorkem Kar · Last updated November 2026</span><a href="#top">Back to top ↑</a></div>
+</footer>
+<a class="totop" href="#top" aria-label="Back to top"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+<script src="../site.js?v=20261125g"></script>
+
+</body>
+</html>

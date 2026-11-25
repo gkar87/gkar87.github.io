@@ -5,12 +5,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Sharing spectrum fairly: fractional frequency reuse · Gorkem Kar</title>
 <meta name="description" content="Before security, I worked on how cellular networks share spectrum. My M.S. thesis at Bilkent asked how to split a cell&#x27;s subcarriers between users near the base station and users at the edge, so the network is both fast and fair.">
+<meta property="og:title" content="Sharing spectrum fairly: fractional frequency reuse">
+<meta property="og:description" content="Before security, I worked on how cellular networks share spectrum. My M.S. thesis at Bilkent asked how to split a cell&#x27;s subcarriers between users near the base station and users at the edge, so the network is both fast and fair.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://gkar87.github.io/research/wireless-ffr.html">
+<link rel="canonical" href="https://gkar87.github.io/research/wireless-ffr.html">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 <meta name="theme-color" content="#1d4f91">
 <script>document.documentElement.classList.add('js');try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
-<link rel="stylesheet" href="../style.css?v=20261125f">
+<link rel="stylesheet" href="../style.css?v=20261125g">
 </head>
-<body>
+<body class="proj" id="top">
 <a class="skip" href="#main">Skip to content</a>
 <header class="site">
   <div class="wrap">
@@ -25,6 +30,7 @@
           <li><a href="../index.html#contact">Contact</a></li>
         </ul>
       </nav>
+      <button class="find" type="button" aria-label="Search the site" aria-keyshortcuts="Control+K Meta+K /"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M20 20l-4.2-4.2" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg><kbd>Ctrl K</kbd></button>
       <button class="theme" type="button" aria-label="Switch theme"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" fill="currentColor"/></svg></button>
     </div>
   </div>
@@ -38,7 +44,9 @@
   <p class="lead">Before security, I worked on how cellular networks share spectrum. My M.S. thesis at Bilkent asked how to split a cell's subcarriers between users near the base station and users at the edge, so the network is both fast and fair.</p>
   <ul class="facts" aria-label="At a glance"><li>M.S. thesis, Bilkent University, 2011</li><li>Live demo</li></ul>
 </section>
-<nav class="toc" aria-label="On this page"><span>On this page</span><ul><li><a href="#live-ffr">Try it</a></li><li><a href="#the-trade-off">The trade-off</a></li><li><a href="#thesis">Thesis</a></li></ul></nav>
+<div class="pgrid">
+<nav class="toc" aria-label="On this page"><span>On this page</span><ul><li><a href="#live-ffr">Try it</a></li><li><a href="#the-trade-off">The trade-off</a></li><li><a href="#start-here">Start here</a></li><li><a href="#thesis">Thesis</a></li></ul></nav>
+<div class="pcontent">
 <figure class="live" data-demo="ffr" aria-labelledby="live-ffr">
   <div class="lhead"><h2 id="live-ffr">Try it: Split the band between center and edge</h2><span class="kicker">Live illustration</span></div>
   <p class="how">Seven cells: inner circles reuse one shared band, and the cell edges split the rest three ways. Move the inner share and watch throughput rise while fairness falls; the product of the two peaks at a split that depends on where users are.</p>
@@ -55,13 +63,40 @@
 <p>The same physical-layer facts, shared spectrum and interference, sit under my later security work on <a href="vehicles.html">GPS jamming</a> and <a href="planned-v2x.html">V2X messages</a>.</p>
 </section>
 
+<section class="start">
+<h2 id="start-here">Start here</h2>
+<p class="muted">A concrete first month for a student joining this work. Each step builds on the one before.</p>
+<ol class="steps"><li><span class="sn">Step 1</span>Read the thesis below and redraw the inner and outer regions of one cell.</li><li><span class="sn">Step 2</span>Install ns-3 and run one of its LTE examples with several cells.</li><li><span class="sn">Step 3</span>Vary the share of the band used in cell centers and plot throughput and Jain fairness.</li></ol>
+<h3>Tools and data</h3>
+<ul class="res"><li><a href="https://www.nsnam.org/">ns-3</a><span>Discrete-event network simulator.</span></li></ul>
+<p class="note">Writing it up? Follow the <a href="latex-overleaf.html">LaTeX and Overleaf guide</a> for templates, citations, figures and the checks to run before you submit.</p>
+</section>
 <section>
 <h2 id="thesis">Thesis</h2>
 <ol class="pubs"><li><div class="pt">Performance of static and adaptive subchannel allocation schemes for fractional frequency reuse in WiMAX networks</div><div class="pa"><b>G. Kar</b> (advisor: E. Karaşan)</div><div class="pv">M.S. thesis, Bilkent University, 2011</div><div class="pl"><a href="https://hdl.handle.net/11693/15261">Paper</a></div></li></ol></section>
+<section class="related" aria-labelledby="related-h"><h2 id="related-h">More in side channels, applied ai and wireless</h2><div class="rgrid"><a class="rcard planned" href="planned-acoustic.html"><span class="kicker">Open project</span><span class="rt">Do earbuds, smart speakers and video calls leak what you type?</span><span class="ra" aria-hidden="true">→</span></a><a class="rcard planned" href="planned-rag.html"><span class="kicker">Open project</span><span class="rt">Attacking and defending a campus chatbot</span><span class="ra" aria-hidden="true">→</span></a><a class="rcard planned" href="planned-llmsoc.html"><span class="kicker">Open project</span><span class="rt">Can a language model help triage security alerts?</span><span class="ra" aria-hidden="true">→</span></a><a class="rcard" href="side-channels.html"><span class="kicker">Published work</span><span class="rt">Acoustic side channels on phones</span><span class="ra" aria-hidden="true">→</span></a></div></section>
 <section><nav class="pnav" aria-label="More projects"><a href="applied-ai.html">← Explainable and applied AI</a><a href="../index.html#research">All research →</a></nav></section>
+</div>
+</div>
 </main>
-<footer><div class="wrap">© 2026 Gorkem Kar · <a href="../index.html">Home</a></div></footer>
-<script src="../site.js?v=20261125f"></script>
-<script src="../live.js?v=20261125f"></script>
+<footer class="site-foot">
+  <div class="wrap fgrid">
+    <div class="fabout"><a class="brand" href="../index.html">Gorkem Kar<span class="muted">, Ph.D.</span></a>
+      <p>Assistant Professor of Computer Science and Cybersecurity, University of Central Missouri. Security for vehicles, phones, IoT devices and networks.</p></div>
+    <nav aria-label="Research"><h4>Research</h4><ul>
+      <li><a href="../index.html#map">Research map</a></li><li><a href="../index.html#projects-in-depth">Projects in depth</a></li>
+      <li><a href="../index.html#open-projects">Open projects</a></li><li><a href="../index.html#publications">Publications</a></li>
+      <li><a href="../research/latex-overleaf.html">LaTeX and Overleaf guide</a></li></ul></nav>
+    <nav aria-label="Profiles"><h4>Profiles</h4><ul>
+      <li><a href="https://scholar.google.com/citations?user=dz-6amUAAAAJ&amp;hl=en">Google Scholar</a></li><li><a href="https://github.com/gkar87">GitHub</a></li>
+      <li><a href="https://orcid.org/0000-0003-0367-4409">ORCID</a></li><li><a href="https://www.linkedin.com/in/gorkem-kar/">LinkedIn</a></li></ul></nav>
+    <nav aria-label="Contact"><h4>Contact</h4><ul>
+      <li><a href="mailto:kar@ucmo.edu">kar@ucmo.edu</a></li><li><a href="../index.html#teaching">Teaching</a></li><li><a href="../index.html#contact">Office and links</a></li></ul></nav>
+  </div>
+  <div class="wrap fbase"><span>© 2026 Gorkem Kar · Last updated November 2026</span><a href="#top">Back to top ↑</a></div>
+</footer>
+<a class="totop" href="#top" aria-label="Back to top"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+<script src="../site.js?v=20261125g"></script>
+<script src="../live.js?v=20261125g"></script>
 </body>
 </html>

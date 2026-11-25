@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Can an attacker slip past the intrusion detector? · Gorkem Kar</title>
+<meta name="description" content="Machine-learning detectors can be fooled by small changes to their input. For network traffic, the attacker cannot change just anything: packets must stay valid and the attack must still work. This project measures how robust detectors really are against attackers who play by those rules.">
+<meta property="og:title" content="Can an attacker slip past the intrusion detector?">
+<meta property="og:description" content="Machine-learning detectors can be fooled by small changes to their input. For network traffic, the attacker cannot change just anything: packets must stay valid and the attack must still work. This project measures how robust detectors really are against attackers who play by those rules.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://gkar87.github.io/research/planned-adversarial.html">
+<link rel="canonical" href="https://gkar87.github.io/research/planned-adversarial.html">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#1d4f91">
+<script>document.documentElement.classList.add('js');try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+<link rel="stylesheet" href="../style.css?v=20261125g">
+</head>
+<body class="proj" id="top">
+<a class="skip" href="#main">Skip to content</a>
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="../index.html">Gorkem Kar<span class="muted">, Ph.D.</span></a>
+    <div class="navbar">
+      <nav aria-label="Sections">
+        <ul>
+          <li><a href="../index.html#about">About</a></li>
+          <li><a href="../index.html#research">Research</a></li>
+          <li><a href="../index.html#publications">Publications</a></li>
+          <li><a href="../index.html#teaching">Teaching</a></li>
+          <li><a href="../index.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <button class="find" type="button" aria-label="Search the site" aria-keyshortcuts="Control+K Meta+K /"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M20 20l-4.2-4.2" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg><kbd>Ctrl K</kbd></button>
+      <button class="theme" type="button" aria-label="Switch theme"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" fill="currentColor"/></svg></button>
+    </div>
+  </div>
+  <div class="progress" aria-hidden="true"></div>
+</header>
+<main id="main" class="wrap">
+<p class="crumbs"><a href="../index.html#open-projects">Open projects</a> / Can an attacker slip past the intrusion detector?</p>
+<section class="phead">
+  <span class="kicker">Planned project · core area</span>
+  <h1>Can an attacker slip past the intrusion detector?</h1>
+  <p class="lead">Machine-learning detectors can be fooled by small changes to their input. For network traffic, the attacker cannot change just anything: packets must stay valid and the attack must still work. This project measures how robust detectors really are against attackers who play by those rules.</p>
+  <ul class="facts" aria-label="At a glance"><li>Core area</li><li>3 research questions</li><li>Open to new graduate students</li><li>Live demo</li></ul>
+</section>
+<div class="pgrid">
+<nav class="toc" aria-label="On this page"><span>On this page</span><ul><li><a href="#live-adv">Try it</a></li><li><a href="#why-this-matters">Why this matters</a></li><li><a href="#research-questions">Research questions</a></li><li><a href="#approach">Approach</a></li><li><a href="#start-here">Start here</a></li><li><a href="#skills-you-will-use-and-learn">Skills you will use and learn</a></li><li><a href="#papers-to-read-first">Papers to read first</a></li><li><a href="#interested">Interested?</a></li></ul></nav>
+<div class="pcontent">
+<figure class="live" data-demo="adv" aria-labelledby="live-adv">
+  <div class="lhead"><h2 id="live-adv">Try it: Slip past the detector</h2><span class="kicker">Live illustration</span></div>
+  <p class="how">A toy detector draws a line between normal traffic and a flood. The attacker nudges one flood flow until it looks normal. With realistic rules it may only pad packets and must keep the flood fast enough to work.</p>
+  <canvas width="720" height="300" role="img" aria-label="Scatter of normal and attack flows by packet size and rate, the detector boundary, and the path of one attack flow trying to cross it"></canvas>
+  <div class="ctrl"></div>
+  <p class="disc">A simplified model of the idea, for illustration. This project has not started; there are no results yet. The flows and detector are invented.</p>
+</figure>
+
+<section>
+<h2 id="why-this-matters">Why this matters</h2>
+<p>Much of the work on adversarial attacks against intrusion detectors changes feature values freely, as if traffic were an image. Real traffic is not like that. A flood that is slowed down to evade a detector may no longer be a flood, and a packet field cannot take any value it likes. Results from unconstrained attacks can overstate the risk, and defenses tested only against them can give false comfort.</p>
+<p>Our hybrid quantum-classical detector (EPJ Quantum Technology, 2025) showed a measured robustness advantage against adversarial perturbation. This project asks how much of that, and of the robustness claimed for other detectors, holds once attacks must respect what traffic can actually look like.</p>
+</section>
+<section>
+<h2 id="research-questions">Research questions</h2>
+<ol class="rqx"><li class="reveal"><p class="q">How much of the reported weakness of network intrusion detectors survives when attacks must keep the traffic valid and the attack working?</p><dl><dt>Hypothesis</dt><dd>Many feature-space attacks that look successful break the traffic they describe; once packets must stay valid and the attack must still work, far fewer evasions remain.</dd><dt>How we would test it</dt><dd>Attack the same detectors twice, once in feature space and once with constraints that keep the traffic valid and the attack functional, and compare evasion rates.</dd></dl></li><li class="reveal"><p class="q">Which defenses survive realistic attackers who adapt to them, and what do they cost in false alarms?</p><dl><dt>Hypothesis</dt><dd>Training on realistic adversarial traffic hardens a detector against the attacks it saw at a modest cost in false alarms; adaptive attackers will still find gaps.</dd><dt>How we would test it</dt><dd>Train detectors with and without adversarial examples, then attack them with adaptive attacks they did not see, reporting evasion and false-alarm rates together.</dd></dl></li><li class="reveal"><p class="q">Do compact and hybrid quantum-classical detectors resist evasion better than classical models of the same size?</p><dl><dt>Hypothesis</dt><dd>Our hybrid quantum work measured a robustness advantage against adversarial perturbation; part of it may come from model size and input encoding rather than the quantum layer.</dd><dt>How we would test it</dt><dd>Compare hybrid models against classical models with matched parameter counts and encodings under the same realistic attacks.</dd></dl></li></ol><h3>Expected contributions</h3><ul class="contrib"><li>A library of realistic, constraint-respecting evasion attacks on network traffic.</li><li>Re-measured robustness of common detectors when attacks must keep traffic valid.</li><li>Evidence on which defenses hold against adaptive attackers, and at what false-alarm cost.</li></ul>
+</section>
+<section>
+<h2 id="approach">Approach</h2>
+<ol class="flow" aria-label="Project steps"><li><b>Detectors</b><span>Train representative detectors on public intrusion datasets, including our hybrid models.</span></li><li><b>Constraints</b><span>Write down what an attacker can change in each feature without breaking the traffic or the attack.</span></li><li><b>Attack</b><span>Run feature-space and constrained attacks side by side.</span></li><li><b>Defend</b><span>Retrain with adversarial examples and test against adaptive attacks.</span></li><li><b>Replay</b><span>Turn the strongest attacks into real packets in a lab network and confirm they still work.</span></li></ol>
+<p class="note">All attack traffic stays inside an isolated lab network.</p>
+</section>
+<section class="start">
+<h2 id="start-here">Start here</h2>
+<p class="muted">A concrete first month for a student joining this work. Each step builds on the one before.</p>
+<ol class="steps"><li><span class="sn">Step 1</span>Read the papers below, especially the one on attacks in the problem space.</li><li><span class="sn">Step 2</span>Train a detector on CIC-IDS2017 and attack it with the Adversarial Robustness Toolbox.</li><li><span class="sn">Step 3</span>Write down which features an attacker can really change, then repeat the attack under those limits.</li></ol>
+<h3>Tools and data</h3>
+<ul class="res"><li><a href="https://github.com/Trusted-AI/adversarial-robustness-toolbox">Adversarial Robustness Toolbox</a><span>Python library of evasion, poisoning and defense methods.</span></li><li><a href="https://www.unb.ca/cic/datasets/ids-2017.html">CIC-IDS2017 dataset</a><span>Benign and attack network traffic, a common intrusion detection benchmark.</span></li><li><a href="https://scapy.readthedocs.io/en/latest/">Scapy</a><span>Python library to read, build and send packets.</span></li></ul>
+<p class="note">Writing it up? Follow the <a href="latex-overleaf.html">LaTeX and Overleaf guide</a> for templates, citations, figures and the checks to run before you submit.</p>
+</section>
+<section>
+<h2 id="skills-you-will-use-and-learn">Skills you will use and learn</h2>
+<ul class="chips" aria-label="Skills"><li>Python</li><li>Adversarial machine learning</li><li>Network traffic generation</li><li>Intrusion detection</li><li>Statistics</li><li>PennyLane, optional</li></ul>
+</section>
+<section>
+<h2 id="papers-to-read-first">Papers to read first</h2>
+<ol class="pubs reading"><li><div class="pt">Evasion attacks against machine learning at test time</div><div class="pa">B. Biggio, I. Corona, D. Maiorca, B. Nelson, N. Šrndić, P. Laskov, G. Giacinto, F. Roli</div><div class="pv">ECML PKDD, 2013</div><div class="why">The classic formulation of evasion attacks.</div><div class="pl"><a href="https://doi.org/10.1007/978-3-642-40994-3_25">Read</a></div></li><li><div class="pt">Intriguing properties of adversarial ML attacks in the problem space</div><div class="pa">F. Pierazzi, F. Pendlebury, J. Cortellazzi, L. Cavallaro</div><div class="pv">IEEE Symposium on Security and Privacy, 2020</div><div class="why">Why attacks must respect what real inputs can look like.</div><div class="pl"><a href="https://arxiv.org/abs/1911.02142">Read</a></div></li><li><div class="pt">Modeling realistic adversarial attacks against network intrusion detection systems</div><div class="pa">G. Apruzzese, M. Andreolini, L. Ferretti, M. Marchetti, M. Colajanni</div><div class="pv">Digital Threats: Research and Practice, 2022</div><div class="why">A framework for realistic attackers against network detectors.</div><div class="pl"><a href="https://doi.org/10.1145/3469659">Read</a></div></li><li><div class="pt">Outside the closed world: On using machine learning for network intrusion detection</div><div class="pa">R. Sommer, V. Paxson</div><div class="pv">IEEE Symposium on Security and Privacy, 2010</div><div class="why">Why network detection is harder for machine learning than it looks.</div><div class="pl"><a href="https://doi.org/10.1109/SP.2010.25">Read</a></div></li><li><div class="pt">Unified hybrid quantum classical neural network framework for detecting distributed denial of service and Android mobile malware attacks</div><div class="pa">S. Sridevi, B. Indira, S. Geetha, S. Balachandran, <b>G. Kar</b>, S. Kharbanda</div><div class="pv">EPJ Quantum Technology, 2025</div><div class="why">Our hybrid detector, one of the models to test.</div><div class="pl"><a href="https://doi.org/10.1140/epjqt/s40507-025-00380-z">Read</a></div></li></ol></section><section class="join">
+<h2 id="interested">Interested?</h2>
+<p>This project is planned and not yet staffed. If you are a UCM graduate student, or joining UCM soon, and it fits your interests, email me at <a href="mailto:kar@ucmo.edu">kar@ucmo.edu</a> with your CV, the project's name and a few lines on which research question you would start with. Reading two of the papers below first will make that conversation much better.</p>
+</section>
+<section class="related" aria-labelledby="related-h"><h2 id="related-h">More in lightweight and quantum detection</h2><div class="rgrid"><a class="rcard" href="quantum-ids.html"><span class="kicker">Published work</span><span class="rt">Hybrid quantum-classical intrusion detection</span><span class="ra" aria-hidden="true">→</span></a><a class="rcard" href="quantum-spectra.html"><span class="kicker">Published work</span><span class="rt">Quantum machine learning for Raman spectroscopy</span><span class="ra" aria-hidden="true">→</span></a><a class="rcard planned" href="planned-quantum.html"><span class="kicker">Open project</span><span class="rt">Does a quantum layer really help? Honest benchmarks for quantum intrusion detection</span><span class="ra" aria-hidden="true">→</span></a><a class="rcard planned" href="planned-tinyml.html"><span class="kicker">Open project</span><span class="rt">Intrusion detection that fits on the device</span><span class="ra" aria-hidden="true">→</span></a></div></section>
+<section><nav class="pnav" aria-label="More projects"><a href="planned-federated.html">← Training intrusion detectors without pooling the data</a><a href="planned-rf.html">Telling radios apart by their imperfections →</a></nav></section>
+</div>
+</div>
+</main>
+<footer class="site-foot">
+  <div class="wrap fgrid">
+    <div class="fabout"><a class="brand" href="../index.html">Gorkem Kar<span class="muted">, Ph.D.</span></a>
+      <p>Assistant Professor of Computer Science and Cybersecurity, University of Central Missouri. Security for vehicles, phones, IoT devices and networks.</p></div>
+    <nav aria-label="Research"><h4>Research</h4><ul>
+      <li><a href="../index.html#map">Research map</a></li><li><a href="../index.html#projects-in-depth">Projects in depth</a></li>
+      <li><a href="../index.html#open-projects">Open projects</a></li><li><a href="../index.html#publications">Publications</a></li>
+      <li><a href="../research/latex-overleaf.html">LaTeX and Overleaf guide</a></li></ul></nav>
+    <nav aria-label="Profiles"><h4>Profiles</h4><ul>
+      <li><a href="https://scholar.google.com/citations?user=dz-6amUAAAAJ&amp;hl=en">Google Scholar</a></li><li><a href="https://github.com/gkar87">GitHub</a></li>
+      <li><a href="https://orcid.org/0000-0003-0367-4409">ORCID</a></li><li><a href="https://www.linkedin.com/in/gorkem-kar/">LinkedIn</a></li></ul></nav>
+    <nav aria-label="Contact"><h4>Contact</h4><ul>
+      <li><a href="mailto:kar@ucmo.edu">kar@ucmo.edu</a></li><li><a href="../index.html#teaching">Teaching</a></li><li><a href="../index.html#contact">Office and links</a></li></ul></nav>
+  </div>
+  <div class="wrap fbase"><span>© 2026 Gorkem Kar · Last updated November 2026</span><a href="#top">Back to top ↑</a></div>
+</footer>
+<a class="totop" href="#top" aria-label="Back to top"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+<script src="../site.js?v=20261125g"></script>
+<script src="../live.js?v=20261125g"></script>
+</body>
+</html>

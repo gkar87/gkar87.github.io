@@ -1174,6 +1174,378 @@
     return demo;
   };
 
+  // ======================================================================
+  // 22. Federated learning: six sites, one possibly malicious, mean vs median
+  demos.fed = fig => {
+    const D = setup(fig), { ctx, W, H } = D;
+    const PX = [24, 300], PY = [34, 262], MAXR = 30;
+    const T = [-0.25, 0.15], A = [0.8, -0.75], START = [-0.85, 0.85];
+    const dirs = [[1, .2], [-.6, .9], [-.9, -.5], [.3, -1], [.9, .7], [-.2, -.3]];
+    let spread = .35, bad = true, rule = 0, g, hist, rnd0;
+    const opt = i => [T[0] + spread * dirs[i][0], T[1] + spread * dirs[i][1]];
+    const clean = () => { let x = 0, y = 0; for (let i = 0; i < 5; i++) { const o = opt(i); x += o[0]; y += o[1]; } return [x / 5, y / 5]; };
+    const reset = () => { g = START.slice(); hist = [g.slice()]; rnd0 = 0; };
+    const agg = us => {
+      const med = k => { const v = us.map(u => u[k]).sort((a, b) => a - b); return (v[2] + v[3]) / 2; };
+      const trim = k => { const v = us.map(u => u[k]).sort((a, b) => a - b); return (v[1] + v[2] + v[3] + v[4]) / 4; };
+      if (rule === 1) return [med(0), med(1)];
+      if (rule === 2) return [trim(0), trim(1)];
+      return [us.reduce((s, u) => s + u[0], 0) / 6, us.reduce((s, u) => s + u[1], 0) / 6];
+    };
+    let last = [];
+    const round = () => {
+      if (rnd0 >= MAXR) return;
+      last = [];
+      for (let i = 0; i < 6; i++) {
+        if (i === 5 && bad) last.push([2.2 * (A[0] - g[0]), 2.2 * (A[1] - g[1])]);
+        else { const o = i === 5 ? [T[0] + spread * dirs[5][0], T[1] + spread * dirs[5][1]] : opt(i); last.push([.5 * (o[0] - g[0]), .5 * (o[1] - g[1])]); }
+      }
+      const d = agg(last); g = [g[0] + d[0], g[1] + d[1]]; hist.push(g.slice()); rnd0++;
+    };
+    const P = p => [PX[0] + (p[0] + 1) / 2 * (PX[1] - PX[0]), PY[0] + (1 - p[1]) / 2 * (PY[1] - PY[0])];
+    const ref = () => { if (!bad) { const o = opt(5); const c = clean(); return [(c[0] * 5 + o[0]) / 6, (c[1] * 5 + o[1]) / 6]; } return clean(); };
+    const dist = p => { const r = ref(); return Math.hypot(p[0] - r[0], p[1] - r[1]); };
+    let tick = 0;
+    const demo = {
+      cv: D.cv,
+      step() { if (++tick % 24 === 0) { if (rnd0 >= MAXR) reset(); else round(); } },
+      draw() {
+        ctx.clearRect(0, 0, W, H);
+        rr(ctx, PX[0], PY[0], PX[1] - PX[0], PY[1] - PY[0], 8); ctx.fillStyle = C.soft; ctx.fill();
+        txt(ctx, 'Model space (each dot: what one site would learn alone)', PX[0], 22, { size: 12, color: C.mu });
+        const r = P(ref());
+        for (let i = 0; i < 6; i++) {
+          const isBad = i === 5 && bad, p = P(isBad ? A : (i === 5 ? [T[0] + spread * dirs[5][0], T[1] + spread * dirs[5][1]] : opt(i)));
+          ctx.fillStyle = isBad ? C.b : C.a; ctx.beginPath(); ctx.arc(p[0], p[1], 7, 0, 7); ctx.fill();
+          txt(ctx, isBad ? 'malicious site' : 'site ' + (i + 1), p[0] + 10, p[1] + 4, { size: 11, color: isBad ? C.b : C.mu });
+        }
+        ctx.strokeStyle = C.c; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(r[0] - 8, r[1]); ctx.lineTo(r[0] + 8, r[1]); ctx.moveTo(r[0], r[1] - 8); ctx.lineTo(r[0], r[1] + 8); ctx.stroke();
+        txt(ctx, 'clean result', r[0] + 10, r[1] - 8, { size: 11, w: 700, color: C.c });
+        ctx.strokeStyle = C.fg; ctx.lineWidth = 1.5; ctx.beginPath();
+        hist.forEach((h, i) => { const p = P(h); i ? ctx.lineTo(p[0], p[1]) : ctx.moveTo(p[0], p[1]); }); ctx.stroke();
+        const gp = P(g); ctx.fillStyle = C.fg; ctx.beginPath(); ctx.arc(gp[0], gp[1], 6, 0, 7); ctx.fill();
+        txt(ctx, 'shared model', gp[0] + 9, gp[1] + 16, { size: 11, w: 700 });
+        if (bad && last.length) { const u = last[5]; ctx.strokeStyle = C.b; ctx.setLineDash([4, 4]); ctx.beginPath(); ctx.moveTo(gp[0], gp[1]); const q = P([g[0] - hist[hist.length - 1][0] + hist[hist.length - 2 >= 0 ? hist.length - 2 : 0][0] + u[0] * .35, hist[hist.length - 2 >= 0 ? hist.length - 2 : 0][1] + u[1] * .35]); ctx.lineTo(q[0], q[1]); ctx.stroke(); ctx.setLineDash([]); }
+        // distance chart
+        const X0 = 360, X1 = 700, Y0 = 40, Y1 = 230, M = 2;
+        txt(ctx, 'Distance of the shared model from the clean result', X0, 22, { size: 12, color: C.mu });
+        axes(ctx, X0, Y0, X1 - X0, Y1 - Y0);
+        txt(ctx, 'round', X1, Y1 + 18, { size: 11, color: C.mu, align: 'right' });
+        txt(ctx, '0', X0 - 6, Y1 + 4, { size: 11, color: C.mu, align: 'right' });
+        ctx.strokeStyle = bad && rule === 0 ? C.b : C.a; ctx.lineWidth = 2.5; ctx.beginPath();
+        hist.forEach((h, i) => { const x = X0 + i / MAXR * (X1 - X0), y = Y1 - clamp(dist(h) / M, 0, 1) * (Y1 - Y0); i ? ctx.lineTo(x, y) : ctx.moveTo(x, y); }); ctx.stroke();
+        const dnow = dist(g);
+        const names = ['Mean', 'Median', 'Trimmed mean'];
+        let msg = `Round ${rnd0} of ${MAXR} · ${names[rule]} · distance ${dnow.toFixed(2)}. `;
+        if (rnd0 < 3) msg += 'Training is starting.';
+        else if (bad && rule === 0) msg += 'The malicious site pulls the averaged model toward its own target.';
+        else if (bad) msg += dnow > .12 ? 'The attack is blunted, but differences between sites leave a gap.' : 'The robust rule ignores the malicious update.';
+        else msg += dnow > .12 ? 'No attacker, but the robust rule drifts because the sites differ.' : 'No attacker: the shared model settles on the clean result.';
+        para(ctx, msg, X0, Y1 + 40, X1 - X0, 17, { size: 12, w: 600, color: bad && rule === 0 && rnd0 >= 3 ? C.b : C.fg });
+        out.textContent = msg;
+      }
+    };
+    const L = loop(demo, D.ctrl);
+    button(D.ctrl, 'Next round', () => { round(); demo.draw(); });
+    button(D.ctrl, 'Restart', () => { reset(); last = []; demo.draw(); L.kick(); });
+    toggle(D.ctrl, 'One site is malicious', bad, v => { bad = v; reset(); last = []; demo.draw(); });
+    choice(D.ctrl, 'Combine updates by', ['Mean', 'Median', 'Trimmed mean'], rule, i => { rule = i; reset(); last = []; demo.draw(); });
+    slider(D.ctrl, 'How different the sites are', 0, .6, .05, spread, v => { spread = v; reset(); last = []; demo.draw(); });
+    const out = readout(D.ctrl);
+    reset(); demo.draw();
+    return demo;
+  };
+
+  // ======================================================================
+  // 23. Evasion: move one attack flow across a linear detector, with or without realistic constraints
+  demos.adv = fig => {
+    const D = setup(fig), { ctx, W, H } = D;
+    const PX = [56, 396], PY = [24, 252];
+    let seed = 7; const sr = () => { seed = (seed * 16807) % 2147483647; return seed / 2147483647; };
+    const sg = () => { let u = sr() || .5, v = sr(); return Math.sqrt(-2 * Math.log(u)) * Math.cos(2 * Math.PI * v); };
+    const benign = Array.from({ length: 40 }, () => [clamp(.56 + .13 * sg(), .02, .98), clamp(.3 + .11 * sg(), .02, .98)]);
+    const flood = Array.from({ length: 22 }, () => [clamp(.24 + .07 * sg(), .02, .98), clamp(.76 + .07 * sg(), .02, .98)]);
+    const DET = [{ w: [-1, 1.4], b: -.15, name: 'standard detector' }, { w: [-.6, 1.6], b: -.3, name: 'adversarially trained detector' }];
+    const MINRATE = .6, X0P = [.25, .72];
+    let real = true, hard = false, p = X0P.slice(), path = [p.slice()], state = 'idle', raf = 0;
+    const det = () => DET[hard ? 1 : 0];
+    const score = q => { const d = det(); return d.w[0] * q[0] + d.w[1] * q[1] + d.b; };
+    const P = q => [PX[0] + q[0] * (PX[1] - PX[0]), PY[1] - q[1] * (PY[1] - PY[0])];
+    const stepOnce = () => {
+      const d = det(), n = Math.hypot(d.w[0], d.w[1]);
+      let q = [p[0] - .012 * d.w[0] / n, p[1] - .012 * d.w[1] / n];
+      if (real) q = [clamp(Math.max(q[0], p[0]), 0, 1), clamp(Math.max(q[1], MINRATE), 0, 1)];
+      else q = [clamp(q[0], 0, 1), clamp(q[1], 0, 1)];
+      const moved = Math.hypot(q[0] - p[0], q[1] - p[1]);
+      p = q; path.push(p.slice());
+      if (score(p) < -.02) state = 'evaded'; else if (moved < 1e-4 || path.length > 150) state = 'held';
+    };
+    const run = () => {
+      p = X0P.slice(); path = [p.slice()]; state = 'running';
+      if (reduce) { while (state === 'running') stepOnce(); demo.draw(); return; }
+      const t = () => { raf = 0; for (let k = 0; k < 2 && state === 'running'; k++) stepOnce(); demo.draw(); if (state === 'running') raf = requestAnimationFrame(t); };
+      if (!raf) raf = requestAnimationFrame(t);
+    };
+    const demo = {
+      cv: D.cv,
+      draw() {
+        ctx.clearRect(0, 0, W, H);
+        rr(ctx, PX[0], PY[0], PX[1] - PX[0], PY[1] - PY[0], 6); ctx.fillStyle = C.soft; ctx.fill();
+        if (real) { const a = P([X0P[0], 1]), b = P([1, MINRATE]); ctx.fillStyle = C.c; ctx.globalAlpha = .12; ctx.fillRect(a[0], a[1], b[0] - a[0], b[1] - a[1]); ctx.globalAlpha = 1;
+          txt(ctx, 'still a working flood', b[0] - 6, b[1] - 6, { size: 11, color: C.c, align: 'right', w: 600 }); }
+        // boundary: w0 x + w1 y + b = 0
+        const d = det(), yAt = x => -(d.w[0] * x + d.b) / d.w[1];
+        const a = P([0, yAt(0)]), b = P([1, yAt(1)]);
+        ctx.save(); ctx.beginPath(); ctx.rect(PX[0], PY[0], PX[1] - PX[0], PY[1] - PY[0]); ctx.clip();
+        ctx.strokeStyle = C.fg; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(a[0], a[1]); ctx.lineTo(b[0], b[1]); ctx.stroke(); ctx.restore();
+        txt(ctx, 'flagged as attack', PX[0] + 8, PY[0] + 16, { size: 11, color: C.b, w: 600 });
+        txt(ctx, 'passed as normal', PX[1] - 8, PY[1] - 8, { size: 11, color: C.a, w: 600, align: 'right' });
+        let fa = 0;
+        for (const q of benign) { const s = P(q), f = score(q) > 0; if (f) fa++; ctx.fillStyle = C.a; ctx.globalAlpha = .75; ctx.beginPath(); ctx.arc(s[0], s[1], 4, 0, 7); ctx.fill(); ctx.globalAlpha = 1; if (f) { ctx.strokeStyle = C.b; ctx.lineWidth = 1.5; ctx.beginPath(); ctx.arc(s[0], s[1], 7, 0, 7); ctx.stroke(); } }
+        for (const q of flood) { const s = P(q); ctx.fillStyle = C.b; ctx.globalAlpha = .55; ctx.fillRect(s[0] - 3.5, s[1] - 3.5, 7, 7); ctx.globalAlpha = 1; }
+        ctx.strokeStyle = C.b; ctx.lineWidth = 2; ctx.beginPath(); path.forEach((q, i) => { const s = P(q); i ? ctx.lineTo(s[0], s[1]) : ctx.moveTo(s[0], s[1]); }); ctx.stroke();
+        const s = P(p); ctx.fillStyle = C.b; ctx.beginPath(); ctx.arc(s[0], s[1], 8, 0, 7); ctx.fill(); ctx.strokeStyle = C.bg; ctx.lineWidth = 2; ctx.stroke();
+        txt(ctx, 'packet size →', PX[1], PY[1] + 20, { size: 11, color: C.mu, align: 'right' });
+        ctx.save(); ctx.translate(PX[0] - 12, PY[0]); ctx.rotate(-Math.PI / 2); txt(ctx, 'packets per second →', 0, 0, { size: 11, color: C.mu, align: 'right' }); ctx.restore();
+        // panel
+        const bx = 420; let y = 40;
+        txt(ctx, det().name[0].toUpperCase() + det().name.slice(1), bx, y, { w: 700 }); y += 22;
+        txt(ctx, `Normal flows flagged: ${fa} of ${benign.length}`, bx, y, { size: 12, color: fa > 2 ? C.b : C.mu }); y += 20;
+        txt(ctx, real ? 'Attacker may only pad packets and must keep the rate high.' : 'Attacker may change any feature.', bx, y, { size: 12, color: C.mu }); y += 34;
+        let msg;
+        if (state === 'idle') msg = 'Press "Attacker tries to evade" to move the red flow toward the normal side.';
+        else if (state === 'running') msg = 'Searching for a way across…';
+        else if (state === 'evaded') msg = p[1] < MINRATE ? 'It crossed, but only by slowing down below what the flood needs. The attack would no longer work, so this evasion overstates the risk.' : 'It crossed with padding alone, and the flood still works. A real evasion.';
+        else msg = 'It could not cross while staying a working flood. The detector held.';
+        para(ctx, msg, bx, y, W - bx - 16, 19, { size: 13, w: 600, color: state === 'evaded' && p[1] >= MINRATE ? C.b : C.fg });
+        out.textContent = msg + ` ${fa} of ${benign.length} normal flows flagged.`;
+      }
+    };
+    button(D.ctrl, 'Attacker tries to evade', run);
+    toggle(D.ctrl, 'Realistic constraints', real, v => { real = v; p = X0P.slice(); path = [p.slice()]; state = 'idle'; demo.draw(); });
+    toggle(D.ctrl, 'Adversarial training', hard, v => { hard = v; p = X0P.slice(); path = [p.slice()]; state = 'idle'; demo.draw(); });
+    const out = readout(D.ctrl);
+    demo.draw();
+    return demo;
+  };
+
+  // ======================================================================
+  // 24. RF fingerprinting: four radios with small hardware flaws, named from a short burst
+  demos.rfp = fig => {
+    const D = setup(fig), { ctx, W, H } = D;
+    const DEV = [{ e: .07, ph: .06, dc: [.05, -.03] }, { e: -.05, ph: -.08, dc: [-.04, .05] }, { e: .02, ph: .11, dc: [.06, .06] }, { e: -.08, ph: .01, dc: [-.06, -.05] }];
+    const SYM = [[1, 1], [-1, 1], [-1, -1], [1, -1]].map(s => [s[0] / Math.SQRT2, s[1] / Math.SQRT2]);
+    let snr = 20, N = 16, drift = false, acc = [], pts = [];
+    const tx = (d, s) => [(1 + d.e) * s[0] + d.dc[0], (1 - d.e) * (s[1] + d.ph * s[0]) + d.dc[1]];
+    const chan = (r, th, a) => [a * (r[0] * Math.cos(th) - r[1] * Math.sin(th)), a * (r[0] * Math.sin(th) + r[1] * Math.cos(th))];
+    const enrol = DEV.map(d => SYM.map(s => tx(d, s)));
+    const burst = (d, keep) => {
+      const sig = Math.pow(10, -snr / 20) / Math.SQRT2, th = drift ? rnd(-.3, .3) : 0, a = drift ? rnd(.88, 1.12) : 1;
+      const sum = SYM.map(() => [0, 0]), cnt = SYM.map(() => 0);
+      for (let k = 0; k < N; k++) {
+        const j = k % 4, r = chan(tx(d, SYM[j]), th, a), q = [r[0] + sig * gauss(), r[1] + sig * gauss()];
+        sum[j][0] += q[0]; sum[j][1] += q[1]; cnt[j]++; if (keep) keep.push(q);
+      }
+      return sum.map((s, j) => [s[0] / cnt[j], s[1] / cnt[j]]);
+    };
+    const classify = f => { let best = 0, bd = 1e9; enrol.forEach((e, i) => { let dd = 0; e.forEach((c, j) => { dd += (c[0] - f[j][0]) ** 2 + (c[1] - f[j][1]) ** 2; }); if (dd < bd) { bd = dd; best = i; } }); return best; };
+    const evaluate = () => {
+      acc = DEV.map((d, i) => { let ok = 0; for (let t = 0; t < 40; t++) if (classify(burst(d)) === i) ok++; return ok / 40; });
+      pts = DEV.map(d => { const k = []; for (let t = 0; t < 3; t++) burst(d, k); return k; });
+    };
+    const demo = {
+      cv: D.cv,
+      draw() {
+        ctx.clearRect(0, 0, W, H);
+        const cx = 150, cy = 150, S = 92, col = pal();
+        rr(ctx, cx - 130, cy - 130, 260, 260, 8); ctx.fillStyle = C.soft; ctx.fill();
+        ctx.strokeStyle = C.line; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(cx - 125, cy); ctx.lineTo(cx + 125, cy); ctx.moveTo(cx, cy - 125); ctx.lineTo(cx, cy + 125); ctx.stroke();
+        txt(ctx, 'I', cx + 118, cy - 6, { size: 11, color: C.mu }); txt(ctx, 'Q', cx + 6, cy - 116, { size: 11, color: C.mu });
+        pts.forEach((k, i) => { ctx.fillStyle = col[i]; ctx.globalAlpha = .6; for (const q of k) { ctx.beginPath(); ctx.arc(cx + q[0] * S, cy - q[1] * S, 2.4, 0, 7); ctx.fill(); } ctx.globalAlpha = 1; });
+        enrol.forEach((e, i) => { ctx.strokeStyle = col[i]; ctx.lineWidth = 2; for (const c of e) { const x = cx + c[0] * S, y = cy - c[1] * S; ctx.beginPath(); ctx.moveTo(x - 4, y - 4); ctx.lineTo(x + 4, y + 4); ctx.moveTo(x + 4, y - 4); ctx.lineTo(x - 4, y + 4); ctx.stroke(); } });
+        txt(ctx, 'crosses: enrolled fingerprint · dots: received now', cx, H - 4, { size: 11, color: C.mu, align: 'center' });
+        const bx = 330, mean = acc.reduce((a, b) => a + b, 0) / 4;
+        txt(ctx, 'Radio named correctly (40 bursts each)', bx, 30, { w: 700 });
+        acc.forEach((v, i) => {
+          const y = 52 + i * 38;
+          txt(ctx, 'radio ' + (i + 1), bx, y + 15, { size: 12, color: col[i], w: 700 });
+          rr(ctx, bx + 64, y, 260, 20, 5); ctx.fillStyle = C.soft; ctx.fill();
+          rr(ctx, bx + 64, y, Math.max(2, 260 * v), 20, 5); ctx.fillStyle = col[i]; ctx.fill();
+          txt(ctx, Math.round(v * 100) + '%', bx + 334, y + 15, { size: 12, mono: 1 });
+        });
+        const x25 = bx + 64 + 260 * .25; ctx.strokeStyle = C.mu; ctx.setLineDash([3, 3]); ctx.beginPath(); ctx.moveTo(x25, 46); ctx.lineTo(x25, 202); ctx.stroke(); ctx.setLineDash([]);
+        txt(ctx, 'chance', x25, 214, { size: 11, color: C.mu, align: 'center' });
+        const msg = `Average ${Math.round(mean * 100)}% at ${snr} dB with ${N}-symbol bursts.` + (drift ? ' The channel changed since enrollment, so the fingerprints blur together.' : mean > .9 ? ' The flaws are clear enough to tell the radios apart.' : ' Noise is starting to hide the flaws.');
+        para(ctx, msg, bx, 242, W - bx - 16, 18, { size: 12, w: 600, color: drift || mean < .6 ? C.b : C.fg });
+        out.textContent = msg;
+      }
+    };
+    slider(D.ctrl, 'Signal quality (dB)', 0, 30, 1, snr, v => { snr = v; evaluate(); demo.draw(); });
+    slider(D.ctrl, 'Symbols per burst', 4, 64, 4, N, v => { N = v; evaluate(); demo.draw(); });
+    toggle(D.ctrl, 'Channel changed since enrollment', drift, v => { drift = v; evaluate(); demo.draw(); });
+    button(D.ctrl, 'New bursts', () => { evaluate(); demo.draw(); });
+    const out = readout(D.ctrl);
+    evaluate(); demo.draw();
+    return demo;
+  };
+
+  // ======================================================================
+  // 25. Location privacy: noise and hidden trip ends against home linking and traffic counts
+  demos.vpriv = fig => {
+    const D = setup(fig), { ctx, W, H } = D;
+    const MX = [20, 420], MY = [20, 270], G = 50, NC = 12;
+    let seed = 11; const sr = () => { seed = (seed * 16807) % 2147483647; return seed / 2147483647; };
+    const homes = Array.from({ length: NC }, (_, i) => [MX[0] + 25 + (i % 4) * 34 + sr() * 10, MY[0] + 150 + Math.floor(i / 4) * 30 + sr() * 8]);
+    const works = Array.from({ length: NC }, () => [MX[0] + 260 + sr() * 120, MY[0] + 20 + sr() * 90]);
+    const routes = homes.map((h, i) => { const w = works[i], pts = []; const n1 = Math.ceil(Math.abs(w[0] - h[0]) / 12), n2 = Math.ceil(Math.abs(w[1] - h[1]) / 12);
+      for (let k = 0; k <= n1; k++) pts.push([h[0] + (w[0] - h[0]) * k / n1, h[1]]); for (let k = 1; k <= n2; k++) pts.push([w[0], h[1] + (w[1] - h[1]) * k / n2]); return pts; });
+    let sigma = 0, hide = false, curve = [], show = [];
+    const report = (r, s) => { const out = []; r.forEach((p, k) => { if (hide && (Math.hypot(p[0] - r[0][0], p[1] - r[0][1]) < 40 || Math.hypot(p[0] - r[r.length - 1][0], p[1] - r[r.length - 1][1]) < 40)) return; out.push([p[0] + s * gauss(), p[1] + s * gauss()]); }); return out; };
+    const cell = p => Math.floor((p[0] - MX[0]) / G) + 100 * Math.floor((p[1] - MY[0]) / G);
+    const measure = s => {
+      let link = 0, err = 0, tot = 0;
+      for (let t = 0; t < 12; t++) {
+        const truth = {}, seen = {};
+        routes.forEach((r, i) => {
+          r.forEach(p => { const c = cell(p); truth[c] = (truth[c] || 0) + 1; });
+          const rep = report(r, s); rep.forEach(p => { const c = cell(p); seen[c] = (seen[c] || 0) + 1; });
+          if (rep.length) { let b = -1, bd = 1e9; homes.forEach((h, j) => { const d = Math.hypot(h[0] - rep[0][0], h[1] - rep[0][1]); if (d < bd) { bd = d; b = j; } }); if (b === i) link++; }
+        });
+        for (const c of new Set([...Object.keys(truth), ...Object.keys(seen)])) { err += Math.abs((truth[c] || 0) - (seen[c] || 0)); tot += truth[c] || 0; }
+      }
+      return [link / (12 * NC), err / tot];
+    };
+    const recompute = () => { curve = []; for (let s = 0; s <= 60; s += 6) curve.push([s, ...measure(s)]); show = routes.map(r => report(r, sigma)); };
+    const demo = {
+      cv: D.cv,
+      draw() {
+        ctx.clearRect(0, 0, W, H);
+        rr(ctx, MX[0], MY[0], MX[1] - MX[0], MY[1] - MY[0], 8); ctx.fillStyle = C.soft; ctx.fill();
+        ctx.strokeStyle = C.line; ctx.lineWidth = 1;
+        for (let x = MX[0] + G; x < MX[1]; x += G) { ctx.beginPath(); ctx.moveTo(x, MY[0]); ctx.lineTo(x, MY[1]); ctx.stroke(); }
+        for (let y = MY[0] + G; y < MY[1]; y += G) { ctx.beginPath(); ctx.moveTo(MX[0], y); ctx.lineTo(MX[1], y); ctx.stroke(); }
+        txt(ctx, 'homes', MX[0] + 8, MY[1] - 8, { size: 11, color: C.mu }); txt(ctx, 'offices', MX[1] - 8, MY[0] + 14, { size: 11, color: C.mu, align: 'right' });
+        ctx.strokeStyle = C.mu; ctx.globalAlpha = .35; ctx.lineWidth = 1.5; ctx.beginPath(); routes[0].forEach((p, k) => k ? ctx.lineTo(p[0], p[1]) : ctx.moveTo(p[0], p[1])); ctx.stroke(); ctx.globalAlpha = 1;
+        for (const h of homes) { ctx.fillStyle = C.c; ctx.beginPath(); ctx.moveTo(h[0], h[1] - 7); ctx.lineTo(h[0] + 6, h[1] - 1); ctx.lineTo(h[0] + 6, h[1] + 5); ctx.lineTo(h[0] - 6, h[1] + 5); ctx.lineTo(h[0] - 6, h[1] - 1); ctx.closePath(); ctx.fill(); }
+        show.forEach((rep, i) => { ctx.fillStyle = i === 0 ? C.b : C.a; ctx.globalAlpha = i === 0 ? .95 : .45; for (const p of rep) { if (p[0] < MX[0] || p[0] > MX[1] || p[1] < MY[0] || p[1] > MY[1]) continue; ctx.beginPath(); ctx.arc(p[0], p[1], i === 0 ? 3 : 2.2, 0, 7); ctx.fill(); } }); ctx.globalAlpha = 1;
+        // trade-off chart
+        const X0 = 470, X1 = 700, Y0 = 34, Y1 = 214;
+        txt(ctx, 'As the noise grows', X0, 22, { size: 12, color: C.mu });
+        axes(ctx, X0, Y0, X1 - X0, Y1 - Y0);
+        const xs = s => X0 + s / 60 * (X1 - X0), ys = v => Y1 - clamp(v, 0, 1) * (Y1 - Y0);
+        for (const [k, col] of [[1, C.b], [2, C.a]]) { ctx.strokeStyle = col; ctx.lineWidth = 2.5; ctx.beginPath(); curve.forEach((c, i) => i ? ctx.lineTo(xs(c[0]), ys(c[k])) : ctx.moveTo(xs(c[0]), ys(c[k]))); ctx.stroke(); }
+        ctx.strokeStyle = C.fg; ctx.setLineDash([3, 3]); ctx.beginPath(); ctx.moveTo(xs(sigma), Y0); ctx.lineTo(xs(sigma), Y1); ctx.stroke(); ctx.setLineDash([]);
+        txt(ctx, '100%', X0 - 4, Y0 + 4, { size: 10, color: C.mu, align: 'right' }); txt(ctx, '0', X0 - 4, Y1 + 4, { size: 10, color: C.mu, align: 'right' });
+        txt(ctx, 'noise (map units) →', X1, Y1 + 16, { size: 11, color: C.mu, align: 'right' });
+        const cur = curve[Math.round(sigma / 6)];
+        txt(ctx, `Trips linked to the right home: ${Math.round(cur[1] * 100)}%`, X0 - 20, Y1 + 40, { size: 12, w: 700, color: C.b });
+        txt(ctx, `Traffic count error: ${Math.round(cur[2] * 100)}%`, X0 - 20, Y1 + 60, { size: 12, w: 700, color: C.a });
+        out.textContent = `Noise ${sigma}${hide ? ', trip ends hidden' : ''}: ${Math.round(cur[1] * 100)}% of trips linked to the right home; traffic count error ${Math.round(cur[2] * 100)}%.`;
+      }
+    };
+    slider(D.ctrl, 'Location noise', 0, 60, 6, sigma, v => { sigma = v; show = routes.map(r => report(r, sigma)); demo.draw(); });
+    toggle(D.ctrl, 'Hide trip ends', hide, v => { hide = v; recompute(); demo.draw(); });
+    button(D.ctrl, 'Resample', () => { recompute(); demo.draw(); });
+    const out = readout(D.ctrl);
+    recompute(); demo.draw();
+    return demo;
+  };
+
+  // ======================================================================
+  // 26. EV charging: coordinated switching against a feeder, and a step detector
+  demos.evc = fig => {
+    const D = setup(fig), { ctx, W, H } = D;
+    const N = 96, X0 = 56, X1 = 700, Y0 = 28, Y1 = 220;
+    let share = .3, thr = .12, attack = true, base = [], load = [];
+    const makeBase = () => { base = []; for (let i = 0; i < N; i++) { const h = i / 4; base.push(.18 + .1 * Math.exp(-((h - 8.5) ** 2) / 3) + .42 * Math.exp(-((h - 19) ** 2) / 5) + .02 * gauss()); } };
+    const compute = () => { load = base.map((v, i) => { const h = i / 4; let a = 0; if (attack && h >= 17 && h < 20) a = (i % 2 ? 1 : -.5) * share * .9; return Math.max(0, v + a); }); };
+    const flags = () => { const f = []; for (let i = 1; i < N; i++) if (Math.abs(load[i] - load[i - 1]) > thr) f.push(i); return f; };
+    const xs = i => X0 + i / (N - 1) * (X1 - X0), ys = v => Y1 - clamp(v / 1.4, 0, 1) * (Y1 - Y0);
+    const hh = i => { const m = i * 15; return String(Math.floor(m / 60)).padStart(2, '0') + ':' + String(m % 60).padStart(2, '0'); };
+    const demo = {
+      cv: D.cv,
+      draw() {
+        ctx.clearRect(0, 0, W, H);
+        axes(ctx, X0, Y0, X1 - X0, Y1 - Y0);
+        if (attack) { ctx.fillStyle = C.b; ctx.globalAlpha = .08; ctx.fillRect(xs(68), Y0, xs(80) - xs(68), Y1 - Y0); ctx.globalAlpha = 1; txt(ctx, 'attack window', xs(74), Y0 + 12, { size: 11, color: C.b, align: 'center' }); }
+        ctx.strokeStyle = C.b; ctx.setLineDash([6, 4]); ctx.lineWidth = 1.5; ctx.beginPath(); ctx.moveTo(X0, ys(1)); ctx.lineTo(X1, ys(1)); ctx.stroke(); ctx.setLineDash([]);
+        txt(ctx, 'feeder limit', X0 + 6, ys(1) - 5, { size: 11, color: C.b });
+        for (const t of [0, 6, 12, 18, 24]) txt(ctx, t + ':00', xs(Math.min(N - 1, t * 4)), Y1 + 16, { size: 11, color: C.mu, align: 'center' });
+        ctx.save(); ctx.translate(X0 - 12, Y1); ctx.rotate(-Math.PI / 2); txt(ctx, 'charging load', 0, 0, { size: 11, color: C.mu }); ctx.restore();
+        ctx.strokeStyle = C.a; ctx.lineWidth = 2.2; ctx.beginPath(); load.forEach((v, i) => i ? ctx.lineTo(xs(i), ys(v)) : ctx.moveTo(xs(i), ys(v))); ctx.stroke();
+        const f = flags(); let over = 0, first = -1, fa = 0;
+        load.forEach((v, i) => { if (v > 1) over++; });
+        for (const i of f) { const inA = attack && i >= 68 && i <= 80; if (inA && first < 0) first = i; if (!inA) fa++;
+          ctx.fillStyle = inA ? C.b : C.c; ctx.beginPath(); ctx.arc(xs(i), ys(load[i]), 5, 0, 7); ctx.fill(); }
+        let msg = attack ? `Attacker switches ${Math.round(share * 100)}% of chargers together from 17:00. ` : 'A normal day. ';
+        msg += over ? `Load is over the feeder limit in ${over} quarter-hours. ` : 'Load stays under the feeder limit. ';
+        msg += attack ? (first >= 0 ? `Detector flags it at ${hh(first)}` : 'Detector misses the attack') : '';
+        msg += (attack ? ', with ' : 'Detector raises ') + `${fa} false alarm${fa === 1 ? '' : 's'}${attack ? '' : ''}.`;
+        para(ctx, msg, X0, Y1 + 40, X1 - X0, 17, { size: 12, w: 600, color: attack && first < 0 ? C.b : C.fg });
+        out.textContent = msg;
+      }
+    };
+    toggle(D.ctrl, 'Attack', attack, v => { attack = v; compute(); demo.draw(); });
+    slider(D.ctrl, 'Chargers controlled', 0, .6, .05, share, v => { share = v; compute(); demo.draw(); });
+    slider(D.ctrl, 'Alarm on a jump bigger than', .02, .4, .02, thr, v => { thr = v; demo.draw(); });
+    button(D.ctrl, 'Another day', () => { makeBase(); compute(); demo.draw(); });
+    const out = readout(D.ctrl);
+    makeBase(); compute(); demo.draw();
+    return demo;
+  };
+
+  // ======================================================================
+  // 27. Alert triage: rule severity vs model score vs model with retrieved context
+  demos.soc = fig => {
+    const D = setup(fig), { ctx, W, H } = D;
+    // sev: 3 high, 2 medium, 1 low. m: model score alone, c: model with context, h: with a made-up fact. All invented.
+    const AL = [
+      { t: 'Port scan from the internet', sev: 3, m: .42, c: .2 },
+      { t: 'Antivirus found adware on a laptop', sev: 3, m: .35, c: .18 },
+      { t: 'Many failed logins, one VPN address', sev: 3, m: .5, c: .3 },
+      { t: 'New admin account created at 2 AM', sev: 2, m: .55, c: .93, real: 1, h: .25, note: 'no change ticket for this account' },
+      { t: 'Large upload to cloud storage', sev: 2, m: .48, c: .22, h: .95, note: 'nightly backup job on the asset list', hn: 'claims it matches known malware (no record says so)' },
+      { t: 'Login from a new country', sev: 2, m: .45, c: .4 },
+      { t: 'Office macro opened a script', sev: 2, m: .6, c: .55 },
+      { t: 'Repeated DNS lookups to a rare domain', sev: 1, m: .72, c: .88, real: 1, note: 'regular 60-second beacon from a server' },
+      { t: 'Expired certificate on intranet site', sev: 1, m: .1, c: .05 },
+      { t: 'Printer firmware out of date', sev: 1, m: .15, c: .08 },
+      { t: 'USB drive inserted', sev: 1, m: .3, c: .15 },
+      { t: 'Disabled account tried to log in', sev: 1, m: .38, c: .35 }];
+    let mode = 0, k = 4, hall = false;
+    const score = a => mode === 0 ? a.sev + a.m * .01 : mode === 1 ? a.m : (hall && a.h !== undefined ? a.h : a.c);
+    const demo = {
+      cv: D.cv,
+      draw() {
+        ctx.clearRect(0, 0, W, H);
+        const order = AL.slice().sort((a, b) => score(b) - score(a));
+        const RH = 22, Y0 = 34;
+        txt(ctx, 'Rank', 20, 22, { size: 11, color: C.mu }); txt(ctx, 'Alert', 60, 22, { size: 11, color: C.mu }); txt(ctx, 'Rule severity', 360, 22, { size: 11, color: C.mu }); txt(ctx, mode === 0 ? '' : 'Model score', 470, 22, { size: 11, color: C.mu });
+        order.forEach((a, i) => {
+          const y = Y0 + i * RH, rev = i < k;
+          if (rev) { rr(ctx, 14, y - 1, W - 28, RH - 3, 6); ctx.fillStyle = C.soft; ctx.fill(); }
+          txt(ctx, String(i + 1), 34, y + 14, { size: 12, mono: 1, align: 'right', color: rev ? C.fg : C.mu });
+          txt(ctx, a.t, 60, y + 14, { size: 12, w: a.real ? 700 : 500, color: rev ? C.fg : C.mu });
+          if (a.real) { ctx.fillStyle = C.b; ctx.beginPath(); ctx.arc(52, y + 10, 3.5, 0, 7); ctx.fill(); }
+          const sl = ['', 'Low', 'Medium', 'High'][a.sev]; txt(ctx, sl, 360, y + 14, { size: 11, w: 600, color: a.sev === 3 ? C.b : C.mu });
+          if (mode) { const v = score(a); rr(ctx, 470, y + 4, 120, 10, 4); ctx.fillStyle = C.line; ctx.fill(); rr(ctx, 470, y + 4, Math.max(2, 120 * v), 10, 4); ctx.fillStyle = C.a; ctx.fill(); }
+          if (mode === 2 && a.note) txt(ctx, hall && a.hn ? a.hn : hall && a.h !== undefined && a.real ? 'claims a change ticket exists (none does)' : a.note, 600, y + 14, { size: 10, color: hall && a.h !== undefined ? C.b : C.mu });
+        });
+        const caught = order.slice(0, k).filter(a => a.real).length;
+        const yb = Y0 + AL.length * RH + 6;
+        txt(ctx, `The analyst reviews the top ${k}. Real incidents reviewed: ${caught} of 2.`, 20, yb + 12, { size: 13, w: 700, color: caught === 2 ? C.c : C.b });
+        txt(ctx, 'Bold with a red dot: the two real incidents.', W - 20, yb + 12, { size: 11, color: C.mu, align: 'right' });
+        out.textContent = `${['Rule severity', 'Model score', 'Model with context'][mode]}${mode === 2 && hall ? ', with invented facts' : ''}: ${caught} of 2 real incidents in the top ${k}.`;
+      }
+    };
+    choice(D.ctrl, 'Rank by', ['Rule severity', 'Model score', 'Model + context'], mode, i => { mode = i; demo.draw(); });
+    slider(D.ctrl, 'Analyst has time for', 1, 12, 1, k, v => { k = v; demo.draw(); });
+    toggle(D.ctrl, 'Model invents facts', hall, v => { hall = v; demo.draw(); });
+    const out = readout(D.ctrl);
+    demo.draw();
+    return demo;
+  };
+
   // ---------- start every demo on the page
   const all = [];
   document.querySelectorAll('figure.live[data-demo]').forEach(fig => {
