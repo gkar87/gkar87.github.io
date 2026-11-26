@@ -22,7 +22,7 @@
 </script>
 <meta name="theme-color" content="#1d4f91">
 <script>document.documentElement.classList.add('js');try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
-<link rel="stylesheet" href="style.css?v=20261125m">
+<link rel="stylesheet" href="style.css?v=20261126a">
 </head>
 <body class="home">
 <a class="skip" href="#main">Skip to content</a>
@@ -62,7 +62,7 @@
     <p class="thesis">Can the signals a system ignores, read by models small enough for the edge, tell us which devices, drivers and networks to trust?</p>
     <div class="cta">
       <a class="btn primary" href="#research">Explore the research</a>
-      <a class="btn" href="#publications">Publications</a>
+      <a class="btn" href="#work-with-me">Work with me</a>
       <a class="btn" href="#open-projects">Projects for new students</a>
     </div>
     <ul class="links">
@@ -113,6 +113,33 @@
   </div>
   </div>
 
+  <h3 id="milestones">Milestones</h3>
+  <div class="tl-wrap">
+  <ol class="tline" tabindex="0" aria-label="Milestones, oldest first; scroll sideways for more">
+    <li><span class="yr">2009</span><b>B.S., Bilkent University</b>Electrical and electronics engineering.</li>
+    <li class="tk"><span class="yr">2011</span><b>M.S., Bilkent University</b>Thesis on <a href="research/wireless-ffr.html">sharing a cell's spectrum fairly</a>.</li>
+    <li class="tr"><span class="yr">2014</span><b>ACM CCS</b><a href="research/vehicles.html">Catching the car with the GPS jammer</a> from roadside points.</li>
+    <li class="tr"><span class="yr">2015</span><b>ACM MobiCom</b><a href="research/side-channels.html">A phone hears which keys you press</a>. Also Rutgers Teaching Assistant of the Year.</li>
+    <li><span class="yr">2017</span><b>Ph.D., Rutgers University</b>Dissertation on connected cars, and two papers at ACM/IEEE SEC, including <a href="research/vehicles.html">PredriveID</a>.</li>
+    <li class="tk"><span class="yr">2018</span><b>Assistant Professor</b>Yeditepe University, Istanbul.</li>
+    <li class="tp"><span class="yr">2019</span><b>U.S. patent with GM</b>Telling drivers apart by how they drive. Joined Bahçeşehir University.</li>
+    <li class="tk"><span class="yr">2020</span><b>Student-led journal paper</b><a href="research/vehicles.html">Distracted-driver detection</a> in <em>Applied Soft Computing</em>, led by my M.Sc. student.</li>
+    <li><span class="yr">2023</span><b>Joined UCM</b>Computer Science and Cybersecurity, University of Central Missouri.</li>
+    <li class="tr"><span class="yr">2025</span><b>Hybrid quantum detection</b><a href="research/quantum-ids.html">One network for DDoS and Android malware</a>, in <em>EPJ Quantum Technology</em>.</li>
+    <li class="tp"><span class="yr">2026</span><b>On real quantum hardware</b><a href="research/quantum-spectra.html">A hybrid model on an IonQ processor</a>, and the UCM MLK Week Faculty Award.</li>
+  </ol>
+  </div>
+  <p class="tl-hint">Scroll sideways for the full path.</p>
+
+  <h3 id="recent">Recent</h3>
+  <ul class="recent">
+    <li><span class="yr">2026</span><span>Course sites for Spring 2027 <a href="#teaching">Database Theory and Applications and Artificial Intelligence</a> are live, with interactive notes.</span></li>
+    <li><span class="yr">2026</span><span>A hybrid quantum-classical network classified weathered microplastics on an IonQ quantum processor, in <em>AVS Quantum Science</em>.</span></li>
+    <li><span class="yr">2026</span><span>MLK Week “From Dream to Reality: Building the Beloved Community” Faculty Award, University of Central Missouri.</span></li>
+    <li><span class="yr">2025–26</span><span>Three student-led papers <a href="#submitted">submitted</a>: a campus chatbot, fairness tuning, and a review of object detection.</span></li>
+    <li><span class="yr">2025</span><span>Explainable AI for food fraud, led by my M.Sc. student, in <em>Expert Systems</em>.</span></li>
+  </ul>
+
   <div class="grid2" style="margin-top:1.4rem">
   <div class="card">
 
@@ -149,6 +176,10 @@
     <li>Explainable AI</li>
     <li>Edge computing</li>
   </ul>
+
+  <h3 id="method">How I work</h3>
+  <p class="dirs-intro">Every project on this site follows the same five steps. The published work is strongest on the first four; several open projects are built around the fifth.</p>
+  <figure class="pipe" aria-label="Where this work sits in the method: Sense, Fingerprint, Decide, Deploy, Stress-test"><ol><li class="on" style="--i:0"><small>01</small><b>Sense</b><span>a signal the system ignores</span><em>GPS signal strength on phones, the sound of a key press, packet headers</em></li><li class="on" style="--i:1"><small>02</small><b>Fingerprint</b><span>the behavior inside it</span><em>pre-trip timing gaps, time difference of arrival, wavelet scaleograms</em></li><li class="on" style="--i:2"><small>03</small><b>Decide</b><span>with a small model</span><em>SVMs, CNNs and LSTMs, two-qubit circuits, BERTurk</em></li><li class="on" style="--i:3"><small>04</small><b>Deploy</b><span>at the edge or on real hardware</span><em>roadside points, vehicle edge nodes, an IonQ quantum processor</em></li><li class="on" style="--i:4"><small>05</small><b>Stress-test</b><span>attack it, explain it, benchmark it fairly</span><em>matched baselines, leak-free splits, constrained attacks (open projects)</em></li></ol><figcaption>Examples under each step come from published papers, except where marked as open projects.</figcaption></figure>
 
   <h3>Four directions</h3>
   <p class="dirs-intro">Each direction below says what it studies, the questions it asks, why it matters, and how the published work leads into the open projects for new students.</p>
@@ -534,18 +565,6 @@
     </a>
   </div>
 
-  <h3 id="students">Students and mentoring</h3>
-  <div class="grid2">
-    <div class="card">
-      <p>I have supervised six completed M.Sc. theses; four became journal articles with the student as lead author, in <em>Applied Soft Computing</em>, <em>Sensors</em>, <em>Journal of Engineering Sciences and Design</em> and <em>Expert Systems</em>.</p>
-      <p>Each thesis starts as a small production pipeline: a publishable research question, a dataset, a reproducible experiment and a target venue, agreed at the proposal stage.</p>
-    </div>
-    <div class="card">
-      <p><strong>Joining the group.</strong> I welcome UCM graduate students interested in security, networked systems and applied machine learning. Pick one of the <a href="#open-projects">open projects</a>, read two papers from its list, and email me with your CV and the research question you would start with.</p>
-      <p><strong>Writing papers.</strong> Every project page has a "Start here" plan with tools and datasets. When it is time to write, the <a href="research/latex-overleaf.html">LaTeX and Overleaf guide</a> covers templates, citations, figures and the checks before you submit.</p>
-      <div class="actions"><a class="pill" href="mailto:kar@ucmo.edu">Email me</a><a class="pill" href="research/latex-overleaf.html">LaTeX and Overleaf guide</a></div>
-    </div>
-  </div>
 </section>
 
 <!-- ============ PUBLICATIONS ============ -->
@@ -794,6 +813,58 @@
   <p>At Bahçeşehir University and Yeditepe University I taught Introduction to Artificial Intelligence (graduate), Digital System Design, Computer Organization, Introduction to Vehicular Networks, and Introduction to C Programming.</p>
 </section>
 
+<!-- ============ WORK WITH ME ============ -->
+<section id="work-with-me">
+  <span class="kicker">Students, employers and collaborators</span>
+  <h2>Work with me</h2>
+  <p class="lede">Three ways in, depending on who you are.</p>
+  <div class="audiences">
+    <div class="card reveal" id="students">
+      <h3><span class="aud-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c3 2 9 2 12 0v-5"/></svg></span>Students</h3>
+      <p>I welcome UCM graduate students interested in security, networked systems and applied machine learning. You do not need research experience to start; Python and curiosity are enough.</p>
+      <p><strong>Your first semester, step by step.</strong> Each thesis starts as a small production pipeline, agreed at the proposal stage:</p>
+      <ol class="steps">
+        <li>Pick one of the <a href="#open-projects">open projects</a> and read two papers from its list.</li>
+        <li>Reproduce a baseline on a public dataset, using the project's "Start here" plan.</li>
+        <li>Run your first experiment on the project's research question, and attack your own result.</li>
+        <li>Write it up with the <a href="research/latex-overleaf.html">LaTeX and Overleaf guide</a> for a target venue.</li>
+      </ol>
+      <p><strong>Track record.</strong> I have supervised six completed M.Sc. theses. Four became journal articles with the student as lead author:</p>
+      <div class="track"><span><em>Applied Soft Computing</em></span><span><em>Sensors</em></span><span><em>J. Engineering Sciences and Design</em></span><span><em>Expert Systems</em></span></div>
+      <p>Three more student-led papers are <a href="#submitted">under submission</a>.</p>
+      <p><strong>To start,</strong> email me your CV, the project you picked and the research question you would begin with.</p>
+      <div class="actions"><a class="pill" href="mailto:kar@ucmo.edu">Email me</a><a class="pill" href="#open-projects">See open projects</a><a class="pill" href="research/latex-overleaf.html">LaTeX and Overleaf guide</a></div>
+    </div>
+    <div class="side">
+      <div class="card reveal">
+        <h3><span class="aud-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 13h18"/></svg></span>Employers and recruiters</h3>
+        <p>Students in my group practice what security, machine learning and data teams ask for:</p>
+        <ul class="plain">
+          <li>Building reproducible ML pipelines on real, messy data.</li>
+          <li>Evaluating honestly: fair baselines, leakage checks, attacking their own models.</li>
+          <li>Writing and presenting work to a publication standard.</li>
+        </ul>
+        <p>My courses in machine learning, deep learning, AI, algorithms and databases run on interactive notes where students write and run code every week. Employers looking for students with these skills are welcome to write.</p>
+      </div>
+      <div class="card reveal">
+        <h3><span class="aud-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="3"/><circle cx="16" cy="8" r="3"/><path d="M2 20c0-3 3-5 6-5s6 2 6 5M14 15c3 0 8 1 8 5"/></svg></span>Collaborators and industry</h3>
+        <p>My driver-identification work with General Motors Research led to a <a href="research/vehicles.html">U.S. patent</a>. I am glad to talk about vehicle and IoT security data, intrusion detection in real deployments, quantum machine learning benchmarks, and student capstone projects.</p>
+      </div>
+    </div>
+  </div>
+
+  <h3 id="expertise">Expertise, with the evidence</h3>
+  <p class="dirs-intro">What I can speak to in depth, each tied to published work you can read.</p>
+  <div class="xgrid">
+    <div class="xp x1 reveal"><h4>Connected-vehicle security and sensing</h4><p>GPS interference, driver identification, cooperative perception, edge analytics.</p><p class="ev">Evidence: <a href="research/vehicles.html">ACM CCS 2014</a>, <a href="research/vehicles.html">ACM/IEEE SEC 2017</a>, <a href="research/perception.html">IEEE TVT 2018</a>, U.S. patent with GM</p><ul class="chips"><li>In-vehicle bus data</li><li>Software-defined radio</li><li>Edge computing</li></ul></div>
+    <div class="xp x2 reveal"><h4>Mobile side channels</h4><p>Recovering what people type from sound recorded by an ordinary phone.</p><p class="ev">Evidence: <a href="research/side-channels.html">ACM MobiCom 2015</a></p><ul class="chips"><li>Acoustic ranging</li><li>Time difference of arrival</li><li>Clustering</li></ul></div>
+    <div class="xp x3 reveal"><h4>Intrusion and malware detection</h4><p>Detecting attacks and naming devices from network traffic, with compact models.</p><p class="ev">Evidence: <a href="research/quantum-ids.html">EPJ Quantum Technology 2025</a>, <a href="research/iot-identity.html">Electronics 2024</a>, <a href="research/iot-identity.html">ICISSP 2024</a></p><ul class="chips"><li>Wavelets and CNNs</li><li>Genetic algorithms</li><li>Packet features</li></ul></div>
+    <div class="xp x4 reveal"><h4>Quantum machine learning</h4><p>Hybrid quantum-classical networks, in simulation and on real quantum hardware.</p><p class="ev">Evidence: <a href="research/quantum-spectra.html">AVS Quantum Science 2026</a>, <a href="research/quantum-spectra.html">IEEE Access 2025</a>, <a href="research/quantum-ids.html">EPJ QT 2025</a></p><ul class="chips"><li>Variational circuits</li><li>Quanvolution</li><li>IonQ hardware</li></ul></div>
+    <div class="xp x5 reveal"><h4>Explainable and applied AI</h4><p>Models whose decisions an analyst can inspect, across food safety, HR, crime and language.</p><p class="ev">Evidence: <a href="research/applied-ai.html">Expert Systems 2025</a>, <a href="research/applied-ai.html">IEEE LA-CCI 2025</a>, <a href="research/applied-ai.html">JESD 2022</a></p><ul class="chips"><li>SHAP and LIME</li><li>What-If Tool</li><li>BERT fine-tuning</li></ul></div>
+    <div class="xp x6 reveal"><h4>Teaching AI and data systems</h4><p>Graduate courses built on browser-based notes that run code as students read.</p><p class="ev">Evidence: <a href="#teaching">courses at UCM</a>, 1,190+ students since 2023</p><ul class="chips"><li>Machine learning</li><li>Deep learning</li><li>Databases</li></ul></div>
+  </div>
+</section>
+
 <!-- ============ CONTACT ============ -->
 <section id="contact">
   <span class="kicker">Get in touch</span>
@@ -832,11 +903,11 @@
       <li><a href="https://scholar.google.com/citations?user=dz-6amUAAAAJ&amp;hl=en">Google Scholar</a></li><li><a href="https://github.com/gkar87">GitHub</a></li>
       <li><a href="https://orcid.org/0000-0003-0367-4409">ORCID</a></li><li><a href="https://www.linkedin.com/in/gorkem-kar/">LinkedIn</a></li></ul></nav>
     <nav aria-label="Contact"><h4>Contact</h4><ul>
-      <li><a href="mailto:kar@ucmo.edu">kar@ucmo.edu</a></li><li><a href="index.html#teaching">Teaching</a></li><li><a href="index.html#contact">Office and links</a></li></ul></nav>
+      <li><a href="mailto:kar@ucmo.edu">kar@ucmo.edu</a></li><li><a href="index.html#work-with-me">Work with me</a></li><li><a href="index.html#teaching">Teaching</a></li><li><a href="index.html#contact">Office and links</a></li></ul></nav>
   </div>
   <div class="wrap fbase"><span>© 2026 Gorkem Kar · Last updated November 2026</span><a href="#top">Back to top ↑</a></div>
 </footer>
 <a class="totop" href="#top" aria-label="Back to top"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-<script src="site.js?v=20261125m"></script>
+<script src="site.js?v=20261126a"></script>
 </body>
 </html>

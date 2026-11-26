@@ -13,7 +13,7 @@
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 <meta name="theme-color" content="#1d4f91">
 <script>document.documentElement.classList.add('js');try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
-<link rel="stylesheet" href="../style.css?v=20261125m">
+<link rel="stylesheet" href="../style.css?v=20261126a">
 </head>
 <body class="proj" id="top">
 <a class="skip" href="#main">Skip to content</a>
@@ -45,7 +45,7 @@
   <ul class="facts" aria-label="At a glance"><li>New direction</li><li>3 research questions</li><li>Open to new graduate students</li><li>Live demo</li></ul>
 </section>
 <div class="pgrid">
-<nav class="toc" aria-label="On this page"><span>On this page</span><ul><li><a href="#live-chain">Try it</a></li><li><a href="#why-this-matters">Why this matters</a></li><li><a href="#research-questions">Research questions</a></li><li><a href="#approach">Approach</a></li><li><a href="#start-here">Start here</a></li><li><a href="#skills-you-will-use-and-learn">Skills you will use and learn</a></li><li><a href="#papers-to-read-first">Papers to read first</a></li><li><a href="#interested">Interested?</a></li></ul></nav>
+<nav class="toc" aria-label="On this page"><span>On this page</span><ul><li><a href="#live-chain">Try it</a></li><li><a href="#why-this-matters">Why this matters</a></li><li><a href="#research-questions">Research questions</a></li><li><a href="#approach">Approach</a></li><li><a href="#discussion">Discussion</a></li><li><a href="#start-here">Start here</a></li><li><a href="#skills-you-will-use-and-learn">Skills you will use and learn</a></li><li><a href="#papers-to-read-first">Papers to read first</a></li><li><a href="#interested">Interested?</a></li></ul></nav>
 <div class="pcontent">
 <figure class="live" data-demo="chain" aria-labelledby="live-chain">
   <div class="lhead"><h2 id="live-chain">Try it: Tamper with the ledger</h2><span class="kicker">Live illustration</span></div>
@@ -79,6 +79,10 @@
 <section>
 <h2 id="approach">Approach</h2>
 <ol class="flow" aria-label="Project steps"><li><b>Design</b><span>Choose what goes on the ledger: credential, firmware hash, fingerprint summary.</span></li><li><b>Build</b><span>Smart contracts on Hyperledger Fabric, with Raspberry Pi gateways and real IoT devices.</span></li><li><b>Attack</b><span>Clone, spoof and reflash devices; attack the contracts.</span></li><li><b>Measure</b><span>Detection rate, false alarms, latency and throughput as devices scale.</span></li><li><b>Report</b><span>Open code and a threat model others can reuse.</span></li></ol>
+</section>
+<section class="discussion">
+<h2 id="discussion">Discussion</h2>
+<figure class="pipe" aria-label="Where this work sits in the method: Fingerprint, Deploy, Stress-test"><ol><li style="--i:0"><small>01</small><b>Sense</b><span>a signal the system ignores</span></li><li class="on" style="--i:0"><small>02</small><b>Fingerprint</b><span>the behavior inside it</span></li><li style="--i:1"><small>03</small><b>Decide</b><span>with a small model</span></li><li class="on" style="--i:1"><small>04</small><b>Deploy</b><span>at the edge or on real hardware</span></li><li class="on" style="--i:2"><small>05</small><b>Stress-test</b><span>attack it, explain it, benchmark it fairly</span></li></ol><figcaption>Device fingerprints anchored in a tamper-evident record that the network checks.</figcaption></figure><div class="disc"><div class="dc d-a reveal"><h3>If it works</h3><p>The network notices a cloned or tampered device by checking its behavior against a record nobody can quietly change.</p></div><div class="dc d-b reveal"><h3>Where it could fail</h3><ul><li>Ledger overhead may be too high for small networks.</li><li>Fingerprints drift, so updates must be authorized without opening a door for attackers.</li></ul></div><div class="dc d-c reveal"><h3>How we will know</h3><p>How often clones are caught, ledger latency, and the cost per device.</p></div></div>
 </section>
 <section class="start">
 <h2 id="start-here">Start here</h2>
@@ -115,12 +119,12 @@
       <li><a href="https://scholar.google.com/citations?user=dz-6amUAAAAJ&amp;hl=en">Google Scholar</a></li><li><a href="https://github.com/gkar87">GitHub</a></li>
       <li><a href="https://orcid.org/0000-0003-0367-4409">ORCID</a></li><li><a href="https://www.linkedin.com/in/gorkem-kar/">LinkedIn</a></li></ul></nav>
     <nav aria-label="Contact"><h4>Contact</h4><ul>
-      <li><a href="mailto:kar@ucmo.edu">kar@ucmo.edu</a></li><li><a href="../index.html#teaching">Teaching</a></li><li><a href="../index.html#contact">Office and links</a></li></ul></nav>
+      <li><a href="mailto:kar@ucmo.edu">kar@ucmo.edu</a></li><li><a href="../index.html#work-with-me">Work with me</a></li><li><a href="../index.html#teaching">Teaching</a></li><li><a href="../index.html#contact">Office and links</a></li></ul></nav>
   </div>
   <div class="wrap fbase"><span>© 2026 Gorkem Kar · Last updated November 2026</span><a href="#top">Back to top ↑</a></div>
 </footer>
 <a class="totop" href="#top" aria-label="Back to top"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-<script src="../site.js?v=20261125m"></script>
-<script src="../live.js?v=20261125m"></script>
+<script src="../site.js?v=20261126a"></script>
+<script src="../live.js?v=20261126a"></script>
 </body>
 </html>
