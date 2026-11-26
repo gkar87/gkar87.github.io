@@ -64,10 +64,12 @@
       const so = new IntersectionObserver(entries => {
         entries.forEach(en => {
           if (!en.isIntersecting) return;
-          links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + en.target.id));
+          const id = en.target.id === 'work-with-me' ? 'contact' : en.target.id;
+          links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + id));
         });
       }, { rootMargin: '-45% 0px -50% 0px' });
       secs.forEach(s => so.observe(s));
+      const ww = document.getElementById('work-with-me'); if (ww) so.observe(ww);
     }
   }
 
