@@ -265,3 +265,13 @@
     else if (e.key === '/' && !typing && !(qs && qs.classList.contains('open'))) { e.preventDefault(); open(); }
   });
 })();
+
+// Land on a #section link after late layout (images, demos) settles.
+window.addEventListener('load', function () {
+  var id = decodeURIComponent(location.hash.slice(1));
+  if (!id) return;
+  setTimeout(function () {
+    var el = document.getElementById(id);
+    if (el) el.scrollIntoView({ block: 'start' });
+  }, 250);
+});

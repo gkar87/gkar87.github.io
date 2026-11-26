@@ -517,7 +517,7 @@ pre.code code{background:none;border:0;padding:0;font:inherit;white-space:pre}
   .pipe li+li::after{display:none}
 }
 @keyframes pflowv{to{background-position:0 8px}}
-.disc{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;margin-top:.4rem}
+.disc{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;margin-top:.4rem;align-items:start}
 .dc{border:1px solid var(--line);border-top:3px solid var(--c,var(--accent));border-radius:12px;padding:.85rem 1rem .9rem;background:var(--surface);box-shadow:var(--shadow)}
 .dc h3{margin:0 0 .35rem;font:600 .74rem/1.3 var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--c,var(--accent))}
 .dc p,.dc li{font-size:.93rem;margin:.2rem 0}
@@ -540,8 +540,8 @@ pre.code code{background:none;border:0;padding:0;font:inherit;white-space:pre}
 
 /* ---------- recent highlights ---------- */
 .recent{list-style:none;padding:0;margin:.8rem 0 0;display:grid;gap:.55rem}
-.recent li{display:grid;grid-template-columns:3.4rem 1fr;gap:.8rem;align-items:baseline;padding:.55rem .8rem;border-radius:10px;background:var(--soft);font-size:.93rem}
-.recent .yr{font:700 .78rem/1 var(--mono);color:var(--accent);background:var(--chip);border-radius:999px;padding:.28rem .5rem;text-align:center}
+.recent li{display:grid;grid-template-columns:4.6rem 1fr;gap:.8rem;align-items:baseline;padding:.55rem .8rem;border-radius:10px;background:var(--soft);font-size:.93rem}
+.recent .yr{font:700 .78rem/1 var(--mono);color:var(--accent);background:var(--chip);border-radius:999px;padding:.28rem .5rem;text-align:center;white-space:nowrap}
 
 /* ---------- expertise and work with me ---------- */
 .xgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;margin-top:1rem}
