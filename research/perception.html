@@ -13,7 +13,7 @@
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 <meta name="theme-color" content="#1d4f91">
 <script>document.documentElement.classList.add('js');try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
-<link rel="stylesheet" href="../style.css?v=20261126c">
+<link rel="stylesheet" href="../style.css?v=20261127a">
 </head>
 <body class="proj" id="top">
 <a class="skip" href="#main">Skip to content</a>
@@ -21,12 +21,14 @@
   <div class="wrap">
     <a class="brand" href="../index.html">Gorkem Kar<span class="muted">, Ph.D.</span></a>
     <div class="navbar">
-      <nav aria-label="Sections">
+      <nav aria-label="Main">
         <ul>
-          <li><a href="../index.html#about">About</a></li>
-          <li><a href="../index.html#research">Research</a></li>
-          <li><a href="../index.html#publications">Publications</a></li>
-          <li><a href="../index.html#teaching">Teaching</a></li>
+          <li><a href="../index.html">About</a></li>
+          <li><a href="../research.html">Research</a></li>
+          <li><a href="../projects.html" class="active" aria-current="page">Projects</a></li>
+          <li><a href="../publications.html">Publications</a></li>
+          <li><a href="../teaching.html">Teaching</a></li>
+          <li><a href="../work-with-me.html">Work with me</a></li>
           <li><a href="../index.html#contact">Contact</a></li>
         </ul>
       </nav>
@@ -37,7 +39,7 @@
   <div class="progress" aria-hidden="true"></div>
 </header>
 <main id="main" class="wrap">
-<p class="crumbs"><a href="../index.html#research">Research</a> / Extending what a car can see and sense</p>
+<p class="crumbs"><a href="../projects.html#projects-in-depth">Published work</a> / Extending what a car can see and sense</p>
 <section class="phead">
   <span class="kicker">Published work</span>
   <h1>Extending what a car can see and sense</h1>
@@ -79,11 +81,16 @@
 </section>
 <section class="start">
 <h2 id="start-here">Start here</h2>
-<p class="muted">A concrete first month for a student joining this work. Each step builds on the one before.</p>
-<ol class="steps"><li><span class="sn">Step 1</span>Read the papers below and sketch the geometry of one occlusion case by hand.</li><li><span class="sn">Step 2</span>Install CARLA, place two cars behind a truck, and record what each car's sensors see.</li><li><span class="sn">Step 3</span>Measure how much of the blind zone a shared view removes, and how much bandwidth that costs.</li></ol>
+<p class="muted">A first month for a student joining this work, in 3 steps. Do them in order: each one uses what the one before produced.</p>
+<p class="goal"><strong>Goal for the month:</strong> A simulated occlusion scene and a first measurement of how much a shared view helps and what it costs.</p>
+<details class="setup">
+<summary>Before you start: setup for every project</summary>
+<ol class="setup-list"><li><strong>Set up a workspace.</strong> Create a private Git repository for the project with folders for <code>data/</code>, <code>src/</code>, <code>figures/</code> and <code>notes/</code>. Make a Python virtual environment (<code>python -m venv .venv</code>) and record every package you install in <code>requirements.txt</code>.</li><li><strong>Keep a lab notebook.</strong> Add a dated entry to <code>notes/log.md</code> each time you work: what you ran (the exact command), what came out, and what surprised you. This log is the first thing to share when you ask for help, and most of your paper's method section comes from it.</li><li><strong>Make every number reproducible.</strong> Fix random seeds, write down the dataset version and how you split it, and keep the script that produced each figure next to the figure. If you cannot regenerate a number with one command, it is not finished.</li><li><strong>Stay legal and ethical.</strong> Work only with public datasets, data you recorded yourself with everyone's consent, or systems you own. Never test an attack on a network, car, radio band or service that is not yours, and follow the safety note on this page.</li><li><strong>When you get stuck.</strong> Spend about an hour, then write down what you tried, what you expected and the exact error or plot, and ask. A precise question is much easier to answer than "it does not work".</li></ol>
+</details>
+<ol class="steps steps-detailed"><li><span class="sn">Step 1 · Week 1</span><strong class="st">Understand the geometry</strong><ul class="do"><li>Read the papers below.</li><li>Draw one occlusion case by hand: a car, a truck in front of it, and a pedestrian or car hidden behind the truck. Mark what each car's sensors can and cannot see.</li></ul><p class="done"><span>You are done when</span> your sketch shows the blind zone and the extra area a second car would reveal.</p></li><li><span class="sn">Step 2 · Weeks 2 and 3</span><strong class="st">Build the scene in a simulator</strong><ul class="do"><li>Install CARLA on a machine with a recent graphics card, and run one of its example scripts.</li><li>Place two cars behind a truck and attach a camera or LiDAR sensor to each.</li><li>Record a few seconds from both cars and save the sensor output with timestamps.</li></ul><p class="done"><span>You are done when</span> you can replay the recording and see the hidden object only in the second car's view.</p></li><li><span class="sn">Step 3 · Week 4</span><strong class="st">Measure benefit and cost</strong><ul class="do"><li>Estimate how much of the blind zone the shared view removes, for example the share of hidden objects that become visible.</li><li>Estimate the data each car would have to send per second to share that view, raw and in a compressed or object-list form.</li></ul><p class="done"><span>You are done when</span> you have one table with blind-zone coverage and bandwidth for each sharing option.</p></li></ol>
 <h3>Tools and data</h3>
 <ul class="res"><li><a href="https://carla.org/">CARLA</a><span>Open-source simulator for autonomous driving research.</span></li><li><a href="https://eclipse.dev/sumo/">Eclipse SUMO</a><span>Open-source traffic simulator.</span></li></ul>
-<p class="note">Writing it up? Follow the <a href="latex-overleaf.html">LaTeX and Overleaf guide</a> for templates, citations, figures and the checks to run before you submit.</p>
+<p class="note">Finished the month? Email me your log, your figures and one paragraph on what you would do next. Writing it up? Follow the <a href="latex-overleaf.html">LaTeX and Overleaf guide</a> for templates, citations, figures and the checks to run before you submit.</p>
 </section>
 <section>
 <h2 id="papers">Papers</h2>
@@ -96,21 +103,22 @@
 <footer class="site-foot">
   <div class="wrap fgrid">
     <div class="fabout"><a class="brand" href="../index.html">Gorkem Kar<span class="muted">, Ph.D.</span></a>
-      <p>Assistant Professor of Computer Science and Cybersecurity, University of Central Missouri. Security for vehicles, phones, IoT devices and networks.</p></div>
-    <nav aria-label="Research"><h4>Research</h4><ul>
-      <li><a href="../index.html#map">Research map</a></li><li><a href="../index.html#projects-in-depth">Projects in depth</a></li>
-      <li><a href="../index.html#open-projects">Open projects</a></li><li><a href="../index.html#publications">Publications</a></li>
-      <li><a href="../research/latex-overleaf.html">LaTeX and Overleaf guide</a></li></ul></nav>
-    <nav aria-label="Profiles"><h4>Profiles</h4><ul>
+      <p>Assistant Professor of Computer Science and Cybersecurity, University of Central Missouri.</p></div>
+    <nav aria-label="Site"><h2 class="fh">Site</h2><ul>
+      <li><a href="../research.html">Research</a></li><li><a href="../projects.html">Projects</a></li>
+      <li><a href="../publications.html">Publications</a></li><li><a href="../teaching.html">Teaching</a></li>
+      <li><a href="../work-with-me.html">Work with me</a></li></ul></nav>
+    <nav aria-label="Profiles"><h2 class="fh">Profiles</h2><ul>
       <li><a href="https://scholar.google.com/citations?user=dz-6amUAAAAJ&amp;hl=en">Google Scholar</a></li><li><a href="https://github.com/gkar87">GitHub</a></li>
-      <li><a href="https://orcid.org/0000-0003-0367-4409">ORCID</a></li><li><a href="https://www.linkedin.com/in/gorkem-kar/">LinkedIn</a></li></ul></nav>
-    <nav aria-label="Contact"><h4>Contact</h4><ul>
-      <li><a href="mailto:kar@ucmo.edu">kar@ucmo.edu</a></li><li><a href="../index.html#work-with-me">Work with me</a></li><li><a href="../index.html#teaching">Teaching</a></li><li><a href="../index.html#contact">Office and links</a></li></ul></nav>
+      <li><a href="https://orcid.org/0000-0003-0367-4409">ORCID</a></li><li><a href="https://www.linkedin.com/in/gorkem-kar/">LinkedIn</a></li><li><a href="https://www.researchgate.net/profile/Gorkem-Kar-2">ResearchGate</a></li></ul></nav>
+    <nav aria-label="Contact"><h2 class="fh">Contact</h2><ul>
+      <li><a href="mailto:kar@ucmo.edu">kar@ucmo.edu</a></li><li>MIC D159, University of Central Missouri</li>
+      <li><a href="../research/latex-overleaf.html">LaTeX and Overleaf guide</a></li></ul></nav>
   </div>
   <div class="wrap fbase"><span>© 2026 Gorkem Kar · Last updated November 2026</span><a href="#top">Back to top ↑</a></div>
 </footer>
 <a class="totop" href="#top" aria-label="Back to top"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-<script src="../site.js?v=20261126c"></script>
-<script src="../live.js?v=20261126c"></script>
+<script src="../site.js?v=20261127a"></script>
+<script src="../live.js?v=20261127a"></script>
 </body>
 </html>

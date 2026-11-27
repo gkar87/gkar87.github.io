@@ -13,7 +13,7 @@
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 <meta name="theme-color" content="#1d4f91">
 <script>document.documentElement.classList.add('js');try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
-<link rel="stylesheet" href="../style.css?v=20261126c">
+<link rel="stylesheet" href="../style.css?v=20261127a">
 </head>
 <body class="proj" id="top">
 <a class="skip" href="#main">Skip to content</a>
@@ -21,12 +21,14 @@
   <div class="wrap">
     <a class="brand" href="../index.html">Gorkem Kar<span class="muted">, Ph.D.</span></a>
     <div class="navbar">
-      <nav aria-label="Sections">
+      <nav aria-label="Main">
         <ul>
-          <li><a href="../index.html#about">About</a></li>
-          <li><a href="../index.html#research">Research</a></li>
-          <li><a href="../index.html#publications">Publications</a></li>
-          <li><a href="../index.html#teaching">Teaching</a></li>
+          <li><a href="../index.html">About</a></li>
+          <li><a href="../research.html">Research</a></li>
+          <li><a href="../projects.html" class="active" aria-current="page">Projects</a></li>
+          <li><a href="../publications.html">Publications</a></li>
+          <li><a href="../teaching.html">Teaching</a></li>
+          <li><a href="../work-with-me.html">Work with me</a></li>
           <li><a href="../index.html#contact">Contact</a></li>
         </ul>
       </nav>
@@ -37,7 +39,7 @@
   <div class="progress" aria-hidden="true"></div>
 </header>
 <main id="main" class="wrap">
-<p class="crumbs"><a href="../index.html#research">Research</a> / IoT device identity and network incidents</p>
+<p class="crumbs"><a href="../projects.html#projects-in-depth">Published work</a> / IoT device identity and network incidents</p>
 <section class="phead">
   <span class="kicker">Published work</span>
   <h1>IoT device identity and network incidents</h1>
@@ -71,7 +73,7 @@
   <rect x="460" y="76" width="170" height="44" rx="6" class="svg-acc2 blink" style="animation-delay:1.8s"/><text x="472" y="103" style="fill:#fff">TCP flags/options</text>
   </g>
   <text x="10" y="155" class="svg-s">Illustration only: which fields matter is what feature selection decides.</text>
-</svg><figcaption>A single packet header is the fingerprint; feature selection picks the fields that matter.</figcaption></figure><figure class="chart reveal" aria-label="Device identification with decision trees, IoT Sentinel dataset (126,209 packets)"><h4>Device identification with decision trees, IoT Sentinel dataset (126,209 packets)</h4><div class="bar hi"><span class="bl">Weighted accuracy</span><span class="bt"><span class="bf" style="--v:95.3"></span></span><span class="bv">95.3%</span></div><div class="bar"><span class="bl">Macro F1 across vendors</span><span class="bt"><span class="bf" style="--v:88.7"></span></span><span class="bv">88.7%</span></div><figcaption class="src">Data: Aksoy et al., ICISSP 2024, abstract.</figcaption></figure>
+</svg><figcaption>A single packet header is the fingerprint; feature selection picks the fields that matter.</figcaption></figure><figure class="chart reveal" aria-label="Device identification with decision trees, IoT Sentinel dataset (126,209 packets)"><h3>Device identification with decision trees, IoT Sentinel dataset (126,209 packets)</h3><div class="bar hi"><span class="bl">Weighted accuracy</span><span class="bt"><span class="bf" style="--v:95.3"></span></span><span class="bv">95.3%</span></div><div class="bar"><span class="bl">Macro F1 across vendors</span><span class="bt"><span class="bf" style="--v:88.7"></span></span><span class="bv">88.7%</span></div><figcaption class="src">Data: Aksoy et al., ICISSP 2024, abstract.</figcaption></figure>
 </section>
 
 <section>
@@ -85,13 +87,13 @@
   <g><rect x="215" y="246" width="170" height="40" rx="8" class="svg-box"/><text x="230" y="272" class="svg-s">roulette + elitism</text></g>
   <g><rect x="15" y="128" width="175" height="44" rx="8" class="svg-box"/><text x="25" y="148" class="svg-s">uniform crossover 0.5</text><text x="25" y="166" class="svg-s">mutation 0.015</text></g>
   <text x="250" y="145" class="svg-t">up to 100</text><text x="245" y="168" class="svg-t">generations</text>
-</svg><figcaption>The genetic algorithm loop, with the settings used in the paper.</figcaption></figure><figure class="chart reveal" aria-label="Detection accuracy by attack type"><h4>Detection accuracy by attack type</h4><div class="bar hi"><span class="bl">DoS HULK</span><span class="bt"><span class="bf" style="--v:100"></span></span><span class="bv">100%</span></div><div class="bar hi"><span class="bl">DoS GoldenEye</span><span class="bt"><span class="bf" style="--v:100"></span></span><span class="bv">100%</span></div><div class="bar"><span class="bl">DNS botnet</span><span class="bt"><span class="bf" style="--v:95"></span></span><span class="bv">≈95%</span></div><div class="bar"><span class="bl">NMAP OS scanning</span><span class="bt"><span class="bf" style="--v:95"></span></span><span class="bv">≈95%</span></div><figcaption class="src">Data: Aksoy, Valle and Kar, Electronics 13(2), 293 (2024), abstract ("mid 95%" for DNS botnet and OS scanning).</figcaption></figure><figure class="chart reveal" aria-label="Malicious packets in each dataset"><h4>Malicious packets in each dataset</h4><div class="bar"><span class="bl">DoS HULK</span><span class="bt"><span class="bf" style="--v:100"></span></span><span class="bv">241,991</span></div><div class="bar"><span class="bl">DNS botnet (9 botnets)</span><span class="bt"><span class="bf" style="--v:75.5"></span></span><span class="bv">182,720</span></div><div class="bar"><span class="bl">DoS GoldenEye</span><span class="bt"><span class="bf" style="--v:74.3"></span></span><span class="bv">179,906</span></div><div class="bar"><span class="bl">NMAP OS scanning</span><span class="bt"><span class="bf" style="--v:27.1"></span></span><span class="bv">65,700</span></div><figcaption class="src">Data: Electronics 13(2), 293 (2024), dataset description. Bars scaled to the largest set.</figcaption></figure>
+</svg><figcaption>The genetic algorithm loop, with the settings used in the paper.</figcaption></figure><figure class="chart reveal" aria-label="Detection accuracy by attack type"><h3>Detection accuracy by attack type</h3><div class="bar hi"><span class="bl">DoS HULK</span><span class="bt"><span class="bf" style="--v:100"></span></span><span class="bv">100%</span></div><div class="bar hi"><span class="bl">DoS GoldenEye</span><span class="bt"><span class="bf" style="--v:100"></span></span><span class="bv">100%</span></div><div class="bar"><span class="bl">DNS botnet</span><span class="bt"><span class="bf" style="--v:95"></span></span><span class="bv">≈95%</span></div><div class="bar"><span class="bl">NMAP OS scanning</span><span class="bt"><span class="bf" style="--v:95"></span></span><span class="bv">≈95%</span></div><figcaption class="src">Data: Aksoy, Valle and Kar, Electronics 13(2), 293 (2024), abstract ("mid 95%" for DNS botnet and OS scanning).</figcaption></figure><figure class="chart reveal" aria-label="Malicious packets in each dataset"><h3>Malicious packets in each dataset</h3><div class="bar"><span class="bl">DoS HULK</span><span class="bt"><span class="bf" style="--v:100"></span></span><span class="bv">241,991</span></div><div class="bar"><span class="bl">DNS botnet (9 botnets)</span><span class="bt"><span class="bf" style="--v:75.5"></span></span><span class="bv">182,720</span></div><div class="bar"><span class="bl">DoS GoldenEye</span><span class="bt"><span class="bf" style="--v:74.3"></span></span><span class="bv">179,906</span></div><div class="bar"><span class="bl">NMAP OS scanning</span><span class="bt"><span class="bf" style="--v:27.1"></span></span><span class="bv">65,700</span></div><figcaption class="src">Data: Electronics 13(2), 293 (2024), dataset description. Bars scaled to the largest set.</figcaption></figure>
 </section>
 
 <section>
 <h2 id="hybrid-blockchains-for-iot">Hybrid blockchains for IoT</h2>
 <p>With my M.Sc. student Ahmed Alkhateeb, we systematically reviewed how hybrid blockchain platforms secure IoT data. Ethereum dominates, and most systems pair the ledger with cloud or fog computing.</p>
-<figure class="chart reveal" aria-label="Screening the literature"><h4>Screening the literature</h4><div class="bar"><span class="bl">Search results</span><span class="bt"><span class="bf" style="--v:100"></span></span><span class="bv">985</span></div><div class="bar"><span class="bl">After filtering</span><span class="bt"><span class="bf" style="--v:29.9"></span></span><span class="bv">295</span></div><div class="bar hi"><span class="bl">Primary studies</span><span class="bt"><span class="bf" style="--v:3.9"></span></span><span class="bv">38</span></div><figcaption class="src">Data: Alkhateeb et al., Sensors 22(4), 1304 (2022).</figcaption></figure><figure class="chart reveal" aria-label="Computing paradigm used with the blockchain"><h4>Computing paradigm used with the blockchain</h4><div class="bar hi"><span class="bl">Cloud</span><span class="bt"><span class="bf" style="--v:44.4"></span></span><span class="bv">44.4%</span></div><div class="bar"><span class="bl">Fog</span><span class="bt"><span class="bf" style="--v:22.2"></span></span><span class="bv">22.2%</span></div><div class="bar"><span class="bl">Telecom</span><span class="bt"><span class="bf" style="--v:16.7"></span></span><span class="bv">16.7%</span></div><div class="bar"><span class="bl">Edge</span><span class="bt"><span class="bf" style="--v:11.1"></span></span><span class="bv">11.1%</span></div><figcaption class="src">Data: Sensors 22(4), 1304 (2022). Ethereum was used in 77.8% of the studies.</figcaption></figure>
+<figure class="chart reveal" aria-label="Screening the literature"><h3>Screening the literature</h3><div class="bar"><span class="bl">Search results</span><span class="bt"><span class="bf" style="--v:100"></span></span><span class="bv">985</span></div><div class="bar"><span class="bl">After filtering</span><span class="bt"><span class="bf" style="--v:29.9"></span></span><span class="bv">295</span></div><div class="bar hi"><span class="bl">Primary studies</span><span class="bt"><span class="bf" style="--v:3.9"></span></span><span class="bv">38</span></div><figcaption class="src">Data: Alkhateeb et al., Sensors 22(4), 1304 (2022).</figcaption></figure><figure class="chart reveal" aria-label="Computing paradigm used with the blockchain"><h3>Computing paradigm used with the blockchain</h3><div class="bar hi"><span class="bl">Cloud</span><span class="bt"><span class="bf" style="--v:44.4"></span></span><span class="bv">44.4%</span></div><div class="bar"><span class="bl">Fog</span><span class="bt"><span class="bf" style="--v:22.2"></span></span><span class="bv">22.2%</span></div><div class="bar"><span class="bl">Telecom</span><span class="bt"><span class="bf" style="--v:16.7"></span></span><span class="bv">16.7%</span></div><div class="bar"><span class="bl">Edge</span><span class="bt"><span class="bf" style="--v:11.1"></span></span><span class="bv">11.1%</span></div><figcaption class="src">Data: Sensors 22(4), 1304 (2022). Ethereum was used in 77.8% of the studies.</figcaption></figure>
 <h3>Where this is going</h3>
 <p>Combining traffic fingerprints with ledger-based attestation, so a network knows which devices are present and whether any has been tampered with, cheaply enough for resource-constrained IoT deployments.</p>
 </section>
@@ -107,11 +109,16 @@
 </section>
 <section class="start">
 <h2 id="start-here">Start here</h2>
-<p class="muted">A concrete first month for a student joining this work. Each step builds on the one before.</p>
-<ol class="steps"><li><span class="sn">Step 1</span>Read our ICISSP and Electronics papers below.</li><li><span class="sn">Step 2</span>Capture traffic from two of your own devices with Wireshark and extract header fields with Scapy.</li><li><span class="sn">Step 3</span>Train a nearest-profile classifier on CICIoT2023 headers and check which fields it leans on.</li></ol>
+<p class="muted">A first month for a student joining this work, in 3 steps. Do them in order: each one uses what the one before produced.</p>
+<p class="goal"><strong>Goal for the month:</strong> A device classifier that names IoT devices from packet headers, and a list of the header fields it depends on.</p>
+<details class="setup">
+<summary>Before you start: setup for every project</summary>
+<ol class="setup-list"><li><strong>Set up a workspace.</strong> Create a private Git repository for the project with folders for <code>data/</code>, <code>src/</code>, <code>figures/</code> and <code>notes/</code>. Make a Python virtual environment (<code>python -m venv .venv</code>) and record every package you install in <code>requirements.txt</code>.</li><li><strong>Keep a lab notebook.</strong> Add a dated entry to <code>notes/log.md</code> each time you work: what you ran (the exact command), what came out, and what surprised you. This log is the first thing to share when you ask for help, and most of your paper's method section comes from it.</li><li><strong>Make every number reproducible.</strong> Fix random seeds, write down the dataset version and how you split it, and keep the script that produced each figure next to the figure. If you cannot regenerate a number with one command, it is not finished.</li><li><strong>Stay legal and ethical.</strong> Work only with public datasets, data you recorded yourself with everyone's consent, or systems you own. Never test an attack on a network, car, radio band or service that is not yours, and follow the safety note on this page.</li><li><strong>When you get stuck.</strong> Spend about an hour, then write down what you tried, what you expected and the exact error or plot, and ask. A precise question is much easier to answer than "it does not work".</li></ol>
+</details>
+<ol class="steps steps-detailed"><li><span class="sn">Step 1 · Week 1</span><strong class="st">Read our two papers</strong><ul class="do"><li>Read our ICISSP 2024 and Electronics 2024 papers below.</li><li>List which header fields each one uses and why those fields differ between devices.</li></ul><p class="done"><span>You are done when</span> your list maps each field to a reason it identifies a device.</p></li><li><span class="sn">Step 2 · Week 2</span><strong class="st">Capture your own traffic</strong><ul class="do"><li>Capture a few minutes of traffic from two devices you own (a phone and a smart plug, for example) with Wireshark.</li><li>Load the capture with Scapy and pull out the header fields from your list into a table, one row per packet.</li></ul><p class="done"><span>You are done when</span> you have a CSV of header fields from your own two devices.</p></li><li><span class="sn">Step 3 · Weeks 3 and 4</span><strong class="st">Classify and inspect</strong><ul class="do"><li>Train a nearest-profile classifier on the header fields of CICIoT2023 devices.</li><li>Measure accuracy per device, then remove one field at a time and record the drop.</li></ul><p class="done"><span>You are done when</span> one chart shows which fields the classifier leans on most.</p></li></ol>
 <h3>Tools and data</h3>
 <ul class="res"><li><a href="https://scapy.readthedocs.io/en/latest/">Scapy</a><span>Python library to read, build and send packets.</span></li><li><a href="https://www.wireshark.org/docs/">Wireshark documentation</a><span>The standard packet analyzer.</span></li><li><a href="https://www.unb.ca/cic/datasets/iotdataset-2023.html">CICIoT2023 dataset</a><span>IoT attack traffic from a 105-device testbed, 33 attacks.</span></li></ul>
-<p class="note">Writing it up? Follow the <a href="latex-overleaf.html">LaTeX and Overleaf guide</a> for templates, citations, figures and the checks to run before you submit.</p>
+<p class="note">Finished the month? Email me your log, your figures and one paragraph on what you would do next. Writing it up? Follow the <a href="latex-overleaf.html">LaTeX and Overleaf guide</a> for templates, citations, figures and the checks to run before you submit.</p>
 </section>
 <section>
 <h2 id="papers">Papers</h2>
@@ -124,21 +131,22 @@
 <footer class="site-foot">
   <div class="wrap fgrid">
     <div class="fabout"><a class="brand" href="../index.html">Gorkem Kar<span class="muted">, Ph.D.</span></a>
-      <p>Assistant Professor of Computer Science and Cybersecurity, University of Central Missouri. Security for vehicles, phones, IoT devices and networks.</p></div>
-    <nav aria-label="Research"><h4>Research</h4><ul>
-      <li><a href="../index.html#map">Research map</a></li><li><a href="../index.html#projects-in-depth">Projects in depth</a></li>
-      <li><a href="../index.html#open-projects">Open projects</a></li><li><a href="../index.html#publications">Publications</a></li>
-      <li><a href="../research/latex-overleaf.html">LaTeX and Overleaf guide</a></li></ul></nav>
-    <nav aria-label="Profiles"><h4>Profiles</h4><ul>
+      <p>Assistant Professor of Computer Science and Cybersecurity, University of Central Missouri.</p></div>
+    <nav aria-label="Site"><h2 class="fh">Site</h2><ul>
+      <li><a href="../research.html">Research</a></li><li><a href="../projects.html">Projects</a></li>
+      <li><a href="../publications.html">Publications</a></li><li><a href="../teaching.html">Teaching</a></li>
+      <li><a href="../work-with-me.html">Work with me</a></li></ul></nav>
+    <nav aria-label="Profiles"><h2 class="fh">Profiles</h2><ul>
       <li><a href="https://scholar.google.com/citations?user=dz-6amUAAAAJ&amp;hl=en">Google Scholar</a></li><li><a href="https://github.com/gkar87">GitHub</a></li>
-      <li><a href="https://orcid.org/0000-0003-0367-4409">ORCID</a></li><li><a href="https://www.linkedin.com/in/gorkem-kar/">LinkedIn</a></li></ul></nav>
-    <nav aria-label="Contact"><h4>Contact</h4><ul>
-      <li><a href="mailto:kar@ucmo.edu">kar@ucmo.edu</a></li><li><a href="../index.html#work-with-me">Work with me</a></li><li><a href="../index.html#teaching">Teaching</a></li><li><a href="../index.html#contact">Office and links</a></li></ul></nav>
+      <li><a href="https://orcid.org/0000-0003-0367-4409">ORCID</a></li><li><a href="https://www.linkedin.com/in/gorkem-kar/">LinkedIn</a></li><li><a href="https://www.researchgate.net/profile/Gorkem-Kar-2">ResearchGate</a></li></ul></nav>
+    <nav aria-label="Contact"><h2 class="fh">Contact</h2><ul>
+      <li><a href="mailto:kar@ucmo.edu">kar@ucmo.edu</a></li><li>MIC D159, University of Central Missouri</li>
+      <li><a href="../research/latex-overleaf.html">LaTeX and Overleaf guide</a></li></ul></nav>
   </div>
   <div class="wrap fbase"><span>© 2026 Gorkem Kar · Last updated November 2026</span><a href="#top">Back to top ↑</a></div>
 </footer>
 <a class="totop" href="#top" aria-label="Back to top"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-<script src="../site.js?v=20261126c"></script>
-<script src="../live.js?v=20261126c"></script>
+<script src="../site.js?v=20261127a"></script>
+<script src="../live.js?v=20261127a"></script>
 </body>
 </html>

@@ -13,7 +13,7 @@
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 <meta name="theme-color" content="#1d4f91">
 <script>document.documentElement.classList.add('js');try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
-<link rel="stylesheet" href="../style.css?v=20261126c">
+<link rel="stylesheet" href="../style.css?v=20261127a">
 </head>
 <body class="proj" id="top">
 <a class="skip" href="#main">Skip to content</a>
@@ -21,12 +21,14 @@
   <div class="wrap">
     <a class="brand" href="../index.html">Gorkem Kar<span class="muted">, Ph.D.</span></a>
     <div class="navbar">
-      <nav aria-label="Sections">
+      <nav aria-label="Main">
         <ul>
-          <li><a href="../index.html#about">About</a></li>
-          <li><a href="../index.html#research">Research</a></li>
-          <li><a href="../index.html#publications">Publications</a></li>
-          <li><a href="../index.html#teaching">Teaching</a></li>
+          <li><a href="../index.html">About</a></li>
+          <li><a href="../research.html">Research</a></li>
+          <li><a href="../projects.html" class="active" aria-current="page">Projects</a></li>
+          <li><a href="../publications.html">Publications</a></li>
+          <li><a href="../teaching.html">Teaching</a></li>
+          <li><a href="../work-with-me.html">Work with me</a></li>
           <li><a href="../index.html#contact">Contact</a></li>
         </ul>
       </nav>
@@ -37,7 +39,7 @@
   <div class="progress" aria-hidden="true"></div>
 </header>
 <main id="main" class="wrap">
-<p class="crumbs"><a href="../index.html#research">Research</a> / Sharing spectrum fairly: fractional frequency reuse</p>
+<p class="crumbs"><a href="../projects.html#projects-in-depth">Published work</a> / Sharing spectrum fairly: fractional frequency reuse</p>
 <section class="phead">
   <span class="kicker">Published work</span>
   <h1>Sharing spectrum fairly: fractional frequency reuse</h1>
@@ -70,38 +72,44 @@
 </section>
 <section class="start">
 <h2 id="start-here">Start here</h2>
-<p class="muted">A concrete first month for a student joining this work. Each step builds on the one before.</p>
-<ol class="steps"><li><span class="sn">Step 1</span>Read the thesis below and redraw the inner and outer regions of one cell.</li><li><span class="sn">Step 2</span>Install ns-3 and run one of its LTE examples with several cells.</li><li><span class="sn">Step 3</span>Vary the share of the band used in cell centers and plot throughput and Jain fairness.</li></ol>
+<p class="muted">A first month for a student joining this work, in 3 steps. Do them in order: each one uses what the one before produced.</p>
+<p class="goal"><strong>Goal for the month:</strong> An ns-3 run that reproduces the fairness trade-off of fractional frequency reuse from the thesis.</p>
+<details class="setup">
+<summary>Before you start: setup for every project</summary>
+<ol class="setup-list"><li><strong>Set up a workspace.</strong> Create a private Git repository for the project with folders for <code>data/</code>, <code>src/</code>, <code>figures/</code> and <code>notes/</code>. Make a Python virtual environment (<code>python -m venv .venv</code>) and record every package you install in <code>requirements.txt</code>.</li><li><strong>Keep a lab notebook.</strong> Add a dated entry to <code>notes/log.md</code> each time you work: what you ran (the exact command), what came out, and what surprised you. This log is the first thing to share when you ask for help, and most of your paper's method section comes from it.</li><li><strong>Make every number reproducible.</strong> Fix random seeds, write down the dataset version and how you split it, and keep the script that produced each figure next to the figure. If you cannot regenerate a number with one command, it is not finished.</li><li><strong>Stay legal and ethical.</strong> Work only with public datasets, data you recorded yourself with everyone's consent, or systems you own. Never test an attack on a network, car, radio band or service that is not yours, and follow the safety note on this page.</li><li><strong>When you get stuck.</strong> Spend about an hour, then write down what you tried, what you expected and the exact error or plot, and ask. A precise question is much easier to answer than "it does not work".</li></ol>
+</details>
+<ol class="steps steps-detailed"><li><span class="sn">Step 1 · Week 1</span><strong class="st">Redraw the cell plan</strong><ul class="do"><li>Read the thesis below.</li><li>Draw one cell with its inner and outer region and mark which part of the band each region uses.</li></ul><p class="done"><span>You are done when</span> your drawing matches the thesis description and names the parameters you can change.</p></li><li><span class="sn">Step 2 · Weeks 2 and 3</span><strong class="st">Run the simulator</strong><ul class="do"><li>Install ns-3 and run one of its LTE examples with several cells (the LTE module includes a frequency-reuse example).</li><li>Find where the example sets the reuse scheme and the share of the band for cell centers.</li></ul><p class="done"><span>You are done when</span> you can run the example from the command line and collect its throughput output.</p></li><li><span class="sn">Step 3 · Week 4</span><strong class="st">Sweep and plot</strong><ul class="do"><li>Vary the share of the band used in cell centers over several values.</li><li>For each value, compute total throughput and Jain's fairness index across users, and plot both on one chart.</li></ul><p class="done"><span>You are done when</span> your chart shows the trade-off and is produced by one script.</p></li></ol>
 <h3>Tools and data</h3>
 <ul class="res"><li><a href="https://www.nsnam.org/">ns-3</a><span>Discrete-event network simulator.</span></li></ul>
-<p class="note">Writing it up? Follow the <a href="latex-overleaf.html">LaTeX and Overleaf guide</a> for templates, citations, figures and the checks to run before you submit.</p>
+<p class="note">Finished the month? Email me your log, your figures and one paragraph on what you would do next. Writing it up? Follow the <a href="latex-overleaf.html">LaTeX and Overleaf guide</a> for templates, citations, figures and the checks to run before you submit.</p>
 </section>
 <section>
 <h2 id="thesis">Thesis</h2>
 <ol class="pubs"><li><div class="pt">Performance of static and adaptive subchannel allocation schemes for fractional frequency reuse in WiMAX networks</div><div class="pa"><b>G. Kar</b> (advisor: E. Karaşan)</div><div class="pv">M.S. thesis, Bilkent University, 2011</div><div class="pl"><a href="https://hdl.handle.net/11693/15261">Paper</a></div></li></ol></section>
 <section class="related" aria-labelledby="related-h"><h2 id="related-h">More in side channels and applied AI</h2><div class="rgrid"><a class="rcard planned" href="planned-acoustic.html"><span class="kicker">Open project</span><span class="rt">Do earbuds, smart speakers and video calls leak what you type?</span><span class="ra" aria-hidden="true">→</span></a><a class="rcard planned" href="planned-rag.html"><span class="kicker">Open project</span><span class="rt">Attacking and defending a campus chatbot</span><span class="ra" aria-hidden="true">→</span></a><a class="rcard planned" href="planned-llmsoc.html"><span class="kicker">Open project</span><span class="rt">Can a language model help triage security alerts?</span><span class="ra" aria-hidden="true">→</span></a><a class="rcard" href="side-channels.html"><span class="kicker">Published work</span><span class="rt">Acoustic side channels on phones</span><span class="ra" aria-hidden="true">→</span></a></div></section>
-<section><nav class="pnav" aria-label="More projects"><a href="applied-ai.html">← Explainable and applied AI</a><a href="../index.html#research">All research →</a></nav></section>
+<section><nav class="pnav" aria-label="More projects"><a href="applied-ai.html">← Explainable and applied AI</a><a href="../projects.html#projects-in-depth">All published work →</a></nav></section>
 </div>
 </div>
 </main>
 <footer class="site-foot">
   <div class="wrap fgrid">
     <div class="fabout"><a class="brand" href="../index.html">Gorkem Kar<span class="muted">, Ph.D.</span></a>
-      <p>Assistant Professor of Computer Science and Cybersecurity, University of Central Missouri. Security for vehicles, phones, IoT devices and networks.</p></div>
-    <nav aria-label="Research"><h4>Research</h4><ul>
-      <li><a href="../index.html#map">Research map</a></li><li><a href="../index.html#projects-in-depth">Projects in depth</a></li>
-      <li><a href="../index.html#open-projects">Open projects</a></li><li><a href="../index.html#publications">Publications</a></li>
-      <li><a href="../research/latex-overleaf.html">LaTeX and Overleaf guide</a></li></ul></nav>
-    <nav aria-label="Profiles"><h4>Profiles</h4><ul>
+      <p>Assistant Professor of Computer Science and Cybersecurity, University of Central Missouri.</p></div>
+    <nav aria-label="Site"><h2 class="fh">Site</h2><ul>
+      <li><a href="../research.html">Research</a></li><li><a href="../projects.html">Projects</a></li>
+      <li><a href="../publications.html">Publications</a></li><li><a href="../teaching.html">Teaching</a></li>
+      <li><a href="../work-with-me.html">Work with me</a></li></ul></nav>
+    <nav aria-label="Profiles"><h2 class="fh">Profiles</h2><ul>
       <li><a href="https://scholar.google.com/citations?user=dz-6amUAAAAJ&amp;hl=en">Google Scholar</a></li><li><a href="https://github.com/gkar87">GitHub</a></li>
-      <li><a href="https://orcid.org/0000-0003-0367-4409">ORCID</a></li><li><a href="https://www.linkedin.com/in/gorkem-kar/">LinkedIn</a></li></ul></nav>
-    <nav aria-label="Contact"><h4>Contact</h4><ul>
-      <li><a href="mailto:kar@ucmo.edu">kar@ucmo.edu</a></li><li><a href="../index.html#work-with-me">Work with me</a></li><li><a href="../index.html#teaching">Teaching</a></li><li><a href="../index.html#contact">Office and links</a></li></ul></nav>
+      <li><a href="https://orcid.org/0000-0003-0367-4409">ORCID</a></li><li><a href="https://www.linkedin.com/in/gorkem-kar/">LinkedIn</a></li><li><a href="https://www.researchgate.net/profile/Gorkem-Kar-2">ResearchGate</a></li></ul></nav>
+    <nav aria-label="Contact"><h2 class="fh">Contact</h2><ul>
+      <li><a href="mailto:kar@ucmo.edu">kar@ucmo.edu</a></li><li>MIC D159, University of Central Missouri</li>
+      <li><a href="../research/latex-overleaf.html">LaTeX and Overleaf guide</a></li></ul></nav>
   </div>
   <div class="wrap fbase"><span>© 2026 Gorkem Kar · Last updated November 2026</span><a href="#top">Back to top ↑</a></div>
 </footer>
 <a class="totop" href="#top" aria-label="Back to top"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-<script src="../site.js?v=20261126c"></script>
-<script src="../live.js?v=20261126c"></script>
+<script src="../site.js?v=20261127a"></script>
+<script src="../live.js?v=20261127a"></script>
 </body>
 </html>

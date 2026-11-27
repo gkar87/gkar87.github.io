@@ -13,7 +13,7 @@
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 <meta name="theme-color" content="#1d4f91">
 <script>document.documentElement.classList.add('js');try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
-<link rel="stylesheet" href="../style.css?v=20261126c">
+<link rel="stylesheet" href="../style.css?v=20261127a">
 </head>
 <body class="proj" id="top">
 <a class="skip" href="#main">Skip to content</a>
@@ -21,12 +21,14 @@
   <div class="wrap">
     <a class="brand" href="../index.html">Gorkem Kar<span class="muted">, Ph.D.</span></a>
     <div class="navbar">
-      <nav aria-label="Sections">
+      <nav aria-label="Main">
         <ul>
-          <li><a href="../index.html#about">About</a></li>
-          <li><a href="../index.html#research">Research</a></li>
-          <li><a href="../index.html#publications">Publications</a></li>
-          <li><a href="../index.html#teaching">Teaching</a></li>
+          <li><a href="../index.html">About</a></li>
+          <li><a href="../research.html">Research</a></li>
+          <li><a href="../projects.html" class="active" aria-current="page">Projects</a></li>
+          <li><a href="../publications.html">Publications</a></li>
+          <li><a href="../teaching.html">Teaching</a></li>
+          <li><a href="../work-with-me.html">Work with me</a></li>
           <li><a href="../index.html#contact">Contact</a></li>
         </ul>
       </nav>
@@ -37,7 +39,7 @@
   <div class="progress" aria-hidden="true"></div>
 </header>
 <main id="main" class="wrap">
-<p class="crumbs"><a href="../index.html#research">Research</a> / Connected vehicles: sensing, identity and trust</p>
+<p class="crumbs"><a href="../projects.html#projects-in-depth">Published work</a> / Connected vehicles: sensing, identity and trust</p>
 <section class="phead">
   <span class="kicker">Published work</span>
   <h1>Connected vehicles: sensing, identity and trust</h1>
@@ -81,7 +83,7 @@
   <text x="400" y="110" class="svg-s">car C</text><text x="395" y="150" class="svg-s">car D</text>
   <circle cx="300" cy="125" r="24" class="svg-acc2 blink"/><text x="292" y="131" class="svg-t" style="fill:#fff">J</text>
   <text x="95" y="232" class="svg-s">Cars drift apart at different speeds; only J is near the peak twice.</text>
-</svg><figcaption>Intersecting the suspects seen at two points leaves the jammer (J).</figcaption></figure><figure class="chart reveal" aria-label="Identifying the interfering vehicle in highway tests (20 passes per point)"><h4>Identifying the interfering vehicle in highway tests (20 passes per point)</h4><div class="bar"><span class="bl">Point 1 alone</span><span class="bt"><span class="bf" style="--v:65"></span></span><span class="bv">65%</span></div><div class="bar"><span class="bl">Point 2 alone</span><span class="bt"><span class="bf" style="--v:35"></span></span><span class="bv">35%</span></div><div class="bar hi"><span class="bl">Both points together</span><span class="bt"><span class="bf" style="--v:100"></span></span><span class="bv">100%</span></div><figcaption class="src">Data: Kar et al., ACM CCS 2014, field results. The jammer was emulated with a 900 MHz transmitter. Two points combined resolved all 16 passes that were ambiguous at either point.</figcaption></figure><div class="stats reveal"><div class="stat-t"><b>200 h</b><span>of passive GPS-band monitoring at five sites in New Jersey and South Carolina</span></div><div class="stat-t"><b>2</b><span>suspicious interference incidents recorded on real highways</span></div></div><p class="src">Data: Kar et al., ACM CCS 2014.</p>
+</svg><figcaption>Intersecting the suspects seen at two points leaves the jammer (J).</figcaption></figure><figure class="chart reveal" aria-label="Identifying the interfering vehicle in highway tests (20 passes per point)"><h3>Identifying the interfering vehicle in highway tests (20 passes per point)</h3><div class="bar"><span class="bl">Point 1 alone</span><span class="bt"><span class="bf" style="--v:65"></span></span><span class="bv">65%</span></div><div class="bar"><span class="bl">Point 2 alone</span><span class="bt"><span class="bf" style="--v:35"></span></span><span class="bv">35%</span></div><div class="bar hi"><span class="bl">Both points together</span><span class="bt"><span class="bf" style="--v:100"></span></span><span class="bv">100%</span></div><figcaption class="src">Data: Kar et al., ACM CCS 2014, field results. The jammer was emulated with a 900 MHz transmitter. Two points combined resolved all 16 passes that were ambiguous at either point.</figcaption></figure><div class="stats reveal"><div class="stat-t"><b>200 h</b><span>of passive GPS-band monitoring at five sites in New Jersey and South Carolina</span></div><div class="stat-t"><b>2</b><span>suspicious interference incidents recorded on real highways</span></div></div><p class="src">Data: Kar et al., ACM CCS 2014.</p>
 </section>
 
 <section>
@@ -97,7 +99,7 @@
   <g class="pop" style="animation-delay:4.5s">
     <path d="M60 165 H190 M190 175 H300 M300 165 H420 M420 175 H560" stroke="var(--accent-2)" stroke-width="4" fill="none"/>
     <text x="160" y="196" class="svg-s">time gaps → feature vector → classifier</text></g>
-</svg><figcaption>Pre-trip events and the gaps between them form a fingerprint that a classifier (a linear SVM) learns.</figcaption></figure><figure class="chart reveal" aria-label="Driver identification accuracy"><h4>Driver identification accuracy</h4><div class="bar"><span class="bl">Pre-trip data, within 20 s</span><span class="bt"><span class="bf" style="--v:90"></span></span><span class="bv">&gt;90%</span></div><div class="bar hi"><span class="bl">Pre-trip + 10 min driving</span><span class="bt"><span class="bf" style="--v:98"></span></span><span class="bv">98%</span></div><div class="bar"><span class="bl">Five mail vans, 480 trips</span><span class="bt"><span class="bf" style="--v:91"></span></span><span class="bv">91%</span></div><div class="bar"><span class="bl">Two-driver household</span><span class="bt"><span class="bf" style="--v:85.6"></span></span><span class="bv">85.6%</span></div><figcaption class="src">Data: Kar et al., ACM/IEEE SEC 2017 (PredriveID), Sec. 5.2 and Figs. 13 and 16. Built with an OBD-II dongle and a phone.</figcaption></figure>
+</svg><figcaption>Pre-trip events and the gaps between them form a fingerprint that a classifier (a linear SVM) learns.</figcaption></figure><figure class="chart reveal" aria-label="Driver identification accuracy"><h3>Driver identification accuracy</h3><div class="bar"><span class="bl">Pre-trip data, within 20 s</span><span class="bt"><span class="bf" style="--v:90"></span></span><span class="bv">&gt;90%</span></div><div class="bar hi"><span class="bl">Pre-trip + 10 min driving</span><span class="bt"><span class="bf" style="--v:98"></span></span><span class="bv">98%</span></div><div class="bar"><span class="bl">Five mail vans, 480 trips</span><span class="bt"><span class="bf" style="--v:91"></span></span><span class="bv">91%</span></div><div class="bar"><span class="bl">Two-driver household</span><span class="bt"><span class="bf" style="--v:85.6"></span></span><span class="bv">85.6%</span></div><figcaption class="src">Data: Kar et al., ACM/IEEE SEC 2017 (PredriveID), Sec. 5.2 and Figs. 13 and 16. Built with an OBD-II dongle and a phone.</figcaption></figure>
 <p>This work led to <a href="https://patents.google.com/patent/US10332020B2/en">U.S. Patent No. 10,332,020</a>, <em>Method and apparatus of differentiating drivers based on driving behaviors</em> (GM Global Technology Operations and Rutgers, 2019).</p>
 </section>
 
@@ -125,11 +127,16 @@
 </section>
 <section class="start">
 <h2 id="start-here">Start here</h2>
-<p class="muted">A concrete first month for a student joining this work. Each step builds on the one before.</p>
-<ol class="steps"><li><span class="sn">Step 1</span>Read the GPS-jammer and PredriveID papers below, and write one paragraph on what each assumed about the attacker.</li><li><span class="sn">Step 2</span>Download the one-minute comma2k19 sample and plot GNSS speed against wheel speed for the same drive.</li><li><span class="sn">Step 3</span>Build a short highway scenario in SUMO and log every vehicle's position, the raw material for roadside detection.</li><li><span class="sn">Step 4</span>Pick one open question below and write a one-page plan: data, method and how you would measure success.</li></ol>
+<p class="muted">A first month for a student joining this work, in 4 steps. Do them in order: each one uses what the one before produced.</p>
+<p class="goal"><strong>Goal for the month:</strong> A one-page research plan for one open question on this page, backed by a real drive and a simulated road you have looked at yourself.</p>
+<details class="setup">
+<summary>Before you start: setup for every project</summary>
+<ol class="setup-list"><li><strong>Set up a workspace.</strong> Create a private Git repository for the project with folders for <code>data/</code>, <code>src/</code>, <code>figures/</code> and <code>notes/</code>. Make a Python virtual environment (<code>python -m venv .venv</code>) and record every package you install in <code>requirements.txt</code>.</li><li><strong>Keep a lab notebook.</strong> Add a dated entry to <code>notes/log.md</code> each time you work: what you ran (the exact command), what came out, and what surprised you. This log is the first thing to share when you ask for help, and most of your paper's method section comes from it.</li><li><strong>Make every number reproducible.</strong> Fix random seeds, write down the dataset version and how you split it, and keep the script that produced each figure next to the figure. If you cannot regenerate a number with one command, it is not finished.</li><li><strong>Stay legal and ethical.</strong> Work only with public datasets, data you recorded yourself with everyone's consent, or systems you own. Never test an attack on a network, car, radio band or service that is not yours, and follow the safety note on this page.</li><li><strong>When you get stuck.</strong> Spend about an hour, then write down what you tried, what you expected and the exact error or plot, and ask. A precise question is much easier to answer than "it does not work".</li></ol>
+</details>
+<ol class="steps steps-detailed"><li><span class="sn">Step 1 · Week 1</span><strong class="st">Read with a purpose</strong><ul class="do"><li>Read the GPS-jammer (ACM CCS 2014) and PredriveID (ACM/IEEE SEC 2017) papers in the list below.</li><li>For each, write one paragraph: who the attacker or subject is, what they can and cannot do, and what data the system needs.</li></ul><p class="done"><span>You are done when</span> you have two paragraphs that name each paper's assumptions in your own words.</p></li><li><span class="sn">Step 2 · Week 2</span><strong class="st">Look at real vehicle data</strong><ul class="do"><li>Download the example segment from the comma2k19 repository and load its logs in Python.</li><li>Plot GNSS speed and wheel speed for the same minute of driving on one chart, with time on the x-axis.</li><li>Note where the two disagree and suggest why (sampling rate, lag, tire size, GNSS dropouts).</li></ul><p class="done"><span>You are done when</span> your chart is in <code>figures/</code> with a two-sentence caption explaining the gap.</p></li><li><span class="sn">Step 3 · Week 3</span><strong class="st">Simulate a road</strong><ul class="do"><li>Install Eclipse SUMO and build a short highway in its network editor, or use one of its tutorial networks.</li><li>Run it with <code>--fcd-output</code> so every vehicle's position and speed is logged at each time step.</li><li>Plot two vehicles' tracks from the log. This is the raw material a roadside detector would work from.</li></ul><p class="done"><span>You are done when</span> you can regenerate the log and the plot with one command.</p></li><li><span class="sn">Step 4 · Week 4</span><strong class="st">Write a one-page plan</strong><ul class="do"><li>Pick one open question at the bottom of this page.</li><li>Write one page: the question, the data you will use, the method, the baseline you will compare against, and the number that will tell you it worked.</li></ul><p class="done"><span>You are done when</span> the plan fits on one page and someone else could start from it.</p></li></ol>
 <h3>Tools and data</h3>
 <ul class="res"><li><a href="https://github.com/commaai/comma2k19">comma2k19</a><span>Driving logs with raw GNSS and all CAN data, including wheel speeds and steering.</span></li><li><a href="https://eclipse.dev/sumo/">Eclipse SUMO</a><span>Open-source traffic simulator.</span></li><li><a href="https://gnss-sdr.org/">GNSS-SDR</a><span>Open-source software GNSS receiver.</span></li></ul>
-<p class="note">Writing it up? Follow the <a href="latex-overleaf.html">LaTeX and Overleaf guide</a> for templates, citations, figures and the checks to run before you submit.</p>
+<p class="note">Finished the month? Email me your log, your figures and one paragraph on what you would do next. Writing it up? Follow the <a href="latex-overleaf.html">LaTeX and Overleaf guide</a> for templates, citations, figures and the checks to run before you submit.</p>
 </section>
 <section>
 <h2 id="papers">Papers</h2>
@@ -142,21 +149,22 @@
 <footer class="site-foot">
   <div class="wrap fgrid">
     <div class="fabout"><a class="brand" href="../index.html">Gorkem Kar<span class="muted">, Ph.D.</span></a>
-      <p>Assistant Professor of Computer Science and Cybersecurity, University of Central Missouri. Security for vehicles, phones, IoT devices and networks.</p></div>
-    <nav aria-label="Research"><h4>Research</h4><ul>
-      <li><a href="../index.html#map">Research map</a></li><li><a href="../index.html#projects-in-depth">Projects in depth</a></li>
-      <li><a href="../index.html#open-projects">Open projects</a></li><li><a href="../index.html#publications">Publications</a></li>
-      <li><a href="../research/latex-overleaf.html">LaTeX and Overleaf guide</a></li></ul></nav>
-    <nav aria-label="Profiles"><h4>Profiles</h4><ul>
+      <p>Assistant Professor of Computer Science and Cybersecurity, University of Central Missouri.</p></div>
+    <nav aria-label="Site"><h2 class="fh">Site</h2><ul>
+      <li><a href="../research.html">Research</a></li><li><a href="../projects.html">Projects</a></li>
+      <li><a href="../publications.html">Publications</a></li><li><a href="../teaching.html">Teaching</a></li>
+      <li><a href="../work-with-me.html">Work with me</a></li></ul></nav>
+    <nav aria-label="Profiles"><h2 class="fh">Profiles</h2><ul>
       <li><a href="https://scholar.google.com/citations?user=dz-6amUAAAAJ&amp;hl=en">Google Scholar</a></li><li><a href="https://github.com/gkar87">GitHub</a></li>
-      <li><a href="https://orcid.org/0000-0003-0367-4409">ORCID</a></li><li><a href="https://www.linkedin.com/in/gorkem-kar/">LinkedIn</a></li></ul></nav>
-    <nav aria-label="Contact"><h4>Contact</h4><ul>
-      <li><a href="mailto:kar@ucmo.edu">kar@ucmo.edu</a></li><li><a href="../index.html#work-with-me">Work with me</a></li><li><a href="../index.html#teaching">Teaching</a></li><li><a href="../index.html#contact">Office and links</a></li></ul></nav>
+      <li><a href="https://orcid.org/0000-0003-0367-4409">ORCID</a></li><li><a href="https://www.linkedin.com/in/gorkem-kar/">LinkedIn</a></li><li><a href="https://www.researchgate.net/profile/Gorkem-Kar-2">ResearchGate</a></li></ul></nav>
+    <nav aria-label="Contact"><h2 class="fh">Contact</h2><ul>
+      <li><a href="mailto:kar@ucmo.edu">kar@ucmo.edu</a></li><li>MIC D159, University of Central Missouri</li>
+      <li><a href="../research/latex-overleaf.html">LaTeX and Overleaf guide</a></li></ul></nav>
   </div>
   <div class="wrap fbase"><span>© 2026 Gorkem Kar · Last updated November 2026</span><a href="#top">Back to top ↑</a></div>
 </footer>
 <a class="totop" href="#top" aria-label="Back to top"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-<script src="../site.js?v=20261126c"></script>
-<script src="../live.js?v=20261126c"></script>
+<script src="../site.js?v=20261127a"></script>
+<script src="../live.js?v=20261127a"></script>
 </body>
 </html>

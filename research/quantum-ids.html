@@ -13,7 +13,7 @@
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 <meta name="theme-color" content="#1d4f91">
 <script>document.documentElement.classList.add('js');try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
-<link rel="stylesheet" href="../style.css?v=20261126c">
+<link rel="stylesheet" href="../style.css?v=20261127a">
 </head>
 <body class="proj" id="top">
 <a class="skip" href="#main">Skip to content</a>
@@ -21,12 +21,14 @@
   <div class="wrap">
     <a class="brand" href="../index.html">Gorkem Kar<span class="muted">, Ph.D.</span></a>
     <div class="navbar">
-      <nav aria-label="Sections">
+      <nav aria-label="Main">
         <ul>
-          <li><a href="../index.html#about">About</a></li>
-          <li><a href="../index.html#research">Research</a></li>
-          <li><a href="../index.html#publications">Publications</a></li>
-          <li><a href="../index.html#teaching">Teaching</a></li>
+          <li><a href="../index.html">About</a></li>
+          <li><a href="../research.html">Research</a></li>
+          <li><a href="../projects.html" class="active" aria-current="page">Projects</a></li>
+          <li><a href="../publications.html">Publications</a></li>
+          <li><a href="../teaching.html">Teaching</a></li>
+          <li><a href="../work-with-me.html">Work with me</a></li>
           <li><a href="../index.html#contact">Contact</a></li>
         </ul>
       </nav>
@@ -37,7 +39,7 @@
   <div class="progress" aria-hidden="true"></div>
 </header>
 <main id="main" class="wrap">
-<p class="crumbs"><a href="../index.html#research">Research</a> / Hybrid quantum-classical intrusion detection</p>
+<p class="crumbs"><a href="../projects.html#projects-in-depth">Published work</a> / Hybrid quantum-classical intrusion detection</p>
 <section class="phead">
   <span class="kicker">Published work</span>
   <h1>Hybrid quantum-classical intrusion detection</h1>
@@ -73,7 +75,7 @@
      <rect x="470" y="124" width="60" height="40" rx="6" class="svg-box"/><path d="M480 156 Q500 132 520 156" class="svg-line"/></g>
   <text x="95" y="195" class="svg-s">encode features</text><text x="215" y="195" class="svg-s">entangle</text>
   <text x="310" y="195" class="svg-s">trainable layer</text><text x="465" y="195" class="svg-s">measure</text>
-</svg><figcaption>The quantum layer: features are encoded as rotations, entangled, passed through a trainable layer and measured. One layer and 500 shots worked best.</figcaption></figure><figure class="chart reveal" aria-label="DDoS detection, SDN DDoS dataset (104,345 records)"><h4>DDoS detection, SDN DDoS dataset (104,345 records)</h4><div class="bar hi"><span class="bl">Hybrid quantum-classical</span><span class="bt"><span class="bf" style="--v:99.86"></span></span><span class="bv">99.86%</span></div><div class="bar"><span class="bl">Classical 2D CNN</span><span class="bt"><span class="bf" style="--v:86.8"></span></span><span class="bv">86.80%</span></div><figcaption class="src">Data: EPJ Quantum Technology 12, 77 (2025): HQCNN average accuracy (abstract) and 2D CNN 10-fold mean (Table 8 discussion). Simulated with PennyLane Lightning.</figcaption></figure><figure class="chart reveal" aria-label="Android malware, 12 classes, 10-fold mean accuracy"><h4>Android malware, 12 classes, 10-fold mean accuracy</h4><div class="bar hi"><span class="bl">Hybrid quantum-classical</span><span class="bt"><span class="bf" style="--v:95.33"></span></span><span class="bv">95.33%</span></div><div class="bar"><span class="bl">Classical CNN</span><span class="bt"><span class="bf" style="--v:78.94"></span></span><span class="bv">78.94%</span></div><figcaption class="src">Data: EPJ Quantum Technology 12, 77 (2025), Fig. 13 discussion. CCCS-CIC-AndMal2020 static features, balanced to 800 samples per class.</figcaption></figure><figure class="chart reveal" aria-label="Android malware accuracy as classes are added"><h4>Android malware accuracy as classes are added</h4><div class="bar"><span class="bl">12 classes</span><span class="bt"><span class="bf" style="--v:95.13"></span></span><span class="bv">95.13%</span></div><div class="bar"><span class="bl">14 classes</span><span class="bt"><span class="bf" style="--v:94.38"></span></span><span class="bv">94.38%</span></div><div class="bar"><span class="bl">15 classes</span><span class="bt"><span class="bf" style="--v:93.56"></span></span><span class="bv">93.56%</span></div><figcaption class="src">Data: EPJ Quantum Technology 12, 77 (2025), abstract and Table 11.</figcaption></figure>
+</svg><figcaption>The quantum layer: features are encoded as rotations, entangled, passed through a trainable layer and measured. One layer and 500 shots worked best.</figcaption></figure><figure class="chart reveal" aria-label="DDoS detection, SDN DDoS dataset (104,345 records)"><h3>DDoS detection, SDN DDoS dataset (104,345 records)</h3><div class="bar hi"><span class="bl">Hybrid quantum-classical</span><span class="bt"><span class="bf" style="--v:99.86"></span></span><span class="bv">99.86%</span></div><div class="bar"><span class="bl">Classical 2D CNN</span><span class="bt"><span class="bf" style="--v:86.8"></span></span><span class="bv">86.80%</span></div><figcaption class="src">Data: EPJ Quantum Technology 12, 77 (2025): HQCNN average accuracy (abstract) and 2D CNN 10-fold mean (Table 8 discussion). Simulated with PennyLane Lightning.</figcaption></figure><figure class="chart reveal" aria-label="Android malware, 12 classes, 10-fold mean accuracy"><h3>Android malware, 12 classes, 10-fold mean accuracy</h3><div class="bar hi"><span class="bl">Hybrid quantum-classical</span><span class="bt"><span class="bf" style="--v:95.33"></span></span><span class="bv">95.33%</span></div><div class="bar"><span class="bl">Classical CNN</span><span class="bt"><span class="bf" style="--v:78.94"></span></span><span class="bv">78.94%</span></div><figcaption class="src">Data: EPJ Quantum Technology 12, 77 (2025), Fig. 13 discussion. CCCS-CIC-AndMal2020 static features, balanced to 800 samples per class.</figcaption></figure><figure class="chart reveal" aria-label="Android malware accuracy as classes are added"><h3>Android malware accuracy as classes are added</h3><div class="bar"><span class="bl">12 classes</span><span class="bt"><span class="bf" style="--v:95.13"></span></span><span class="bv">95.13%</span></div><div class="bar"><span class="bl">14 classes</span><span class="bt"><span class="bf" style="--v:94.38"></span></span><span class="bv">94.38%</span></div><div class="bar"><span class="bl">15 classes</span><span class="bt"><span class="bf" style="--v:93.56"></span></span><span class="bv">93.56%</span></div><figcaption class="src">Data: EPJ Quantum Technology 12, 77 (2025), abstract and Table 11.</figcaption></figure>
 <p class="note">These results come from quantum simulators. The appeal for security is size: the quantum layer has very few parameters, which matters for detectors that must run on IoT gateways and phones.</p>
 </section>
 
@@ -95,11 +97,16 @@
 </section>
 <section class="start">
 <h2 id="start-here">Start here</h2>
-<p class="muted">A concrete first month for a student joining this work. Each step builds on the one before.</p>
-<ol class="steps"><li><span class="sn">Step 1</span>Read our EPJ Quantum Technology paper and note each dataset, model size and metric.</li><li><span class="sn">Step 2</span>Work through PennyLane's variational classifier tutorials.</li><li><span class="sn">Step 3</span>Train a classical model on the same data with the same parameter count, the baseline every quantum claim must beat.</li></ol>
+<p class="muted">A first month for a student joining this work, in 3 steps. Do them in order: each one uses what the one before produced.</p>
+<p class="goal"><strong>Goal for the month:</strong> A fair classical baseline for our quantum intrusion detection results, run on the same data with the same budget.</p>
+<details class="setup">
+<summary>Before you start: setup for every project</summary>
+<ol class="setup-list"><li><strong>Set up a workspace.</strong> Create a private Git repository for the project with folders for <code>data/</code>, <code>src/</code>, <code>figures/</code> and <code>notes/</code>. Make a Python virtual environment (<code>python -m venv .venv</code>) and record every package you install in <code>requirements.txt</code>.</li><li><strong>Keep a lab notebook.</strong> Add a dated entry to <code>notes/log.md</code> each time you work: what you ran (the exact command), what came out, and what surprised you. This log is the first thing to share when you ask for help, and most of your paper's method section comes from it.</li><li><strong>Make every number reproducible.</strong> Fix random seeds, write down the dataset version and how you split it, and keep the script that produced each figure next to the figure. If you cannot regenerate a number with one command, it is not finished.</li><li><strong>Stay legal and ethical.</strong> Work only with public datasets, data you recorded yourself with everyone's consent, or systems you own. Never test an attack on a network, car, radio band or service that is not yours, and follow the safety note on this page.</li><li><strong>When you get stuck.</strong> Spend about an hour, then write down what you tried, what you expected and the exact error or plot, and ask. A precise question is much easier to answer than "it does not work".</li></ol>
+</details>
+<ol class="steps steps-detailed"><li><span class="sn">Step 1 · Week 1</span><strong class="st">Read our paper as a reviewer</strong><ul class="do"><li>Read our EPJ Quantum Technology paper.</li><li>Write down every dataset, preprocessing step, model size (number of trainable parameters) and metric it reports.</li></ul><p class="done"><span>You are done when</span> you have a table someone could use to rebuild the experiments.</p></li><li><span class="sn">Step 2 · Week 2</span><strong class="st">Learn the quantum tools</strong><ul class="do"><li>Work through PennyLane's variational classifier tutorials until you can train one on a toy dataset.</li><li>Count its trainable parameters and time one training run.</li></ul><p class="done"><span>You are done when</span> your notebook trains a variational classifier and prints its parameter count.</p></li><li><span class="sn">Step 3 · Weeks 3 and 4</span><strong class="st">Build the baseline every claim must beat</strong><ul class="do"><li>Take CICIoT2023 or CIC-AndMal2020 with the paper's preprocessing.</li><li>Train a classical model (small neural network or tree model) with about the same number of parameters as the quantum model.</li><li>Run both over several random splits and report the mean and spread, not one number.</li></ul><p class="done"><span>You are done when</span> you have one table: quantum vs classical, same data, same parameter budget, several runs.</p></li></ol>
 <h3>Tools and data</h3>
 <ul class="res"><li><a href="https://pennylane.ai/qml/">PennyLane</a><span>Quantum machine learning tutorials and library.</span></li><li><a href="https://www.unb.ca/cic/datasets/iotdataset-2023.html">CICIoT2023 dataset</a><span>IoT attack traffic from a 105-device testbed, 33 attacks.</span></li><li><a href="https://www.unb.ca/cic/datasets/andmal2020.html">CIC-AndMal2020 dataset</a><span>Android malware in 14 categories and 191 families.</span></li><li><a href="https://quantum.cloud.ibm.com/docs/en/guides">Qiskit and IBM Quantum documentation</a><span>Build and run circuits on simulators and IBM hardware.</span></li></ul>
-<p class="note">Writing it up? Follow the <a href="latex-overleaf.html">LaTeX and Overleaf guide</a> for templates, citations, figures and the checks to run before you submit.</p>
+<p class="note">Finished the month? Email me your log, your figures and one paragraph on what you would do next. Writing it up? Follow the <a href="latex-overleaf.html">LaTeX and Overleaf guide</a> for templates, citations, figures and the checks to run before you submit.</p>
 </section>
 <section>
 <h2 id="papers">Papers</h2>
@@ -112,21 +119,22 @@
 <footer class="site-foot">
   <div class="wrap fgrid">
     <div class="fabout"><a class="brand" href="../index.html">Gorkem Kar<span class="muted">, Ph.D.</span></a>
-      <p>Assistant Professor of Computer Science and Cybersecurity, University of Central Missouri. Security for vehicles, phones, IoT devices and networks.</p></div>
-    <nav aria-label="Research"><h4>Research</h4><ul>
-      <li><a href="../index.html#map">Research map</a></li><li><a href="../index.html#projects-in-depth">Projects in depth</a></li>
-      <li><a href="../index.html#open-projects">Open projects</a></li><li><a href="../index.html#publications">Publications</a></li>
-      <li><a href="../research/latex-overleaf.html">LaTeX and Overleaf guide</a></li></ul></nav>
-    <nav aria-label="Profiles"><h4>Profiles</h4><ul>
+      <p>Assistant Professor of Computer Science and Cybersecurity, University of Central Missouri.</p></div>
+    <nav aria-label="Site"><h2 class="fh">Site</h2><ul>
+      <li><a href="../research.html">Research</a></li><li><a href="../projects.html">Projects</a></li>
+      <li><a href="../publications.html">Publications</a></li><li><a href="../teaching.html">Teaching</a></li>
+      <li><a href="../work-with-me.html">Work with me</a></li></ul></nav>
+    <nav aria-label="Profiles"><h2 class="fh">Profiles</h2><ul>
       <li><a href="https://scholar.google.com/citations?user=dz-6amUAAAAJ&amp;hl=en">Google Scholar</a></li><li><a href="https://github.com/gkar87">GitHub</a></li>
-      <li><a href="https://orcid.org/0000-0003-0367-4409">ORCID</a></li><li><a href="https://www.linkedin.com/in/gorkem-kar/">LinkedIn</a></li></ul></nav>
-    <nav aria-label="Contact"><h4>Contact</h4><ul>
-      <li><a href="mailto:kar@ucmo.edu">kar@ucmo.edu</a></li><li><a href="../index.html#work-with-me">Work with me</a></li><li><a href="../index.html#teaching">Teaching</a></li><li><a href="../index.html#contact">Office and links</a></li></ul></nav>
+      <li><a href="https://orcid.org/0000-0003-0367-4409">ORCID</a></li><li><a href="https://www.linkedin.com/in/gorkem-kar/">LinkedIn</a></li><li><a href="https://www.researchgate.net/profile/Gorkem-Kar-2">ResearchGate</a></li></ul></nav>
+    <nav aria-label="Contact"><h2 class="fh">Contact</h2><ul>
+      <li><a href="mailto:kar@ucmo.edu">kar@ucmo.edu</a></li><li>MIC D159, University of Central Missouri</li>
+      <li><a href="../research/latex-overleaf.html">LaTeX and Overleaf guide</a></li></ul></nav>
   </div>
   <div class="wrap fbase"><span>© 2026 Gorkem Kar · Last updated November 2026</span><a href="#top">Back to top ↑</a></div>
 </footer>
 <a class="totop" href="#top" aria-label="Back to top"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-<script src="../site.js?v=20261126c"></script>
-<script src="../live.js?v=20261126c"></script>
+<script src="../site.js?v=20261127a"></script>
+<script src="../live.js?v=20261127a"></script>
 </body>
 </html>

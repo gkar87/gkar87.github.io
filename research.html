@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Research · Gorkem Kar</title>
+<meta name="description" content="Research directions of Gorkem Kar: trustworthy edge AI for connected vehicles, lightweight and quantum-enhanced intrusion detection, IoT device identity, side channels and applied AI.">
+<meta property="og:title" content="Research · Gorkem Kar">
+<meta property="og:description" content="Assistant Professor of Computer Science and Cybersecurity, University of Central Missouri. Security for vehicles, phones, IoT devices and networks, with machine learning small enough for the edge.">
+<meta property="og:type" content="profile">
+<meta property="og:image" content="https://gkar87.github.io/images/headshot.jpg">
+<meta property="og:url" content="https://gkar87.github.io/research.html">
+<link rel="canonical" href="https://gkar87.github.io/research.html">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#1d4f91">
+<script>document.documentElement.classList.add('js');try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+<link rel="stylesheet" href="style.css?v=20261127a">
+</head>
+<body class="sub" id="top">
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="index.html">Gorkem Kar<span class="muted">, Ph.D.</span></a>
+    <div class="navbar">
+      <nav aria-label="Main">
+        <ul>
+          <li><a href="index.html">About</a></li>
+          <li><a href="research.html" class="active" aria-current="page">Research</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="publications.html">Publications</a></li>
+          <li><a href="teaching.html">Teaching</a></li>
+          <li><a href="work-with-me.html">Work with me</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <button class="find" type="button" aria-label="Search the site" aria-keyshortcuts="Control+K Meta+K /"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M20 20l-4.2-4.2" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg><kbd>Ctrl K</kbd></button>
+      <button class="theme" type="button" aria-label="Switch theme"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" fill="currentColor"/></svg></button>
+    </div>
+  </div>
+  <div class="progress" aria-hidden="true"></div>
+</header>
+
+<main id="main">
+<div class="page-band"><div class="wrap">
+<div class="pagehead">
+  <span class="kicker">What my group works on</span>
+  <h1>Research</h1>
+  <p class="lede">My group looks for clues that systems ignore, such as how a car is started or the sound of a key press, and builds small models that use them to decide which devices, drivers and networks to trust.</p>
+  <nav class="jump" aria-label="On this page"><a href="#dirs">Four directions</a><a href="#method">How I work</a></nav>
+</div>
+</div></div>
+<div class="wrap">
+<section id="overview" class="tight">
+  <div class="prose">
+  <p>A car's start-up routine can identify its driver. A phone's two microphones can hear which key was pressed. A single packet header can say which device sent it. Each of these results treats a signal the system ignores as evidence, then asks whether a model small and fast enough for a vehicle, a phone or a gateway can act on it. That is the thread from my doctoral work on connected cars at Rutgers to the security and applied-AI work my group does at UCM.</p>
+  </div>
+  <ul class="chips" aria-label="Research interests">
+    <li>Connected and autonomous vehicles</li>
+    <li>Mobile and IoT security</li>
+    <li>Network intrusion detection</li>
+    <li>Side channels</li>
+    <li>Quantum machine learning</li>
+    <li>Explainable AI</li>
+    <li>Edge computing</li>
+  </ul>
+</section>
+<section id="dirs">
+  <h2>Four directions</h2>
+  <p class="dirs-intro">Each direction links to its published work and to the open projects for new students.</p>
+  <div class="dirs">
+    <article class="dir d1 reveal" id="dir-1">
+      <span class="num">01</span>
+      <h3>Trustworthy edge AI for connected vehicles</h3>
+      <p class="what">Making the data a car acts on, from GPS, its own sensors, its internal network and messages from other vehicles, trustworthy enough to rely on, with models small enough to run in the car or at the roadside.</p>
+      <h4>Core questions</h4>
+      <ul class="cq"><li>Can a car tell that a GPS fix, a sensor reading or a message from another vehicle is false by checking it against its own motion?</li><li>What can in-vehicle data say about who is driving and how they drive?</li><li>Which of these checks are cheap and fast enough to run on vehicle or roadside hardware?</li></ul>
+      <h4>Why it matters</h4>
+      <p>Cars increasingly act on data they cannot verify. A spoofed position or a vehicle that is not there is a safety problem, not only a privacy one.</p>
+      <h4>How the projects connect</h4>
+      <p>The published work caught GPS jammers from roadside points, identified drivers from how they start the car (related to our U.S. patent with GM), and extended what a car can see. The open projects carry the same checks to spoofed satellite signals, the car's internal network, vehicle-to-vehicle messages, location privacy and EV charging.</p>
+      <div class="path">
+        <div class="row"><span class="lab">Published</span><span class="cr"><a class="pub" href="research/vehicles.html">GPS jammers and driver ID</a><a class="pub" href="research/perception.html">Seeing past line of sight</a><a class="pub" href="research/driver-behavior.html">Driver scoring</a></span></div>
+        <div class="row"><span class="lab">Open</span><span class="cr"><a class="plan" href="research/planned-gnss.html">GNSS spoofing</a><a class="plan" href="research/planned-can.html">In-vehicle intrusions</a><a class="plan" href="research/planned-v2x.html">Ghost vehicles</a><a class="plan" href="research/planned-vprivacy.html">Location privacy</a><a class="plan" href="research/planned-ev.html">EV charging</a></span></div>
+      </div>
+    </article>
+    <article class="dir d2 reveal" id="dir-2">
+      <span class="num">02</span>
+      <h3>Lightweight and quantum-enhanced intrusion detection</h3>
+      <p class="what">Detecting attacks and malware with models that fit the budget of a gateway or a small device, and testing honestly whether a quantum layer adds anything.</p>
+      <h4>Core questions</h4>
+      <ul class="cq"><li>Does a hybrid quantum-classical detector beat a fair classical model of the same size, in simulation and on real quantum hardware?</li><li>How small can a detector become, compressed or trained across many sites, before its accuracy falls?</li><li>Can an analyst check why a detector fired, and does it hold up against realistic evasion?</li></ul>
+      <h4>Why it matters</h4>
+      <p>Most IoT networks cannot send all their traffic to a large server, so detection has to run close to the devices. And a claim that quantum helps is only worth making against a fair baseline.</p>
+      <h4>How the projects connect</h4>
+      <p>Our hybrid network detects DDoS traffic and classifies Android malware in one framework, and the same quantum circuits classify Raman spectra. The open projects test those models fairly, shrink them for devices, spread training across sites, explain their decisions and attack them.</p>
+      <div class="path">
+        <div class="row"><span class="lab">Published</span><span class="cr"><a class="pub" href="research/quantum-ids.html">Hybrid quantum IDS</a><a class="pub" href="research/quantum-spectra.html">Quantum ML for spectra</a></span></div>
+        <div class="row"><span class="lab">Open</span><span class="cr"><a class="plan" href="research/planned-quantum.html">Honest quantum benchmarks</a><a class="plan" href="research/planned-tinyml.html">Detection on the device</a><a class="plan" href="research/planned-federated.html">Federated detection</a><a class="plan" href="research/planned-xai.html">Explanations you can check</a><a class="plan" href="research/planned-adversarial.html">Realistic evasion attacks</a></span></div>
+      </div>
+    </article>
+    <article class="dir d3 reveal" id="dir-3">
+      <span class="num">03</span>
+      <h3>Device identity and integrity in IoT</h3>
+      <p class="what">Knowing which physical device sent each packet, and whether that device is still the one it claims to be.</p>
+      <h4>Core questions</h4>
+      <ul class="cq"><li>How much of a device's identity sits in a single packet's headers, or in the sizes and timing of encrypted traffic?</li><li>Are the accuracies reported for traffic classifiers real, or inflated by shortcuts in the benchmark data?</li><li>Can a device's fingerprint be tied to a tamper-evident record cheaply enough for small devices, and stay secure against future quantum attacks?</li></ul>
+      <h4>Why it matters</h4>
+      <p>Access rules, patching and incident response all assume a network knows what is connected to it. Without that, every other defense is guessing.</p>
+      <h4>How the projects connect</h4>
+      <p>We identified 95.3% of devices from a single packet and named network incidents with genetic-algorithm feature selection. The open projects check those results on leak-free benchmarks, move to encrypted traffic and radio signals, and anchor identity in a ledger with post-quantum protection.</p>
+      <div class="path">
+        <div class="row"><span class="lab">Published</span><span class="cr"><a class="pub" href="research/iot-identity.html">Device fingerprints, incidents</a></span></div>
+        <div class="row"><span class="lab">Open</span><span class="cr"><a class="plan" href="research/planned-benchmark.html">Leak-free benchmarks</a><a class="plan" href="research/planned-encrypted.html">Encrypted traffic</a><a class="plan" href="research/planned-rf.html">Radio fingerprints</a><a class="plan" href="research/planned-blockchain.html">Ledger identity</a><a class="plan" href="research/planned-pqc.html">Post-quantum IoT</a></span></div>
+      </div>
+    </article>
+    <article class="dir d4 reveal" id="dir-4">
+      <span class="num">04</span>
+      <h3>Side channels and applied AI</h3>
+      <p class="what">The same habit, reading a signal a system ignores, applied beyond the three core lines: the sound of a keyboard, the reasons behind a model's prediction, and the radio spectrum a cell shares.</p>
+      <h4>Core questions</h4>
+      <ul class="cq"><li>What does everyday audio, from a phone, earbuds or a video call, reveal about what you type?</li><li>When a model makes a high-stakes call, can it show which inputs drove it, and can a chatbot or triage model be trusted with the text it retrieves?</li><li>How should a cell split its spectrum between users near the tower and users at the edge?</li></ul>
+      <h4>Why it matters</h4>
+      <p>Leaks often come from parts of a system nobody treats as security-relevant, and people act on model outputs they cannot inspect.</p>
+      <h4>How the projects connect</h4>
+      <p>A phone's two microphones recovered keystrokes in our MobiCom paper, explainable models showed why food-fraud and attrition predictions were made, and my M.S. thesis balanced speed and fairness in shared spectrum. The open projects test keystroke leaks over calls and the security of chatbots and language-model alert triage.</p>
+      <div class="path">
+        <div class="row"><span class="lab">Published</span><span class="cr"><a class="pub" href="research/side-channels.html">Keystrokes by sound</a><a class="pub" href="research/applied-ai.html">Explainable applied AI</a><a class="pub" href="research/wireless-ffr.html">Fair spectrum sharing</a></span></div>
+        <div class="row"><span class="lab">Open</span><span class="cr"><a class="plan" href="research/planned-acoustic.html">Keystrokes over calls</a><a class="plan" href="research/planned-rag.html">Chatbot security</a><a class="plan" href="research/planned-llmsoc.html">Alert triage with LLMs</a></span></div>
+      </div>
+    </article>
+  </div>
+</section>
+<section id="how">
+  <h2 id="method">How I work</h2>
+  <p class="dirs-intro">Every project on this site follows the same five steps. The published work is strongest on the first four; several open projects are built around the fifth.</p>
+  <figure class="pipe" aria-label="Where this work sits in the method: Sense, Fingerprint, Decide, Deploy, Stress-test"><ol><li class="on" style="--i:0"><small>01</small><b>Sense</b><span>a signal the system ignores</span><em>GPS signal strength on phones, the sound of a key press, packet headers</em></li><li class="on" style="--i:1"><small>02</small><b>Fingerprint</b><span>the behavior inside it</span><em>pre-trip timing gaps, time difference of arrival, wavelet scaleograms</em></li><li class="on" style="--i:2"><small>03</small><b>Decide</b><span>with a small model</span><em>SVMs, CNNs and LSTMs, two-qubit circuits, BERTurk</em></li><li class="on" style="--i:3"><small>04</small><b>Deploy</b><span>at the edge or on real hardware</span><em>roadside points, vehicle edge nodes, an IonQ quantum processor</em></li><li class="on" style="--i:4"><small>05</small><b>Stress-test</b><span>attack it, explain it, benchmark it fairly</span><em>matched baselines, leak-free splits, constrained attacks (open projects)</em></li></ol><figcaption>Examples under each step come from published papers, except where marked as open projects.</figcaption></figure>
+</section>
+<p class="more"><a href="projects.html">See every project →</a></p>
+</div>
+
+</main>
+
+<footer class="site-foot">
+  <div class="wrap fgrid">
+    <div class="fabout"><a class="brand" href="index.html">Gorkem Kar<span class="muted">, Ph.D.</span></a>
+      <p>Assistant Professor of Computer Science and Cybersecurity, University of Central Missouri.</p></div>
+    <nav aria-label="Site"><h2 class="fh">Site</h2><ul>
+      <li><a href="research.html">Research</a></li><li><a href="projects.html">Projects</a></li>
+      <li><a href="publications.html">Publications</a></li><li><a href="teaching.html">Teaching</a></li>
+      <li><a href="work-with-me.html">Work with me</a></li></ul></nav>
+    <nav aria-label="Profiles"><h2 class="fh">Profiles</h2><ul>
+      <li><a href="https://scholar.google.com/citations?user=dz-6amUAAAAJ&amp;hl=en">Google Scholar</a></li><li><a href="https://github.com/gkar87">GitHub</a></li>
+      <li><a href="https://orcid.org/0000-0003-0367-4409">ORCID</a></li><li><a href="https://www.linkedin.com/in/gorkem-kar/">LinkedIn</a></li><li><a href="https://www.researchgate.net/profile/Gorkem-Kar-2">ResearchGate</a></li></ul></nav>
+    <nav aria-label="Contact"><h2 class="fh">Contact</h2><ul>
+      <li><a href="mailto:kar@ucmo.edu">kar@ucmo.edu</a></li><li>MIC D159, University of Central Missouri</li>
+      <li><a href="research/latex-overleaf.html">LaTeX and Overleaf guide</a></li></ul></nav>
+  </div>
+  <div class="wrap fbase"><span>© 2026 Gorkem Kar · Last updated November 2026</span><a href="#top">Back to top ↑</a></div>
+</footer>
+<a class="totop" href="#top" aria-label="Back to top"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+<script src="site.js?v=20261127a"></script>
+</body>
+</html>
