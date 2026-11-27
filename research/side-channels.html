@@ -4,12 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Acoustic side channels on phones · Gorkem Kar</title>
-<meta name="description" content="A phone lying behind your keyboard can hear which keys you press. We showed how, with no training data and no language model, which means it works on random passwords too.">
+<meta name="description" content="A phone behind your keyboard can hear which keys you press. We showed how, with no training data or language model, so it works on random passwords too.">
 <meta property="og:title" content="Acoustic side channels on phones">
 <meta property="og:description" content="A phone lying behind your keyboard can hear which keys you press. We showed how, with no training data and no language model, which means it works on random passwords too.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://gkar87.github.io/research/side-channels.html">
 <link rel="canonical" href="https://gkar87.github.io/research/side-channels.html">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Gorkem Kar", "item": "https://gkar87.github.io/"}, {"@type": "ListItem", "position": 2, "name": "Projects", "item": "https://gkar87.github.io/projects.html"}, {"@type": "ListItem", "position": 3, "name": "Acoustic side channels on phones", "item": "https://gkar87.github.io/research/side-channels.html"}]}</script>
 <!-- shared head: written by site_upkeep.py -->
 <link rel="icon" href="../favicon.ico" sizes="32x32">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
@@ -25,7 +26,7 @@
 <!-- /shared head -->
 <meta name="theme-color" content="#1d4f91">
 <script>document.documentElement.classList.add('js');try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
-<link rel="stylesheet" href="../style.css?v=8c0906aa">
+<link rel="stylesheet" href="../style.css?v=5ea62d80">
 </head>
 <body class="proj" id="top">
 <a class="skip" href="#main">Skip to content</a>
@@ -59,7 +60,7 @@
   <ul class="facts" aria-label="At a glance"><li>ACM MobiCom, 2015</li><li>Live demo</li></ul>
 </section>
 <div class="pgrid">
-<nav class="toc" aria-label="On this page"><span>On this page</span><ul><li><a href="#live-tdoa">Try it</a></li><li><a href="#snooping-keystrokes-with-millimeter-level-audio-">Snooping keystrokes with millimeter-level audio ranging</a></li><li><a href="#discussion">Discussion</a></li><li><a href="#open-research-questions">Open research questions</a></li><li><a href="#start-here">Start here</a></li><li><a href="#paper">Paper</a></li></ul></nav>
+<nav class="toc" aria-label="On this page"><details><summary>On this page</summary><ul><li><a href="#live-tdoa">Try it</a></li><li><a href="#snooping-keystrokes-with-millimeter-level-audio-">Snooping keystrokes with millimeter-level audio ranging</a></li><li><a href="#discussion">Discussion</a></li><li><a href="#open-research-questions">Open research questions</a></li><li><a href="#start-here">Start here</a></li><li><a href="#paper">Paper</a></li></ul></details></nav>
 <div class="pcontent">
 <section class="brief" aria-label="In short"><div><h2>The question</h2><p>Can one phone lying near a keyboard tell which keys you press, from sound alone?</p></div><div><h2>Why it matters</h2><p>Microphones are everywhere, and nobody thinks of them as a way to steal a password.</p></div><div><h2>What we found</h2><p>Yes. Timing each keystroke at the phone&#x27;s two microphones placed it to within millimeters; the first guess was right for 85.5% of keystrokes at 48 kHz and 94.2% at 192 kHz on one keyboard, with no training data.</p></div></section>
 <figure class="live" data-demo="tdoa" aria-labelledby="live-tdoa">
@@ -136,7 +137,7 @@
   <div class="wrap fbase"><span>© 2026 Gorkem Kar · Last updated November 2026</span><a href="#top">Back to top ↑</a></div>
 </footer>
 <a class="totop" href="#top" aria-label="Back to top"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-<script src="../site.js?v=8c0906aa"></script>
-<script src="../live.js?v=8c0906aa"></script>
+<script src="../site.js?v=5ea62d80"></script>
+<script src="../live/tdoa.js?v=5ea62d80"></script>
 </body>
 </html>

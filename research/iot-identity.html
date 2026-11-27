@@ -4,12 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>IoT device identity and network incidents · Gorkem Kar</title>
-<meta name="description" content="A network that cannot tell which device sent a packet, or whether that device was tampered with, cannot defend itself. We identify devices and attacks from packet headers alone.">
+<meta name="description" content="A network that cannot tell which device sent a packet, or whether it was tampered with, cannot defend itself. We identify devices and attacks from headers.">
 <meta property="og:title" content="IoT device identity and network incidents">
 <meta property="og:description" content="A network that cannot tell which device sent a packet, or whether that device was tampered with, cannot defend itself. We identify devices and attacks from packet headers alone.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://gkar87.github.io/research/iot-identity.html">
 <link rel="canonical" href="https://gkar87.github.io/research/iot-identity.html">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Gorkem Kar", "item": "https://gkar87.github.io/"}, {"@type": "ListItem", "position": 2, "name": "Projects", "item": "https://gkar87.github.io/projects.html"}, {"@type": "ListItem", "position": 3, "name": "IoT device identity and network incidents", "item": "https://gkar87.github.io/research/iot-identity.html"}]}</script>
 <!-- shared head: written by site_upkeep.py -->
 <link rel="icon" href="../favicon.ico" sizes="32x32">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
@@ -25,7 +26,7 @@
 <!-- /shared head -->
 <meta name="theme-color" content="#1d4f91">
 <script>document.documentElement.classList.add('js');try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
-<link rel="stylesheet" href="../style.css?v=8c0906aa">
+<link rel="stylesheet" href="../style.css?v=5ea62d80">
 </head>
 <body class="proj" id="top">
 <a class="skip" href="#main">Skip to content</a>
@@ -59,7 +60,7 @@
   <ul class="facts" aria-label="At a glance"><li>ICISSP, 2024</li><li>Electronics, 2024</li><li>Sensors, 2022</li><li>Live demo</li></ul>
 </section>
 <div class="pgrid">
-<nav class="toc" aria-label="On this page"><span>On this page</span><ul><li><a href="#live-packet">Try it</a></li><li><a href="#fingerprinting-iot-devices-from-a-single-packet">Fingerprinting IoT devices from a single packet</a></li><li><a href="#identifying-network-attacks-with-a-genetic-algor">Identifying network attacks with a genetic algorithm</a></li><li><a href="#hybrid-blockchains-for-iot">Hybrid blockchains for IoT</a></li><li><a href="#discussion">Discussion</a></li><li><a href="#open-research-questions">Open research questions</a></li><li><a href="#start-here">Start here</a></li><li><a href="#papers">Papers</a></li></ul></nav>
+<nav class="toc" aria-label="On this page"><details><summary>On this page</summary><ul><li><a href="#live-packet">Try it</a></li><li><a href="#fingerprinting-iot-devices-from-a-single-packet">Fingerprinting IoT devices from a single packet</a></li><li><a href="#identifying-network-attacks-with-a-genetic-algor">Identifying network attacks with a genetic algorithm</a></li><li><a href="#hybrid-blockchains-for-iot">Hybrid blockchains for IoT</a></li><li><a href="#discussion">Discussion</a></li><li><a href="#open-research-questions">Open research questions</a></li><li><a href="#start-here">Start here</a></li><li><a href="#papers">Papers</a></li></ul></details></nav>
 <div class="pcontent">
 <section class="brief" aria-label="In short"><div><h2>The question</h2><p>Can a network tell which device sent a packet, and which attack it is facing, from packet headers alone?</p></div><div><h2>Why it matters</h2><p>Vulnerable IoT devices have to be found and isolated quickly, without installing software on them.</p></div><div><h2>What we found</h2><p>One packet&#x27;s header named the device with 95.3% weighted accuracy, and features chosen by a genetic algorithm caught two denial-of-service floods every time and DNS botnets and OS scans about 95% of the time.</p></div></section>
 <figure class="live" data-demo="packet" aria-labelledby="live-packet">
@@ -159,7 +160,7 @@
   <div class="wrap fbase"><span>© 2026 Gorkem Kar · Last updated November 2026</span><a href="#top">Back to top ↑</a></div>
 </footer>
 <a class="totop" href="#top" aria-label="Back to top"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-<script src="../site.js?v=8c0906aa"></script>
-<script src="../live.js?v=8c0906aa"></script>
+<script src="../site.js?v=5ea62d80"></script>
+<script src="../live/packet.js?v=5ea62d80"></script>
 </body>
 </html>

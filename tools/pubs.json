@@ -1,0 +1,425 @@
+[
+ {
+  "kind": "submitted",
+  "title": "One knob, two objectives: group parity, benefit inequality, and the reliability of fairness tuning",
+  "authors": "T. Nepal, G. Kar",
+  "venue": "Manuscript, 2026",
+  "year": "2026",
+  "doi": null,
+  "links": [
+   [
+    "#submitted",
+    "Summary"
+   ]
+  ],
+  "tags": [
+   "Submitted"
+  ]
+ },
+ {
+  "kind": "submitted",
+  "title": "Enhancing university chatbots with hybrid multi-query retrieval-augmented generation: a case study at UCM",
+  "authors": "L. N. Posini, R. Siddiqua, G. Kar",
+  "venue": "Manuscript, 2026",
+  "year": "2026",
+  "doi": null,
+  "links": [
+   [
+    "#submitted",
+    "Summary"
+   ]
+  ],
+  "tags": [
+   "Submitted"
+  ]
+ },
+ {
+  "kind": "submitted",
+  "title": "The evolution of object detection: a systematic review of transformer-based and few-shot learning approaches",
+  "authors": "M. S. I. Khan, G. Kar",
+  "venue": "Manuscript, 2025",
+  "year": "2025",
+  "doi": null,
+  "links": [
+   [
+    "#submitted",
+    "Summary"
+   ]
+  ],
+  "tags": [
+   "Submitted"
+  ]
+ },
+ {
+  "kind": "journal",
+  "title": "A classical quantum neural network with dual-channel feature extraction on IonQ QPU for classifying weathered microplastics from Raman spectra",
+  "authors": "H. G. Kulkarni, A. R. Banerjee, T. Mandloi, S. Sridevi, S. Geetha, G. Kar",
+  "venue": "AVS Quantum Science, 8(1), 2026",
+  "year": "2026",
+  "doi": null,
+  "links": [
+   [
+    "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dz-6amUAAAAJ&citation_for_view=dz-6amUAAAAJ:5nxA0vEk-isC",
+    "Google Scholar entry"
+   ]
+  ],
+  "tags": []
+ },
+ {
+  "kind": "journal",
+  "title": "Unified hybrid quantum classical neural network framework for detecting distributed denial of service and Android mobile malware attacks",
+  "authors": "S. Sridevi, B. Indira, S. Geetha, S. Balachandran, G. Kar, S. Kharbanda",
+  "venue": "EPJ Quantum Technology, 12, 77, 2025",
+  "year": "2025",
+  "doi": "10.1140/epjqt/s40507-025-00380-z",
+  "links": [
+   [
+    "https://doi.org/10.1140/epjqt/s40507-025-00380-z",
+    "Paper"
+   ]
+  ],
+  "tags": [
+   "Open access"
+  ]
+ },
+ {
+  "kind": "journal",
+  "title": "Novel quanvolutional neural network-based COVID-19 diagnosis from Raman spectroscopic signals of human serum",
+  "authors": "S. S. Dutta, S. Sandeep, S. Sridevi, R. Mistry, J. Ortega, G. Kar",
+  "venue": "IEEE Access, 2025",
+  "year": "2025",
+  "doi": "10.1109/ACCESS.2025.3580316",
+  "links": [
+   [
+    "https://doi.org/10.1109/ACCESS.2025.3580316",
+    "Paper"
+   ]
+  ],
+  "tags": [
+   "Open access"
+  ]
+ },
+ {
+  "kind": "journal",
+  "title": "Food fraud detection using explainable artificial intelligence",
+  "authors": "O. Buyuktepe, C. Catal, G. Kar, Y. Bouzembrak, H. J. P. Marvin, A. K. Gavai",
+  "venue": "Expert Systems, 2025",
+  "year": "2025",
+  "doi": "10.1111/exsy.13387",
+  "links": [
+   [
+    "https://doi.org/10.1111/exsy.13387",
+    "Paper"
+   ]
+  ],
+  "tags": [
+   "Most cited"
+  ]
+ },
+ {
+  "kind": "journal",
+  "title": "Strategic technological innovation investment: Enhancing resilience in the age of digital transformation",
+  "authors": "C. Catal, G. Kar, M. Zarali",
+  "venue": "Journal of Innovative Digital Transformation, 2(1), 50–72, 2025",
+  "year": "2025",
+  "doi": null,
+  "links": [
+   [
+    "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dz-6amUAAAAJ&citation_for_view=dz-6amUAAAAJ:LkGwnXOMwfcC",
+    "Google Scholar entry"
+   ]
+  ],
+  "tags": []
+ },
+ {
+  "kind": "journal",
+  "title": "Automated network incident identification through genetic algorithm-driven feature selection",
+  "authors": "A. Aksoy, L. Valle, G. Kar",
+  "venue": "Electronics, 13(2), 293, 2024",
+  "year": "2024",
+  "doi": "10.3390/electronics13020293",
+  "links": [
+   [
+    "https://doi.org/10.3390/electronics13020293",
+    "Paper"
+   ]
+  ],
+  "tags": [
+   "Open access"
+  ]
+ },
+ {
+  "kind": "journal",
+  "title": "Machine learning in crime prediction",
+  "authors": "K. Jenga, C. Catal, G. Kar",
+  "venue": "Journal of Ambient Intelligence and Humanized Computing, 2023",
+  "year": "2023",
+  "doi": "10.1007/s12652-023-04530-y",
+  "links": [
+   [
+    "https://doi.org/10.1007/s12652-023-04530-y",
+    "Paper"
+   ]
+  ],
+  "tags": [
+   "Most cited"
+  ]
+ },
+ {
+  "kind": "journal",
+  "title": "Hybrid blockchain platforms for the Internet of Things (IoT): A systematic literature review",
+  "authors": "A. Alkhateeb, C. Catal, G. Kar, A. Mishra",
+  "venue": "Sensors, 22(4), 1304, 2022",
+  "year": "2022",
+  "doi": "10.3390/s22041304",
+  "links": [
+   [
+    "https://doi.org/10.3390/s22041304",
+    "Paper"
+   ]
+  ],
+  "tags": [
+   "Open access",
+   "Most cited"
+  ]
+ },
+ {
+  "kind": "journal",
+  "title": "Multiclass classification of scientific texts written in Turkish by applying deep learning technique",
+  "authors": "M. Özkan, G. Kar",
+  "venue": "Journal of Engineering Sciences and Design, 10(2), 504–519, 2022",
+  "year": "2022",
+  "doi": "10.21923/jesd.973181",
+  "links": [
+   [
+    "https://doi.org/10.21923/jesd.973181",
+    "Paper"
+   ]
+  ],
+  "tags": [
+   "Open access"
+  ]
+ },
+ {
+  "kind": "journal",
+  "title": "Distracted driver detection by combining in-vehicle and image data using deep learning",
+  "authors": "F. Omerustaoglu, C. O. Sakar, G. Kar",
+  "venue": "Applied Soft Computing, 2020",
+  "year": "2020",
+  "doi": "10.1016/j.asoc.2020.106657",
+  "links": [
+   [
+    "https://doi.org/10.1016/j.asoc.2020.106657",
+    "Paper"
+   ]
+  ],
+  "tags": [
+   "Most cited"
+  ]
+ },
+ {
+  "kind": "journal",
+  "title": "Towards robust vehicular context sensing",
+  "authors": "H. Qiu, J. Chen, S. Jain, Y. Jiang, M. McCartney, G. Kar, F. Bai, D. Grimm, M. Gruteser, R. Govindan",
+  "venue": "IEEE Transactions on Vehicular Technology, 2018",
+  "year": "2018",
+  "doi": "10.1109/TVT.2017.2771623",
+  "links": [
+   [
+    "https://doi.org/10.1109/TVT.2017.2771623",
+    "Paper"
+   ]
+  ],
+  "tags": []
+ },
+ {
+  "kind": "conference",
+  "title": "Explainable AI-driven exploration of employee attrition mechanisms",
+  "authors": "F. Aydogan, B. Aydogan, G. Kar, C. Catal, A. Aksoy",
+  "venue": "IEEE Latin American Conference on Computational Intelligence (LA-CCI), 2025",
+  "year": "2025",
+  "doi": null,
+  "links": [
+   [
+    "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dz-6amUAAAAJ&citation_for_view=dz-6amUAAAAJ:0EnyYjriUFMC",
+    "Google Scholar entry"
+   ]
+  ],
+  "tags": []
+ },
+ {
+  "kind": "conference",
+  "title": "Comparative analysis of feature selection algorithms for automated IoT device fingerprinting",
+  "authors": "A. Aksoy, S. Varma, G. Moorthy, E. Pan, G. Kar",
+  "venue": "10th International Conference on Information Systems Security and Privacy (ICISSP), 2024",
+  "year": "2024",
+  "doi": "10.5220/0012379100003648",
+  "links": [
+   [
+    "https://doi.org/10.5220/0012379100003648",
+    "Paper"
+   ]
+  ],
+  "tags": []
+ },
+ {
+  "kind": "conference",
+  "title": "Scotto: Real-time driver behavior scoring using in-vehicle data",
+  "authors": "G. Kar, B. Asiroglu, F. S. Bir",
+  "venue": "IEEE 89th Vehicular Technology Conference (VTC2019-Spring), 2019",
+  "year": "2019",
+  "doi": "10.1109/VTCSpring.2019.8746461",
+  "links": [
+   [
+    "https://doi.org/10.1109/VTCSpring.2019.8746461",
+    "Paper"
+   ]
+  ],
+  "tags": []
+ },
+ {
+  "kind": "conference",
+  "title": "Improving driver behavior using gamification",
+  "authors": "S. Helvaci, A. Senova, G. Kar, S. Gören",
+  "venue": "Mobile Web and Intelligent Information Systems (MobiWIS), 2018",
+  "year": "2018",
+  "doi": "10.1007/978-3-319-97163-6_16",
+  "links": [
+   [
+    "https://doi.org/10.1007/978-3-319-97163-6_16",
+    "Paper"
+   ]
+  ],
+  "tags": []
+ },
+ {
+  "kind": "conference",
+  "title": "PredriveID: Pre-trip driver identification from in-vehicle data",
+  "authors": "G. Kar, S. Jain, M. Gruteser, J. Chen, F. Bai, R. Govindan",
+  "venue": "2nd ACM/IEEE Symposium on Edge Computing (SEC), 2017",
+  "year": "2017",
+  "doi": "10.1145/3132211.3134462",
+  "links": [
+   [
+    "https://doi.org/10.1145/3132211.3134462",
+    "Paper"
+   ]
+  ],
+  "tags": []
+ },
+ {
+  "kind": "conference",
+  "title": "Real-time traffic estimation at vehicular edge nodes",
+  "authors": "G. Kar, S. Jain, M. Gruteser, F. Bai, R. Govindan",
+  "venue": "2nd ACM/IEEE Symposium on Edge Computing (SEC), 2017",
+  "year": "2017",
+  "doi": "10.1145/3132211.3134461",
+  "links": [
+   [
+    "https://doi.org/10.1145/3132211.3134461",
+    "Paper"
+   ]
+  ],
+  "tags": []
+ },
+ {
+  "kind": "conference",
+  "title": "Augmented vehicular reality: Enabling extended vision for future vehicles",
+  "authors": "H. Qiu, F. Ahmad, R. Govindan, M. Gruteser, F. Bai, G. Kar",
+  "venue": "18th International Workshop on Mobile Computing Systems and Applications (HotMobile), 2017",
+  "year": "2017",
+  "doi": "10.1145/3032970.3032976",
+  "links": [
+   [
+    "https://doi.org/10.1145/3032970.3032976",
+    "Paper"
+   ],
+   [
+    "https://www.winlab.rutgers.edu/~gruteser/papers/hotmobile17-final28.pdf",
+    "Free PDF"
+   ]
+  ],
+  "tags": []
+ },
+ {
+  "kind": "conference",
+  "title": "Snooping keystrokes with mm-level audio ranging on a single phone",
+  "authors": "J. Liu, Y. Wang, G. Kar, Y. Chen, J. Yang, M. Gruteser",
+  "venue": "21st Annual International Conference on Mobile Computing and Networking (MobiCom), 2015",
+  "year": "2015",
+  "doi": "10.1145/2789168.2790122",
+  "links": [
+   [
+    "https://doi.org/10.1145/2789168.2790122",
+    "Paper"
+   ]
+  ],
+  "tags": [
+   "Most cited"
+  ]
+ },
+ {
+  "kind": "conference",
+  "title": "Detection of on-road vehicles emanating GPS interference",
+  "authors": "G. Kar, H. Mustafa, Y. Wang, Y. Chen, W. Xu, M. Gruteser, T. Vu",
+  "venue": "ACM SIGSAC Conference on Computer and Communications Security (CCS), 2014",
+  "year": "2014",
+  "doi": "10.1145/2660267.2660336",
+  "links": [
+   [
+    "https://doi.org/10.1145/2660267.2660336",
+    "Paper"
+   ]
+  ],
+  "tags": []
+ },
+ {
+  "kind": "other",
+  "title": "Enhancing vehicle data availability and privacy for connected cars",
+  "authors": "G. Kar (advisor: M. Gruteser)",
+  "venue": "Ph.D. dissertation, Rutgers, The State University of New Jersey, 2017",
+  "year": "2017",
+  "doi": "10.7282/T3SB48MK",
+  "links": [
+   [
+    "https://doi.org/10.7282/T3SB48MK",
+    "Dissertation"
+   ]
+  ],
+  "tags": [
+   "Open access"
+  ]
+ },
+ {
+  "kind": "other",
+  "title": "Performance of static and adaptive subchannel allocation schemes for fractional frequency reuse in WiMAX networks",
+  "authors": "G. Kar (advisor: E. Karaşan)",
+  "venue": "M.S. thesis, Bilkent University, 2011",
+  "year": "2011",
+  "doi": null,
+  "links": [
+   [
+    "https://hdl.handle.net/11693/15261",
+    "Thesis"
+   ]
+  ],
+  "tags": [
+   "Open access"
+  ]
+ },
+ {
+  "kind": "other",
+  "title": "Method and apparatus of differentiating drivers based on driving behaviors",
+  "authors": "F. Bai, G. Kar, D. C. Martin, D. K. Grimm, M. Gruteser",
+  "venue": "U.S. Patent No. 10,332,020 B2, granted June 25, 2019. Assignees: GM Global Technology Operations LLC; Rutgers, The State University of New Jersey",
+  "year": "2019",
+  "doi": null,
+  "links": [
+   [
+    "https://patents.google.com/patent/US10332020B2/en",
+    "Patent"
+   ]
+  ],
+  "tags": []
+ }
+]

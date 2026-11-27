@@ -3,13 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Catching GNSS spoofing with the car's own sensors · Gorkem Kar</title>
-<meta name="description" content="Can a car notice that its GPS is lying, using only the data it already has? This project builds a lightweight spoofing detector from the vehicle&#x27;s own motion data.">
+<title>Catching GNSS spoofing with car sensors · Gorkem Kar</title>
+<meta name="description" content="Can a car notice that its GPS is lying, using only data it already has? An open project building a lightweight spoofing detector from vehicle motion data.">
 <meta property="og:title" content="Catching GNSS spoofing with the car&#x27;s own sensors">
 <meta property="og:description" content="Can a car notice that its GPS is lying, using only the data it already has? This project builds a lightweight spoofing detector from the vehicle&#x27;s own motion data.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://gkar87.github.io/research/planned-gnss.html">
 <link rel="canonical" href="https://gkar87.github.io/research/planned-gnss.html">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Gorkem Kar", "item": "https://gkar87.github.io/"}, {"@type": "ListItem", "position": 2, "name": "Projects", "item": "https://gkar87.github.io/projects.html"}, {"@type": "ListItem", "position": 3, "name": "Catching GNSS spoofing with the car's own sensors", "item": "https://gkar87.github.io/research/planned-gnss.html"}]}</script>
 <!-- shared head: written by site_upkeep.py -->
 <link rel="icon" href="../favicon.ico" sizes="32x32">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
@@ -25,7 +26,7 @@
 <!-- /shared head -->
 <meta name="theme-color" content="#1d4f91">
 <script>document.documentElement.classList.add('js');try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
-<link rel="stylesheet" href="../style.css?v=8c0906aa">
+<link rel="stylesheet" href="../style.css?v=5ea62d80">
 </head>
 <body class="proj" id="top">
 <a class="skip" href="#main">Skip to content</a>
@@ -59,7 +60,7 @@
   <ul class="facts" aria-label="At a glance"><li>Core area</li><li>3 research questions</li><li>Open to new graduate students</li><li>Live demo</li></ul>
 </section>
 <div class="pgrid">
-<nav class="toc" aria-label="On this page"><span>On this page</span><ul><li><a href="#live-gnss">Try it</a></li><li><a href="#why-this-matters">Why this matters</a></li><li><a href="#research-questions">Research questions</a></li><li><a href="#approach">Approach</a></li><li><a href="#discussion">Discussion</a></li><li><a href="#start-here">Start here</a></li><li><a href="#skills-you-will-use-and-learn">Skills you will use and learn</a></li><li><a href="#papers-to-read-first">Papers to read first</a></li><li><a href="#interested">Interested?</a></li></ul></nav>
+<nav class="toc" aria-label="On this page"><details><summary>On this page</summary><ul><li><a href="#live-gnss">Try it</a></li><li><a href="#why-this-matters">Why this matters</a></li><li><a href="#research-questions">Research questions</a></li><li><a href="#approach">Approach</a></li><li><a href="#discussion">Discussion</a></li><li><a href="#start-here">Start here</a></li><li><a href="#skills-you-will-use-and-learn">Skills you will use and learn</a></li><li><a href="#papers-to-read-first">Papers to read first</a></li><li><a href="#interested">Interested?</a></li></ul></details></nav>
 <div class="pcontent">
 <section class="brief" aria-label="In short"><div><h2>The question</h2><p>Can a car notice that its GPS is lying, using only the motion data it already has?</p></div><div><h2>Why it matters</h2><p>A spoofer feeds the receiver fake signals and quietly moves the car to the wrong place.</p></div><div><h2>How we will test it</h2><p>Replay recorded drives with injected attacks of graded speed, plot detection delay against false alarms per hour, and run the detector in real time on a phone and an embedded board.</p></div></section>
 <figure class="live" data-demo="gnss" aria-labelledby="live-gnss">
@@ -149,7 +150,7 @@
   <div class="wrap fbase"><span>© 2026 Gorkem Kar · Last updated November 2026</span><a href="#top">Back to top ↑</a></div>
 </footer>
 <a class="totop" href="#top" aria-label="Back to top"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-<script src="../site.js?v=8c0906aa"></script>
-<script src="../live.js?v=8c0906aa"></script>
+<script src="../site.js?v=5ea62d80"></script>
+<script src="../live/gnss.js?v=5ea62d80"></script>
 </body>
 </html>

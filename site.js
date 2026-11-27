@@ -232,7 +232,19 @@
       if (!document.hidden) raf = requestAnimationFrame(frame);
     });
   }
-  // ---- table of contents on project pages: mark the section being read
+  // ---- phones: the menu is one sideways-scrolling row; bring the current page's link into view
+  const navUl = document.querySelector('.navbar nav ul'), navCur = navUl && navUl.querySelector('a.active');
+  if (navCur && navUl.scrollWidth > navUl.clientWidth) navUl.scrollLeft = Math.max(0, navCur.parentElement.offsetLeft - navUl.offsetLeft - 16);
+  // ---- table of contents on project pages: a sidebar on wide screens, folded behind one tap on phones
+  const tocBox = document.querySelector('.toc details');
+  if (tocBox && window.matchMedia) {
+    const wide = window.matchMedia('(min-width: 1240px)');
+    const fit = () => { tocBox.open = wide.matches; };
+    fit();
+    wide.addEventListener ? wide.addEventListener('change', fit) : wide.addListener(fit);
+    tocBox.addEventListener('click', e => { if (!wide.matches && e.target.closest('a')) tocBox.open = false; });
+  }
+  // ---- mark the section being read
   const toc = [...document.querySelectorAll('.toc a[href^="#"]')];
   if (toc.length) {
     const heads = toc.map(a => document.getElementById(a.getAttribute('href').slice(1))).filter(Boolean);

@@ -1,0 +1,21 @@
+# Checks every page after each update: links and images inside the site, #section links,
+# repeated ids, heading order, structured data, titles and descriptions.
+# GitHub emails the repository owner if a check fails. The site still publishes either way.
+name: Check site
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check pages
+        run: python3 tools/check_site.py .

@@ -3,13 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Can an attacker slip past the intrusion detector? · Gorkem Kar</title>
-<meta name="description" content="Machine-learning detectors can be fooled by small changes to their input. For network traffic, the attacker cannot change just anything: packets must stay valid and the attack must still work. This project measures how robust detectors really are against attackers who play by those rules.">
+<title>Can attackers slip past intrusion detectors? · Gorkem Kar</title>
+<meta name="description" content="How robust are network intrusion detectors against attackers who must keep packets valid and the attack working? An open project measuring it.">
 <meta property="og:title" content="Can an attacker slip past the intrusion detector?">
 <meta property="og:description" content="Machine-learning detectors can be fooled by small changes to their input. For network traffic, the attacker cannot change just anything: packets must stay valid and the attack must still work. This project measures how robust detectors really are against attackers who play by those rules.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://gkar87.github.io/research/planned-adversarial.html">
 <link rel="canonical" href="https://gkar87.github.io/research/planned-adversarial.html">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Gorkem Kar", "item": "https://gkar87.github.io/"}, {"@type": "ListItem", "position": 2, "name": "Projects", "item": "https://gkar87.github.io/projects.html"}, {"@type": "ListItem", "position": 3, "name": "Can an attacker slip past the intrusion detector?", "item": "https://gkar87.github.io/research/planned-adversarial.html"}]}</script>
 <!-- shared head: written by site_upkeep.py -->
 <link rel="icon" href="../favicon.ico" sizes="32x32">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
@@ -25,7 +26,7 @@
 <!-- /shared head -->
 <meta name="theme-color" content="#1d4f91">
 <script>document.documentElement.classList.add('js');try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
-<link rel="stylesheet" href="../style.css?v=8c0906aa">
+<link rel="stylesheet" href="../style.css?v=5ea62d80">
 </head>
 <body class="proj" id="top">
 <a class="skip" href="#main">Skip to content</a>
@@ -59,7 +60,7 @@
   <ul class="facts" aria-label="At a glance"><li>Core area</li><li>3 research questions</li><li>Open to new graduate students</li><li>Live demo</li></ul>
 </section>
 <div class="pgrid">
-<nav class="toc" aria-label="On this page"><span>On this page</span><ul><li><a href="#live-adv">Try it</a></li><li><a href="#why-this-matters">Why this matters</a></li><li><a href="#research-questions">Research questions</a></li><li><a href="#approach">Approach</a></li><li><a href="#discussion">Discussion</a></li><li><a href="#start-here">Start here</a></li><li><a href="#skills-you-will-use-and-learn">Skills you will use and learn</a></li><li><a href="#papers-to-read-first">Papers to read first</a></li><li><a href="#interested">Interested?</a></li></ul></nav>
+<nav class="toc" aria-label="On this page"><details><summary>On this page</summary><ul><li><a href="#live-adv">Try it</a></li><li><a href="#why-this-matters">Why this matters</a></li><li><a href="#research-questions">Research questions</a></li><li><a href="#approach">Approach</a></li><li><a href="#discussion">Discussion</a></li><li><a href="#start-here">Start here</a></li><li><a href="#skills-you-will-use-and-learn">Skills you will use and learn</a></li><li><a href="#papers-to-read-first">Papers to read first</a></li><li><a href="#interested">Interested?</a></li></ul></details></nav>
 <div class="pcontent">
 <section class="brief" aria-label="In short"><div><h2>The question</h2><p>Can an attacker fool a network intrusion detector when the traffic must stay valid and the attack must still work?</p></div><div><h2>Why it matters</h2><p>Attacks that change features freely can overstate the risk, and defenses tested only against them give false comfort.</p></div><div><h2>How we will test it</h2><p>Attack the same detectors once in feature space and once under realistic constraints, compare evasion rates, then test defenses against adaptive attacks they have not seen.</p></div></section>
 <figure class="live" data-demo="adv" aria-labelledby="live-adv">
@@ -134,7 +135,7 @@
   <div class="wrap fbase"><span>© 2026 Gorkem Kar · Last updated November 2026</span><a href="#top">Back to top ↑</a></div>
 </footer>
 <a class="totop" href="#top" aria-label="Back to top"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-<script src="../site.js?v=8c0906aa"></script>
-<script src="../live.js?v=8c0906aa"></script>
+<script src="../site.js?v=5ea62d80"></script>
+<script src="../live/adv.js?v=5ea62d80"></script>
 </body>
 </html>
