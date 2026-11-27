@@ -13,7 +13,7 @@
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 <meta name="theme-color" content="#1d4f91">
 <script>document.documentElement.classList.add('js');try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
-<link rel="stylesheet" href="../style.css?v=20261127a">
+<link rel="stylesheet" href="../style.css?v=39a1cdd4">
 </head>
 <body class="proj" id="top">
 <a class="skip" href="#main">Skip to content</a>
@@ -49,6 +49,7 @@
 <div class="pgrid">
 <nav class="toc" aria-label="On this page"><span>On this page</span><ul><li><a href="#live-avr">Try it</a></li><li><a href="#seeing-past-line-of-sight-augmented-vehicular-re">Seeing past line of sight: augmented vehicular reality</a></li><li><a href="#sensing-the-road-from-phones-and-cars">Sensing the road from phones and cars</a></li><li><a href="#discussion">Discussion</a></li><li><a href="#open-research-questions">Open research questions</a></li><li><a href="#start-here">Start here</a></li><li><a href="#papers">Papers</a></li></ul></nav>
 <div class="pcontent">
+<section class="brief" aria-label="In short"><div><h2>The question</h2><p>Can a car see past the truck in front of it, and can the phone in the cabin read the road?</p></div><div><h2>Why it matters</h2><p>Sensors stop at line of sight, so a stopped car or a pedestrian hidden behind a truck stays invisible until it is too late.</p></div><div><h2>What we found</h2><p>Nearby cars sharing their sensor views let a car see what was hidden, and phone and car sensors recognized lane changes with over 90% accuracy, more reliably when many drives were combined.</p></div></section>
 <figure class="live" data-demo="avr" aria-labelledby="live-avr">
   <div class="lhead"><h2 id="live-avr">Try it: See past the truck</h2><span class="kicker">Live illustration</span></div>
   <p class="how">A truck blocks your car&#x27;s view of a stopped car ahead. Move the gap, click the road to move the stopped car, and turn on sharing to add what the truck&#x27;s own sensors see.</p>
@@ -67,7 +68,7 @@
 <section>
 <h2 id="sensing-the-road-from-phones-and-cars">Sensing the road from phones and cars</h2>
 <p>In <em>Towards robust vehicular context sensing</em> (IEEE Transactions on Vehicular Technology, 2018), we detected lane changes, potholes, road grade and stop signs from sensors that are already in the car and in the driver's phone, and compared what phone sensors and the car's own sensors can each deliver. Combining many drives over the same road (crowd-sensing) makes the hard cases more reliable.</p>
-<div class="stats reveal"><div class="stat-t"><b>&gt;90%</b><span>accuracy of lane-change determinations</span></div><div class="stat-t"><b>+35%</b><span>recall for lane changes on curves when many drives are combined</span></div></div><p class="src">Data: Qiu et al., IEEE TVT 2018, abstract.</p>
+<div class="stats reveal"><div class="stat-t"><b>&gt;90%</b><span>accuracy of lane-change determinations</span></div><div class="stat-t"><b>+35%</b><span>recall for lane changes on curves when many drives are combined</span></div></div><p class="src">Data: Qiu et al., IEEE TVT 2018, abstract.</p><figure class="chart reveal" aria-label="Lane changes on curvy roads, car sensors: share of lane changes found"><h3>Lane changes on curvy roads, car sensors: share of lane changes found</h3><div class="bar"><span class="bl">One drive</span><span class="bt"><span class="bf" style="--v:47.58"></span></span><span class="bv">47.58%</span></div><div class="bar hi"><span class="bl">Many drives combined</span><span class="bt"><span class="bf" style="--v:83.7"></span></span><span class="bv">83.70%</span></div><figcaption class="src">Reported results: Qiu et al., IEEE TVT 2018, Sec. IV-A (lane change). Precision rose from 87.50% to 93.38% at the same time. Numbers read from the authors' copy of the paper.</figcaption></figure><figure class="chart reveal" aria-label="Stop sign detection: the car&#x27;s sensors versus a phone"><h3>Stop sign detection: the car's sensors versus a phone</h3><div class="bar"><span class="bl">Car sensors, precision</span><span class="bt"><span class="bf" style="--v:93.24"></span></span><span class="bv">93.24%</span></div><div class="bar"><span class="bl">Car sensors, recall</span><span class="bt"><span class="bf" style="--v:83.78"></span></span><span class="bv">83.78%</span></div><div class="bar"><span class="bl">Phone sensors, precision</span><span class="bt"><span class="bf" style="--v:90.32"></span></span><span class="bv">90.32%</span></div><div class="bar"><span class="bl">Phone sensors, recall</span><span class="bt"><span class="bf" style="--v:85.71"></span></span><span class="bv">85.71%</span></div><figcaption class="src">Reported results: Qiu et al., IEEE TVT 2018, Sec. IV-A and Fig. 15. A phone alone did about as well as the car's own sensors.</figcaption></figure>
 </section>
 
 <section class="discussion">
@@ -118,7 +119,7 @@
   <div class="wrap fbase"><span>© 2026 Gorkem Kar · Last updated November 2026</span><a href="#top">Back to top ↑</a></div>
 </footer>
 <a class="totop" href="#top" aria-label="Back to top"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-<script src="../site.js?v=20261127a"></script>
-<script src="../live.js?v=20261127a"></script>
+<script src="../site.js?v=39a1cdd4"></script>
+<script src="../live.js?v=39a1cdd4"></script>
 </body>
 </html>

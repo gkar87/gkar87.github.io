@@ -13,7 +13,7 @@
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 <meta name="theme-color" content="#1d4f91">
 <script>document.documentElement.classList.add('js');try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
-<link rel="stylesheet" href="../style.css?v=20261127a">
+<link rel="stylesheet" href="../style.css?v=39a1cdd4">
 </head>
 <body class="proj" id="top">
 <a class="skip" href="#main">Skip to content</a>
@@ -62,7 +62,7 @@
 <h2 id="the-trade-off">The trade-off</h2>
 <p>Users near a base station have strong signals and can share the whole band with neighboring cells. Users at the cell edge hear the neighbors' interference too, so in fractional frequency reuse they are served on parts of the band that adjacent cells do not use at the same time. Every subcarrier given to the inner region raises total throughput but leaves less for edge users, so fairness falls.</p>
 <p>The thesis measured both sides, cell throughput and Jain's fairness index, and used their product as one score for the trade-off. It compared static splits with adaptive ones that follow where users actually are.</p>
-<ol class="flow" aria-label="Thesis method"><li><b>Place users</b><span>inner region or cell edge</span></li><li><b>Split subcarriers</b><span>inner share versus edge share</span></li><li><b>Schedule</b><span>serve each region on its part of the band</span></li><li><b>Measure</b><span>cell throughput and Jain's fairness</span></li><li><b>Adapt</b><span>move the split as users move</span></li></ol><div class="stats reveal"><div class="stat-t"><b>≈5%</b><span>higher throughput × fairness from adapting the split to the user distribution, over the best fixed split</span></div></div><p class="src">Data: Kar, M.S. thesis, Bilkent University, 2011, abstract.</p>
+<ol class="flow" aria-label="Thesis method"><li><b>Place users</b><span>inner region or cell edge</span></li><li><b>Split subcarriers</b><span>inner share versus edge share</span></li><li><b>Schedule</b><span>serve each region on its part of the band</span></li><li><b>Measure</b><span>cell throughput and Jain's fairness</span></li><li><b>Adapt</b><span>move the split as users move</span></li></ol><div class="stats reveal"><div class="stat-t"><b>≈5%</b><span>higher throughput × fairness from adapting the split to the user distribution, over the best fixed split</span></div></div><p class="src">Data: Kar, M.S. thesis, Bilkent University, 2011, abstract.</p><figure class="chart reveal" aria-label="Throughput × fairness, averaged over the simulation (higher is better)"><h3>Throughput × fairness, averaged over the simulation (higher is better)</h3><div class="bar hi"><span class="bl">Adaptive split</span><span class="bt"><span class="bf" style="--v:100"></span></span><span class="bv">0.2504</span></div><div class="bar"><span class="bl">Fixed split, 90% inner</span><span class="bt"><span class="bf" style="--v:95.4"></span></span><span class="bv">0.2390</span></div><div class="bar"><span class="bl">Fixed split, 50% inner</span><span class="bt"><span class="bf" style="--v:86.4"></span></span><span class="bv">0.2163</span></div><figcaption class="src">Reported results: Kar, M.S. thesis, Bilkent 2011, Table 4.8. "90% inner" means 90% of the subcarriers go to the inner region. Unitless; bars scaled to the best value. The adaptive scheme switched between 90% and 50% inner as users moved (Table 4.7): lower throughput than fixed 90% (0.4321 vs 0.4735) but higher fairness (0.580 vs 0.505).</figcaption></figure><figure class="chart reveal" aria-label="Throughput × fairness, reuse patterns compared"><h3>Throughput × fairness, reuse patterns compared</h3><div class="bar hi"><span class="bl">FFR, split by user locations</span><span class="bt"><span class="bf" style="--v:83.1"></span></span><span class="bv">0.2080</span></div><div class="bar"><span class="bl">FFR, split by sector area</span><span class="bt"><span class="bf" style="--v:74.0"></span></span><span class="bv">0.1853</span></div><div class="bar"><span class="bl">Reuse 3x3x1</span><span class="bt"><span class="bf" style="--v:32.7"></span></span><span class="bv">0.0819</span></div><div class="bar"><span class="bl">Reuse 1x3x3</span><span class="bt"><span class="bf" style="--v:20.5"></span></span><span class="bv">0.0513</span></div><figcaption class="src">Reported results: same thesis, Table 4.4. FFR is fractional frequency reuse, shown at an inner radius of 0.8 of the cell (the best setting for each). Unitless; bars on the same scale as the chart above.</figcaption></figure>
 <p>The same physical-layer facts, shared spectrum and interference, sit under my later security work on <a href="vehicles.html">GPS jamming</a> and <a href="planned-v2x.html">V2X messages</a>.</p>
 </section>
 
@@ -109,7 +109,7 @@
   <div class="wrap fbase"><span>© 2026 Gorkem Kar · Last updated November 2026</span><a href="#top">Back to top ↑</a></div>
 </footer>
 <a class="totop" href="#top" aria-label="Back to top"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-<script src="../site.js?v=20261127a"></script>
-<script src="../live.js?v=20261127a"></script>
+<script src="../site.js?v=39a1cdd4"></script>
+<script src="../live.js?v=39a1cdd4"></script>
 </body>
 </html>

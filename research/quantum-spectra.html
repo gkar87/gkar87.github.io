@@ -13,7 +13,7 @@
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 <meta name="theme-color" content="#1d4f91">
 <script>document.documentElement.classList.add('js');try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
-<link rel="stylesheet" href="../style.css?v=20261127a">
+<link rel="stylesheet" href="../style.css?v=39a1cdd4">
 </head>
 <body class="proj" id="top">
 <a class="skip" href="#main">Skip to content</a>
@@ -49,6 +49,7 @@
 <div class="pgrid">
 <nav class="toc" aria-label="On this page"><span>On this page</span><ul><li><a href="#live-quanv">Try it</a></li><li><a href="#what-a-quanvolution-layer-does">What a quanvolution layer does</a></li><li><a href="#covid-19-from-the-raman-spectra-of-serum">COVID-19 from the Raman spectra of serum</a></li><li><a href="#weathered-microplastics-on-a-real-quantum-proces">Weathered microplastics on a real quantum processor</a></li><li><a href="#discussion">Discussion</a></li><li><a href="#open-research-questions">Open research questions</a></li><li><a href="#start-here">Start here</a></li><li><a href="#papers">Papers</a></li></ul></nav>
 <div class="pcontent">
+<section class="brief" aria-label="In short"><div><h2>The question</h2><p>Can hybrid quantum-classical models classify Raman spectra, the light fingerprints of molecules?</p></div><div><h2>Why it matters</h2><p>Spectra are one-dimensional, noisy and costly to label, which makes them a natural test bed for small quantum models.</p></div><div><h2>What we found</h2><p>A quanvolutional network classified COVID-19 from the Raman spectra of serum, and a hybrid network classified weathered microplastics while running on a real IonQ quantum processor.</p></div></section>
 <figure class="live" data-demo="quanv" aria-labelledby="live-quanv">
   <div class="lhead"><h2 id="live-quanv">Try it: Slide a quantum filter over a spectrum</h2><span class="kicker">Live illustration</span></div>
   <p class="how">A window slides along a made-up Raman spectrum. Each point in the window rotates one qubit; after a chain of entangling gates, measuring all qubits together gives the product of cos(π × value), one number per window. Those numbers form the feature map a classical network would read.</p>
@@ -66,6 +67,7 @@
 <section>
 <h2 id="covid-19-from-the-raman-spectra-of-serum">COVID-19 from the Raman spectra of serum</h2>
 <p>In <em>IEEE Access</em> (2025), with S. S. Dutta, S. Sandeep, S. Sridevi, R. Mistry and J. Ortega, we turned Raman spectra of human serum into wavelet scaleograms and classified COVID-19 with a quanvolutional neural network, comparing it with classical CNNs. It is the same wavelet-to-quantum pipeline we use for <a href="quantum-ids.html">intrusion detection</a>, applied to light instead of traffic.</p>
+<figure class="chart reveal" aria-label="COVID-19 versus healthy serum: test accuracy by model"><h3>COVID-19 versus healthy serum: test accuracy by model</h3><div class="bar hi"><span class="bl">Our quanvolutional network</span><span class="bt"><span class="bf" style="--v:98.92"></span></span><span class="bv">98.92%</span></div><div class="bar"><span class="bl">Earlier quanvolutional network</span><span class="bt"><span class="bf" style="--v:97.85"></span></span><span class="bv">97.85%</span></div><div class="bar"><span class="bl">MobileNet</span><span class="bt"><span class="bf" style="--v:96.77"></span></span><span class="bv">96.77%</span></div><div class="bar"><span class="bl">Vanilla CNN</span><span class="bt"><span class="bf" style="--v:94.62"></span></span><span class="bv">94.62%</span></div><div class="bar"><span class="bl">Xception</span><span class="bt"><span class="bf" style="--v:94.62"></span></span><span class="bv">94.62%</span></div><div class="bar"><span class="bl">VGG-16</span><span class="bt"><span class="bf" style="--v:80.65"></span></span><span class="bv">80.65%</span></div><figcaption class="src">Reported results: Dutta et al., IEEE Access 13 (2025), Table 5. Both quantum models use one layer and 1,000 shots. The data set has 309 Raman spectra (150 healthy, 159 SARS-CoV-2) split 70/30, so the test set is small.</figcaption></figure><div class="stats reveal"><div class="stat-t"><b>100%</b><span>precision of our network: no healthy sample was flagged</span></div><div class="stat-t"><b>97.73%</b><span>recall: share of COVID-19 samples found</span></div></div><p class="src">Data: IEEE Access 13 (2025), abstract and Table 5.</p>
 </section>
 
 <section>
@@ -121,7 +123,7 @@
   <div class="wrap fbase"><span>© 2026 Gorkem Kar · Last updated November 2026</span><a href="#top">Back to top ↑</a></div>
 </footer>
 <a class="totop" href="#top" aria-label="Back to top"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-<script src="../site.js?v=20261127a"></script>
-<script src="../live.js?v=20261127a"></script>
+<script src="../site.js?v=39a1cdd4"></script>
+<script src="../live.js?v=39a1cdd4"></script>
 </body>
 </html>

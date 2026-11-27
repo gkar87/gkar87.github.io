@@ -13,7 +13,7 @@
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 <meta name="theme-color" content="#1d4f91">
 <script>document.documentElement.classList.add('js');try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
-<link rel="stylesheet" href="../style.css?v=20261127a">
+<link rel="stylesheet" href="../style.css?v=39a1cdd4">
 </head>
 <body class="proj" id="top">
 <a class="skip" href="#main">Skip to content</a>
@@ -47,7 +47,7 @@
   <ul class="facts" aria-label="At a glance"><li>Expert Systems, 2025</li><li>IEEE LA-CCI, 2025</li><li>J. Ambient Intelligence and Humanized Computing, 2023</li><li>J. Engineering Sciences and Design, 2022</li><li>Live demo</li></ul>
 </section>
 <div class="pgrid">
-<nav class="toc" aria-label="On this page"><span>On this page</span><ul><li><a href="#live-shap">Try it</a></li><li><a href="#explaining-the-model-not-just-scoring-it">Explaining the model, not just scoring it</a></li><li><a href="#discussion">Discussion</a></li><li><a href="#open-research-questions">Open research questions</a></li><li><a href="#start-here">Start here</a></li></ul></nav>
+<nav class="toc" aria-label="On this page"><span>On this page</span><ul><li><a href="#live-shap">Try it</a></li><li><a href="#explaining-the-model-not-just-scoring-it">Explaining the model, not just scoring it</a></li><li><a href="#results-sorting-turkish-scientific-texts">Results: sorting Turkish scientific texts</a></li><li><a href="#discussion">Discussion</a></li><li><a href="#open-research-questions">Open research questions</a></li><li><a href="#start-here">Start here</a></li></ul></nav>
 <div class="pcontent">
 <section class="brief" aria-label="In short"><div><h2>The question</h2><p>When a model makes a high-stakes call, such as flagging food fraud or predicting who will quit, can it show which inputs drove it?</p></div><div><h2>Why it matters</h2><p>Analysts and managers need reasons they can check, not a black-box score.</p></div><div><h2>What we found</h2><p>We compared LIME, SHAP and the What-If Tool on a food-fraud model, explained employee attrition, reviewed 68 crime-prediction studies and sorted Turkish scientific texts with 96% accuracy.</p></div></section>
 <figure class="live" data-demo="shap" aria-labelledby="live-shap">
@@ -79,6 +79,12 @@
   <div class="card"><h3>Turkish scientific texts</h3><p>A fine-tuned Turkish BERT model (BERTurk) sorts Turkish scientific articles into five fields, from AI to signal processing, with 96% accuracy. Led by my M.Sc. student Mustafa Özkan.</p><p class="pl"><a href="https://doi.org/10.21923/jesd.973181">J. Engineering Sciences and Design, 2022</a></p></div>
   <div class="card"><h3>Technology investment and resilience</h3><p>How strategic investment in technological innovation helps organizations stay resilient through digital transformation.</p><p class="pl"><a href="https://scholar.google.com/citations?view_op=view_citation&amp;hl=en&amp;user=dz-6amUAAAAJ&amp;citation_for_view=dz-6amUAAAAJ:LkGwnXOMwfcC">J. Innovative Digital Transformation, 2025</a></p></div>
 </div>
+</section>
+
+<section>
+<h2 id="results-sorting-turkish-scientific-texts">Results: sorting Turkish scientific texts</h2>
+<p>For the Turkish text classifier, what the model reads matters most: a title alone is too short, while the abstract carries most of the signal.</p>
+<figure class="chart reveal" aria-label="F1 score by what the model reads (higher is better)"><h3>F1 score by what the model reads (higher is better)</h3><div class="bar"><span class="bl">Title only</span><span class="bt"><span class="bf" style="--v:76.2"></span></span><span class="bv">0.762</span></div><div class="bar"><span class="bl">Abstract only</span><span class="bt"><span class="bf" style="--v:94.0"></span></span><span class="bv">0.940</span></div><div class="bar hi"><span class="bl">Title and abstract</span><span class="bt"><span class="bf" style="--v:96.1"></span></span><span class="bv">0.961</span></div><figcaption class="src">Reported results: Özkan and Kar, J. Engineering Sciences and Design 10(2), 2022, Table 10 (85/15 train/validation split, after preprocessing). 1,560 Turkish theses and patents in five fields.</figcaption></figure><figure class="chart reveal" aria-label="Accuracy in each field"><h3>Accuracy in each field</h3><div class="bar"><span class="bl">Communication and signal processing</span><span class="bt"><span class="bf" style="--v:97"></span></span><span class="bv">0.97</span></div><div class="bar"><span class="bl">Internet of Things</span><span class="bt"><span class="bf" style="--v:97"></span></span><span class="bv">0.97</span></div><div class="bar"><span class="bl">Augmented and virtual reality</span><span class="bt"><span class="bf" style="--v:96"></span></span><span class="bv">0.96</span></div><div class="bar"><span class="bl">AI and machine learning</span><span class="bt"><span class="bf" style="--v:95"></span></span><span class="bv">0.95</span></div><div class="bar"><span class="bl">Image processing</span><span class="bt"><span class="bf" style="--v:94"></span></span><span class="bv">0.94</span></div><figcaption class="src">Reported results: same paper, Table 7.</figcaption></figure>
 </section>
 <section class="discussion">
 <h2 id="discussion">Discussion</h2>
@@ -126,7 +132,7 @@
   <div class="wrap fbase"><span>© 2026 Gorkem Kar · Last updated November 2026</span><a href="#top">Back to top ↑</a></div>
 </footer>
 <a class="totop" href="#top" aria-label="Back to top"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-<script src="../site.js?v=20261127a"></script>
-<script src="../live.js?v=20261127a"></script>
+<script src="../site.js?v=39a1cdd4"></script>
+<script src="../live.js?v=39a1cdd4"></script>
 </body>
 </html>

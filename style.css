@@ -623,3 +623,17 @@ ol.steps-detailed p.done span{font:600 .66rem/1 var(--sans);letter-spacing:.12em
   header.site{position:relative}
   .navbar nav a{padding:.3rem .55rem}
 }
+
+/* Course site previews (teaching.html) */
+.shot{display:block;border-radius:10px;overflow:hidden;border:1px solid var(--line);background:var(--soft);aspect-ratio:16/10;box-shadow:0 1px 2px rgba(0,0,0,.06)}
+.shot img{display:block;width:100%;height:100%;object-fit:cover;object-position:top;transition:transform .35s ease}
+.shot:hover img,.shotcard:hover .shot img{transform:scale(1.03)}
+.course .shot{margin:-.2rem 0 .9rem}
+.shots{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,15rem),1fr));gap:1.1rem;margin:1rem 0 1.4rem}
+.shotcard{margin:0}
+.shotcard figcaption{display:flex;flex-direction:column;gap:.3rem;padding:.6rem .1rem 0}
+.shotcard .code{font:600 .76rem/1 var(--mono);color:var(--accent-3);letter-spacing:.05em}
+.shotcard figcaption a{font-weight:600}
+:root[data-theme=dark] .shot img{filter:brightness(.85)}
+@media (prefers-color-scheme: dark){:root:not([data-theme=light]) .shot img{filter:brightness(.85)}}
+@media (prefers-reduced-motion: reduce){.shot img{transition:none}.shot:hover img,.shotcard:hover .shot img{transform:none}}

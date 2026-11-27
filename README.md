@@ -10,6 +10,8 @@ Personal academic website of Gorkem Kar. Plain HTML and CSS, no build step.
 - `research/*.html`: one page per project and the LaTeX and Overleaf guide (generated)
 - `style.css`, `site.js` (theme, search, filters), `live.js` (project demos), `pages.json` (search index)
 
-Every page shares the same header and footer; edit them in each top-level page.
-Bump the `?v=` asset version on all pages whenever `style.css`, `site.js` or `live.js` change.
+Every page shares the same header and footer. Edit them in `personal-website-tools/chrome.py`, then run
+`python3 personal-website-tools/site_upkeep.py`: it writes the header, footer, "Last updated" date and the
+`?v=` asset version (taken from the contents of style.css, site.js and live.js) into every page and rebuilds
+the project pages. `site_upkeep.py --check` only reports pages that are out of date.
 GitHub Pages serves the `main` branch root.
