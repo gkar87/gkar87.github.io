@@ -2,12 +2,25 @@
    Gorkem Kar · personal academic site
    Design tokens, layout and components. No build step.
    ===================================================================== */
+/* Source Serif 4 (SIL Open Font License, fonts/OFL.txt), self-hosted so headings look the same everywhere */
+@font-face{font-family:"Source Serif 4";font-style:normal;font-weight:200 900;font-display:swap;
+  src:url(fonts/source-serif-4-latin-wght-normal.woff2) format("woff2");
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Source Serif 4";font-style:normal;font-weight:200 900;font-display:swap;
+  src:url(fonts/source-serif-4-latin-ext-wght-normal.woff2) format("woff2");
+  unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:"Source Serif 4";font-style:italic;font-weight:200 900;font-display:swap;
+  src:url(fonts/source-serif-4-latin-wght-italic.woff2) format("woff2");
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Source Serif 4";font-style:italic;font-weight:200 900;font-display:swap;
+  src:url(fonts/source-serif-4-latin-ext-wght-italic.woff2) format("woff2");
+  unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF}
 :root{
   --bg:#fbfbfd; --surface:#ffffff; --fg:#141a26; --muted:#566074; --line:#e2e6ee; --soft:#f3f5f9;
   --accent:#1d4f91; --accent-2:#b4233a; --accent-3:#0f7b6c; --accent-4:#6b4fb3; --chip:#eaf0fa;
   --glow:rgba(29,79,145,.10); --shadow:0 1px 2px rgba(16,24,40,.05),0 8px 28px rgba(16,24,40,.07);
   --maxw:920px; --radius:14px;
-  --serif:"Charter","Iowan Old Style","Palatino Linotype","Source Serif Pro","Book Antiqua",Georgia,serif;
+  --serif:"Source Serif 4","Charter","Iowan Old Style","Palatino Linotype","Source Serif Pro","Book Antiqua",Georgia,serif;
   --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
   --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
   color-scheme:light;
@@ -637,3 +650,34 @@ ol.steps-detailed p.done span{font:600 .66rem/1 var(--sans);letter-spacing:.12em
 :root[data-theme=dark] .shot img{filter:brightness(.85)}
 @media (prefers-color-scheme: dark){:root:not([data-theme=light]) .shot img{filter:brightness(.85)}}
 @media (prefers-reduced-motion: reduce){.shot img{transition:none}.shot:hover img,.shotcard:hover .shot img{transform:none}}
+
+/* ---------- 2026-11-27 upgrade: headings, citations, topic filter ---------- */
+.vh{position:absolute!important;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+h1,h2{font-weight:600;letter-spacing:-.012em}
+h1{font-optical-sizing:auto}
+.stat-t span{display:block;line-height:1.45;margin-top:.25rem}
+.rm-col h3{display:flex;gap:.45rem;align-items:flex-start;margin:0;min-height:2.7em;font:700 .95rem/1.3 var(--sans);letter-spacing:normal}
+.rm-col h3 span{flex:none;font:700 .72rem/1 var(--mono);color:var(--bg);background:var(--c);border-radius:6px;padding:.28rem .4rem;margin-top:.05rem}
+.rm-col h3 a{color:inherit;text-decoration:none} .rm-col h3 a:hover{color:var(--c)}
+@media (max-width:520px){.rm-col h3{min-height:0}}
+h3.pgroup{font-family:var(--sans);letter-spacing:.04em}
+.xp h3{margin:0 0 .3rem;font:700 1rem/1.35 var(--sans);letter-spacing:normal}
+.pubtopics{margin-top:.2rem}
+.pubtopics button{display:inline-flex;align-items:center;gap:.4rem}
+.pubtopics .dot{width:.55rem;height:.55rem;border-radius:50%;background:var(--c)}
+.pubtopics button[aria-pressed=true] .dot{background:var(--bg)}
+.yearsel{display:inline-flex;align-items:center;gap:.4rem;font-size:.86rem;color:var(--muted);margin-left:auto}
+.yearsel select{font:inherit;color:var(--fg);background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:.28rem .7rem}
+.cite-btn{font:inherit;font-size:inherit;color:var(--accent);background:none;border:0;padding:0;cursor:pointer;text-underline-offset:.18em}
+.cite-btn:hover,.cite-btn[aria-expanded=true]{text-decoration:underline}
+.cite{margin:.6rem 0 .2rem;border:1px solid var(--line);border-radius:12px;background:var(--soft);padding:.75rem .85rem;font-size:.86rem}
+.cite[hidden]{display:none}
+.cite .row{display:flex;align-items:center;justify-content:space-between;gap:.6rem;margin:.1rem 0 .35rem}
+.cite .lab{font:700 .7rem/1.2 var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.cite pre{margin:0 0 .7rem;padding:.6rem .7rem;background:var(--surface);border:1px solid var(--line);border-radius:8px;overflow-x:auto;font:.78rem/1.5 var(--mono);white-space:pre}
+.cite p{margin:0;padding:.6rem .7rem;background:var(--surface);border:1px solid var(--line);border-radius:8px;line-height:1.5}
+.cite .copy{font:600 .78rem/1 var(--sans);border:1px solid var(--line);background:var(--surface);color:var(--fg);border-radius:999px;padding:.32rem .7rem;cursor:pointer}
+.cite .copy:hover{border-color:var(--accent);color:var(--accent)}
+ol.pubs li:target{background:color-mix(in srgb,var(--accent) 7%,transparent);border-radius:10px}
+@media print{.cite-btn,.cite,.pubtopics{display:none}}
+.dot.d1{--c:var(--accent)} .dot.d2{--c:var(--accent-3)} .dot.d3{--c:var(--accent-2)} .dot.d4{--c:var(--accent-4)}

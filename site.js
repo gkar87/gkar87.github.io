@@ -80,35 +80,93 @@
     rmap.querySelectorAll('.rm-filter button').forEach(x => { x.classList.toggle('on', x === b); x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
   }));
 
-  // ---- publication filters and search
-  const tools = document.querySelector('.pubtools');
+  // ---- publication filters (kind, topic, year) and search
+  const tools = document.querySelector('.pubtools:not(.pubtopics)');
   if (tools) {
     const q = tools.querySelector('input');
     const btns = [...tools.querySelectorAll('button')];
+    const topics = document.querySelector('.pubtopics');
+    const dbtns = topics ? [...topics.querySelectorAll('button')] : [];
+    const ysel = topics ? topics.querySelector('select') : null;
     const groups = [...document.querySelectorAll('.pubgroup')];
     const count = document.querySelector('.pubcount');
-    let kind = 'all';
+    let kind = 'all', dir = 'all';
     const run = () => {
-      const term = (q.value || '').trim().toLowerCase();
+      const term = (q ? q.value : '').trim().toLowerCase();
+      const yr = ysel ? ysel.value : 'all';
       let n = 0;
       groups.forEach(g => {
         const okKind = kind === 'all' || g.dataset.kind === kind;
         let shown = 0;
         g.querySelectorAll('ol.pubs > li').forEach(li => {
-          const ok = okKind && (!term || li.textContent.toLowerCase().includes(term));
+          const ok = okKind && (dir === 'all' || li.dataset.dir === dir) &&
+            (yr === 'all' || li.dataset.year === yr) &&
+            (!term || li.textContent.toLowerCase().includes(term));
           li.hidden = !ok; if (ok) shown++;
         });
         g.hidden = shown === 0; n += shown;
       });
       if (count) count.textContent = n + (n === 1 ? ' item' : ' items') + ' shown';
     };
-    btns.forEach(b => b.addEventListener('click', () => {
-      kind = b.dataset.kind;
-      btns.forEach(x => x.setAttribute('aria-pressed', x === b ? 'true' : 'false'));
-      run();
-    }));
-    q.addEventListener('input', run);
+    const press = (list, b) => list.forEach(x => x.setAttribute('aria-pressed', x === b ? 'true' : 'false'));
+    btns.forEach(b => b.addEventListener('click', () => { kind = b.dataset.kind; press(btns, b); run(); }));
+    dbtns.forEach(b => b.addEventListener('click', () => { dir = b.dataset.dir; press(dbtns, b); run(); }));
+    if (ysel) ysel.addEventListener('change', run);
+    if (q) q.addEventListener('input', run);
     run();
+  }
+
+  // ---- Cite: BibTeX and APA, each with a copy button
+  const citeEl = document.getElementById('cite-data');
+  if (citeEl) {
+    let data = {};
+    try { data = JSON.parse(citeEl.textContent); } catch (e) {}
+    const copy = (text, btn) => {
+      const done = () => { const t = btn.textContent; btn.textContent = 'Copied'; setTimeout(() => { btn.textContent = t; }, 1600); };
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(text).then(done, () => fallback(text) && done());
+      } else if (fallback(text)) done();
+    };
+    const fallback = text => {
+      const ta = document.createElement('textarea');
+      ta.value = text; ta.setAttribute('readonly', ''); ta.style.position = 'fixed'; ta.style.opacity = '0';
+      document.body.appendChild(ta); ta.select();
+      let ok = false; try { ok = document.execCommand('copy'); } catch (e) {}
+      ta.remove(); return ok;
+    };
+    const row = (label, text, kind) => {
+      const r = document.createElement('div'); r.className = 'row';
+      const l = document.createElement('span'); l.className = 'lab'; l.textContent = label;
+      const body = document.createElement(kind === 'bib' ? 'pre' : 'p'); body.textContent = text;
+      const b = document.createElement('button'); b.type = 'button'; b.className = 'copy';
+      b.textContent = kind === 'bib' ? 'Copy BibTeX' : 'Copy citation';
+      b.addEventListener('click', () => copy(text, b));
+      r.append(l, b);
+      const f = document.createDocumentFragment(); f.append(r, body); return f;
+    };
+    const panel = (btn, key) => {
+      let p = document.getElementById('cite-' + key);
+      if (!p && data[key]) {
+        p = document.createElement('div'); p.className = 'cite'; p.id = 'cite-' + key; p.hidden = true;
+        p.append(row('APA 7', data[key].apa, 'apa'), row('BibTeX', data[key].bib, 'bib'));
+        btn.closest('li').appendChild(p);
+      }
+      return p;
+    };
+    const toggle = (btn, open) => {
+      const key = btn.getAttribute('aria-controls').replace(/^cite-/, '');
+      const p = panel(btn, key); if (!p) return;
+      const show = open === undefined ? p.hidden : open;
+      p.hidden = !show; btn.setAttribute('aria-expanded', show ? 'true' : 'false');
+    };
+    document.querySelectorAll('.cite-btn').forEach(b => b.addEventListener('click', () => toggle(b)));
+    const fromHash = () => {
+      const id = decodeURIComponent(location.hash.slice(1)); if (!id) return;
+      const li = document.getElementById(id);
+      const b = li && li.querySelector('.cite-btn');
+      if (b) { li.hidden = false; if (li.closest('.pubgroup')) li.closest('.pubgroup').hidden = false; toggle(b, true); }
+    };
+    fromHash(); window.addEventListener('hashchange', fromHash);
   }
 
   // ---- hero: a quiet network of sensing nodes; pulses travel between neighbours,
